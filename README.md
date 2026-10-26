@@ -1,5 +1,7 @@
 # 우리 학교 Brity 메신저 정착 길라잡이
 
+**사이트: https://brity-guide.vercel.app/**
+
 GOE 메신저에서 Brity 메신저로 전환하는 학교를 위한 **학교 맞춤형 5단계 실천 가이드** 웹사이트입니다.
 2026 경기도학교업무개선정책실행연구회 1분과(G-ONE 현장 적용 사례·안착 방안 연구) 연구 자료를 바탕으로 만들었습니다.
 
@@ -11,9 +13,8 @@ GOE 메신저에서 Brity 메신저로 전환하는 학교를 위한 **학교 �
 
 빌드 도구 없이 순수 HTML·CSS·JS로만 작성되어 파일을 바로 고쳐 올리면 됩니다.
 
-## 배포 (Netlify)
-- 가장 간단: https://app.netlify.com/drop 에 이 폴더를 통째로 끌어다 놓으면 바로 주소가 생깁니다.
-- 자동 배포: Netlify에서 "Import from Git"으로 이 저장소를 연결하면 `main`에 푸시할 때마다 다시 배포됩니다. 빌드 명령 없음, 게시 폴더 `.` (netlify.toml에 설정됨)
+## 배포 (Vercel)
+Vercel 프로젝트가 이 저장소에 연결되어 있어 `main`에 푸시하면 https://brity-guide.vercel.app/ 에 자동으로 다시 배포됩니다. 빌드 명령 없는 정적 사이트입니다.
 
 ## 연수 자료(동영상·Canva) 넣기
 `app.js` 맨 위 `TRAINING` 목록만 고치면 됩니다.
