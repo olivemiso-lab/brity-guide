@@ -199,6 +199,31 @@
           <div class="promise" style="background:var(--blue-soft);border-style:dashed;justify-content:center;text-align:center"><p style="color:var(--navy);font-weight:700">모든 항목을 그대로 적용하기보다<br>학교의 업무 특성에 맞게 조정하세요.</p></div>
         </div>
 
+
+        <h3 id="builder">학교에서 실제로 정해 볼 사용 약속</h3>
+        <p>아래는 TF팀이 학교 구성원의 의견을 반영하여 정할 수 있는 예시입니다. 모든 항목을 그대로 적용하기보다 학교의 업무 특성에 맞게 조정하면 됩니다. 지킬 약속을 고르고 우리 학교 이름과 빈칸을 채우면 교직원에게 안내할 한 장이 만들어집니다. 입력한 내용은 이 기기에만 저장됩니다.</p>
+        <div class="builder" id="promiseBuilder">
+          <div class="b-form">
+            <div class="b-row"><label for="bSchool">학교 이름</label><input id="bSchool" type="text" placeholder="예: ○○초등학교" data-b="school"></div>
+            <div class="b-row"><label for="bWs">전체 공지를 올리는 공식 워크스페이스</label><input id="bWs" type="text" placeholder="예: 교직원 협의" data-b="ws"></div>
+            <div class="b-row"><label for="bTime">메시지 발송을 자제하는 시간</label><input id="bTime" type="text" placeholder="예: 17:00 이후와 휴일" data-b="time"></div>
+            <div class="b-row"><label for="bAsk">사용 문의 창구</label><input id="bAsk" type="text" placeholder="예: 교무기획부, 정보업무담당자" data-b="ask"></div>
+            <fieldset class="b-picks"><legend>우리 학교가 지킬 약속</legend>
+              <label><input type="checkbox" checked data-bp="1"> ① 워크스페이스, 대화방, 쪽지, Brity 드라이브 등의 용도를 구분해요.</label>
+              <label><input type="checkbox" checked data-bp="2"> ② 공지는 정해진 형식으로 작성해요.</label>
+              <label><input type="checkbox" checked data-bp="3"> ③ 질문과 답변은 해당 공지의 답글로 남겨요.</label>
+              <label><input type="checkbox" checked data-bp="4"> ④ 단순 확인은 이모지로 표시해요.</label>
+              <label><input type="checkbox" checked data-bp="5"> ⑤ 자료는 가급적 드라이브 링크로 공유해요.</label>
+              <label><input type="checkbox" checked data-bp="6"> ⑥ 메시지 발송 시간과 알림을 배려해요.</label>
+              <label><input type="checkbox" checked data-bp="7"> ⑦ 개인정보와 공식 업무처리 기준을 지켜요.</label>
+            </fieldset>
+          </div>
+          <div class="b-out">
+            <div class="sheet" id="bSheet"></div>
+            <div class="tpl-actions"><button class="btn outline small" type="button" id="bCopy">📋 글로 복사</button><button class="btn outline small" type="button" id="bPrint">🖨️ 이 약속만 인쇄</button><span class="copied" id="bCopied" hidden>복사되었습니다</span></div>
+          </div>
+        </div>
+
         <h3 style="margin-top:36px">약속별 자세히 보기</h3>
         <details class="acc" open>
           <summary>약속 ① 워크스페이스, 대화방, 쪽지, Brity 드라이브의 용도를 구분해요</summary>

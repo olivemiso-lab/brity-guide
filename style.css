@@ -172,6 +172,29 @@ li{margin:.25em 0}
 details.acc.why summary{color:var(--ink-2);font-weight:600}
 .step-card.current{border-color:var(--accent);box-shadow:0 0 0 3px #dfe8fb}
 
+/* 사용 약속 만들기 */
+.builder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px;margin:16px 0 8px}
+@media (max-width:900px){.builder{grid-template-columns:1fr}}
+.b-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px}
+.b-row{display:flex;flex-direction:column;gap:4px}
+.b-row label{font-size:.82rem;font-weight:700;color:var(--navy)}
+.b-row input{padding:10px 12px;border:1px solid var(--line);border-radius:9px;font:inherit;font-size:.95rem;background:#fff}
+.b-row input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px #dfe8fb}
+.b-picks{border:1px solid var(--line);border-radius:10px;padding:10px 12px 6px;margin:4px 0 0}
+.b-picks legend{font-size:.82rem;font-weight:700;color:var(--navy);padding:0 6px}
+.b-picks label{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;padding:5px 0;cursor:pointer}
+.b-picks input{margin-top:3px;accent-color:var(--accent)}
+.sheet{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;min-height:320px;box-shadow:var(--shadow)}
+.sheet h4{font-size:1.25rem;margin:0 0 4px;color:var(--navy)}
+.sheet .sub{font-size:.82rem;color:var(--muted);margin:0 0 16px;padding-bottom:12px;border-bottom:2px solid var(--navy)}
+.sheet ol{padding-left:1.4em;margin:0 0 14px}
+.sheet li{margin:0 0 8px;font-size:.95rem}
+.sheet li b{color:var(--navy)}
+.sheet li span{display:block;color:var(--ink-2);font-size:.86rem}
+.sheet .fill{background:#fff8e6;border-radius:4px;padding:0 4px}
+.sheet .foot{font-size:.84rem;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:10px}
+@media print{ body.print-sheet *{visibility:hidden} body.print-sheet .sheet, body.print-sheet .sheet *{visibility:visible} body.print-sheet .sheet{position:absolute;left:0;top:0;width:100%;border:0;box-shadow:none} }
+
 /* 상황별 진입 */
 .start{padding:48px 0 40px;background:#fff;border-bottom:1px solid var(--line)}
 .start-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}

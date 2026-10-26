@@ -177,6 +177,45 @@ var TRAINING = {
     si.addEventListener('keydown',function(e){ if(e.key==='Escape'){sr.hidden=true;} if(e.key==='Enter'){var a=$('a',sr); if(a) a.click();} });
   }
 
+
+  /* 우리 학교 사용 약속 만들기 */
+  var pb=$('#promiseBuilder');
+  if(pb){
+    var PKEY='brity-guide-promises-v1'; var pst={};
+    try{pst=JSON.parse(localStorage.getItem(PKEY)||'{}')||{};}catch(e){pst={};}
+    var P=[
+      ['워크스페이스, 대화방, 쪽지, Brity 드라이브 등의 용도를 구분해요.','어떤 내용을 어디에 올릴 것인가를 가장 먼저 정합니다.'],
+      ['공지는 정해진 형식으로 작성해요.','제목에 [제출] [안내] [협조] [일정] 분류를 표시하고, 내용·기한·링크·문의를 적습니다.'],
+      ['질문과 답변은 해당 공지의 답글로 남겨요.','여러 사람에게 도움이 되는 질문은 해당 공지의 답글(스레드)로 남깁니다. 개인정보가 포함된 내용은 별도 연락 방법을 활용합니다.'],
+      ['단순 확인은 이모지로 표시해요.','"확인했습니다", "네" 같은 답글 대신 이모지 반응으로 표시합니다.'],
+      ['자료는 가급적 드라이브 링크로 공유해요.','공동으로 사용하거나 수정하는 자료는 Brity 드라이브에 보관하고 링크로 공유합니다.'],
+      ['메시지 발송 시간과 알림을 배려해요.','근무시간 외 또는 휴일에는 긴급하지 않은 메시지 발송을 자제하고, 다음 근무일에 전달해도 되는 내용은 예약 발송 기능을 활용합니다.'],
+      ['개인정보와 공식 업무처리 기준을 지켜요.','학생 개인정보나 민감한 내용은 공개 워크스페이스에 게시하지 않고, 전자결재 등 공식 절차가 필요한 업무는 기존 시스템과 절차를 따릅니다.']
+    ];
+    var inputs=$$('[data-b]',pb), picks=$$('[data-bp]',pb), sheet=$('#bSheet');
+    inputs.forEach(function(i){ if(pst[i.getAttribute('data-b')]) i.value=pst[i.getAttribute('data-b')]; });
+    picks.forEach(function(p){ var k='p'+p.getAttribute('data-bp'); if(k in pst) p.checked=!!pst[k]; });
+    function v(k){ var i=$('[data-b="'+k+'"]',pb); return i&&i.value.trim(); }
+    function fill(val,ph){ return val?('<span class="fill">'+esc(val)+'</span>'):('<span class="fill">'+ph+'</span>'); }
+    function renderSheet(){
+      var school=v('school'), ws=v('ws'), time=v('time'), ask=v('ask');
+      var circ=['①','②','③','④','⑤','⑥','⑦']; var items='';
+      picks.forEach(function(p,i){ if(!p.checked) return; var extra='';
+        if(i===0&&ws) extra='<span>전체 공지는 <b>'+esc(ws)+'</b> 워크스페이스에 게시합니다.</span>';
+        if(i===5&&time) extra='<span>우리 학교는 <b>'+esc(time)+'</b>에는 긴급하지 않은 메시지 발송을 자제합니다.</span>';
+        items+='<li><b>'+circ[i]+' '+esc(P[i][0])+'</b><span>'+esc(P[i][1])+'</span>'+extra+'</li>'; });
+      sheet.innerHTML='<h4>'+fill(school,'○○초등학교')+' Brity 메신저 사용 약속</h4><p class="sub">학교 구성원이 함께 지키는 사용 원칙 · 출처: 우리 학교 Brity 메신저 정착 길라잡이(2026 경기도학교업무개선정책실행연구회 1분과)</p>'
+        +(items?'<ol>'+items+'</ol>':'<p style="color:var(--muted)">지킬 약속을 하나 이상 고르세요.</p>')
+        +'<div class="foot">사용 중 궁금한 점은 '+fill(ask,'문의 창구')+'에 문의합니다.</div>';
+    }
+    function savePB(){ inputs.forEach(function(i){pst[i.getAttribute('data-b')]=i.value;}); picks.forEach(function(p){pst['p'+p.getAttribute('data-bp')]=p.checked;}); try{localStorage.setItem(PKEY,JSON.stringify(pst));}catch(e){} }
+    pb.addEventListener('input',function(){savePB();renderSheet();}); pb.addEventListener('change',function(){savePB();renderSheet();});
+    renderSheet();
+    var bc=$('#bCopy'); if(bc) bc.addEventListener('click',function(){ var t=sheet.innerText.replace(/\n{3,}/g,'\n\n').trim(); var ok=function(){var c=$('#bCopied'); if(c){c.hidden=false; setTimeout(function(){c.hidden=true;},2000);} };
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();}); } else { fallback(t); ok(); } });
+    var bp=$('#bPrint'); if(bp) bp.addEventListener('click',function(){ document.body.classList.add('print-sheet'); window.print(); setTimeout(function(){document.body.classList.remove('print-sheet');},500); });
+  }
+
   /* 해시로 열린 아코디언 펼치기 */
   function openHash(){ var h=location.hash; if(!h) return; var el=$(h); if(!el) return; var d=el.closest&&el.closest('details'); if(d) d.open=true; if(el.tagName==='DETAILS') el.open=true; }
   window.addEventListener('hashchange',openHash); openHash();
