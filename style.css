@@ -135,14 +135,6 @@ li{margin:.25em 0}
 .kick-head h3{margin:.2em 0 .4em;font-size:1.35rem}
 .kick-head p{margin:0;color:var(--ink-2)}
 .kickoff .card{background:var(--bg);box-shadow:none}
-.timeline{margin-top:22px}
-.timeline h4{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.tl{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-@media (max-width:900px){.tl{grid-template-columns:1fr}}
-.tl li{display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:12px;border-top:3px solid var(--accent);font-size:.88rem}
-.tl b{color:var(--navy)}
-.tl span{color:var(--ink-2);flex:1}
-.tl em{font-style:normal;font-size:.75rem;font-weight:700;color:var(--accent)}
 .kick-foot{margin:16px 0 0;font-size:.92rem;color:var(--ink-2)}
 
 /* 상황별 진입 */
