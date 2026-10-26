@@ -160,8 +160,8 @@ li{margin:.25em 0}
 .home-row .tag{flex:none;margin-top:2px}
 
 /* 단계 요약 카드 · 탭 */
-.step-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
-@media (max-width:900px){.step-summary{grid-template-columns:repeat(2,1fr)}}
+.step-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+@media (max-width:900px){.step-summary{grid-template-columns:1fr}}
 @media (max-width:520px){.step-summary{grid-template-columns:1fr}}
 .step-summary .sl{display:block;font-size:.75rem;font-weight:800;letter-spacing:.06em;color:var(--accent);margin-bottom:4px}
 .step-summary p{margin:0;font-size:.93rem;color:var(--ink)}
