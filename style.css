@@ -286,8 +286,7 @@ code{background:#eef0f3;padding:1px 6px;border-radius:5px;font-size:.9em}
 /* 푸터 */
 .site-footer{background:#111a30;color:#aab6d3;padding:40px 0;font-size:.9rem}
 .site-footer a{color:#dbe4f6}
-.site-footer .cols{display:grid;grid-template-columns:2fr 1fr;gap:24px}
-@media (max-width:700px){.site-footer .cols{grid-template-columns:1fr}}
+.site-footer .fine{display:block;margin-top:10px;font-size:.84rem;line-height:1.7;color:#8d9bbd}
 .site-footer strong{color:#fff}
 .totop{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;border:0;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.2s;font-size:1.1rem}
 .totop.show{opacity:1;pointer-events:auto}
