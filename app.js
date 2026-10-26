@@ -26,7 +26,8 @@ var TRAINING = {
 
   /* 스크롤 진행 + 현재 섹션 표시 + 맨 위로 */
   var prog=$('#progress'), toTop=$('#toTop');
-  var navLinks=$$('#nav a, #toc a'); var targets=navLinks.map(function(a){return $(a.getAttribute('href'));});
+  var navLinks=[]; var targets=[];
+  var pg=document.body.getAttribute('data-page'); $$('#nav a').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-nav')===pg);});
   function onScroll(){
     var h=document.documentElement; var max=h.scrollHeight-h.clientHeight; var y=h.scrollTop||document.body.scrollTop;
     if(prog) prog.style.width=(max>0?Math.min(100,y/max*100):0)+'%';
@@ -36,6 +37,55 @@ var TRAINING = {
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
   if(toTop) toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+
+  /* 5단계 탭 */
+  var stepsWrap=$('#steps');
+  if(stepsWrap){
+    var stepEls=$$('.step',stepsWrap);
+    function showStep(id,scroll){
+      var found=false;
+      stepEls.forEach(function(s){var on=s.id===id; s.classList.toggle('active',on); if(on)found=true;});
+      if(!found){ stepEls.forEach(function(s,i){s.classList.toggle('active',i===0);}); id=stepEls[0].id; }
+      $$('.step-card').forEach(function(c){c.classList.toggle('current',c.getAttribute('data-tab')===id);});
+      if(scroll){ var top=stepsWrap.getBoundingClientRect().top+window.pageYOffset-70; window.scrollTo({top:top,behavior:'smooth'}); }
+    }
+    document.addEventListener('click',function(e){
+      var a=e.target.closest('[data-tab]'); if(!a) return;
+      e.preventDefault(); var id=a.getAttribute('data-tab'); history.replaceState(null,'','#'+id); showStep(id,true);
+    });
+    $$('.chip[href^="#step"]').forEach(function(ch){ ch.setAttribute('data-tab',ch.getAttribute('href').slice(1)); });
+    var initial=(location.hash||'#step1').slice(1);
+    if(/^step[1-5]$/.test(initial)){ showStep(initial,false); if(location.hash){ setTimeout(function(){showStep(initial,true);},50);} }
+    else { showStep('step1',false); }
+    window.addEventListener('hashchange',function(){ var h=location.hash.slice(1); if(/^step[1-5]$/.test(h)) showStep(h,true); });
+  }
+
+
+  /* 사이드바: 현재 페이지·위치 표시, 단계 완료, 전체 진행률 */
+  var sbEl=$('#sidebar');
+  if(sbEl){
+    document.body.classList.add('has-sidebar');
+    var page=(location.pathname.split('/').pop()||'index.html');
+    var sbLinks=$$('[data-sb]',sbEl);
+    var sbTargets=sbLinks.map(function(a){var v=a.getAttribute('data-sb'); var f=v.split('#')[0], h=v.split('#')[1]; return (f===page&&h)?document.getElementById(h):null;});
+    function sbSpy(){
+      var cur=null; var onGuideTabs=!!$('#steps');
+      for(var i=0;i<sbTargets.length;i++){ var t=sbTargets[i]; if(!t) continue; if(onGuideTabs&&t.classList.contains('step')&&!t.classList.contains('active')) continue; if(t.getBoundingClientRect().top<=120) cur=i; }
+      sbLinks.forEach(function(a,i){a.classList.toggle('active',i===cur||(cur===null&&a.getAttribute('data-sb')===page&&page==='index.html'));});
+      if(cur===null){ var home=$('.sb-home',sbEl); if(home) home.classList.toggle('active',page==='index.html'); }
+    }
+    window.addEventListener('scroll',sbSpy,{passive:true}); sbSpy();
+    document.addEventListener('click',function(e){ if(e.target.closest('[data-tab]')) setTimeout(sbSpy,450); });
+    // 길라잡이 페이지에서는 단계 링크가 탭을 바꾸도록
+    if($('#steps')) $$('.sb-step',sbEl).forEach(function(a){ a.setAttribute('data-tab','step'+a.getAttribute('data-sbstep')); });
+  }
+  function sbUpdate(){
+    if(!sbEl) return; var total=0,n=0;
+    var ids=['step1','step2','step3','step4','step5']; var counts=[5,7,6,7,8];
+    ids.forEach(function(id,i){ var st=store[id]||[]; var c=0; st.forEach(function(v){if(v)c++;}); n+=c; total+=counts[i]; var a=$('[data-sbstep="'+(i+1)+'"]',sbEl); if(a) a.classList.toggle('done',c===counts[i]); });
+    var p=$('#sbProgress'); if(p) p.textContent=n+' / '+total; var m=$('#sbMeter'); if(m) m.style.width=(n/total*100)+'%';
+  }
 
   /* 체크리스트 */
   var lists=$$('.checklist[data-list]'); var totalN=0;
@@ -53,12 +103,12 @@ var TRAINING = {
   }
   lists.forEach(function(list){
     var id=list.getAttribute('data-list'); var boxes=$$('input[type=checkbox]',list); totalN+=boxes.length;
-    boxes.forEach(function(b,i){ b.addEventListener('change',function(){ var st=store[id]||(store[id]=[]); st[i]=b.checked; save(); render(list); renderTotal(); }); });
-    var r=$('[data-reset]',list); if(r) r.addEventListener('click',function(){ if(confirm('이 단계의 체크 표시를 모두 지울까요?')){ store[id]=[]; save(); render(list); renderTotal(); } });
+    boxes.forEach(function(b,i){ b.addEventListener('change',function(){ var st=store[id]||(store[id]=[]); st[i]=b.checked; save(); render(list); renderTotal(); sbUpdate(); }); });
+    var r=$('[data-reset]',list); if(r) r.addEventListener('click',function(){ if(confirm('이 단계의 체크 표시를 모두 지울까요?')){ store[id]=[]; save(); render(list); renderTotal(); sbUpdate(); } });
     render(list);
   });
-  renderTotal();
-  var resetAll=$('#resetAll'); if(resetAll) resetAll.addEventListener('click',function(){ if(confirm('모든 단계의 체크 표시를 지울까요?')){ store={}; save(); lists.forEach(render); renderTotal(); } });
+  renderTotal(); sbUpdate();
+  var resetAll=$('#resetAll'); if(resetAll) resetAll.addEventListener('click',function(){ if(confirm('모든 단계의 체크 표시를 지울까요?')){ store={}; save(); lists.forEach(render); renderTotal(); sbUpdate(); } });
   var printBtn=$('#printBtn'); if(printBtn) printBtn.addEventListener('click',function(){ $$('details').forEach(function(d){d.open=true;}); window.print(); });
 
   /* 템플릿 복사 */
@@ -99,8 +149,8 @@ var TRAINING = {
   /* 사이트 내 검색: 제목·FAQ·아코디언 요약을 색인 */
   var si=$('#siteSearch'), sr=$('#searchResults');
   if(si&&sr){
-    var index=[];
-    $$('h2[id], h3[id], section[id] h2, section[id] h3, details summary, .tile, .faq details').forEach(function(el){
+    var index=(window.SEARCH_INDEX||[]).slice();
+    if(!index.length) $$('h2[id], h3[id], section[id] h2, section[id] h3, details summary, .tile, .faq details').forEach(function(el){
       var sec=el.closest('section[id]'); var secTitle=sec?($('h2',sec)||{}).textContent||'':'';
       var target=el.id?('#'+el.id):(el.closest('details')&&el.closest('details').id?('#'+el.closest('details').id):(el.id?('#'+el.id):(sec?('#'+sec.id):null)));
       if(el.classList.contains('tile')) target=el.getAttribute('href');
@@ -122,7 +172,7 @@ var TRAINING = {
         return '<a href="'+esc(it.href)+'"><b>'+hl(it.t,q)+'</b><span>'+(it.sec?esc(it.sec)+' · ':'')+hl(snip,q)+'</span></a>';
       }).join(''):'<div class="none">찾는 내용이 없습니다. 다른 말로 입력해 보세요. 예: 편집, 링크, 알림</div>';
     });
-    sr.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; sr.hidden=true; var el=$(a.getAttribute('href')); var d=el&&el.closest?el.closest('details'):null; if(d) d.open=true; if(el&&el.tagName==='DETAILS') el.open=true; });
+    sr.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; sr.hidden=true; var href=a.getAttribute('href'); if(href.indexOf('#')!==0) return; var el=$(href); var d=el&&el.closest?el.closest('details'):null; if(d) d.open=true; if(el&&el.tagName==='DETAILS') el.open=true; });
     document.addEventListener('click',function(e){ if(!e.target.closest('.search-box')) sr.hidden=true; });
     si.addEventListener('keydown',function(e){ if(e.key==='Escape'){sr.hidden=true;} if(e.key==='Enter'){var a=$('a',sr); if(a) a.click();} });
   }
