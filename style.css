@@ -129,6 +129,14 @@ li{margin:.25em 0}
 .toc-part{font-size:.72rem;font-weight:800;color:var(--navy);padding:10px 10px 4px;letter-spacing:.04em}
 .features .card p{font-size:.9rem}
 
+/* 첫 2주 */
+.kickoff{margin-top:36px;padding:28px;background:#fff;border:2px solid var(--accent);border-radius:var(--radius)}
+.kick-head{max-width:720px;margin-bottom:18px}
+.kick-head h3{margin:.2em 0 .4em;font-size:1.35rem}
+.kick-head p{margin:0;color:var(--ink-2)}
+.kickoff .card{background:var(--bg);box-shadow:none}
+.kick-foot{margin:16px 0 0;font-size:.92rem;color:var(--ink-2)}
+
 /* 상황별 진입 */
 .start{padding:48px 0 40px;background:#fff;border-bottom:1px solid var(--line)}
 .start-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}
