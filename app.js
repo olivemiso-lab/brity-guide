@@ -26,13 +26,13 @@ var TRAINING = {
 
   /* 스크롤 진행 + 현재 섹션 표시 + 맨 위로 */
   var prog=$('#progress'), toTop=$('#toTop');
-  var navLinks=$$('#nav a'); var targets=navLinks.map(function(a){return $(a.getAttribute('href'));});
+  var navLinks=$$('#nav a, #toc a'); var targets=navLinks.map(function(a){return $(a.getAttribute('href'));});
   function onScroll(){
     var h=document.documentElement; var max=h.scrollHeight-h.clientHeight; var y=h.scrollTop||document.body.scrollTop;
     if(prog) prog.style.width=(max>0?Math.min(100,y/max*100):0)+'%';
     if(toTop) toTop.classList.toggle('show',y>600);
-    var cur=-1; for(var i=0;i<targets.length;i++){ if(targets[i]&&targets[i].getBoundingClientRect().top<=90) cur=i; }
-    navLinks.forEach(function(a,i){a.classList.toggle('active',i===cur);});
+    var curEl=null; for(var i=0;i<targets.length;i++){ if(targets[i]&&targets[i].getBoundingClientRect().top<=90) curEl=targets[i]; }
+    navLinks.forEach(function(a){a.classList.toggle('active',!!curEl&&a.getAttribute('href')==='#'+curEl.id);});
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
   if(toTop) toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
@@ -45,6 +45,7 @@ var TRAINING = {
     var tag=$('.tag',list); if(tag) tag.textContent=n+'/'+boxes.length;
     var m=$('.meter i',list); if(m) m.style.width=(boxes.length?n/boxes.length*100:0)+'%';
     var done=$('[data-done="'+id.replace('step','')+'"]'); if(done) done.textContent=(n===boxes.length&&n>0)?'✓ 완료':(n>0?n+'/'+boxes.length:'');
+    var td=$('[data-tocdone="'+id.replace('step','')+'"]'); if(td){ td.textContent='✓'; td.classList.toggle('on',n===boxes.length&&n>0); }
   }
   function renderTotal(){
     var n=0; lists.forEach(function(l){ (store[l.getAttribute('data-list')]||[]).forEach(function(v){if(v)n++;}); });
