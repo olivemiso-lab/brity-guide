@@ -231,6 +231,29 @@ details.acc .acc-body p:last-child{margin:0}
 .tree .f{color:var(--navy);font-weight:700}
 .tree .ch{color:var(--ink-2)}
 
+/* 연수 자료 */
+.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:860px){.media-grid{grid-template-columns:1fr}}
+.media{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.media .frame{position:relative;aspect-ratio:16/9;background:#0f172a}
+.media .frame iframe,.media .frame video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.media .frame.placeholder{display:grid;place-items:center;color:#9fb0d6;font-size:.95rem;background:linear-gradient(135deg,#1b3263,#24418a)}
+.media .frame.placeholder span{font-size:2.2rem;display:block;text-align:center;margin-bottom:6px}
+.media .body{padding:16px 18px}
+.media h4{margin:0 0 4px}
+.media p{margin:0;font-size:.9rem;color:var(--ink-2)}
+.media .meta{font-size:.8rem;color:var(--muted);margin-top:8px}
+.deck-list{display:grid;gap:16px}
+.deck{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.deck .frame{position:relative;aspect-ratio:16/9;background:#f0f4fb}
+.deck .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.deck .frame.placeholder{display:grid;place-items:center;color:var(--muted)}
+.deck .body{padding:16px 18px;display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.deck h4{margin:0 0 4px}
+.deck p{margin:0;font-size:.9rem;color:var(--ink-2)}
+.deck .actions{display:flex;gap:8px;flex-wrap:wrap}
+code{background:#eef0f3;padding:1px 6px;border-radius:5px;font-size:.9em}
+
 /* FAQ */
 .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
 .faq summary{cursor:pointer;padding:14px 18px;font-weight:700;color:var(--navy);list-style:none;display:flex;gap:10px}

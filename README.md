@@ -11,8 +11,14 @@ GOE 메신저에서 Brity 메신저로 전환하는 학교를 위한 **학교 �
 
 빌드 도구 없이 순수 HTML·CSS·JS로만 작성되어 파일을 바로 고쳐 올리면 됩니다.
 
-## 배포
-GitHub Pages: Settings → Pages → Source를 `main` 브랜치 `/ (root)`로 설정합니다.
+## 배포 (Netlify)
+- 가장 간단: https://app.netlify.com/drop 에 이 폴더를 통째로 끌어다 놓으면 바로 주소가 생깁니다.
+- 자동 배포: Netlify에서 "Import from Git"으로 이 저장소를 연결하면 `main`에 푸시할 때마다 다시 배포됩니다. 빌드 명령 없음, 게시 폴더 `.` (netlify.toml에 설정됨)
+
+## 연수 자료(동영상·Canva) 넣기
+`app.js` 맨 위 `TRAINING` 목록만 고치면 됩니다.
+- 동영상: `youtube: '영상ID'` (주소의 `v=` 뒤 11자리) 또는 `drive: '구글드라이브 파일ID'`
+- Canva 슬라이드: Canva에서 공유 → 더보기 → 삽입(Embed) → 나온 iframe의 `src` 주소를 `embed`에, PDF를 함께 올렸으면 경로를 `pdf`에
 
 ## 원칙
 - 학교명과 개인 이름은 싣지 않습니다. 현장 사례는 'A초등학교'로 익명 처리합니다.
