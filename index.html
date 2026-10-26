@@ -21,15 +21,10 @@
   <div class="wrap">
     <a class="brand" href="#top"><span class="logo">B</span><span>Brity 메신저 정착 길라잡이</span></a>
     <nav class="nav" id="nav" aria-label="주요 메뉴">
-      <a href="#why">소개</a>
-      <a href="#overview">5단계</a>
-      <a href="#promises">사용 약속</a>
-      <a href="#examples">적용 예시</a>
-      <a href="#case">학교 사례</a>
-      <a href="#criteria">점검 기준</a>
-      <a href="#training">연수 자료</a>
-      <a href="#faq">FAQ</a>
-      <a href="#resources">자료</a>
+      <a href="#part-intro">메신저 소개</a>
+      <a href="#part-guide">정착 길라잡이</a>
+      <a href="#part-cases">활용 사례</a>
+      <a href="#quick">바로 찾기</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   </div>
@@ -37,7 +32,13 @@
 <div class="progress" id="progress"></div>
 <nav class="toc" id="toc" aria-label="목차">
   <div class="toc-title">목차</div>
-  <a href="#why">소개</a>
+  <a href="#quick">바로 찾기</a>
+  <div class="toc-part">1 · 메신저 소개</div>
+  <a href="#intro">무엇이 있고 어디에 쓰나</a>
+  <a href="#essentials">교직원 다섯 가지</a>
+  <a href="#faq">이럴 땐 이렇게</a>
+  <div class="toc-part">2 · 정착 길라잡이</div>
+  <a href="#why">왜 필요한가</a>
   <a href="#start">지금 어디쯤인가요</a>
   <a href="#overview">5단계 한눈에 보기</a>
   <a href="#step1" class="sub"><span class="d" data-tocdone="1"></span>01 TF팀 구축</a>
@@ -45,11 +46,11 @@
   <a href="#step3" class="sub"><span class="d" data-tocdone="3"></span>03 사용 환경 준비</a>
   <a href="#step4" class="sub"><span class="d" data-tocdone="4"></span>04 안내 및 실습 연수</a>
   <a href="#step5" class="sub"><span class="d" data-tocdone="5"></span>05 4주 적응 기간</a>
+  <a href="#criteria">정착 점검 기준</a>
+  <div class="toc-part">3 · 활용 사례</div>
   <a href="#examples">학교 적용 예시</a>
   <a href="#case">A초등학교 사례</a>
-  <a href="#criteria">정착 점검 기준</a>
   <a href="#training">연수 자료</a>
-  <a href="#faq">FAQ</a>
   <a href="#resources">자료와 활용 안내</a>
 </nav>
 
@@ -64,8 +65,8 @@
       <p class="sub">기능을 많이 아는 것보다 <b>학교 구성원이 같은 방식으로 사용하는 것</b>이 중요합니다.</p>
       <p class="lead">학교 맞춤형 5단계 실천 가이드. 단계별 체크리스트와 바로 쓰는 공지 템플릿을 담았습니다.</p>
       <div class="cta">
-        <a class="btn primary" href="#start">우리 학교 단계 찾기 ↓</a>
-        <a class="btn outline" href="#promises">사용 약속 7가지</a>
+        <a class="btn primary" href="#quick">필요한 정보 바로 찾기 ↓</a>
+        <a class="btn outline" href="#start">전환 5단계 시작</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -75,11 +76,136 @@
   </div>
 </section>
 
+<!-- ===== 바로 찾기 ===== -->
+<section class="quick" id="quick">
+  <div class="wrap">
+    <div class="doors">
+      <a class="door" href="#part-intro"><span class="pn">PART 1</span><h3>브리티 메신저 소개</h3><p>무엇이 있고 어디에 쓰는지, 교직원이 매일 지킬 다섯 가지, 막힐 때 해결법</p><span class="go">잘 쓰고 싶다면 →</span></a>
+      <a class="door" href="#part-guide"><span class="pn">PART 2</span><h3>정착 길라잡이</h3><p>TF팀부터 4주 적응까지 5단계 체크리스트와 7가지 사용 약속</p><span class="go">전환을 맡았다면 →</span></a>
+      <a class="door" href="#part-cases"><span class="pn">PART 3</span><h3>활용 사례</h3><p>상황별 적용 예시, A초등학교 운영 사례, 연수 영상과 슬라이드</p><span class="go">다른 학교가 궁금하다면 →</span></a>
+    </div>
+
+    <div class="search-box">
+      <label for="siteSearch" class="sr">사이트 안에서 찾기</label>
+      <input type="search" id="siteSearch" placeholder="찾는 말을 입력하세요. 예: 편집, 예약 발송, 파일명, 방해금지, 조직도" autocomplete="off">
+      <div class="search-results" id="searchResults" hidden></div>
+    </div>
+
+    <h3 class="tiles-title">자주 찾는 정보</h3>
+    <div class="tiles">
+      <a class="tile" href="#faq-edit"><b>협업문서가 입력이 안 돼요</b><span>링크 → '편집'으로 열기 → 저장(Y)</span></a>
+      <a class="tile" href="#tpl1"><b>공지는 어떤 형식으로 쓰나요</b><span>[분류] 제목·내용·기한·링크·문의, 복사 가능</span></a>
+      <a class="tile" href="#faq-emoji"><b>✅는 '읽음'인가요, '완료'인가요</b><span>학교에서 구분해 정하는 방법</span></a>
+      <a class="tile" href="#faq-dnd"><b>퇴근 후 알림을 끄고 싶어요</b><span>방해금지 시간 설정과 예약 발송</span></a>
+      <a class="tile" href="#faq-mobile"><b>휴대폰 앱 설치와 로그인</b><span>앱 스토어에서 Brity, 교육디지털원패스</span></a>
+      <a class="tile" href="#faq-link"><b>드라이브 파일 링크는 어떻게 보내나요</b><span>⋮ › 링크 복사 → 공지에 붙여넣기</span></a>
+      <a class="tile" href="#faq-perm"><b>폴더에 파일이 안 올라가요</b><span>권한 확인과 요청 방법</span></a>
+      <a class="tile" href="#faq-where"><b>이 내용은 어디에 올리나요</b><span>워크스페이스·대화방·쪽지·드라이브 구분표</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PART 1 ===== -->
+<div class="part" id="part-intro"><div class="wrap"><span class="pn">PART 1</span><h2>브리티 메신저 소개</h2><p>무엇이 있고, 교직원은 매일 무엇을 지키며, 막히면 어떻게 하나</p></div></div>
+
+<!-- ===== 브리티 메신저 소개 ===== -->
+<section class="section" id="intro">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">G-ONE(지원이)의 업무 메신저</span>
+      <h2>Brity 메신저, 무엇이 있고 어디에 쓰나요</h2>
+      <p>G-ONE(지원이)은 경기도교육청의 AI·디지털 업무협업 플랫폼으로 메신저, 드라이브, 미팅, AI를 한데 모은 서비스입니다. 2026년 2월부터 전 기관 시범 서비스를 시작했고, 9월 1일부터 모바일 앱이 열렸습니다. 기존 GOE 메신저는 전환 기간 동안 연장 운영 중입니다. 이 사이트는 그중 <b>Brity 메신저</b>와, 메신저와 함께 쓰는 <b>드라이브 링크 공유</b>를 다룹니다.</p>
+    </div>
+    <div class="grid c4 features">
+      <div class="card"><div class="icon">👥</div><h4>연락처·조직도</h4><p>학교 조직도에서 담당자를 찾고 바로 대화나 쪽지를 시작합니다. 통합 검색으로 사람·대화·파일을 한 번에 찾습니다.</p></div>
+      <div class="card"><div class="icon">💬</div><h4>대화 (1:1·그룹)</h4><p>답글(스레드), @멘션, 이모지 반응, 읽음 현황, 발신 취소, 예약 발송, 번역, 투표. 급한 안내는 '공지방'으로 한 사람이 전달합니다.</p></div>
+      <div class="card"><div class="icon">✉️</div><h4>쪽지</h4><p>답변이 필요 없는 개별 전달용입니다. 공공기관용 기능으로, 일회성 자료 전달에 씁니다.</p></div>
+      <div class="card"><div class="icon">🗂️</div><h4>워크스페이스·채널</h4><p>여러 사람이 게시하고 답글로 소통하며 자료를 공유하는 협업 공간입니다. 학교 공식 공지의 자리입니다.</p></div>
+      <div class="card"><div class="icon">☁️</div><h4>Brity 드라이브</h4><p>개인 문서함과 학교 공용 협업 문서함. 한글(HWP) 파일을 변환 없이 여러 명이 함께 편집하고, 파일 대신 링크로 공유합니다.</p></div>
+      <div class="card"><div class="icon">🎥</div><h4>미팅</h4><p>화상회의와 화면 공유. 원격 협의나 연수에 씁니다.</p></div>
+      <div class="card"><div class="icon">✨</div><h4>Copilot</h4><p>안 읽은 메시지 요약, 긴 대화방 핵심 정리, AI 대화. 드라이브에서는 문서 AI 요약을 지원합니다.</p></div>
+      <div class="card"><div class="icon">📱</div><h4>모바일 앱</h4><p>하단 메뉴는 연락처·대화·쪽지·워크스페이스·Copilot. 근무시간 외 <b>방해금지 시간 설정</b>이 가능합니다. 한글 협업문서 입력은 PC에서 하는 것이 안전합니다.</p></div>
+    </div>
+    <div class="grid c2" style="margin-top:16px">
+      <div class="note blue"><p><b>왜 학교 자료는 Brity에 두나요?</b> 경기도교육청 보안성 검사를 통과한 공식 도구이고, 드라이브 링크는 같은 학교 사용자만 열 수 있습니다. 보안성 검사를 받지 않은 민간 협업도구는 공유 설정에 따라 외부인 접근이 가능합니다.</p></div>
+      <div class="note"><p><b>비슷해 보이는 기능이 여러 개입니다.</b> 쪽지, 대화, 공지방, 워크스페이스는 모두 "알리는" 기능이라 학교에서 용도를 정해 두지 않으면 같은 공지가 여러 곳에 올라옵니다. 그래서 길라잡이의 첫 약속이 <a href="#promises">용도 구분</a>입니다.</p></div>
+    </div>
+    <p style="margin-top:16px;font-size:.9rem;color:var(--muted)">기능별 자세한 조작법은 <a href="https://teams.pub-brityworks.com/doc/manual/ko/index.html" target="_blank" rel="noopener">Brity Messenger 공식 매뉴얼(공공기관용) ↗</a>을 참고하세요. 목차: 시작하기 · 연락처 · 대화하기 · 쪽지 · 워크스페이스 · 미팅 · Copilot · 모바일 앱 · MY피드 · 환경 설정 · 단축키</p>
+  </div>
+</section>
+
+<!-- ===== 교직원 필수 5가지 ===== -->
+<section class="section alt" id="essentials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">교직원이라면 이것만</span>
+      <h2>오늘부터 이렇게 씁니다, 다섯 가지</h2>
+      <p>길라잡이의 7가지 사용 약속 중 교직원 개인이 매일 지키는 다섯 가지입니다. 학교에서 정한 약속이 있으면 그것이 우선입니다.</p>
+    </div>
+    <ol class="essentials">
+      <li><span class="k">1</span><div><h4>공식 공지는 워크스페이스에서 확인합니다</h4><p>전체 공지와 제출 요청은 학교가 정한 공식 워크스페이스에 올라옵니다. 대화방과 쪽지는 개별 연락용입니다. <a href="#faq-where">어디에 무엇을 올리나 →</a></p></div></li>
+      <li><span class="k">2</span><div><h4>공지에 대한 질문은 그 공지의 답글로 남깁니다</h4><p>개인 메시지로 물으면 담당자가 같은 답을 여러 번 해야 합니다. 답글로 남기면 다른 선생님도 답을 봅니다.</p></div></li>
+      <li><span class="k">3</span><div><h4>읽었으면 ✅, 다 했으면 답글</h4><p>단순 확인은 이모지로, 제출이나 작성 완료는 답글이나 학교가 정한 방식으로 구분합니다. <a href="#faq-emoji">왜 구분하나 →</a></p></div></li>
+      <li><span class="k">4</span><div><h4>자료는 드라이브 링크로, 협업문서는 '편집'으로 열어 저장합니다</h4><p>파일을 첨부하지 말고 링크를 붙입니다. 링크를 누른 뒤 '편집'을 눌러야 입력되고, 닫을 때 저장(Y)을 눌러야 반영됩니다. <a href="#faq-edit">따라 하기 →</a></p></div></li>
+      <li><span class="k">5</span><div><h4>17시 이후와 휴일에는 예약 발송, 받는 쪽은 방해금지 시간</h4><p>급하지 않은 메시지는 다음 근무일 아침으로 예약합니다. 모바일 앱에서 방해금지 시간을 설정하면 근무시간 외 알림이 오지 않습니다. <a href="#faq-dnd">설정 방법 →</a></p></div></li>
+    </ol>
+    <div class="note blue"><p>시간 기준(17시)과 공식 워크스페이스 이름은 학교마다 다릅니다. 우리 학교의 사용 약속은 TF팀이나 교무기획부에 확인하세요.</p></div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">자주 묻는 질문</span><h2>이럴 땐 이렇게 하세요</h2><p>사용 중 막히는 지점과 학교 약속에 관한 질문을 모았습니다. 위의 검색창에서도 찾을 수 있습니다.</p></div>
+    <div class="faq" id="faqList">
+      <h3 class="faq-group">이렇게 하세요 — 사용 중 막힐 때</h3>
+      <details id="faq-edit"><summary>협업문서를 열었는데 입력이 안 돼요.</summary><div class="a">'조회(읽기 전용)'로 연 것입니다. 공지의 링크를 누르면 '파일 링크 실행' 창이 뜨는데 여기서 <b>편집</b>을 누르세요. 드라이브 목록에서는 파일 줄 오른쪽 끝 <b>⋮ › 편집</b>입니다. 입력을 마치고 닫을 때 <b>저장(Y)</b>을 눌러야 협업문서에 반영됩니다. 한글 협업문서 입력과 저장은 PC에서 하고, 휴대폰은 확인과 공유용으로 쓰는 것이 안전합니다.</div></details>
+      <details id="faq-link"><summary>드라이브 파일 링크는 어떻게 보내나요?</summary><div class="a">PC: 드라이브에서 파일 줄의 <b>⋮ › 링크 복사</b>를 누른 뒤 공지나 대화에 붙여 넣습니다. 휴대폰: 파일 <b>더보기 › 링크 복사</b>, 또는 대화방에서 <b>+ › 문서 › 브리티 드라이브</b>로 바로 고를 수 있습니다. 드라이브 링크는 같은 학교 사용자만 열 수 있습니다.</div></details>
+      <details id="faq-perm"><summary>폴더에 파일이 안 올라가요. 권한이 없다고 해요.</summary><div class="a">권한은 조회 → 복사 → 편집 → 공유 순으로 넓어지고, 폴더에 올리려면 '편집 가능' 이상이 필요합니다. 내 권한은 파일 목록의 '내 권한' 칸에서 확인합니다. 편집 이상 권한은 폴더 단위로만 주어지므로 해당 폴더 담당자(보통 교무기획부나 정보업무담당자)에게 요청하세요. 학교 자료는 개인 문서함이 아니라 <b>협업 문서함</b>에 올립니다.</div></details>
+      <details id="faq-mobile"><summary>휴대폰 앱은 어떻게 설치하고 로그인하나요?</summary><div class="a">앱 스토어에서 <b>Brity</b>를 검색해 메신저 앱과 드라이브 앱을 각각 설치합니다. 로그인은 <b>교육디지털원패스</b>로 하며, 간편인증을 쓰려면 원패스 앱이 필요하고 없으면 아이디 로그인을 선택합니다. 설치 후 공식 워크스페이스 알림을 켜고, 근무시간 외 방해금지 시간을 설정해 두면 좋습니다. 업무협업 G-ONE 모바일 앱은 2026년 9월 1일부터 서비스되고 있습니다.</div></details>
+      <details id="faq-dnd"><summary>근무시간 외 알림이 부담돼요.</summary><div class="a">받는 쪽: 모바일 앱 설정의 <b>방해금지 시간 설정</b>으로 근무시간 외 알림을 차단할 수 있습니다. 보내는 쪽: 메시지를 쓸 때 <b>예약 발송</b>을 쓰면 다음 근무일 아침에 전달됩니다. 두 기능을 학교 사용 약속(약속 ⑥)에 적어 두면 실천이 쉬워집니다.</div></details>
+      <details id="faq-schedule"><summary>예약 발송은 어디서 하나요?</summary><div class="a">대화방에서 메시지를 작성한 뒤 보내기 버튼 옆의 메뉴에서 예약 발송을 선택하고 날짜와 시간을 정합니다. 화면 구성은 버전에 따라 조금 다를 수 있으니 공식 매뉴얼의 '대화하기' 항목도 참고하세요.</div></details>
+      <details id="faq-where"><summary>이 내용은 워크스페이스, 대화방, 쪽지 중 어디에 올리나요?</summary><div class="a">여러 사람이 보고 답해야 하면 <b>워크스페이스</b>, 질문이 필요 없는 짧은 안내는 <b>대화방 공지</b>, 특정 사람과 바로 주고받을 일은 <b>대화</b>, 답변이 필요 없는 개별 전달은 <b>쪽지</b>, 파일 보관과 공동 작성은 <b>드라이브</b>입니다. <a href="#promises">약속 ①의 구분표 →</a></div></details>
+      <details id="faq-search"><summary>지난 공지나 파일을 다시 찾고 싶어요.</summary><div class="a">상단의 통합 검색으로 사용자, 조직도, 대화, 쪽지, 채널, 파일을 한 번에 찾을 수 있습니다. 워크스페이스는 3개월 단위로 자동 정리되므로 오래 보관할 자료는 드라이브에 두세요. 전년도 자료는 전년도 학년도 폴더에서 열람하고 필요한 파일은 복사해 씁니다.</div></details>
+
+      <h3 class="faq-group">우리 학교 약속에 관해</h3>
+      <details id="faq-emoji"><summary>✅ 이모지를 눌렀는데 "읽었다"인가요, "작성 완료"인가요?</summary><div class="a">현장에서 자주 혼동되는 부분입니다. 학교에서 둘을 구분해 정해 두는 것이 좋습니다. 예를 들어 "확인은 ✅, 작성 완료는 답글로 '완료'"처럼 사용 약속에 한 줄 추가하면 담당자가 수합 현황을 파악하기 쉬워집니다.</div></details>
+      <details id="faq-reply"><summary>공지에 질문하고 싶어요.</summary><div class="a">해당 공지의 답글로 남깁니다. 다른 교직원도 같은 질문과 답을 볼 수 있어 담당자가 같은 답을 반복하지 않아도 됩니다. 공지와 무관한 문의는 담당자와 1:1 대화로 합니다.</div></details>
+      <details id="faq-grade"><summary>학년 협의는 어디서 하나요?</summary><div class="a">채팅으로 자유롭게 대화방을 만들어 사용합니다. 운영은 학년 재량이며 학교가 관여하지 않습니다. 공식 공지는 워크스페이스에서만 확인하면 됩니다.</div></details>
+      <details id="faq-hwp"><summary>한글 문서를 여러 명이 동시에 고쳐도 되나요?</summary><div class="a">가능합니다. 편집 가능 이상 권한이 있으면 드라이브에서 바로 열어 수정합니다. 변환 없이 한글(HWP) 파일 그대로 함께 작성할 수 있다는 점이 구글 드라이브와 다른 점입니다.</div></details>
+      <details id="faq-notice"><summary>공지방이 너무 많아져서 헷갈려요.</summary><div class="a">대화방 공지는 담당자별로 공지방이 늘어나기 쉽습니다. 여러 담당자가 공지를 올리거나 질문·답변이 필요한 업무는 워크스페이스 중심으로 모으고, 대화방 공지는 긴급하고 간단한 안내에만 쓰도록 역할을 구분합니다.</div></details>
+      <details id="faq-goe"><summary>GOE 메신저는 언제까지 같이 써야 하나요?</summary><div class="a">GOE 메신저는 현재 연장 운영되고 있습니다. 학교에서 Brity로 전환할 업무와 한시적으로 GOE에 남길 업무를 구분하고, 종료 기준을 교직원에게 미리 안내합니다. 교육청의 전환 일정과 지침이 나오면 그것을 우선 따릅니다.</div></details>
+      <details id="faq-privacy"><summary>학생 이름이 들어간 자료는 어떻게 하나요?</summary><div class="a">워크스페이스에 학생 실명 등 식별 가능한 개인정보를 게시하지 않습니다. 드라이브에도 가급적 올리지 않고 학번 등으로 대체하며, 불가피하면 수합이 끝난 뒤 파일을 삭제하거나 개인정보를 지웁니다. 전자결재 등 공식 절차가 필요한 업무는 기존 시스템으로 처리합니다.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PART 2 ===== -->
+<div class="part" id="part-guide"><div class="wrap"><span class="pn">PART 2</span><h2>정착 길라잡이</h2><p>우리 학교에 맞게 전환하는 5단계와 사용 약속, 정착 점검 기준</p></div></div>
+
+<!-- ===== 소개 ===== -->
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">연구 배경</span>
+      <h2>메신저를 바꾸는 일이 아니라, 소통 방식을 함께 정하는 일입니다</h2>
+      <p>경기도교육청의 AI·디지털 기반 업무협업 환경(G-ONE)이 확대되면서 학교의 업무소통이 GOE 메신저에서 Brity 메신저 중심으로 바뀌고 있습니다. 그러나 새 시스템 도입이 곧바로 업무 효율로 이어지지는 않습니다. 충분한 준비 없이 전환하면 아래와 같은 일이 생깁니다.</p>
+    </div>
+    <div class="grid c4">
+      <div class="card"><div class="icon">📣</div><h4>같은 공지가 여러 곳에</h4><p>워크스페이스, 대화방, GOE 메신저에 동일한 공지가 반복 게시되어 교직원이 모든 곳을 확인해야 합니다.</p></div>
+      <div class="card"><div class="icon">💬</div><h4>질문과 답변이 흩어짐</h4><p>공지에 대한 질문이 개별 메시지로 오면 담당자는 같은 답을 여러 번 하고, 다른 교직원은 답을 볼 수 없습니다.</p></div>
+      <div class="card"><div class="icon">📎</div><h4>여전히 파일로 제출·취합</h4><p>함께 작성할 수 있는 자료를 개별 파일로 제출받아 취합하면 반복 업무가 그대로 남습니다.</p></div>
+      <div class="card"><div class="icon">🧑‍💻</div><h4>한 사람에게 쏠리는 지원</h4><p>설치와 사용 문의가 정보업무담당자(정보부장) 등 특정 교직원에게 집중됩니다.</p></div>
+    </div>
+    <div class="note blue" style="margin-top:24px"><p><b>그래서 이 길라잡이는</b> ① 구성원이 함께 참여하는 전환 지원 체계(TF팀), ② 학교 차원의 공통 소통 기준(사용 약속), ③ 부담을 줄이는 단계적 정착(환경 준비·실습 연수·4주 적응), ④ 바로 쓰는 실천 자료(체크리스트·연수 운영안·적용 예시)를 제안합니다. 모든 내용은 예시이며 학교 규모와 여건에 맞게 골라 쓰면 됩니다.</p></div>
+  </div>
+</section>
+
 <!-- ===== 상황별 진입 ===== -->
 <section class="start" id="start">
   <div class="wrap">
     <div class="start-head">
-      <span class="eyebrow">WHERE ARE WE NOW</span>
+      <span class="eyebrow">전환을 맡았다면</span>
       <h2>우리 학교는 지금 어디쯤인가요?</h2>
       <p>상황을 고르면 지금 필요한 단계로 바로 이동합니다.</p>
     </div>
@@ -91,24 +217,6 @@
       <a class="chip" href="#step5"><span class="n">05</span>쓰고는 있는데 아직 혼란스러워요</a>
       <a class="chip alt" href="#case"><span class="n">★</span>다른 학교는 어떻게 했는지 궁금해요</a>
     </div>
-  </div>
-</section>
-
-<!-- ===== 소개 ===== -->
-<section class="section" id="why">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">왜 길라잡이가 필요할까요</span>
-      <h2>메신저를 바꾸는 일이 아니라, 소통 방식을 함께 정하는 일입니다</h2>
-      <p>경기도교육청의 AI·디지털 기반 업무협업 환경(G-ONE)이 확대되면서 학교의 업무소통이 GOE 메신저에서 Brity 메신저 중심으로 바뀌고 있습니다. 그러나 새 시스템 도입이 곧바로 업무 효율로 이어지지는 않습니다. 충분한 준비 없이 전환하면 아래와 같은 일이 생깁니다.</p>
-    </div>
-    <div class="grid c4">
-      <div class="card"><div class="icon">📣</div><h4>같은 공지가 여러 곳에</h4><p>워크스페이스, 대화방, GOE 메신저에 동일한 공지가 반복 게시되어 교직원이 모든 곳을 확인해야 합니다.</p></div>
-      <div class="card"><div class="icon">💬</div><h4>질문과 답변이 흩어짐</h4><p>공지에 대한 질문이 개별 메시지로 오면 담당자는 같은 답을 여러 번 하고, 다른 교직원은 답을 볼 수 없습니다.</p></div>
-      <div class="card"><div class="icon">📎</div><h4>여전히 파일로 제출·취합</h4><p>함께 작성할 수 있는 자료를 개별 파일로 제출받아 취합하면 반복 업무가 그대로 남습니다.</p></div>
-      <div class="card"><div class="icon">🧑‍💻</div><h4>한 사람에게 쏠리는 지원</h4><p>설치와 사용 문의가 정보업무담당자(정보부장) 등 특정 교직원에게 집중됩니다.</p></div>
-    </div>
-    <div class="note blue" style="margin-top:24px"><p><b>그래서 이 길라잡이는</b> ① 구성원이 함께 참여하는 전환 지원 체계(TF팀), ② 학교 차원의 공통 소통 기준(사용 약속), ③ 부담을 줄이는 단계적 정착(환경 준비·실습 연수·4주 적응), ④ 바로 쓰는 실천 자료(체크리스트·연수 운영안·적용 예시)를 제안합니다. 모든 내용은 예시이며 학교 규모와 여건에 맞게 골라 쓰면 됩니다.</p></div>
   </div>
 </section>
 
@@ -506,6 +614,41 @@
   </div>
 </section>
 
+<!-- ===== 정착 점검 기준 ===== -->
+<section class="section alt" id="criteria">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">5단계를 마친 뒤</span>
+      <h2>Brity 메신저 정착 점검 기준</h2>
+      <p>다섯 영역의 질문에 "그렇다"고 답할 수 있으면 우리 학교의 운영 방식이 자리를 잡은 것입니다. 수치보다 질문으로 점검합니다.</p>
+    </div>
+    <div class="criteria">
+      <div class="crit"><div class="ico">🖥️</div><h4>사용 환경</h4><p>교직원이 필요한 워크스페이스에 정상적으로 참여하고 있는가?</p></div>
+      <div class="crit"><div class="ico">💬</div><h4>소통 방식</h4><p>학교에서 정한 공지·답글·이모지 사용 약속이 지켜지는가?</p></div>
+      <div class="crit"><div class="ico">⚡</div><h4>업무 효율</h4><p>중복 공지와 반복적인 자료 제출이 줄어들었는가?</p></div>
+      <div class="crit"><div class="ico">🙂</div><h4>구성원 만족</h4><p>교직원이 기존 방식보다 자료 확인과 협업이 편리하다고 느끼는가?</p></div>
+      <div class="crit"><div class="ico">🔄</div><h4>지속 가능성</h4><p>담당자 변경이나 신규 교직원 전입 시에도 운영 방식을 유지할 수 있는가?</p></div>
+    </div>
+
+    <h3 style="margin-top:40px">정착의 열쇠는 "아는가, 쓰는가, 학교 규칙으로 정했는가"</h3>
+    <p>Brity 메신저에는 목적이 비슷한 소통 수단(쪽지·대화·대화방 공지·워크스페이스)이 여러 개 있고, 근무시간 외 연락 문제를 다룰 기능도 이미 들어 있습니다. 쟁점은 기능의 유무가 아니라 교직원이 그 기능을 <b>알고</b>, <b>쓰고</b>, 학교가 <b>약속으로 정했는지</b>입니다.</p>
+    <div class="tbl-wrap"><table class="tbl stack">
+      <thead><tr><th>기능</th><th>무엇을 해결하나</th><th>어디서</th></tr></thead>
+      <tbody>
+        <tr><td data-label="기능"><b>방해금지 시간 설정</b></td><td data-label="무엇을 해결하나">근무시간 외 알림 차단 (약속 ⑥)</td><td data-label="어디서">모바일 앱 설정</td></tr>
+        <tr><td data-label="기능"><b>예약 발송</b></td><td data-label="무엇을 해결하나">퇴근 후 작성한 공지를 다음 근무일 아침에 전달 (약속 ⑥)</td><td data-label="어디서">메시지 작성 시</td></tr>
+        <tr><td data-label="기능"><b>읽음 현황 확인</b></td><td data-label="무엇을 해결하나">누가 공지를 확인했는지 파악</td><td data-label="어디서">대화방 메시지</td></tr>
+        <tr><td data-label="기능"><b>발신 취소·삭제</b></td><td data-label="무엇을 해결하나">잘못 보낸 메시지 회수</td><td data-label="어디서">보낸 메시지</td></tr>
+        <tr><td data-label="기능"><b>Copilot 안 읽은 메시지 요약</b></td><td data-label="무엇을 해결하나">긴 대화방의 핵심을 빠르게 확인</td><td data-label="어디서">모바일·PC Copilot</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:.9rem;color:var(--muted)">※ 연구회에서는 교무부장을 대상으로 위 기능의 인지·사용 실태와 GOE 메신저 병행 현황을 조사하고 있습니다. 결과가 정리되면 이 자리에 반영할 예정입니다.</p>
+  </div>
+</section>
+
+<!-- ===== PART 3 ===== -->
+<div class="part" id="part-cases"><div class="wrap"><span class="pn">PART 3</span><h2>활용 사례</h2><p>상황별 적용 예시, A초등학교의 운영 사례, 연수 자료</p></div></div>
+
 <!-- ===== 학교 적용 예시 ===== -->
 <section class="section alt" id="examples">
   <div class="wrap">
@@ -636,38 +779,6 @@
   </div>
 </section>
 
-<!-- ===== 정착 점검 기준 ===== -->
-<section class="section alt" id="criteria">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">5단계를 마친 뒤</span>
-      <h2>Brity 메신저 정착 점검 기준</h2>
-      <p>다섯 영역의 질문에 "그렇다"고 답할 수 있으면 우리 학교의 운영 방식이 자리를 잡은 것입니다. 수치보다 질문으로 점검합니다.</p>
-    </div>
-    <div class="criteria">
-      <div class="crit"><div class="ico">🖥️</div><h4>사용 환경</h4><p>교직원이 필요한 워크스페이스에 정상적으로 참여하고 있는가?</p></div>
-      <div class="crit"><div class="ico">💬</div><h4>소통 방식</h4><p>학교에서 정한 공지·답글·이모지 사용 약속이 지켜지는가?</p></div>
-      <div class="crit"><div class="ico">⚡</div><h4>업무 효율</h4><p>중복 공지와 반복적인 자료 제출이 줄어들었는가?</p></div>
-      <div class="crit"><div class="ico">🙂</div><h4>구성원 만족</h4><p>교직원이 기존 방식보다 자료 확인과 협업이 편리하다고 느끼는가?</p></div>
-      <div class="crit"><div class="ico">🔄</div><h4>지속 가능성</h4><p>담당자 변경이나 신규 교직원 전입 시에도 운영 방식을 유지할 수 있는가?</p></div>
-    </div>
-
-    <h3 style="margin-top:40px">정착의 열쇠는 "아는가, 쓰는가, 학교 규칙으로 정했는가"</h3>
-    <p>Brity 메신저에는 목적이 비슷한 소통 수단(쪽지·대화·대화방 공지·워크스페이스)이 여러 개 있고, 근무시간 외 연락 문제를 다룰 기능도 이미 들어 있습니다. 쟁점은 기능의 유무가 아니라 교직원이 그 기능을 <b>알고</b>, <b>쓰고</b>, 학교가 <b>약속으로 정했는지</b>입니다.</p>
-    <div class="tbl-wrap"><table class="tbl stack">
-      <thead><tr><th>기능</th><th>무엇을 해결하나</th><th>어디서</th></tr></thead>
-      <tbody>
-        <tr><td data-label="기능"><b>방해금지 시간 설정</b></td><td data-label="무엇을 해결하나">근무시간 외 알림 차단 (약속 ⑥)</td><td data-label="어디서">모바일 앱 설정</td></tr>
-        <tr><td data-label="기능"><b>예약 발송</b></td><td data-label="무엇을 해결하나">퇴근 후 작성한 공지를 다음 근무일 아침에 전달 (약속 ⑥)</td><td data-label="어디서">메시지 작성 시</td></tr>
-        <tr><td data-label="기능"><b>읽음 현황 확인</b></td><td data-label="무엇을 해결하나">누가 공지를 확인했는지 파악</td><td data-label="어디서">대화방 메시지</td></tr>
-        <tr><td data-label="기능"><b>발신 취소·삭제</b></td><td data-label="무엇을 해결하나">잘못 보낸 메시지 회수</td><td data-label="어디서">보낸 메시지</td></tr>
-        <tr><td data-label="기능"><b>Copilot 안 읽은 메시지 요약</b></td><td data-label="무엇을 해결하나">긴 대화방의 핵심을 빠르게 확인</td><td data-label="어디서">모바일·PC Copilot</td></tr>
-      </tbody>
-    </table></div>
-    <p style="font-size:.9rem;color:var(--muted)">※ 연구회에서는 교무부장을 대상으로 위 기능의 인지·사용 실태와 GOE 메신저 병행 현황을 조사하고 있습니다. 결과가 정리되면 이 자리에 반영할 예정입니다.</p>
-  </div>
-</section>
-
 <!-- ===== 연수 자료 (동영상 · 캔바) ===== -->
 <section class="section" id="training">
   <div class="wrap">
@@ -680,23 +791,6 @@
     <div class="media-grid" id="videoGrid"></div>
     <h3 style="margin-top:36px">연수 슬라이드 (Canva)</h3>
     <div class="deck-list" id="deckList"></div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="section" id="faq">
-  <div class="wrap">
-    <div class="section-head"><span class="eyebrow">자주 묻는 질문</span><h2>이럴 땐 이렇게 하세요</h2></div>
-    <div class="faq">
-      <details><summary>학년 협의는 어디서 하나요?</summary><div class="a">채팅으로 자유롭게 대화방을 만들어 사용합니다. 운영은 학년 재량이며 학교가 관여하지 않습니다. 공식 공지는 워크스페이스에서만 확인하면 됩니다.</div></details>
-      <details><summary>공지에 질문하고 싶어요.</summary><div class="a">해당 공지의 답글로 남깁니다. 다른 교직원도 같은 질문과 답을 볼 수 있어 담당자가 같은 답을 반복하지 않아도 됩니다. 공지와 무관한 문의는 담당자와 1:1 대화로 합니다.</div></details>
-      <details><summary>한글 문서를 여러 명이 동시에 고쳐도 되나요?</summary><div class="a">가능합니다. 편집 가능 이상 권한이 있으면 드라이브에서 바로 열어 수정합니다. 링크를 누른 뒤 반드시 '편집'을 눌러야 하고, 조회(읽기 전용)로 열면 입력할 수 없습니다. 입력 후에는 저장(Y)을 눌러야 반영됩니다.</div></details>
-      <details><summary>✅ 이모지를 눌렀는데 "읽었다"인가요, "작성 완료"인가요?</summary><div class="a">현장에서 자주 혼동되는 부분입니다. 학교에서 둘을 구분해 정해 두는 것이 좋습니다. 예를 들어 "확인은 ✅, 작성 완료는 답글로 '완료'"처럼 사용 약속에 한 줄 추가하면 담당자가 수합 현황을 파악하기 쉬워집니다.</div></details>
-      <details><summary>공지방이 너무 많아져서 헷갈려요.</summary><div class="a">대화방 공지는 담당자별로 공지방이 늘어나기 쉽습니다. 여러 담당자가 공지를 올리거나 질문·답변이 필요한 업무는 워크스페이스 중심으로 모으고, 대화방 공지는 긴급하고 간단한 안내에만 쓰도록 역할을 구분합니다.</div></details>
-      <details><summary>GOE 메신저는 언제까지 같이 써야 하나요?</summary><div class="a">GOE 메신저는 현재 연장 운영되고 있습니다. 학교에서 Brity로 전환할 업무와 한시적으로 GOE에 남길 업무를 구분하고, 종료 기준을 교직원에게 미리 안내합니다. 교육청의 전환 일정과 지침이 나오면 그것을 우선 따릅니다.</div></details>
-      <details><summary>근무시간 외 알림이 부담돼요.</summary><div class="a">모바일 앱의 방해금지 시간 설정으로 근무시간 외 알림을 차단할 수 있습니다. 보내는 쪽에서는 예약 발송을 활용해 다음 근무일 아침에 전달되도록 합니다. 두 기능을 학교 사용 약속(약속 ⑥)에 명시하면 실천이 쉬워집니다.</div></details>
-      <details><summary>지난 학년도 자료는 어디서 보나요?</summary><div class="a">전년도 학년도 폴더에서 열람하고, 필요한 파일은 복사해 사용합니다. 학교 자료는 개인 문서함이 아니라 협업 문서함에 올립니다.</div></details>
-    </div>
   </div>
 </section>
 
@@ -739,11 +833,11 @@
     </div>
     <div>
       <strong>바로가기</strong><br>
-      <a href="#overview">5단계 한눈에 보기</a><br>
-      <a href="#promises">사용 약속 7가지</a><br>
-      <a href="#examples">학교 적용 예시</a><br>
-      <a href="#case">A초등학교 사례</a><br>
-      <a href="#training">연수 자료</a><br>
+      <a href="#part-intro">1. 브리티 메신저 소개</a><br>
+      <a href="#part-guide">2. 정착 길라잡이</a><br>
+      <a href="#part-cases">3. 활용 사례</a><br>
+      <a href="#faq">이럴 땐 이렇게 (FAQ)</a><br>
+      <a href="#quick">바로 찾기</a><br>
       <a href="https://teams.pub-brityworks.com/doc/manual/ko/index.html" target="_blank" rel="noopener">Brity Messenger 공식 매뉴얼 ↗</a>
     </div>
   </div>

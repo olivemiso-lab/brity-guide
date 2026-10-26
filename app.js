@@ -95,7 +95,39 @@ var TRAINING = {
     }).join('');
   }
 
+
+  /* 사이트 내 검색: 제목·FAQ·아코디언 요약을 색인 */
+  var si=$('#siteSearch'), sr=$('#searchResults');
+  if(si&&sr){
+    var index=[];
+    $$('h2[id], h3[id], section[id] h2, section[id] h3, details summary, .tile, .faq details').forEach(function(el){
+      var sec=el.closest('section[id]'); var secTitle=sec?($('h2',sec)||{}).textContent||'':'';
+      var target=el.id?('#'+el.id):(el.closest('details')&&el.closest('details').id?('#'+el.closest('details').id):(el.id?('#'+el.id):(sec?('#'+sec.id):null)));
+      if(el.classList.contains('tile')) target=el.getAttribute('href');
+      if(!target) return;
+      var title=(el.tagName==='SUMMARY'||el.classList.contains('tile'))?el.textContent:el.textContent;
+      var body=''; if(el.tagName==='SUMMARY'){var p=el.parentNode; body=(p.textContent||'').slice(0,400);} else if(el.classList.contains('tile')){body=el.textContent;}
+      index.push({t:title.replace(/\s+/g,' ').trim(), b:body.replace(/\s+/g,' ').trim(), href:target, sec:secTitle.trim()});
+    });
+    // 중복 제거
+    var seen={}; index=index.filter(function(it){var k=it.href+'|'+it.t; if(seen[k]) return false; seen[k]=1; return true;});
+    function hl(t,q){return esc(t).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');}
+    si.addEventListener('input',function(){
+      var q=si.value.trim(); if(q.length<1){sr.hidden=true; sr.innerHTML=''; return;}
+      var ql=q.toLowerCase();
+      var hits=index.filter(function(it){return it.t.toLowerCase().indexOf(ql)>=0||it.b.toLowerCase().indexOf(ql)>=0;}).slice(0,12);
+      sr.hidden=false;
+      sr.innerHTML=hits.length?hits.map(function(it){
+        var i=it.b.toLowerCase().indexOf(ql); var snip=i>=0?it.b.slice(Math.max(0,i-30),i+70):it.b.slice(0,90);
+        return '<a href="'+esc(it.href)+'"><b>'+hl(it.t,q)+'</b><span>'+(it.sec?esc(it.sec)+' · ':'')+hl(snip,q)+'</span></a>';
+      }).join(''):'<div class="none">찾는 내용이 없습니다. 다른 말로 입력해 보세요. 예: 편집, 링크, 알림</div>';
+    });
+    sr.addEventListener('click',function(e){ var a=e.target.closest('a'); if(!a) return; sr.hidden=true; var el=$(a.getAttribute('href')); var d=el&&el.closest?el.closest('details'):null; if(d) d.open=true; if(el&&el.tagName==='DETAILS') el.open=true; });
+    document.addEventListener('click',function(e){ if(!e.target.closest('.search-box')) sr.hidden=true; });
+    si.addEventListener('keydown',function(e){ if(e.key==='Escape'){sr.hidden=true;} if(e.key==='Enter'){var a=$('a',sr); if(a) a.click();} });
+  }
+
   /* 해시로 열린 아코디언 펼치기 */
-  function openHash(){ var h=location.hash; if(!h) return; var el=$(h); if(!el) return; var d=el.closest&&el.closest('details'); if(d) d.open=true; }
+  function openHash(){ var h=location.hash; if(!h) return; var el=$(h); if(!el) return; var d=el.closest&&el.closest('details'); if(d) d.open=true; if(el.tagName==='DETAILS') el.open=true; }
   window.addEventListener('hashchange',openHash); openHash();
 })();
