@@ -620,3 +620,74 @@ details.acc[open] .acc-body,.faq details[open] .a{animation:fadeUp .25s ease}
 }
 /* 고정 패널이 헤더 안에 갇히지 않도록 (backdrop-filter는 fixed 요소의 기준이 됨) */
 .site-header{backdrop-filter:none;-webkit-backdrop-filter:none;background:#fff}
+
+/* =====================================================================
+   HIG 원칙 적용 — 묶음 목록 · 세그먼트 단계 전환 · 단일 강조색 · 종이 은유
+   ===================================================================== */
+/* 1) 묶음 인셋 리스트 */
+.group,.faq,.findings{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:0 0 18px}
+.group details.acc,.faq details,.findings details.acc{border:0;border-radius:0;margin:0;border-top:1px solid var(--line-2);background:transparent}
+.group details.acc:first-child,.faq details:first-of-type,.findings details.acc:first-child{border-top:0}
+.faq .faq-group{margin:0;padding:14px 18px 8px;background:var(--tint);border-top:1px solid var(--line-2);font-size:.8rem;letter-spacing:.04em}
+.faq .faq-group:first-child{border-top:0}
+.faq details:target{box-shadow:inset 3px 0 0 var(--accent)}
+details.acc summary,.faq summary{padding:15px 18px}
+details.acc .acc-body{border-top:0;padding-top:4px}
+.section.alt .group,.section.alt .faq,.section.alt .findings{background:var(--surface)}
+.checklist{padding:14px 16px 12px;border-radius:16px}
+.checklist label{padding:10px 4px;border-top:1px solid var(--line-2);border-radius:0}
+.checklist label:first-of-type{border-top:0}
+.checklist label:hover{background:transparent;color:var(--navy)}
+.checklist input{width:20px;height:20px;border-radius:50%}
+.checklist .foot{border-top:1px solid var(--line-2);padding-top:10px}
+.tiles{gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.tile{border:0;border-radius:0;border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:16px 18px}
+.tile:hover{transform:none;box-shadow:none;background:var(--tint)}
+.section.alt .tile{background:transparent}
+.chips{gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.chip{border:0;border-radius:0;border-bottom:1px solid var(--line-2);border-right:1px solid var(--line-2);background:transparent;padding:14px 18px}
+.chip:hover{transform:none;box-shadow:none;background:var(--tint)}
+.chip .n{background:var(--blue-soft);border:0;color:var(--accent)}
+.proc > li{border-radius:0;margin:0;border-top:1px solid var(--line-2);border-left:0;border-right:0;border-bottom:0}
+.proc{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.proc > li:first-child{border-top:0}
+.section.alt .proc{background:var(--tint);border-color:transparent}
+.qrow{border-top:1px solid var(--line-2)}
+.b-picks{border:1px solid var(--line);border-radius:12px}
+
+/* 2) 세그먼트 단계 전환 (상단 고정) */
+.seg-wrap{position:sticky;top:60px;z-index:30;background:rgba(247,246,242,.92);backdrop-filter:saturate(160%) blur(10px);-webkit-backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);padding:8px 0}
+.seg{display:flex;gap:4px;background:#e9e7e1;border-radius:12px;padding:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg a{flex:1 1 0;min-width:96px;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 10px;border-radius:9px;text-decoration:none;color:var(--ink-2);font-size:.86rem;white-space:nowrap;transition:background .18s,color .18s,box-shadow .18s}
+.seg a b{font-size:.78rem;color:var(--muted);font-weight:800}
+.seg a.current{background:#fff;color:var(--navy);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.seg a.current b{color:var(--accent)}
+.seg a.done b::before{content:"✓ "}
+@media (max-width:860px){.seg a{min-width:84px;font-size:.82rem}.seg a span{display:none}.seg a b{font-size:.85rem;color:var(--ink-2)}.seg a.current b{color:var(--accent)}}
+.steps .step{padding-top:40px}
+
+/* 3) 단일 강조색: 단계별 색을 걷어내고 파랑 하나로 */
+[data-step] .num,.step-title .num{background:var(--accent)!important}
+.sb-dot{background:var(--accent)!important}
+.sb-step.done .sb-dot{background:var(--s2)!important}
+.promise .pn{background:var(--navy)!important}
+.week{border-top-color:var(--accent)}.week .w{color:var(--accent)}
+.step-card .done,.step-card.current .done{color:var(--s2)}
+.steps-overview .step-card .num{color:#fff}
+.scenario .sc-head .n{background:var(--navy)}
+.hero h1 em{color:var(--accent)}
+
+/* 4) 종이 은유: 약속 한 장과 진단표 */
+.sheet{position:relative;background:#fffdf8;border:0;border-radius:6px;padding:30px 32px 26px;box-shadow:0 1px 1px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.06),0 18px 40px -18px rgba(27,50,99,.45);background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(27,50,99,.05) 27px 28px);background-position:0 70px}
+.sheet::before{content:"";position:absolute;left:50%;top:-10px;width:74px;height:20px;transform:translateX(-50%) rotate(-2deg);background:rgba(255,224,130,.75);border:1px solid rgba(0,0,0,.05)}
+.sheet h4{font-family:inherit;letter-spacing:-.01em}
+.sheet .sub{border-bottom:2px solid var(--navy)}
+.sheet .fill{background:#fff3b0;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.diag{background:#fffdf8;border:0;border-radius:6px;box-shadow:0 1px 1px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.06),0 18px 40px -18px rgba(27,50,99,.4);padding:24px 26px}
+.diag .qrow .opts label{width:32px;height:32px;border-radius:50%;border:1.5px solid #9aa3b5;color:#6b7280;background:#fff;font-size:.82rem}
+.diag .qrow .opts label:hover{border-color:var(--navy);color:var(--navy)}
+.diag .qrow .opts label.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.diag-result{background:#fff;border:1px dashed #c9ccd3;border-radius:8px}
+.diag-meta{padding-bottom:12px;border-bottom:1px solid var(--line)}
+@media print{.sheet,.diag{box-shadow:none;background-image:none}.sheet::before{display:none}}
