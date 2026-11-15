@@ -1385,3 +1385,31 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .btn,.chip,.tile,.door,.step-card,.seg a{min-height:44px}
 .totop{width:48px;height:48px}
 .sr-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* B) 홈 벤토 타일 */
+.hero{padding:72px 0 40px}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,auto);gap:14px}
+.tile-b{position:relative;display:flex;flex-direction:column;gap:6px;padding:22px;border-radius:16px;background:#fff;border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+a.tile-b:hover{transform:translateY(-2px);border-color:#CBD2DB;box-shadow:0 10px 24px -14px rgba(25,31,40,.2)}
+.tile-b .pn{font-size:.7rem;letter-spacing:.12em;color:#6B7684;font-weight:700}
+.tile-b h3{font-size:1.15rem;margin:2px 0 0;color:var(--ink)}
+.tile-b p{margin:0;font-size:.92rem;color:var(--ink-2)}
+.tile-b .go{margin-top:auto;padding-top:10px;font-size:.9rem;font-weight:700;color:#A63814}
+.tile-b.guide{grid-column:span 2;grid-row:span 2;background:#eef2fb;border-color:transparent}
+.tile-b.guide h3{font-size:1.5rem}
+.tile-b.guide .pn{color:#4d6fcf}
+.mini-steps{list-style:none;padding:0;margin:14px 0 6px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini-steps li{display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:10px 12px;font-size:.9rem;font-weight:600;color:var(--ink)}
+.mini-steps b{font-size:.72rem;letter-spacing:.06em;color:#4d6fcf;font-weight:800}
+.tile-b.intro{background:#edf7f2;border-color:transparent}.tile-b.intro .pn{color:#3f8f74}
+.tile-b.cases{background:#fdf3e8;border-color:transparent}.tile-b.cases .pn{color:#c48248}
+.tile-b.faq{background:#fff}.tile-b.diag{background:#fff}
+.tile-b.search{grid-column:span 2;justify-content:center;background:#fff}
+.tile-b.search #siteSearch{border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 46px;background-position:16px center;background-color:#fff;font-size:1rem;width:100%}
+.tile-b.search .search-results{top:auto;bottom:calc(100% + 6px)}
+@media (max-width:1000px){.bento{grid-template-columns:repeat(2,1fr)}.tile-b.guide{grid-column:span 2;grid-row:auto}.tile-b.search{grid-column:span 2}}
+@media (max-width:560px){.bento{grid-template-columns:1fr}.tile-b.guide,.tile-b.search{grid-column:auto}.mini-steps{grid-template-columns:repeat(2,1fr)}}
+.home-row{margin-top:24px}
+.tile-b.guide{justify-content:space-between}
+.tile-b.guide .mini-steps{margin:12px 0 0}
+.bento{grid-auto-rows:auto}
