@@ -992,3 +992,7 @@ h1,h2,h3,h4,.hero h1,.page-head h1,.step-title h2,.sheet h4,.step-main > h3,.doo
   .hw{position:static;display:block;transform:rotate(-3deg);margin:0 0 2px;font-size:1.5rem}
   .hero h1{font-size:2.7rem;word-break:keep-all}
 }
+.hero h1{line-height:1.16;letter-spacing:-.045em}
+.page-head h1{line-height:1.15}
+.step-title h2{line-height:1.22}
+@media (max-width:860px){.hero h1{line-height:1.2}}
