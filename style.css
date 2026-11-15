@@ -985,3 +985,10 @@ h1,h2,h3,h4,.hero h1,.page-head h1,.step-title h2,.sheet h4,.step-main > h3,.doo
 .hero .sub{margin-top:14px}
 .step-title .num b{font-family:Pretendard,"Pretendard Variable",sans-serif}
 .checklist.complete{background:#fff5ef}
+@media (max-width:860px){
+  .hero .sub{margin-top:30px;font-size:1.15rem}
+  .hero .sub b{display:inline}
+  .hw-wrap{display:inline}
+  .hw{position:static;display:block;transform:rotate(-3deg);margin:0 0 2px;font-size:1.5rem}
+  .hero h1{font-size:2.7rem;word-break:keep-all}
+}
