@@ -1039,3 +1039,55 @@ h1,h2,h3,h4,.hero h1,.page-head h1,.step-title h2,.sheet h4,.step-main > h3,.doo
 .checklist h4::before{content:"CHECK";font-size:.6rem;letter-spacing:.18em;color:var(--muted);font-weight:700;margin-right:auto;order:3}
 .steps-overview .step-card .num,.step-card .num,[data-step] .num{color:var(--ink)!important;background:transparent!important;border:0;width:auto;height:auto;border-radius:0;font-size:2.1rem;font-weight:800;letter-spacing:-.05em;line-height:1;display:block;place-items:unset}
 .step-card.current .num{color:var(--accent)!important}
+
+/* 색 포인트: 부·단계별 연한 파스텔 (글자는 검정 유지) */
+:root{--c1:#dff3ea;--c1d:#0f8a66;--c2:#e6ecfb;--c2d:#2b55c9;--c3:#fdeedd;--c3d:#c26a12;--c4:#f1e7fb;--c4d:#7a3fc4;--c5:#fff3c4;--c5d:#9a7300;--c6:#e3f4fb;--c6d:#117aa8}
+/* 홈 입구 세 칸 */
+.door:nth-child(1){background:var(--c1);padding:28px 24px 26px;border-radius:14px}
+.door:nth-child(2){background:var(--c2);padding:28px 24px 26px;border-radius:14px}
+.door:nth-child(3){background:var(--c3);padding:28px 24px 26px;border-radius:14px}
+.door::before{display:none}
+.door .pn{margin-top:0}
+.door:nth-child(1) .pn{color:var(--c1d)}.door:nth-child(2) .pn{color:var(--c2d)}.door:nth-child(3) .pn{color:var(--c3d)}
+.door .go{color:var(--ink)}
+.doors{gap:16px}
+/* 페이지 머리 PART 라벨 색 */
+body[data-page="intro"] .page-head .eyebrow{color:var(--c1d)}
+body[data-page="guide"] .page-head .eyebrow{color:var(--c2d)}
+body[data-page="cases"] .page-head .eyebrow{color:var(--c3d)}
+body[data-page="faq"] .page-head .eyebrow{color:var(--c4d)}
+body[data-page="appendix"] .page-head .eyebrow{color:var(--c6d)}
+/* 사이드바 그룹 번호 */
+.sb-group:nth-of-type(1) .sb-num{background:var(--c1d)}.sb-group:nth-of-type(2) .sb-num{background:var(--c2d)}.sb-group:nth-of-type(3) .sb-num{background:var(--c3d)}.sb-group:nth-of-type(4) .sb-num{background:var(--c4d)}
+/* 6단계: 개요 카드 영문 라벨·세그먼트·단계 머리 라벨에 단계 색 */
+[data-step="1"] .en,.step-1 .step-title .num,.seg a[data-tab="step1"].current b{color:var(--c1d)}
+[data-step="2"] .en,.step-2 .step-title .num,.seg a[data-tab="step2"].current b{color:var(--c2d)}
+[data-step="3"] .en,.step-3 .step-title .num,.seg a[data-tab="step3"].current b{color:var(--c3d)}
+[data-step="4"] .en,.step-4 .step-title .num,.seg a[data-tab="step4"].current b{color:var(--c4d)}
+[data-step="5"] .en,.step-5 .step-title .num,.seg a[data-tab="step5"].current b{color:var(--c5d)}
+[data-step="6"] .en,.step-6 .step-title .num,.seg a[data-tab="step6"].current b{color:var(--c6d)}
+.step-card{border-top-width:3px}
+[data-step="1"]{border-top-color:var(--c1d)}[data-step="2"]{border-top-color:var(--c2d)}[data-step="3"]{border-top-color:var(--c3d)}[data-step="4"]{border-top-color:var(--c4d)}[data-step="5"]{border-top-color:var(--c5d)}[data-step="6"]{border-top-color:var(--c6d)}
+.step-card.current{border-top-color:var(--accent)}
+.step-1 .step-summary{border-top-color:var(--c1d)}.step-2 .step-summary{border-top-color:var(--c2d)}.step-3 .step-summary{border-top-color:var(--c3d)}.step-4 .step-summary{border-top-color:var(--c4d)}.step-5 .step-summary{border-top-color:var(--c5d)}.step-6 .step-summary{border-top-color:var(--c6d)}
+.step-1 .step-summary .sl{color:var(--c1d)}.step-2 .step-summary .sl{color:var(--c2d)}.step-3 .step-summary .sl{color:var(--c3d)}.step-4 .step-summary .sl{color:var(--c4d)}.step-5 .step-summary .sl{color:var(--c5d)}.step-6 .step-summary .sl{color:var(--c6d)}
+/* 7가지 약속: 번호 라벨에 번갈아 색 */
+.p1 .pn{color:var(--c1d)}.p2 .pn{color:var(--c2d)}.p3 .pn{color:var(--c3d)}.p4 .pn{color:var(--c4d)}.p5 .pn{color:var(--c5d)}.p6 .pn{color:var(--c6d)}.p7 .pn{color:var(--accent)}
+.p1 .em{background:var(--c1)}.p2 .em{background:var(--c2)}.p3 .em{background:var(--c3)}.p4 .em{background:var(--c4)}.p5 .em{background:var(--c5)}.p6 .em{background:var(--c6)}.p7 .em{background:#ffe6d9}
+.promise .em{border:0}
+/* 4주 카드 · 점검 기준 · 설문 타일 */
+.week:nth-child(1){background:var(--c1);border:0;border-radius:14px}.week:nth-child(2){background:var(--c2);border:0;border-radius:14px}.week:nth-child(3){background:var(--c3);border:0;border-radius:14px}.week:nth-child(4){background:var(--c4);border:0;border-radius:14px}
+.week .w{color:var(--ink-2)}
+.crit:nth-child(1){background:var(--c1)}.crit:nth-child(2){background:var(--c2)}.crit:nth-child(3){background:var(--c3)}.crit:nth-child(4){background:var(--c4)}.crit:nth-child(5){background:var(--c6)}
+.crit{border:0;border-radius:14px}
+.kpi:nth-child(1){background:var(--c2)}.kpi:nth-child(2){background:var(--c3)}.kpi:nth-child(3){background:var(--c1)}.kpi:nth-child(4){background:var(--c4)}
+.kpi{border:0;border-radius:14px}
+/* 메신저 소개 기능 카드 아이콘 */
+.features .card:nth-child(8n+1) .icon{background:var(--c1);color:var(--c1d)}.features .card:nth-child(8n+2) .icon{background:var(--c2);color:var(--c2d)}.features .card:nth-child(8n+3) .icon{background:var(--c3);color:var(--c3d)}.features .card:nth-child(8n+4) .icon{background:var(--c4);color:var(--c4d)}.features .card:nth-child(8n+5) .icon{background:var(--c6);color:var(--c6d)}.features .card:nth-child(8n+6) .icon{background:var(--c5);color:var(--c5d)}.features .card:nth-child(8n+7) .icon{background:#ffe6d9;color:var(--accent)}.features .card:nth-child(8n+8) .icon{background:var(--c1);color:var(--c1d)}
+/* 적용 예시 '어디서' 라벨 */
+.scenario:nth-child(1) .where{color:var(--c2d)}.scenario:nth-child(2) .where{color:var(--c3d)}.scenario:nth-child(3) .where{color:var(--c1d)}.scenario:nth-child(4) .where{color:var(--c4d)}.scenario:nth-child(5) .where{color:var(--c6d)}
+/* 노트 */
+.note{background:var(--c5);border-left-color:var(--c5d)}.note.blue{background:var(--c2);border-left-color:var(--c2d)}.note.green{background:var(--c1);border-left-color:var(--c1d)}
+/* 자주 찾는 정보 타일 제목 색 번갈아 */
+.tile:nth-child(4n+1) b{color:var(--c1d)}.tile:nth-child(4n+2) b{color:var(--c2d)}.tile:nth-child(4n+3) b{color:var(--c3d)}.tile:nth-child(4n+4) b{color:var(--c4d)}
+.checklist h4::before{display:none}
