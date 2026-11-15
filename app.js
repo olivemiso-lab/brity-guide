@@ -72,6 +72,8 @@ var TRAINING = {
   if(sbEl){
     document.body.classList.add('has-sidebar');
     var page=(location.pathname.split('/').pop()||'index.html');
+    var pgKey=page.replace('.html','')||'index'; if(pgKey==='appendix') pgKey='guide';
+    $$('.sb-group[data-part]',sbEl).forEach(function(gp){ var isCur=gp.getAttribute('data-part')===pgKey; gp.classList.toggle('collapsed',!isCur); var lab=$('.sb-label',gp); if(lab){ lab.setAttribute('role','button'); lab.setAttribute('tabindex','0'); lab.style.cursor='pointer'; var toggle=function(){gp.classList.toggle('collapsed');}; lab.addEventListener('click',toggle); lab.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();} }); } });
     var sbLinks=$$('[data-sb]',sbEl);
     var sbTargets=sbLinks.map(function(a){var v=a.getAttribute('data-sb'); var f=v.split('#')[0], h=v.split('#')[1]; return (f===page&&h)?document.getElementById(h):null;});
     function sbSpy(){

@@ -37,11 +37,11 @@
   <div class="sb-inner">
     <a class="sb-brand" href="index.html"><span class="logo">B</span><span>Brity 메신저<br>정착 길라잡이</span></a>
     <a class="sb-home" href="index.html" data-sb="index.html"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>홈</a>
-    <div class="sb-group">
+    <div class="sb-group" data-part="intro">
       <div class="sb-label"><span class="sb-num">1</span>메신저 소개</div>
       <a href="intro.html#intro" data-sb="intro.html#intro">무엇이 있고 어디에 쓰나</a>
     </div>
-    <div class="sb-group">
+    <div class="sb-group" data-part="guide">
       <div class="sb-label"><span class="sb-num">2</span>정착 길라잡이</div>
       <a href="guide.html#start" data-sb="guide.html#start">지금 어디쯤인가요</a>
       <a href="guide.html#overview" data-sb="guide.html#overview">6단계 한눈에 보기</a>
@@ -54,14 +54,14 @@
       <a href="guide.html#survey" data-sb="guide.html#survey">사용 실태 분석 (설문)</a>
       <a href="appendix.html#a1" data-sb="appendix.html#a1">부록 진단표</a>
     </div>
-    <div class="sb-group">
+    <div class="sb-group" data-part="cases">
       <div class="sb-label"><span class="sb-num">3</span>활용 사례</div>
       <a href="cases.html#examples" data-sb="cases.html#examples">학교 적용 예시</a>
       <a href="cases.html#case" data-sb="cases.html#case">A초등학교 사례</a>
       <a href="cases.html#training" data-sb="cases.html#training">연수 자료</a>
       <a href="cases.html#resources" data-sb="cases.html#resources">자료와 활용 안내</a>
     </div>
-    <div class="sb-group">
+    <div class="sb-group" data-part="faq">
       <div class="sb-label"><span class="sb-num">?</span>FAQ</div>
       <a href="faq.html#quick" data-sb="faq.html#quick">자주 찾는 정보</a>
       <a href="faq.html#faq" data-sb="faq.html#faq">이럴 땐 이렇게</a>
@@ -77,8 +77,8 @@
 <main id="top">
 <!-- ===== 히어로 ===== -->
 <section class="hero">
-  <div class="wrap">
-    <div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
       <span class="badge">2026 경기도학교업무개선정책실행연구회 1분과</span>
       <h1>Brity 메신저 정착,<br><em>이렇게 시작하세요</em><i class="dot" aria-hidden="true"></i></h1>
       <p class="sub">기능을 많이 아는 것보다 학교 구성원이 <b class="pt">함께, 같은 방식으로</b> 사용하는 것이 중요합니다.</p>
@@ -87,6 +87,19 @@
         <a class="btn primary" href="guide.html">정착 길라잡이 시작</a>
         <a class="btn outline" href="faq.html">필요한 정보 바로 찾기</a>
       </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-mock">
+        <span class="mock-label">안내용 예시 화면 · 실제 Brity 화면이 아닙니다</span>
+        <div class="chat"><div class="room"><span><svg class="ic sm" aria-hidden="true"><use href="#i-users"/></svg> 교직원 협의 워크스페이스 › # 공지</span></div>
+          <div class="msg"><div class="who">교무부장 <span>2026. 10. 12.(월) 09:00</span></div><div class="body">📌 [안내] 2026학년도 10월 학사 일정 안내
+■ 내용: 다음 주 학사일정을 안내합니다. 각 부서 및 학년에서 참고하시기 바랍니다.
+■ 문의: 교무기획부</div><span class="link"><svg class="ic sm" aria-hidden="true"><use href="#i-link"/></svg> Brity 드라이브 › 10월 학사 일정표</span><br><span class="react">✅ 24</span></div>
+        </div>
+        <ol class="mock-flow"><li><b>1</b>공식 공지는 워크스페이스에</li><li><b>2</b>확인은 ✅ 이모지로</li><li><b>3</b>질문은 공지의 답글로</li></ol>
+      </div>
+    </div>
+    <div class="hero-roadmap">
       <ol class="flowline" aria-label="6단계">
         <li><a href="guide.html#step1"><b>01</b><span>TF팀 구성</span></a></li>
         <li><a href="guide.html#step2"><b>02</b><span>사용 약속</span></a></li>
@@ -95,7 +108,6 @@
         <li><a href="guide.html#step5"><b>05</b><span>4주 적응</span></a></li>
         <li><a href="guide.html#step6"><b>06</b><span>지속 운영</span></a></li>
       </ol>
-    </div>
     
   </div>
 </section>
@@ -104,9 +116,9 @@
 <section class="quick" id="quick">
   <div class="wrap">
 <div class="doors">
-      <a class="door" href="intro.html"><span class="pn">PART 1</span><h3>브리티 메신저 소개</h3><p>무엇이 있고 어디에 쓰는지, 그리고 공식 매뉴얼</p><span class="go">잘 쓰고 싶다면 →</span></a>
-      <a class="door" href="guide.html"><span class="pn">PART 2</span><h3>정착 길라잡이</h3><p>TF팀부터 지속 운영까지 6단계 체크리스트, 7가지 사용 약속, 우리 학교 진단표</p><span class="go">전환을 맡았다면 →</span></a>
-      <a class="door" href="cases.html"><span class="pn">PART 3</span><h3>활용 사례</h3><p>상황별 적용 예시, A초등학교 운영 사례, 연수 영상과 슬라이드</p><span class="go">다른 학교가 궁금하다면 →</span></a>
+      <a class="door" href="intro.html"><span class="pn">PART 1</span><h3>브리티 메신저 소개</h3><p>무엇이 있고 어디에 쓰는지, 그리고 공식 매뉴얼</p><span class="go">소개 살펴보기 →</span></a>
+      <a class="door" href="guide.html"><span class="pn">PART 2</span><h3>정착 길라잡이</h3><p>TF팀부터 지속 운영까지 6단계 체크리스트, 7가지 사용 약속, 우리 학교 진단표</p><span class="go">6단계 살펴보기 →</span></a>
+      <a class="door" href="cases.html"><span class="pn">PART 3</span><h3>활용 사례</h3><p>상황별 적용 예시, A초등학교 운영 사례, 연수 영상과 슬라이드</p><span class="go">사례 살펴보기 →</span></a>
     </div>
     <div class="search-box">
       <label for="siteSearch" class="sr">사이트 안에서 찾기</label>
