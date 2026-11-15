@@ -1013,3 +1013,29 @@ h1,h2,h3,h4,.hero h1,.page-head h1,.step-title h2,.sheet h4,.step-main > h3,.doo
 .sb-group a{color:var(--ink-2);padding:5px 12px}
 .sb-group a.sub{padding-left:16px}
 .sb-dot{color:var(--ink);font-weight:700}
+
+/* 큰 숫자 · 작은 라벨 리듬 */
+.week{position:relative;border:1px solid var(--line);border-top:1px solid var(--ink);border-radius:0;padding:18px 18px 18px;background:#fff}
+.week .big{display:block;font-size:2.6rem;font-weight:800;letter-spacing:-.06em;line-height:.9;color:var(--ink);margin-bottom:6px}
+.week .w{display:block;font-size:.64rem;letter-spacing:.16em;color:var(--muted);font-weight:700;margin-bottom:8px}
+.week h4{font-size:1.02rem;margin:0 0 6px}
+.weeks{gap:14px}
+.step-card{position:relative}
+.step-card .en{position:absolute;top:18px;right:0;font-size:.62rem;letter-spacing:.18em;color:var(--muted);font-weight:700}
+.step-card .num{margin-bottom:6px}
+.kpi{position:relative;padding-top:18px}
+.kpi .idx{font-size:.62rem;letter-spacing:.18em;color:var(--muted);font-weight:700;margin-bottom:8px}
+.kpi .kl{min-height:0}
+.crit{text-align:left;border:1px solid var(--line);border-top:1px solid var(--ink);border-radius:0;padding:16px 16px 18px}
+.crit .big{display:block;font-size:2.2rem;font-weight:800;letter-spacing:-.06em;line-height:.9;color:var(--ink);margin-bottom:10px}
+.crit h4{font-size:1rem}
+/* 삽화: 가는 선과 라벨식 캡션 */
+.figure img{border:1px solid var(--line);border-radius:0;padding:6px;background:#fff}
+.figure figcaption{display:flex;gap:10px;align-items:baseline;font-size:.8rem;color:var(--ink-2);margin-top:8px;padding-top:8px;border-top:1px solid var(--line-2)}
+.figure .fl{flex:none;font-size:.6rem;letter-spacing:.18em;color:var(--muted);font-weight:700}
+.chart figcaption .fl{display:none}
+/* 체크리스트 제목에도 라벨 */
+.checklist h4{display:flex;align-items:center;gap:8px}
+.checklist h4::before{content:"CHECK";font-size:.6rem;letter-spacing:.18em;color:var(--muted);font-weight:700;margin-right:auto;order:3}
+.steps-overview .step-card .num,.step-card .num,[data-step] .num{color:var(--ink)!important;background:transparent!important;border:0;width:auto;height:auto;border-radius:0;font-size:2.1rem;font-weight:800;letter-spacing:-.05em;line-height:1;display:block;place-items:unset}
+.step-card.current .num{color:var(--accent)!important}
