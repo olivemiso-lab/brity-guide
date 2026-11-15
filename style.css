@@ -1354,3 +1354,10 @@ body[data-page="index"]{background:#fff}
 .quick{padding-top:40px}
 .hero{border-bottom:0}
 .flowline{margin-top:48px}
+/* 홈에서도 왼쪽 메뉴 표시, 모든 그룹 펼침 */
+body[data-page="index"] .sidebar{display:none}
+@media (min-width:1200px){body[data-page="index"] .sidebar{display:block}body[data-page="index"].has-sidebar{padding-left:264px}body[data-page="index"] .progress{left:264px}body[data-page="index"] .site-header .brand{visibility:hidden}}
+.sb-group.collapsed a{display:flex}
+.sb-group.collapsed .sb-label{color:var(--ink);font-weight:700}
+.sb-group.collapsed .sb-num{background:var(--ink)}
+.sb-label{cursor:default!important}
