@@ -1091,3 +1091,7 @@ body[data-page="appendix"] .page-head .eyebrow{color:var(--c6d)}
 /* 자주 찾는 정보 타일 제목 색 번갈아 */
 .tile:nth-child(4n+1) b{color:var(--c1d)}.tile:nth-child(4n+2) b{color:var(--c2d)}.tile:nth-child(4n+3) b{color:var(--c3d)}.tile:nth-child(4n+4) b{color:var(--c4d)}
 .checklist h4::before{display:none}
+/* 색 톤 다운: 바탕은 더 연하게, 라벨 색은 채도 낮게 */
+:root{--c1:#edf7f2;--c1d:#3f8f74;--c2:#eef2fb;--c2d:#4d6fcf;--c3:#fdf3e8;--c3d:#c48248;--c4:#f5effb;--c4d:#8b63c4;--c5:#fff8dc;--c5d:#a68a2e;--c6:#edf6fb;--c6d:#4a8fb3}
+.hero .sub b.pt{color:#e8622b}
+.step-card{border-top-width:2px}
