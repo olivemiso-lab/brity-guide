@@ -996,3 +996,13 @@ h1,h2,h3,h4,.hero h1,.page-head h1,.step-title h2,.sheet h4,.step-main > h3,.doo
 .page-head h1{line-height:1.15}
 .step-title h2{line-height:1.22}
 @media (max-width:860px){.hero h1{line-height:1.2}}
+/* 글씨 크기 조정 · 손글씨 제거, 색 포인트만 */
+.hero h1{font-size:clamp(2.4rem,1.5rem + 3.6vw,4.6rem);line-height:1.18}
+.hero .sub{font-size:1.15rem;margin-top:10px}
+.hero .sub b.pt{color:var(--accent);font-weight:700}
+.page-head h1{font-size:clamp(1.9rem,1.3rem + 2.2vw,3rem)}
+.step-title .num b{font-size:clamp(3rem,2rem + 3.6vw,5.2rem)}
+.step-title h2{font-size:clamp(1.5rem,1.2rem + 1.4vw,2.2rem)}
+.door h3{font-size:1.4rem}
+.hw,.hw-wrap .hw{display:none}
+@media (max-width:860px){.hero h1{font-size:2.2rem;line-height:1.22}.hero .sub{font-size:1.05rem;margin-top:12px}.step-title .num b{font-size:3rem}}
