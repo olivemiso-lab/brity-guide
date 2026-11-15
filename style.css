@@ -132,7 +132,7 @@ li{margin:.25em 0}
 .sb-group a.active::before{content:"";position:absolute;left:0;top:7px;bottom:7px;width:3px;border-radius:3px;background:var(--accent)}
 .sb-home.active{background:var(--blue-soft)}
 .sb-dot{flex:none;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:.66rem;font-weight:800;font-style:normal;color:#fff;letter-spacing:.02em}
-.sb-dot.d1{background:var(--s1)}.sb-dot.d2{background:var(--s2)}.sb-dot.d3{background:var(--s3)}.sb-dot.d4{background:var(--s4)}.sb-dot.d5{background:var(--s5)}
+.sb-dot.d1{background:var(--s1)}.sb-dot.d2{background:var(--s2)}.sb-dot.d3{background:var(--s3)}.sb-dot.d4{background:var(--s4)}.sb-dot.d5{background:var(--s5)}.sb-dot.d6{background:#6b5bd2}
 .sb-step.done .sb-dot{background:var(--s2)!important}
 .sb-step.done .sb-dot::before{content:"✓";font-size:.8rem}
 .sb-step.done .sb-dot{font-size:0}
@@ -194,6 +194,79 @@ details.acc.why summary{color:var(--ink-2);font-weight:600}
 .sheet .fill{background:#fff8e6;border-radius:4px;padding:0 4px}
 .sheet .foot{font-size:.84rem;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:10px}
 @media print{ body.print-sheet *{visibility:hidden} body.print-sheet .sheet, body.print-sheet .sheet *{visibility:visible} body.print-sheet .sheet{position:absolute;left:0;top:0;width:100%;border:0;box-shadow:none} }
+
+/* 6단계 개요 · 설문 차트 · 부록 */
+.steps-overview.six{grid-template-columns:repeat(3,1fr)}
+@media (max-width:760px){.steps-overview.six{grid-template-columns:1fr}}
+.step-card .dur{font-size:.78rem;color:var(--accent);font-weight:700;margin-top:4px}
+.chips.seven{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.chips.seven{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.chips.seven{grid-template-columns:1fr}}
+.survey-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:20px}
+.survey-meta b{color:var(--navy);margin-right:4px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:2px}
+.kpi .kl{font-size:.85rem;color:var(--ink-2);min-height:2.6em}
+.kpi .kv{font-size:2.1rem;font-weight:700;color:var(--navy);line-height:1.1}
+.kpi .kd{font-size:.8rem;color:var(--muted)}
+.findings details.acc summary{font-size:1.02rem}
+.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:14px}
+@media (max-width:900px){.charts{grid-template-columns:1fr}}
+.chart{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.chart figcaption{display:flex;flex-direction:column;gap:2px;margin-bottom:14px}
+.chart figcaption b{color:var(--navy);font-size:1rem}
+.chart figcaption span{font-size:.8rem;color:var(--muted)}
+.hbars{display:grid;gap:7px}
+.hrow{display:grid;grid-template-columns:minmax(120px,40%) 1fr auto;align-items:center;gap:10px;font-size:.86rem}
+.hl{color:var(--ink);line-height:1.3}
+.ht{position:relative;height:18px;background:#f3f4f6;border-radius:0 4px 4px 0;overflow:hidden;display:flex}
+.hb{display:block;height:100%;background:var(--accent);border-radius:0 4px 4px 0;min-width:2px}
+.hv{color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums;min-width:5em;text-align:right}
+.hv em{font-style:normal;color:var(--muted);margin-left:2px}
+.stack .ht{background:none}
+.sg{display:block;height:100%;margin-right:2px}
+.sg:last-child{margin-right:0;border-radius:0 4px 4px 0}
+.s1{background:#1c5cab}.s2{background:#5598e7}.s3{background:#86b6ef}.s4{background:#c9ccd3}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--ink-2);margin:-6px 0 12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.tbl-view{margin-top:12px;font-size:.85rem}
+.tbl-view summary{cursor:pointer;color:var(--muted);list-style:none}
+.tbl-view summary::-webkit-details-marker{display:none}
+.tbl-view summary::before{content:"▸ "}
+.tbl-view[open] summary::before{content:"▾ "}
+.tbl-view .tbl{margin-top:8px;font-size:.84rem}
+@media (max-width:480px){.hrow{grid-template-columns:1fr;gap:3px}.hv{text-align:left}}
+
+/* 부록 진단표 */
+.diag{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:0 0 18px}
+.diag-meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.88rem;color:var(--ink-2);margin:0 0 14px}
+.diag-meta b{color:var(--navy)}
+.scale{font-size:.82rem;color:var(--muted);margin-bottom:10px}
+.qrow{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.qrow:first-of-type{border-top:0}
+.qrow .area{font-size:.78rem;font-weight:700;color:var(--accent)}
+.qrow .q{font-size:.93rem}
+.qrow .opts{display:flex;gap:4px}
+.qrow .opts label{width:34px;height:34px;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;cursor:pointer;font-size:.88rem;color:var(--ink-2);background:#fff}
+.qrow .opts input{position:absolute;opacity:0;width:0;height:0}
+.qrow .opts label:hover{border-color:var(--accent)}
+.qrow .opts label.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
+@media (max-width:640px){.qrow{grid-template-columns:1fr;gap:6px}}
+.diag-result{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-top:16px}
+.diag-result .avg{font-size:2.2rem;font-weight:700;color:var(--navy);line-height:1}
+.diag-result .avg small{font-size:.8rem;color:var(--muted);font-weight:400;display:block;margin-top:4px}
+.diag-result .verdict b{display:block;font-size:1.05rem;color:var(--navy)}
+.diag-result .verdict span{font-size:.9rem;color:var(--ink-2)}
+.diag-result .verdict .lv{display:inline-block;font-size:.78rem;padding:2px 8px;border-radius:999px;margin-right:6px}
+.lv.g{background:#e6f6ef;color:#0f6b45}.lv.y{background:#fff1cc;color:#8a5a00}.lv.r{background:#fde8e8;color:#9b1c1c}.lv.n{background:#eef0f3;color:#4b5563}
+.practice label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:.93rem;cursor:pointer}
+.practice input{margin-top:3px;accent-color:var(--s2)}
+.cmp td input{width:90px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font:inherit;font-size:.9rem}
+.cmp td.num{font-variant-numeric:tabular-nums;text-align:right}
+.cmp .delta.up{color:#0f6b45;font-weight:700}.cmp .delta.down{color:#9b1c1c;font-weight:700}
+.ops td input{padding:6px 8px;border:1px solid var(--line);border-radius:7px;font:inherit;font-size:.9rem;width:100%;max-width:140px}
+.ops td.res{font-weight:700;color:var(--navy);white-space:nowrap}
 
 /* 상황별 진입 */
 .start{padding:48px 0 40px;background:#fff;border-bottom:1px solid var(--line)}
@@ -263,7 +336,7 @@ details.acc.why summary{color:var(--ink-2);font-weight:600}
 .step-card p{margin:0;color:var(--ink-2);font-size:.9rem}
 .step-card .mini{font-size:.82rem;color:var(--muted);margin-top:auto}
 .step-card .done{position:absolute;top:14px;right:14px;font-size:.75rem;font-weight:700;color:var(--s2)}
-[data-step="1"] .num{background:var(--s1)} [data-step="2"] .num{background:var(--s2)} [data-step="3"] .num{background:var(--s3)} [data-step="4"] .num{background:var(--s4)} [data-step="5"] .num{background:var(--s5)}
+[data-step="1"] .num{background:var(--s1)} [data-step="2"] .num{background:var(--s2)} [data-step="3"] .num{background:var(--s3)} [data-step="4"] .num{background:var(--s4)} [data-step="5"] .num{background:var(--s5)} [data-step="6"] .num{background:#6b5bd2}
 
 /* 단계 상세 */
 .step{padding:56px 0;border-top:1px solid var(--line)}
@@ -273,7 +346,7 @@ details.acc.why summary{color:var(--ink-2);font-weight:600}
 .step-title .num b{display:block;font-size:1.4rem}
 .step-title h2{margin:0 0 .2em}
 .step-title p{margin:0;color:var(--ink-2);font-size:1.05rem}
-.step-1 .step-title .num{background:var(--s1)} .step-2 .step-title .num{background:var(--s2)} .step-3 .step-title .num{background:var(--s3)} .step-4 .step-title .num{background:var(--s4)} .step-5 .step-title .num{background:var(--s5)}
+.step-1 .step-title .num{background:var(--s1)} .step-2 .step-title .num{background:var(--s2)} .step-3 .step-title .num{background:var(--s3)} .step-4 .step-title .num{background:var(--s4)} .step-5 .step-title .num{background:var(--s5)} .step-6 .step-title .num{background:#6b5bd2}
 .step-body{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
 @media (max-width:960px){.step-body{grid-template-columns:1fr}}
 .step-main > h3{margin-top:28px;padding-top:8px}

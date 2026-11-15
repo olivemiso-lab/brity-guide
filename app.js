@@ -56,9 +56,9 @@ var TRAINING = {
     });
     $$('.chip[href^="#step"]').forEach(function(ch){ ch.setAttribute('data-tab',ch.getAttribute('href').slice(1)); });
     var initial=(location.hash||'#step1').slice(1);
-    if(/^step[1-5]$/.test(initial)){ showStep(initial,false); if(location.hash){ setTimeout(function(){showStep(initial,true);},50);} }
+    if(/^step[1-6]$/.test(initial)){ showStep(initial,false); if(location.hash){ setTimeout(function(){showStep(initial,true);},50);} }
     else { showStep('step1',false); }
-    window.addEventListener('hashchange',function(){ var h=location.hash.slice(1); if(/^step[1-5]$/.test(h)) showStep(h,true); });
+    window.addEventListener('hashchange',function(){ var h=location.hash.slice(1); if(/^step[1-6]$/.test(h)) showStep(h,true); });
   }
 
 
@@ -82,7 +82,7 @@ var TRAINING = {
   }
   function sbUpdate(){
     if(!sbEl) return; var total=0,n=0;
-    var ids=['step1','step2','step3','step4','step5']; var counts=[5,7,6,7,8];
+    var ids=['step1','step2','step3','step4','step5','step6']; var counts=[6,8,7,8,8,3];
     ids.forEach(function(id,i){ var st=store[id]||[]; var c=0; st.forEach(function(v){if(v)c++;}); n+=c; total+=counts[i]; var a=$('[data-sbstep="'+(i+1)+'"]',sbEl); if(a) a.classList.toggle('done',c===counts[i]); });
     var p=$('#sbProgress'); if(p) p.textContent=n+' / '+total; var m=$('#sbMeter'); if(m) m.style.width=(n/total*100)+'%';
   }
@@ -214,6 +214,51 @@ var TRAINING = {
     var bc=$('#bCopy'); if(bc) bc.addEventListener('click',function(){ var t=sheet.innerText.replace(/\n{3,}/g,'\n\n').trim(); var ok=function(){var c=$('#bCopied'); if(c){c.hidden=false; setTimeout(function(){c.hidden=true;},2000);} };
       if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();}); } else { fallback(t); ok(); } });
     var bp=$('#bPrint'); if(bp) bp.addEventListener('click',function(){ document.body.classList.add('print-sheet'); window.print(); setTimeout(function(){document.body.classList.remove('print-sheet');},500); });
+  }
+
+
+  /* 부록 진단표 */
+  var DKEY='brity-guide-diag-v1'; var dst={};
+  try{dst=JSON.parse(localStorage.getItem(DKEY)||'{}')||{};}catch(e){dst={};}
+  function dsave(){try{localStorage.setItem(DKEY,JSON.stringify(dst));}catch(e){}}
+  var diags=$$('.diag[data-diag]');
+  if(diags.length){
+    var VERD={pre:[[4,'현재 소통 환경 양호','기존 강점 유지 및 필요한 부분 보완','g'],[3,'일부 개선 필요','취약 영역 중심으로 전환 계획 수립','y'],[1,'전반적 개선 필요','소통 기준 정비 및 집중 지원 방안 마련','r']],
+              post:[[4,'안정적 정착','지속 운영 및 정기 점검','g'],[3,'부분 정착','취약 영역 중심 보완','y'],[1,'집중 개선 필요','운영 기준 재점검 및 추가 지원','r']]};
+    function dvals(key){ var v=[]; for(var i=1;i<=10;i++){ var x=dst[key+'q'+i]; v.push(x?Number(x):null);} return v; }
+    function davg(key){ var v=dvals(key).filter(function(x){return x;}); if(v.length<10) return null; return v.reduce(function(a,b){return a+b;},0)/10; }
+    function renderDiag(d){
+      var key=d.getAttribute('data-diag');
+      $$('.qrow',d).forEach(function(r,i){ var val=dst[key+'q'+(i+1)]; $$('label',r).forEach(function(l){ var inp=$('input',l); inp.checked=(val&&String(val)===inp.value); l.classList.toggle('on',inp.checked); }); });
+      var avg=davg(key); var cnt=dvals(key).filter(function(x){return x;}).length;
+      var ae=$('[data-avg]',d), ve=$('[data-verdict]',d);
+      if(avg===null){ ae.innerHTML=(cnt?cnt+'/10':'–')+'<small>10문항 평균</small>'; ve.innerHTML='<b>'+(cnt?'남은 문항 '+(10-cnt)+'개에 점수를 매기세요':'문항에 점수를 매기면 판정이 나옵니다')+'</b><span>'+(key==='pre'?'4.0~5.0 현재 소통 환경 양호 · 3.0~3.9 일부 개선 필요 · 1.0~2.9 전반적 개선 필요':'4.0~5.0 안정적 정착 · 3.0~3.9 부분 정착 · 1.0~2.9 집중 개선 필요')+'</span>'; }
+      else { var vv=VERD[key].filter(function(x){return avg>=x[0];})[0]||VERD[key][2]; ae.innerHTML=avg.toFixed(1)+'<small>10문항 평균</small>'; ve.innerHTML='<b><span class="lv '+vv[3]+'">'+(key==='pre'?'출발점':'정착 수준')+'</span>'+vv[1]+'</b><span>'+vv[2]+'</span>'; }
+    }
+    diags.forEach(function(d){ var key=d.getAttribute('data-diag');
+      d.addEventListener('change',function(e){ var t=e.target; if(t.type!=='radio') return; var m=t.name.match(/q(\d+)$/); dst[key+'q'+m[1]]=t.value; dsave(); renderDiag(d); renderCmp(); });
+      var rb=$('[data-diagreset="'+key+'"]'); if(rb) rb.addEventListener('click',function(){ if(confirm('이 진단표의 점수를 모두 지울까요?')){ for(var i=1;i<=10;i++) delete dst[key+'q'+i]; dsave(); renderDiag(d); renderCmp(); } });
+      renderDiag(d); });
+    $$('[data-pick]').forEach(function(box){ var k=box.getAttribute('data-pick'); $$('input',box).forEach(function(inp){ var saved=dst[k]||[]; if(inp.type==='radio') inp.checked=(saved===inp.value); else inp.checked=saved.indexOf(inp.value)>=0;
+      inp.addEventListener('change',function(){ if(inp.type==='radio') dst[k]=inp.value; else dst[k]=$$('input',box).filter(function(i){return i.checked;}).map(function(i){return i.value;}); dsave(); }); }); });
+    function renderCmp(){
+      var t=$('#cmpTable'); if(!t) return; var pre=dvals('pre'), post=dvals('post');
+      for(var i=1;i<=10;i++){ var a=pre[i-1], b=post[i-1]; $('[data-pre="'+i+'"]',t).textContent=a?a.toFixed(1)+'점':'–'; $('[data-post="'+i+'"]',t).textContent=b?b.toFixed(1)+'점':'–'; var de=$('[data-delta="'+i+'"]',t); if(a&&b){ var d=b-a; de.textContent=(d>0?'+':'')+d.toFixed(1); de.className='num delta '+(d>0?'up':d<0?'down':''); } else { de.textContent='–'; de.className='num delta'; } }
+      var pa=davg('pre'), pb=davg('post'); $('[data-pre="avg"]',t).textContent=pa!==null?pa.toFixed(2)+'점':'–'; $('[data-post="avg"]',t).textContent=pb!==null?pb.toFixed(2)+'점':'–'; var dd=$('[data-delta="avg"]',t); if(pa!==null&&pb!==null){ var d2=pb-pa; dd.textContent=(d2>0?'+':'')+d2.toFixed(2); dd.className='num delta '+(d2>0?'up':d2<0?'down':''); } else { dd.textContent='–'; dd.className='num delta'; }
+    }
+    renderCmp();
+    var ops=$('#opsTable');
+    if(ops){ $$('[data-op]',ops).forEach(function(i){ if(dst['op_'+i.getAttribute('data-op')]!==undefined) i.value=dst['op_'+i.getAttribute('data-op')]; i.addEventListener('input',function(){ dst['op_'+i.getAttribute('data-op')]=i.value; dsave(); renderOps(); }); i.addEventListener('change',function(){ dst['op_'+i.getAttribute('data-op')]=i.value; dsave(); renderOps(); }); });
+      function v(k){ var x=dst['op_'+k]; return (x===undefined||x==='')?null:Number(x); }
+      function renderOps(){
+        [['ws','ws_a','ws_b'],['fmt','fmt_a','fmt_b'],['new','new_a','new_b']].forEach(function(r){ var a=v(r[1]), b=v(r[2]); $('[data-res="'+r[0]+'"]',ops).textContent=(a!==null&&b)?(a/b*100).toFixed(1)+'%':'–'; });
+        [['dup','dup_pre','dup_post'],['ask','ask_pre','ask_post'],['file','file_pre','file_post']].forEach(function(r){ var a=v(r[1]), b=v(r[2]); var el=$('[data-res="'+r[0]+'"]',ops); if(b===null){el.textContent='–';return;} if(a===null){el.textContent='전환 후 '+b+'건 (전환 전 자료 없음)';return;} var d=b-a; el.textContent=a+'건 → '+b+'건 ('+(d>0?'+':'')+d+'건)'; });
+        var h=dst['op_handover']; $('[data-res="handover"]',ops).textContent=h||'–';
+      }
+      renderOps();
+    }
+    var dp=$('#diagPrint'); if(dp) dp.addEventListener('click',function(){ window.print(); });
+    var dr=$('#diagResetAll'); if(dr) dr.addEventListener('click',function(){ if(confirm('부록1·2·3의 입력을 모두 지울까요?')){ dst={}; dsave(); location.reload(); } });
   }
 
   /* 해시로 열린 아코디언 펼치기 */

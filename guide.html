@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>정착 길라잡이 (5단계) | Brity 메신저</title>
-<meta name="description" content="TF팀 구축, 사용 약속, 환경 준비, 실습 연수, 4주 적응. 학교 맞춤형 5단계 정착 모델과 체크리스트.">
+<title>정착 길라잡이 (6단계) | Brity 메신저</title>
+<meta name="description" content="TF팀 구축, 사용 약속, 환경 준비, 실습 연수, 4주 적응, 지속 운영. 학교 맞춤형 6단계 정착 모델과 체크리스트.">
 <meta property="og:title" content="정착 길라잡이 (5단계) | Brity 메신저">
-<meta property="og:description" content="TF팀 구축, 사용 약속, 환경 준비, 실습 연수, 4주 적응. 학교 맞춤형 5단계 정착 모델과 체크리스트.">
+<meta property="og:description" content="TF팀 구축, 사용 약속, 환경 준비, 실습 연수, 4주 적응, 지속 운영. 학교 맞춤형 6단계 정착 모델과 체크리스트.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://brity-guide.vercel.app/guide.html">
 <meta property="og:image" content="https://brity-guide.vercel.app/img/hero.jpg">
@@ -25,6 +25,7 @@
       <a href="guide.html" data-nav="guide">정착 길라잡이</a>
       <a href="cases.html" data-nav="cases">활용 사례</a>
       <a href="faq.html" data-nav="faq">FAQ</a>
+      <a href="appendix.html" data-nav="appendix">진단표</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   </div>
@@ -41,13 +42,15 @@
     <div class="sb-group">
       <div class="sb-label"><span class="sb-num">2</span>정착 길라잡이</div>
       <a href="guide.html#start" data-sb="guide.html#start">지금 어디쯤인가요</a>
-      <a href="guide.html#overview" data-sb="guide.html#overview">5단계 한눈에 보기</a>
+      <a href="guide.html#overview" data-sb="guide.html#overview">6단계 한눈에 보기</a>
       <a class="sb-step" href="guide.html#step1" data-sb="guide.html#step1" data-sbstep="1"><i class="sb-dot d1">01</i>TF팀 구축</a>
       <a class="sb-step" href="guide.html#step2" data-sb="guide.html#step2" data-sbstep="2"><i class="sb-dot d2">02</i>사용 약속 정하기</a>
       <a class="sb-step" href="guide.html#step3" data-sb="guide.html#step3" data-sbstep="3"><i class="sb-dot d3">03</i>사용 환경 준비</a>
       <a class="sb-step" href="guide.html#step4" data-sb="guide.html#step4" data-sbstep="4"><i class="sb-dot d4">04</i>안내 및 실습 연수</a>
       <a class="sb-step" href="guide.html#step5" data-sb="guide.html#step5" data-sbstep="5"><i class="sb-dot d5">05</i>4주 적응 기간</a>
-      <a href="guide.html#criteria" data-sb="guide.html#criteria">정착 점검 기준</a>
+      <a class="sb-step" href="guide.html#step6" data-sb="guide.html#step6" data-sbstep="6"><i class="sb-dot d6">06</i>지속 운영과 개선</a>
+      <a href="guide.html#survey" data-sb="guide.html#survey">사용 실태 분석 (설문)</a>
+      <a href="appendix.html#a1" data-sb="appendix.html#a1">부록 진단표</a>
     </div>
     <div class="sb-group">
       <div class="sb-label"><span class="sb-num">3</span>활용 사례</div>
@@ -62,7 +65,7 @@
       <a href="faq.html#faq" data-sb="faq.html#faq">이럴 땐 이렇게</a>
     </div>
     <div class="sb-foot">
-      <div class="sb-prog"><span>체크리스트</span><b id="sbProgress">0 / 33</b></div>
+      <div class="sb-prog"><span>체크리스트</span><b id="sbProgress">0 / 40</b></div>
       <div class="meter"><i id="sbMeter"></i></div>
       <a class="sb-ext" href="https://teams.pub-brityworks.com/doc/manual/ko/index.html" target="_blank" rel="noopener">공식 매뉴얼 ↗</a>
     </div>
@@ -70,7 +73,7 @@
 </aside>
 
 <main id="top">
-<div class="page-head"><div class="wrap"><span class="eyebrow">PART 2</span><h1>정착 길라잡이</h1><p>우리 학교에 맞게 전환하는 5단계. 단계마다 체크리스트가 있고, 표시는 이 기기에 저장됩니다.</p></div></div>
+<div class="page-head"><div class="wrap"><span class="eyebrow">PART 2</span><h1>정착 길라잡이</h1><p>우리 학교에 맞게 전환하는 6단계. 단계마다 체크리스트가 있고, 표시는 이 기기에 저장됩니다.</p></div></div>
 <!-- ===== 상황별 진입 ===== -->
 <section class="start" id="start" style="border-top:1px solid var(--line)">
   <div class="wrap">
@@ -85,6 +88,7 @@
       <a class="chip" href="#step3"><span class="n">03</span>약속은 정했는데 설치·설정이 안 됐어요</a>
       <a class="chip" href="#step4"><span class="n">04</span>교직원 연수를 준비하고 있어요</a>
       <a class="chip" href="#step5"><span class="n">05</span>쓰고는 있는데 아직 혼란스러워요</a>
+      <a class="chip" href="#step6"><span class="n">06</span>담당자가 바뀌거나 새 학년을 준비해요</a>
       <a class="chip alt" href="cases.html#case"><span class="n">★</span>다른 학교는 어떻게 했는지 궁금해요</a>
     </div>
   </div>
@@ -94,16 +98,17 @@
 <section class="section alt" id="overview" style="padding-bottom:24px">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Brity 메신저 학교 맞춤형 5단계 정착 모델</span>
-      <h2>5단계 한눈에 보기</h2>
+      <span class="eyebrow">Brity 메신저 학교 맞춤형 6단계 정착 모델</span>
+      <h2>6단계 한눈에 보기</h2>
       <p>카드를 누르면 그 단계만 펼쳐집니다. 체크리스트에 표시한 내용은 이 기기의 브라우저에 저장되어 다음에 열어도 유지됩니다.</p>
     </div>
-    <div class="steps-overview">
-      <a class="step-card" data-step="1" data-tab="step1" href="#step1"><span class="num">01</span><h4>TF팀 구축</h4><p>함께 준비할 사람들을 모아 역할을 나눕니다.</p><span class="mini">교감·교무·교육과정·정보·행정실·학년 대표</span><span class="done" data-done="1"></span></a>
-      <a class="step-card" data-step="2" data-tab="step2" href="#step2"><span class="num">02</span><h4>사용 약속 정하기</h4><p>어디에 올리고, 어떻게 알리고, 어떻게 답할지 정합니다.</p><span class="mini">7가지 사용 약속 · 공지 형식</span><span class="done" data-done="2"></span></a>
-      <a class="step-card" data-step="3" data-tab="step3" href="#step3"><span class="num">03</span><h4>사용 환경 준비</h4><p>설치·로그인부터 조직도·워크스페이스 설정까지.</p><span class="mini">약속을 실제 시스템에 반영</span><span class="done" data-done="3"></span></a>
-      <a class="step-card" data-step="4" data-tab="step4" href="#step4"><span class="num">04</span><h4>안내 및 실습 연수</h4><p>사용 약속을 공유하고 실제 업무로 연습합니다.</p><span class="mini">40분 실습형 연수 운영안</span><span class="done" data-done="4"></span></a>
-      <a class="step-card" data-step="5" data-tab="step5" href="#step5"><span class="num">05</span><h4>4주 적응 기간</h4><p>실제 업무에 적용하며 불편을 고치고 정착시킵니다.</p><span class="mini">익숙해지기 → 적용 → 개선 → 정착</span><span class="done" data-done="5"></span></a>
+    <div class="steps-overview six">
+      <a class="step-card" data-step="1" data-tab="step1" href="#step1"><span class="num">01</span><h4>TF팀 구성 및 현황 진단</h4><p>함께 준비할 사람들을 모으고, 우리 학교의 사용 현황을 파악해요.</p><span class="mini">학교 전환 TF팀 구성 · 사용 현황 설문조사 · 결과 분석 및 과제 도출</span><span class="dur">소요 기간(예시) 1주</span><span class="done" data-done="1"></span></a>
+      <a class="step-card" data-step="2" data-tab="step2" href="#step2"><span class="num">02</span><h4>사용 약속 정하기</h4><p>우리 학교만의 Brity 사용 원칙을 정해요.</p><span class="mini">워크스페이스·대화방 용도 구분 · 공지·질문·답변 운영 기준 · 자료 공유 및 보안 수칙 · 학교별 사용 약속 마련</span><span class="dur">소요 기간(예시) 1~2주</span><span class="done" data-done="2"></span></a>
+      <a class="step-card" data-step="3" data-tab="step3" href="#step3"><span class="num">03</span><h4>설치 및 기본 환경 설정</h4><p>바로 사용할 수 있도록 환경을 준비해요.</p><span class="mini">Brity 설치 및 로그인 안내 · 조직도 최신화 · 워크스페이스·채널 구성 · 기본 설정(알림, 권한 등)</span><span class="dur">소요 기간(예시) 1주</span><span class="done" data-done="3"></span></a>
+      <a class="step-card" data-step="4" data-tab="step4" href="#step4"><span class="num">04</span><h4>교직원 안내 및 실습 연수</h4><p>사용 방법을 함께 익히고 실제 업무로 연습해요.</p><span class="mini">기본 기능 및 사용 방법 안내 · 실제 업무 상황 실습 · 자주 묻는 질문(Q&amp;A) 공유</span><span class="dur">소요 기간(예시) 1주</span><span class="done" data-done="4"></span></a>
+      <a class="step-card" data-step="5" data-tab="step5" href="#step5"><span class="num">05</span><h4>4주 적응 기간 운영</h4><p>실제 업무에 적용하며 불편한 점을 확인하고 보완해요.</p><span class="mini">실제 업무에 적용 · 불편 사항 수집·지원 · 사용 약속 보완 및 개선 · 간단한 중간 점검</span><span class="dur">소요 기간(예시) 4주</span><span class="done" data-done="5"></span></a>
+      <a class="step-card" data-step="6" data-tab="step6" href="#step6"><span class="num">06</span><h4>지속 운영과 개선</h4><p>사용 결과를 점검하고, 더 나은 업무소통 환경으로 발전시켜요.</p><span class="mini">운영 성과 점검 및 사후 설문 · 개선 사항 반영 및 기준 보완 · 신규 교직원 안내 체계 · 우수 사례 공유·확산</span><span class="dur">소요 기간(예시) 학기별(지속)</span><span class="done" data-done="6"></span></a>
     </div>
   </div>
 </section>
@@ -119,6 +124,7 @@
         <div class="step-summary">
       <div><span class="sl">목표</span><p>전환을 함께 준비할 팀을 꾸리고 역할을 나눕니다.</p></div>
       <div><span class="sl">누가</span><p>교감 주관, 교무부장·정보업무담당자 필수, 학년·행정실 대표</p></div>
+      <div><span class="sl">소요 기간 (예시)</span><p>1주</p></div>
       <div><span class="sl">끝나면 남는 것</span><p>TF 구성표(역할·담당)와 교직원 문의 창구</p></div>
     </div>
 <div class="step-body">
@@ -149,20 +155,23 @@
         </ol>
         <figure class="figure"><img src="img/step1-direction.jpg" alt="TF팀 운영의 핵심 방향 4가지: 함께 준비하기, 미리 대비하기, 역할 나누기, 가까이서 지원하기" loading="lazy"><figcaption>TF팀 운영의 핵심 방향: 함께 준비하기 · 미리 대비하기 · 역할 나누기 · 가까이서 지원하기</figcaption></figure>
         <details class="acc why"><summary>1. TF팀은 왜 필요할까요?</summary><div class="acc-body">
-        <p>Brity 메신저 전환은 단순히 새 프로그램을 설치하는 일이 아닙니다. 오랫동안 써 온 GOE 메신저에서 새로운 소통 도구로 옮겨 가는 만큼 학교의 업무소통 방식과 교직원의 사용 경험에도 변화가 필요합니다. 정보업무담당자 혼자 준비하기보다 학교의 업무와 소통 특성을 잘 아는 구성원이 함께 참여해 여러 관점에서 준비해야 합니다.</p>
+        <p>Brity 메신저 전환은 단순히 새 프로그램을 설치하는 일이 아닙니다. 오랫동안 써 온 GOE 메신저에서 새로운 소통 도구로 옮겨 가는 만큼 학교의 업무소통 방식과 교직원의 사용 경험에도 변화가 필요합니다. 정보업무담당자 혼자 준비하기보다 학교의 업무와 소통 특성을 잘 아는 구성원이 함께 참여해 여러 관점에서 준비해야 합니다. 이때는 다음과 같은 점을 고려하면 좋습니다.</p>
+        <ul><li>전환의 필요성과 기대 효과를 교직원이 구체적으로 이해하도록 합니다.</li><li>전체 협의회 5분, 학년·부서 대표를 통한 의견 수렴, 간단한 설문 중 학교에 맞는 방법을 정합니다.</li><li>반대 의견이나 우려는 기록하고, STEP 02 약속에 반영했는지 여부를 공개적으로 답합니다.</li><li>먼저 익숙해진 교직원(TF팀 내 학년 대표)이 동료를 돕는 구조를 만듭니다.</li></ul>
+        <p>우리 학교의 소통 현황은 <a href="appendix.html#a1">부록1 출발점 진단표</a>로 파악할 수 있습니다.</p>
         <figure class="figure"><img src="img/step1-tf.jpg" alt="기존 방식의 어려움(특정 담당자 집중, 구성원 요구 미반영, 체계적 준비 어려움)을 TF팀이 전환 준비·역할 분담·지원 안내로 해결하는 구조도" loading="lazy"><figcaption>TF팀은 모든 일을 직접 처리하는 조직이 아니라, 학교 구성원이 Brity 메신저를 편리하게 활용할 수 있도록 방향을 정하고 지원하는 조직입니다.</figcaption></figure>
 
         </div></details>
       </div>
       <aside class="sticky">
         <div class="checklist" data-list="step1">
-          <h4>1단계 완료 체크리스트 <span class="tag green">0/5</span></h4>
+          <h4>1단계 완료 체크리스트 <span class="tag green">0/6</span></h4>
           <div class="meter"><i></i></div>
           <label><input type="checkbox"> Brity 메신저 전환을 지원할 TF팀 구성원을 정하고 역할을 확인했다.</label>
           <label><input type="checkbox"> 학교에서 필요한 워크스페이스와 공유 공간을 확인했다.</label>
           <label><input type="checkbox"> 교직원 사용 가이드를 제작할 담당자를 정했다.</label>
           <label><input type="checkbox"> 교직원 연수와 실습을 지원할 담당자를 정했다.</label>
           <label><input type="checkbox"> 4주 적응 기간 동안 질문을 받을 창구를 정했다.</label>
+          <label><input type="checkbox"> Brity 메신저 사용 약속을 정하기 전 목적과 기대효과를 안내하고 의견을 수렴했다.</label>
           <div class="foot"><span>이 기기에 저장됩니다</span><button type="button" data-reset>초기화</button></div>
         </div>
       </aside>
@@ -181,6 +190,7 @@
         <div class="step-summary">
       <div><span class="sl">목표</span><p>어디에 올리고, 어떻게 알리고, 어떻게 답할지 정합니다.</p></div>
       <div><span class="sl">누가</span><p>TF팀 협의, 교직원 의견 수렴</p></div>
+      <div><span class="sl">소요 기간 (예시)</span><p>1~2주</p></div>
       <div><span class="sl">끝나면 남는 것</span><p>우리 학교 사용 약속 한 장과 공지 형식</p></div>
     </div>
 <div class="step-body">
@@ -223,11 +233,13 @@
           </div>
         </div>
 
+        <div class="note blue" style="margin-top:18px"><p><b>Brity 메신저 약속을 정할 때 함께 확인할 사항</b></p><ul style="margin:8px 0 0"><li>워크스페이스 관리자는 정보부장과 교무부장 등 2명 이상으로 지정해 담당자 변경에 대비합니다.</li><li>게시 권한은 채널별로 정합니다. 예: 공식 공지 채널은 업무담당자, 질문 채널은 전 교직원</li><li>전출·퇴직 시 계정과 자료 인수인계 방법을 미리 정합니다.</li><li>학생 개인정보와 평가 자료는 접근 권한을 필요한 사람으로 한정하고, 외부 공유 링크 설정을 점검합니다.</li><li>결재가 필요한 업무와 근거 자료로 보존해야 하는 업무는 메신저 게시와 별도로 기존 공식 절차(전자결재 · 공문)를 병행합니다.</li></ul></div>
+
         <h3 style="margin-top:36px">약속별 자세히 보기</h3>
         <details class="acc" open>
           <summary>약속 ① 워크스페이스, 대화방, 쪽지, Brity 드라이브의 용도를 구분해요</summary>
           <div class="acc-body">
-            <p>용도를 구분하기 전에 각 기능의 특징을 먼저 살펴봅니다.</p>
+            <p>용도를 구분하기 전, 각 기능과 특징을 우선 살펴본 후 학교 실정에 맞게 기능 및 용도를 구분합니다.</p>
             <div class="tbl-wrap"><table class="tbl stack">
               <thead><tr><th>구분</th><th>기능 및 특징</th><th>활용 기준</th><th>학교 적용 예시</th></tr></thead>
               <tbody>
@@ -286,7 +298,7 @@
         </details>
         <details class="acc">
           <summary>약속 ④ 단순 확인은 이모지로 표시해요</summary>
-          <div class="acc-body"><p>"확인했습니다", "네", "알겠습니다" 같은 답글이 많아지면 중요한 질문과 답변이 묻힙니다. 단순 확인은 이모지 반응으로 표시하도록 정할 수 있습니다.</p></div>
+          <div class="acc-body"><p>"확인했습니다", "네", "알겠습니다" 등의 답글이 많아지면 중요한 질문과 답변을 찾아보기 어려울 수 있습니다. 단순 확인은 이모지 반응으로 표시하도록 정할 수 있습니다.</p></div>
         </details>
         <details class="acc">
           <summary>약속 ⑤ 자료는 가급적 드라이브 링크로 공유해요</summary>
@@ -330,7 +342,7 @@
       </div>
       <aside class="sticky">
         <div class="checklist" data-list="step2">
-          <h4>2단계 완료 체크리스트 <span class="tag green">0/7</span></h4>
+          <h4>2단계 완료 체크리스트 <span class="tag green">0/8</span></h4>
           <div class="meter"><i></i></div>
           <label><input type="checkbox"> 전체 공지와 학년·부서별 소통 공간을 정했다.</label>
           <label><input type="checkbox"> 공지 제목과 작성 형식을 정했다.</label>
@@ -339,6 +351,7 @@
           <label><input type="checkbox"> 메시지 발송 시간과 알림 관련 원칙을 정했다.</label>
           <label><input type="checkbox"> 개인정보 보호 및 공식 업무처리 기준을 확인했다.</label>
           <label><input type="checkbox"> 정한 내용을 교직원에게 안내할 간단한 사용 약속 자료로 정리했다.</label>
+          <label><input type="checkbox"> 관리자 권한, 인수인계, 보안·기록 관리 기준을 확인했다.</label>
           <div class="foot"><span>이 기기에 저장됩니다</span><button type="button" data-reset>초기화</button></div>
         </div>
       </aside>
@@ -357,6 +370,7 @@
         <div class="step-summary">
       <div><span class="sl">목표</span><p>정한 약속을 실제 시스템에 반영합니다.</p></div>
       <div><span class="sl">누가</span><p>정보업무담당자 중심, 교직원은 각자 개인 설정</p></div>
+      <div><span class="sl">소요 기간 (예시)</span><p>1주</p></div>
       <div><span class="sl">끝나면 남는 것</span><p>조직도 정비, 공식 워크스페이스·채널, 전원 로그인 확인</p></div>
     </div>
 <div class="step-body">
@@ -365,8 +379,8 @@
         <h3>단계별 사용 환경 준비 절차</h3>
         <ol class="proc">
           <li><h4>Brity 메신저 설치 및 로그인</h4><div class="owner">담당(권장 예시): 전체 교직원(개별 설치), 정보업무담당자(설치 지원)</div><p>PC용 프로그램을 설치하고 필요에 따라 모바일 앱도 설치합니다. 학교에서 안내한 계정으로 로그인해 정상 접속되는지 확인합니다.</p><ul><li>PC 프로그램 설치 및 로그인 여부</li><li>모바일 앱 설치 및 로그인 여부(희망자)</li><li>메시지 수신 및 알림 작동 여부</li></ul></li>
-          <li><h4>개인별 기본 정보 및 사용 환경 설정</h4><div class="owner">담당(권장 예시): 전체 교직원</div><ul><li><b>개인 정보</b>: 이름, 소속, 직위 등 기본 정보 확인</li><li><b>프로필</b>: 필요에 따라 프로필 사진 및 표시 정보 설정</li><li><b>연락 정보</b>: 업무에 필요한 정보 확인·입력</li><li><b>알림 설정</b>: PC·모바일 알림, 소리 등 개인별 설정</li><li><b>사용 환경</b>: 자주 사용하는 기능과 화면 설정 확인</li></ul></li>
-          <li><h4>학교 조직도 확인 및 정비</h4><div class="owner">담당(권장 예시): 정보업무담당자 중심, 학년·부서별 대표와 행정실 대표가 함께 점검</div><p>기존 GOE 메신저와 연동된 조직도 정보를 바탕으로 학교의 실제 조직과 일치하는지 확인합니다.</p><ul><li><b>구성원</b>: 전입·전출, 신규 교직원 반영 여부</li><li><b>학년·부서</b>: 실제 조직 및 업무분장과 일치하는지</li><li><b>소속 정보</b>: 소속과 직위가 정확한지</li><li><b>누락·오류</b>: 조직도에 없는 구성원이나 잘못 표시된 정보</li></ul></li>
+          <li><h4>개인별 기본 정보 및 사용 환경 설정</h4><div class="owner">담당(권장 예시): 전체 교직원</div><p>교직원이 자신의 정보와 사용 환경을 확인합니다. 개인 프로필을 확인하고, 필요한 정보를 입력하거나 수정합니다. 이 부분도 학교에서 어느 정도의 지침을 안내하면 좋습니다. 알림 등 기본 설정도 자신의 업무 특성에 맞게 조정합니다.</p><ul><li><b>개인 정보</b>: 이름, 소속, 직위 등 기본 정보 확인</li><li><b>프로필</b>: 필요에 따라 프로필 사진 및 표시 정보 설정</li><li><b>연락 정보</b>: 업무에 필요한 정보 확인·입력</li><li><b>알림 설정</b>: PC·모바일 알림, 소리 등 개인별 설정</li><li><b>사용 환경</b>: 자주 사용하는 기능과 화면 설정 확인</li></ul></li>
+          <li><h4>학교 조직도 확인 및 정비</h4><div class="owner">담당(권장 예시): 정보업무담당자 중심, TF팀의 학년·부서별 대표와 행정실 대표가 함께 점검</div><p>기존 GOE 메신저와 연동된 조직도 정보를 바탕으로 학교의 실제 조직과 일치하는지 확인합니다.</p><ul><li><b>구성원</b>: 전입·전출, 신규 교직원 반영 여부</li><li><b>학년·부서</b>: 실제 조직 및 업무분장과 일치하는지</li><li><b>소속 정보</b>: 소속과 직위가 정확한지</li><li><b>누락·오류</b>: 조직도에 없는 구성원이나 잘못 표시된 정보</li></ul></li>
           <li><h4>워크스페이스 및 채널 만들기</h4><div class="owner">담당(권장 예시): 정보업무담당자, 교무부장 등 TF팀</div><p>2단계 사용 약속에 따라 워크스페이스를 개설하고 구성원을 초대한 뒤 업무 성격에 맞는 채널을 만듭니다.</p><ul><li>워크스페이스의 이름과 용도가 명확한가?</li><li>참여해야 할 구성원이 빠짐없이 포함되었는가?</li><li>채널이 지나치게 많거나 중복되지 않는가?</li><li>게시 및 자료 공유 권한이 사용 약속에 맞게 설정되었는가?</li></ul></li>
           <li><h4>실제 사용 환경 최종 점검</h4><div class="owner">담당(권장 예시): TF팀, 학년·부서별 대표</div><p>설정이 끝나면 TF팀 구성원이 직접 접속해 기본 기능이 정상 작동하는지 확인합니다.</p></li>
         </ol>
@@ -378,6 +392,17 @@
           <div class="ch">&nbsp;&nbsp;# 교원 공지 채널 &nbsp;·&nbsp; # 교육과정 협의 채널</div>
         </div>
         <p style="font-size:.88rem;color:var(--muted)">※ 위 구성은 예시입니다. 학교에서 정한 운영 방식에 따라 채널을 줄이거나 학년·부서별 독립 워크스페이스를 추가할 수 있습니다.</p>
+        <h3>직군별 환경 점검 사항(예시)</h3>
+        <div class="tbl-wrap"><table class="tbl stack">
+          <thead><tr><th>구성원</th><th>점검 사항</th></tr></thead>
+          <tbody>
+            <tr><td data-label="구성원"><b>교원</b></td><td data-label="점검 사항">PC 설치, 모바일 선택 설치, 교과·학년 소통 공간 참여</td></tr>
+            <tr><td data-label="구성원"><b>행정실</b></td><td data-label="점검 사항">행정실 내 소통 공간과 교원 간 소통 공간 구분</td></tr>
+            <tr><td data-label="구성원"><b>교육공무직(돌봄·급식·특수지원 등)</b></td><td data-label="점검 사항">PC 사용이 어려우면 모바일 앱 중심으로 안내, 근무시간 외 알림 설정 안내</td></tr>
+            <tr><td data-label="구성원"><b>기간제교사·신규 전입</b></td><td data-label="점검 사항">계정·조직도 반영 여부 우선 확인</td></tr>
+            <tr><td data-label="구성원"><b>정보업무 담당자(정보부장)</b></td><td data-label="점검 사항">공지 확인 방법, 알림 설정</td></tr>
+          </tbody>
+        </table></div>
         <details class="acc why"><summary>1. 왜 사용 환경을 미리 준비해야 할까요?</summary><div class="acc-body">
         <p>3단계는 새로운 기능을 많이 설정하는 단계가 아니라, <b>2단계에서 정한 사용 약속을 실제 시스템에 반영하는 단계</b>입니다. 약속이 정해져 있어도 설치, 개인 설정, 조직도 정비, 워크스페이스 구성이 제대로 되지 않으면 소통에 혼란이 생깁니다. 정보업무담당자에게 모든 일이 몰리지 않도록 개별 교직원은 자신의 기본 설정을 완료하고, TF팀은 학교 공통 환경을 함께 점검하는 방식으로 역할을 나눕니다.</p>
         <figure class="figure"><img src="img/step3-overview.jpg" alt="3단계 역할별 주요 내용(정보업무담당자, 각 교직원, 학년·부서별 대표)과 확인·적용하는 주요 설정" loading="lazy"><figcaption>역할별로 나누어 준비하면 특정 담당자에게 업무가 몰리지 않습니다.</figcaption></figure>
@@ -386,7 +411,7 @@
       </div>
       <aside class="sticky">
         <div class="checklist" data-list="step3">
-          <h4>3단계 완료 체크리스트 <span class="tag green">0/6</span></h4>
+          <h4>3단계 완료 체크리스트 <span class="tag green">0/7</span></h4>
           <div class="meter"><i></i></div>
           <label><input type="checkbox"> PC에서 로그인할 수 있다.</label>
           <label><input type="checkbox"> 개인 기본 정보와 알림 설정을 확인했다.</label>
@@ -394,6 +419,7 @@
           <label><input type="checkbox"> 필요한 워크스페이스에 참여되어 있다.</label>
           <label><input type="checkbox"> 채널에서 게시물을 확인하고 답글을 작성할 수 있다.</label>
           <label><input type="checkbox"> 필요한 자료의 Brity 드라이브 링크를 열 수 있다.</label>
+          <label><input type="checkbox"> 직군별(교육공무직 등) 접속 방법을 확인했다.</label>
           <div class="foot"><span>이 기기에 저장됩니다</span><button type="button" data-reset>초기화</button></div>
         </div>
       </aside>
@@ -412,6 +438,7 @@
         <div class="step-summary">
       <div><span class="sl">목표</span><p>약속을 공유하고 실제 업무로 연습합니다.</p></div>
       <div><span class="sl">누가</span><p>TF팀 진행, 전 교직원 참여</p></div>
+      <div><span class="sl">소요 기간 (예시)</span><p>1주</p></div>
       <div><span class="sl">끝나면 남는 것</span><p>연수 완료, FAQ와 문의 방법 공유</p></div>
     </div>
 <div class="step-body">
@@ -433,13 +460,14 @@
         <div class="tbl-wrap"><table class="tbl stack">
           <thead><tr><th>자료</th><th>주요 내용</th><th>활용 방법</th></tr></thead>
           <tbody>
-            <tr><td data-label="자료"><b>우리 학교 사용 약속</b></td><td data-label="주요 내용">공지 공간, 핵심용어, 답글·이모지, 자료 공유 기준</td><td data-label="활용 방법">연수 시작 시 안내 및 상시 공유</td></tr>
+            <tr><td data-label="자료"><b>우리 학교 사용 약속</b></td><td data-label="주요 내용">공지 공간, 제목 분류 표시(핵심용어), 답글·이모지, 자료 공유 기준</td><td data-label="활용 방법">연수 시작 시 안내 및 상시 공유</td></tr>
             <tr><td data-label="자료"><b>기본 기능 안내자료</b></td><td data-label="주요 내용">대화·공지·쪽지·워크스페이스·드라이브</td><td data-label="활용 방법">기능 차이 설명</td></tr>
             <tr><td data-label="자료"><b>따라 하기</b></td><td data-label="주요 내용">실습지 5~6개 과제</td><td data-label="활용 방법">연수 중 직접 실습</td></tr>
             <tr><td data-label="자료"><b>자주 묻는 질문(FAQ)</b></td><td data-label="주요 내용">알림, 조직도, 워크스페이스 참여, 자료 공유 등</td><td data-label="활용 방법">연수 후 참고</td></tr>
             <tr><td data-label="자료"><b>도움 요청 안내</b></td><td data-label="주요 내용">담당자 또는 문의 채널, 적응 기간 운영 방식</td><td data-label="활용 방법">사용 중 문제 해결</td></tr>
           </tbody>
         </table></div>
+        <p>교직원 구체적 연수 자료는 [부록4]를 참고하세요. 디지털 활용에 어려움이 있는 교직원은 학년에서 일대일로 적응에 도움을 줍니다.</p>
         <div class="note green"><p><b>현장 팁</b> A초등학교는 기능을 많이 소개하기보다 <b>"공지 확인 → 링크로 문서 열기 → 내 칸에 입력하고 저장"</b>처럼 당장 협업에 필요한 절차부터 안내했고, 연수 미참석자를 위한 자율 연수 자료와 퀵가이드를 함께 마련했습니다. (<a href="cases.html#case">학교 사례 보기</a>)</p></div>
         <details class="acc why"><summary>1. 연수는 어떻게 운영할까요?</summary><div class="acc-body">
         <p>교직원 연수는 Brity 메신저의 모든 기능을 설명하는 시간이 아닙니다. TF팀에서 정한 우리 학교의 사용 약속을 안내하고, 교직원이 실제 업무에 필요한 기능을 직접 써 보는 시간으로 운영합니다. 30~40분 내외의 짧은 실습형으로, 학교 여건에 따라 전체 연수 또는 학년·부서별 소규모 연수로 진행할 수 있습니다.</p>
@@ -449,7 +477,7 @@
       </div>
       <aside class="sticky">
         <div class="checklist" data-list="step4">
-          <h4>4단계 완료 체크리스트 <span class="tag green">0/7</span></h4>
+          <h4>4단계 완료 체크리스트 <span class="tag green">0/8</span></h4>
           <div class="meter"><i></i></div>
           <label><input type="checkbox"> TF팀에서 정한 우리 학교 Brity 메신저 사용 약속을 안내했다.</label>
           <label><input type="checkbox"> 교직원이 Brity 메신저의 주요 소통 기능과 차이를 이해했다.</label>
@@ -458,6 +486,7 @@
           <label><input type="checkbox"> 개인별 알림 설정과 워크스페이스 참여 상태를 확인했다.</label>
           <label><input type="checkbox"> 연수 자료와 자주 묻는 질문(FAQ)을 교직원에게 공유했다.</label>
           <label><input type="checkbox"> 연수 후 문의 방법과 4주 적응 기간 운영 계획을 안내했다.</label>
+          <label><input type="checkbox"> 개별 지원이 필요한 구성원(디지털 취약 등)에게 별도 안내를 했다.</label>
           <div class="foot"><span>이 기기에 저장됩니다</span><button type="button" data-reset>초기화</button></div>
         </div>
       </aside>
@@ -476,6 +505,7 @@
         <div class="step-summary">
       <div><span class="sl">목표</span><p>실제 업무에 적용하며 불편을 고치고 정착시킵니다.</p></div>
       <div><span class="sl">누가</span><p>전 교직원 사용, TF팀 지원</p></div>
+      <div><span class="sl">소요 기간 (예시)</span><p>4주</p></div>
       <div><span class="sl">끝나면 남는 것</span><p>보완된 사용 약속, GOE 메신저 종료 기준</p></div>
     </div>
 <div class="step-body">
@@ -483,10 +513,10 @@
 
         <h3>4주 적응 기간, 이렇게 운영해 보세요</h3>
         <div class="weeks">
-          <div class="week"><span class="w">1주 차</span><h4>익숙해지기 — 기본 사용</h4><p>참여할 워크스페이스·대화방을 확인하고 공지 열람·답글·이모지 반응을 실제 업무에서 써 봅니다.</p></div>
-          <div class="week"><span class="w">2주 차</span><h4>업무에 적용하기 — 실제 활용</h4><p>자료 공유, 공동 문서 작성, 질문과 답변 등 일상 협업에 사용 약속을 적용합니다.</p></div>
-          <div class="week"><span class="w">3주 차</span><h4>불편함 개선하기 — 의견 수렴</h4><p>반복되는 문제를 사용 미숙 / 설정 문제 / 약속 개선 필요로 구분해 해결합니다.</p></div>
-          <div class="week"><span class="w">4주 차</span><h4>운영 방식 정착하기 — 안정화</h4><p>중복된 공지 공간을 정리하고 사용 약속을 최종 보완해 기본 운영 방식으로 정착시킵니다.</p></div>
+          <div class="week"><span class="w">1주 차</span><h4>익숙해지기: 기본 사용</h4><p>참여할 워크스페이스·대화방을 확인하고 공지 열람·답글·이모지 반응을 실제 업무에서 써 봅니다.</p></div>
+          <div class="week"><span class="w">2주 차</span><h4>업무에 적용하기: 실제 활용</h4><p>자료 공유, 공동 문서 작성, 질문과 답변 등 일상 협업에 사용 약속을 적용합니다.</p></div>
+          <div class="week"><span class="w">3주 차</span><h4>불편함 개선하기: 의견 수렴</h4><p>반복되는 문제를 사용 미숙 / 설정 문제 / 약속 개선 필요로 구분해 해결합니다.</p></div>
+          <div class="week"><span class="w">4주 차</span><h4>운영 방식 정착하기: 안정화</h4><p>중복된 공지 공간을 정리하고 사용 약속을 최종 보완해 기본 운영 방식으로 정착시킵니다.</p></div>
         </div>
         <details class="acc"><summary>1주 차 실제 적용 예시와 TF팀 지원</summary><div class="acc-body">
           <ul><li>교무부에서 교직원 협의 워크스페이스에 주간 업무를 안내하고, 교직원이 해당 공지를 확인하기</li><li>교직원 연수 안내 게시물에 확인 이모지를 남기고, 궁금한 사항은 답글로 질문하기</li><li>개인별 알림 설정과 모바일 접속 상태를 확인하고 불편한 사항을 담당자에게 전달하기</li></ul>
@@ -519,12 +549,24 @@
         <div class="tbl-wrap" style="margin-top:16px"><table class="tbl">
           <thead><tr><th>구분</th><th>운영 예시</th></tr></thead>
           <tbody>
-            <tr><td><b>Brity 메신저</b></td><td>학교 공식 공지, 교직원 간 업무소통, 자료 공유</td></tr>
+            <tr><td><b>Brity 메신저</b></td><td>학교 공식 공지, 교직원 간 업무 소통, 자료 공유</td></tr>
             <tr><td><b>GOE 메신저</b></td><td>전환 초기 별도 확인이 필요한 업무 등 학교에서 정한 한시적 사용 범위</td></tr>
             <tr><td><b>전환 이후</b></td><td>Brity 메신저 중심으로 운영하고 불필요한 중복 사용 정리</td></tr>
           </tbody>
         </table></div>
-        <details class="acc why"><summary>1. 왜 적응 기간이 필요할까요?</summary><div class="acc-body">
+                <h3>흔한 실패 패턴과 예방법</h3>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>실패 패턴</th><th>예방법</th></tr></thead>
+          <tbody>
+            <tr><td>워크스페이스·채널을 너무 많이 만들어 오히려 혼란</td><td>채널을 적게 시작하고 3주 차에 필요성 검토</td></tr>
+            <tr><td>Brity 사용 약속을 지키지 않음</td><td>관리자와 부장이 먼저 약속대로 사용, 안내장 공유</td></tr>
+            <tr><td>같은 공지를 GOE·Brity·단체 카톡에 중복 게시</td><td>공식 공간을 하나로 정하고 중복 게시 점검</td></tr>
+            <tr><td>4주 후 예전 방식으로 복귀</td><td>6단계 점검 일정을 미리 정함</td></tr>
+            <tr><td>정보부장에게 문의 집중</td><td>대표·선도 교사의 1차 지원, FAQ 상시 공유</td></tr>
+            <tr><td>약속을 수시로 바꿔 혼란</td><td>반복 문제만 모아 한 번에 보완</td></tr>
+          </tbody>
+        </table></div>
+<details class="acc why"><summary>1. 왜 적응 기간이 필요할까요?</summary><div class="acc-body">
         <p>설치와 연수를 마쳤더라도 오랫동안 써 온 GOE 메신저에서 한 번에 전환하기는 쉽지 않습니다. 워크스페이스에 공지를 올리고, 답글로 질문하고, 드라이브로 자료를 공유하는 방식은 실제 업무에서 반복해 봐야 익숙해집니다. <b>적응 기간은 새 업무를 추가하는 기간이 아니라, 기존 업무를 Brity 메신저로 처리하면서 사용 방법을 익히는 기간</b>입니다. 특히 2단계에서 정한 사용 약속이 실제 업무에 맞는지 확인하는 것이 중요합니다.</p>
         <figure class="figure"><img src="img/step5-4weeks.jpg" alt="4주 적응 기간의 세 가지 초점: 실제 업무에 적용하며 익히기, 사용 약속의 적합성 확인 및 개선, 중복 사용 최소화 및 불편 사항 해결" loading="lazy"><figcaption>처음부터 완벽하게 사용하기보다, 실제 업무에 적용하면서 함께 익히고 필요한 부분을 개선하는 것이 중요합니다.</figcaption></figure>
 
@@ -546,46 +588,71 @@
         </div>
       </aside>
     </div>
-      <div class="step-nav"><a class="btn outline small" href="#step4" data-tab="step4">← 4단계</a><a class="btn primary small" href="#criteria">정착 점검 기준 →</a></div>
+      <div class="step-nav"><a class="btn outline small" href="#step4" data-tab="step4">← 4단계</a><a class="btn primary small" href="#step6" data-tab="step6">6단계 →</a></div>
   </div>
 </section>
 
-</div>
-<!-- ===== 정착 점검 기준 ===== -->
-<section class="section alt" id="criteria">
+<!-- ===== STEP 06 ===== -->
+<section class="step step-6" id="step6">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">5단계를 마친 뒤</span>
-      <h2>Brity 메신저 정착 점검 기준</h2>
-      <p>다섯 영역의 질문에 "그렇다"고 답할 수 있으면 우리 학교의 운영 방식이 자리를 잡은 것입니다. 수치보다 질문으로 점검합니다.</p>
+    <div class="step-title">
+      <div class="num">STEP<b>06</b></div>
+      <div><h2>지속 운영과 개선</h2><p>담당자가 바뀌어도, 새 구성원이 들어와도 유지되는 운영 방식 만들기</p></div>
     </div>
-    <div class="criteria">
-      <div class="crit"><div class="ico">🖥️</div><h4>사용 환경</h4><p>교직원이 필요한 워크스페이스에 정상적으로 참여하고 있는가?</p></div>
-      <div class="crit"><div class="ico">💬</div><h4>소통 방식</h4><p>학교에서 정한 공지·답글·이모지 사용 약속이 지켜지는가?</p></div>
-      <div class="crit"><div class="ico">⚡</div><h4>업무 효율</h4><p>중복 공지와 반복적인 자료 제출이 줄어들었는가?</p></div>
-      <div class="crit"><div class="ico">🙂</div><h4>구성원 만족</h4><p>교직원이 기존 방식보다 자료 확인과 협업이 편리하다고 느끼는가?</p></div>
-      <div class="crit"><div class="ico">🔄</div><h4>지속 가능성</h4><p>담당자 변경이나 신규 교직원 전입 시에도 운영 방식을 유지할 수 있는가?</p></div>
+    <div class="step-summary">
+      <div><span class="sl">목표</span><p>점검 시점과 담당을 미리 정해 운영 방식이 흔들리지 않게 합니다.</p></div>
+      <div><span class="sl">누가</span><p>TF팀, 교무부장·정보부장, 학년 대표·선도 교사</p></div>
+      <div><span class="sl">소요 기간 (예시)</span><p>학기별(지속)</p></div>
+      <div><span class="sl">끝나면 남는 것</span><p>연간 운영 캘린더, 점검 일정과 담당, 인수인계 방법</p></div>
     </div>
+    <div class="step-body">
+      <div class="step-main">
+        <h3>연간 운영 캘린더</h3>
+        <div class="tbl-wrap"><table class="tbl stack">
+          <thead><tr><th>시기</th><th>할 일</th><th>담당(예시)</th></tr></thead>
+          <tbody>
+            <tr><td data-label="시기"><b>업무분장 확정 직후</b></td><td data-label="할 일">조직도·워크스페이스 구성원 갱신, 관리자 계정 인수인계</td><td data-label="담당(예시)">정보부장, 교무부장</td></tr>
+            <tr><td data-label="시기"><b>3월 초</b></td><td data-label="할 일">신규 전입 교직원 안내(안내장·FAQ, 15분 실습)</td><td data-label="담당(예시)">TF팀의 학년 대표, 선도 교사 등</td></tr>
+            <tr><td data-label="시기"><b>학기 중 1회</b></td><td data-label="할 일">정착 점검 기준으로 소통 방식·중복 공지·만족도 점검</td><td data-label="담당(예시)">TF팀</td></tr>
+            <tr><td data-label="시기"><b>학기 말</b></td><td data-label="할 일">사용 약속 보완, 낮은 활용 공간 정리</td><td data-label="담당(예시)">TF팀</td></tr>
+            <tr><td data-label="시기"><b>연말</b></td><td data-label="할 일">다음 학년도 TF 인수인계, 안내자료 갱신</td><td data-label="담당(예시)">교무부장, 정보부장</td></tr>
+          </tbody>
+        </table></div>
 
-    <h3 style="margin-top:40px">정착의 열쇠는 "아는가, 쓰는가, 학교 규칙으로 정했는가"</h3>
-    <p>Brity 메신저에는 목적이 비슷한 소통 수단(쪽지·대화·대화방 공지·워크스페이스)이 여러 개 있고, 근무시간 외 연락 문제를 다룰 기능도 이미 들어 있습니다. 쟁점은 기능의 유무가 아니라 교직원이 그 기능을 <b>알고</b>, <b>쓰고</b>, 학교가 <b>약속으로 정했는지</b>입니다.</p>
-    <div class="tbl-wrap"><table class="tbl stack">
-      <thead><tr><th>기능</th><th>무엇을 해결하나</th><th>어디서</th></tr></thead>
-      <tbody>
-        <tr><td data-label="기능"><b>방해금지 시간 설정</b></td><td data-label="무엇을 해결하나">근무시간 외 알림 차단 (약속 ⑥)</td><td data-label="어디서">모바일 앱 설정</td></tr>
-        <tr><td data-label="기능"><b>예약 발송</b></td><td data-label="무엇을 해결하나">퇴근 후 작성한 공지를 다음 근무일 아침에 전달 (약속 ⑥)</td><td data-label="어디서">메시지 작성 시</td></tr>
-        <tr><td data-label="기능"><b>읽음 현황 확인</b></td><td data-label="무엇을 해결하나">누가 공지를 확인했는지 파악</td><td data-label="어디서">대화방 메시지</td></tr>
-        <tr><td data-label="기능"><b>발신 취소·삭제</b></td><td data-label="무엇을 해결하나">잘못 보낸 메시지 회수</td><td data-label="어디서">보낸 메시지</td></tr>
-        <tr><td data-label="기능"><b>Copilot 안 읽은 메시지 요약</b></td><td data-label="무엇을 해결하나">긴 대화방의 핵심을 빠르게 확인</td><td data-label="어디서">모바일·PC Copilot</td></tr>
-      </tbody>
-    </table></div>
-    <p style="font-size:.9rem;color:var(--muted)">※ 연구회에서는 교무부장을 대상으로 위 기능의 인지·사용 실태와 GOE 메신저 병행 현황을 조사하고 있습니다. 결과가 정리되면 이 자리에 반영할 예정입니다.</p>
+        <h3 id="criteria">Brity 메신저 학교 맞춤형 정착 점검 기준과 측정 지표(예시)</h3>
+        <div class="tbl-wrap"><table class="tbl stack">
+          <thead><tr><th>점검 영역</th><th>확인 내용</th><th>측정 지표(예시)</th><th>측정 시점</th></tr></thead>
+          <tbody>
+            <tr><td data-label="점검 영역"><b>사용 환경</b></td><td data-label="확인 내용">교직원이 필요한 워크스페이스에 정상적으로 참여하고 있는가?</td><td data-label="측정 지표(예시)">참여율(참여 인원/전체 교직원)</td><td data-label="측정 시점">1주, 4주</td></tr>
+            <tr><td data-label="점검 영역"><b>소통 방식</b></td><td data-label="확인 내용">학교에서 정한 공지·답글·이모지 사용 약속이 지켜지는가?</td><td data-label="측정 지표(예시)">공지 형식 준수 비율, 공지 질문의 답글 처리 비율</td><td data-label="측정 시점">4주, 학기별</td></tr>
+            <tr><td data-label="점검 영역"><b>업무 효율</b></td><td data-label="확인 내용">중복 공지와 반복적인 자료 제출이 줄어들었는가?</td><td data-label="측정 지표(예시)">중복 게시 건수, 개별 문의 건수, 개별 파일 제출 건수</td><td data-label="측정 시점">도입 전, 4주</td></tr>
+            <tr><td data-label="점검 영역"><b>구성원 만족</b></td><td data-label="확인 내용">교직원이 기존 방식보다 자료 확인과 협업이 편리하다고 느끼는가?</td><td data-label="측정 지표(예시)">5점 척도 설문 평균</td><td data-label="측정 시점">4주, 학기별</td></tr>
+            <tr><td data-label="점검 영역"><b>지속 가능성</b></td><td data-label="확인 내용">담당자 변경이나 신규 교직원 전입 시에도 운영 방식을 유지할 수 있는가?</td><td data-label="측정 지표(예시)">인수인계 문서 유무, 신규 교직원 안내 완료율</td><td data-label="측정 시점">학기별</td></tr>
+          </tbody>
+        </table></div>
+        <p>정착 수준은 <a href="appendix.html#a2">부록2 정착 수준 진단표</a>와 <a href="appendix.html#a3">부록3 전환 전·후 비교표</a>로 확인합니다.</p>
+        <details class="acc why"><summary>왜 6단계가 필요할까요?</summary><div class="acc-body"><p>정착은 4주로 끝나지 않습니다. 3월 업무분장 변경, 신규 교직원 전입, 학기 전환 때 운영 방식이 흔들리기 쉽습니다. 6단계는 점검 시점과 담당을 미리 정해 두는 단계입니다.</p></div></details>
+      </div>
+      <aside class="sticky">
+        <div class="checklist" data-list="step6">
+          <h4>6단계 완료 체크리스트 <span class="tag green">0/3</span></h4>
+          <div class="meter"><i></i></div>
+          <label><input type="checkbox"> 정착 점검 시기와 담당을 정했다.</label>
+          <label><input type="checkbox"> 신규 전입 교직원 안내자료와 담당을 정했다.</label>
+          <label><input type="checkbox"> 업무분장 변경 시 관리자 계정·조직도·워크스페이스 인수인계 방법을 정했다.</label>
+          <div class="foot"><span>이 기기에 저장됩니다</span><button type="button" data-reset>초기화</button></div>
+        </div>
+      </aside>
+    </div>
+      <div class="step-nav"><a class="btn outline small" href="#step5" data-tab="step5">← 5단계</a><a class="btn primary small" href="appendix.html">부록 진단표 →</a></div>
   </div>
 </section>
+</div>
+
 
 
 <section class="section" style="padding-top:0">
-  <div class="wrap"><div class="next-row"><a class="btn primary" href="cases.html">다음: 활용 사례 →</a><a class="btn outline" href="faq.html">막힐 때 보는 FAQ</a><details class="acc" style="flex:1 1 100%;margin-top:14px"><summary>왜 이 길라잡이가 필요한가 (연구 배경)</summary><div class="acc-body">
+  <div class="wrap"><div class="next-row"><a class="btn primary" href="cases.html">다음: 활용 사례 →</a><a class="btn outline" href="faq.html">막힐 때 보는 FAQ</a><details class="acc" style="flex:1 1 100%;margin-top:14px"><summary>왜 이 길라잡이가 필요한가 (연구 배경과 변화관리 이론)</summary><div class="acc-body">
     <div class="section-head">
       <span class="eyebrow">연구 배경</span>
       <h2>메신저를 바꾸는 일이 아니라, 소통 방식을 함께 정하는 일입니다</h2>
@@ -598,8 +665,90 @@
       <div class="card"><div class="icon">🧑‍💻</div><h4>한 사람에게 쏠리는 지원</h4><p>설치와 사용 문의가 정보업무담당자(정보부장) 등 특정 교직원에게 집중됩니다.</p></div>
     </div>
     <div class="note blue" style="margin-top:24px"><p><b>그래서 이 길라잡이는</b> ① 구성원이 함께 참여하는 전환 지원 체계(TF팀), ② 학교 차원의 공통 소통 기준(사용 약속), ③ 부담을 줄이는 단계적 정착(환경 준비·실습 연수·4주 적응), ④ 바로 쓰는 실천 자료(체크리스트·연수 운영안·적용 예시)를 제안합니다. 모든 내용은 예시이며 학교 규모와 여건에 맞게 골라 쓰면 됩니다.</p></div>
-  </div></details></div></div>
+  
+    <h4 style="margin-top:18px">정착 모델 단계와 변화관리 이론의 대응 (Kotter, ADKAR 참고, 재구성)</h4>
+    <div class="tbl-wrap"><table class="tbl stack">
+      <thead><tr><th>정착 모델 단계</th><th>Kotter 변화관리 8단계(관련 단계)</th><th>ADKAR 모델(관련 요소)</th></tr></thead>
+      <tbody>
+        <tr><td data-label="정착 모델 단계"><b>STEP 01 TF팀 구성</b></td><td data-label="Kotter">변화 주도 연합 구성</td><td data-label="ADKAR">Awareness(변화의 필요 인식)</td></tr>
+        <tr><td data-label="정착 모델 단계"><b>STEP 02 사용 약속</b></td><td data-label="Kotter">비전·전략 수립, 비전 공유</td><td data-label="ADKAR">Desire(참여 의지, 의견 수렴)</td></tr>
+        <tr><td data-label="정착 모델 단계"><b>STEP 03 환경 준비</b></td><td data-label="Kotter">장애물 제거</td><td data-label="ADKAR">Knowledge(기본 지식)</td></tr>
+        <tr><td data-label="정착 모델 단계"><b>STEP 04 안내·실습 연수</b></td><td data-label="Kotter">역량 강화, 참여 확대</td><td data-label="ADKAR">Knowledge, Ability(실행 능력)</td></tr>
+        <tr><td data-label="정착 모델 단계"><b>STEP 05 4주 적응</b></td><td data-label="Kotter">단기 성과 창출</td><td data-label="ADKAR">Ability, Reinforcement(강화)</td></tr>
+        <tr><td data-label="정착 모델 단계"><b>STEP 06 지속 운영</b></td><td data-label="Kotter">변화의 제도화</td><td data-label="ADKAR">Reinforcement(정착)</td></tr>
+      </tbody>
+    </table></div>
+</div></details></div></div>
 </section>
+
+<!-- ===== 사용 실태 분석 ===== -->
+<section class="section alt" id="survey">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Brity 메신저 사용 실태 분석</span>
+      <h2>교무부장 121명에게 물었습니다</h2>
+      <p>학교 현장의 Brity 메신저 활용 현황과 전환 과정에서 발생하는 어려움 및 제안 의견 등을 파악하기 위해 사용 실태 설문조사를 실시하였습니다. 조사 결과는 학교별 업무소통 환경을 진단하고, 현장에서 실천할 수 있는 Brity 메신저 정착 방안을 마련하기 위한 기초자료로 활용하였습니다. 다만 본 조사는 교직원 121명의 응답을 바탕으로 이루어져 조사 결과를 전체 학교 현장의 실태로 일반화하는 데에는 한계가 있습니다.</p>
+    </div>
+    <div class="survey-meta"><span><b>조사 기간</b> 2026. 10. 26.~11. 9.</span><span><b>조사 방법</b> 온라인 설문조사</span><span><b>대상</b> 경기도 관내 학교 교무부장</span><span><b>응답자 수</b> 121명</span><span><b>조사 내용</b> 메신저 사용 현황, 기존 메신저 병행 사용 이유, 모바일 활용, 주요 기능의 인지도 및 활용도, 만족도, 불편 사항 및 개선 요구</span></div>
+
+    <div class="kpis">
+      <div class="kpi"><span class="kl">GOE 메신저만 사용한다</span><span class="kv">59.5%</span><span class="kd">72명 / 121명</span></div>
+      <div class="kpi"><span class="kl">가장 큰 불편은 "사용법이 익숙하지 않다"</span><span class="kv">48.8%</span><span class="kd">59명 / 121명</span></div>
+      <div class="kpi"><span class="kl">Brity 모바일 앱을 설치하지 않았다</span><span class="kv">71.9%</span><span class="kd">87명 / 121명</span></div>
+      <div class="kpi"><span class="kl">업무 연락에 개인 메신저를 쓴다 (자주+가끔)</span><span class="kv">74.4%</span><span class="kd">90명 / 121명</span></div>
+    </div>
+
+    <div class="findings">
+      <details class="acc" open><summary>가. 기존 메신저 중심의 업무소통 방식 지속</summary><div class="acc-body">
+        <p>전체 응답자의 59.5%가 GOE 메신저만 사용하고 있으며, 두 메신저를 병행하되 GOE 메신저를 주로 사용하는 비율도 15.7%로 나타났습니다. 반면 Brity 메신저만 사용하는 비율은 2.5%, 두 메신저를 병행하면서 Brity 메신저를 주로 사용하는 비율은 22.3%였습니다.</p>
+        <p>기존 메신저를 함께 사용하는 주요 이유로는 'GOE 메신저가 아직 운영되고 있어서' 52.9%(64명), '기존 메신저에 익숙해서' 49.6%(60명), '로그인이나 실행이 번거로워서' 30.6%(37명), '상대방이 Brity 메신저를 잘 확인하지 않아서' 29.8%(36명) 순으로 나타났습니다.</p>
+        <p>이는 새로운 메신저 도입 이후에도 기존 업무소통 방식이 유지되고 있음을 보여주며, 학교 구성원 간 공통된 사용 기준과 단계적인 전환 계획 마련이 필요함을 시사합니다.</p>
+        <div class="charts">
+          <figure class="chart"><figcaption><b>브리티 메신저와 GOE 메신저를 어떻게 쓰고 있나</b><span>하나만 선택 · 121명</span></figcaption><div class="hbars"><div class="hrow"><span class="hl">GOE 메신저만 사용한다</span><span class="ht"><span class="hb" style="width:100.0%" title="GOE 메신저만 사용한다: 72명 (59.5%)"></span></span><span class="hv">72명 <em>59.5%</em></span></div><div class="hrow"><span class="hl">둘 다 쓰지만 브리티 메신저를 주로 쓴다</span><span class="ht"><span class="hb" style="width:37.5%" title="둘 다 쓰지만 브리티 메신저를 주로 쓴다: 27명 (22.3%)"></span></span><span class="hv">27명 <em>22.3%</em></span></div><div class="hrow"><span class="hl">둘 다 쓰지만 GOE 메신저를 주로 쓴다</span><span class="ht"><span class="hb" style="width:26.4%" title="둘 다 쓰지만 GOE 메신저를 주로 쓴다: 19명 (15.7%)"></span></span><span class="hv">19명 <em>15.7%</em></span></div><div class="hrow"><span class="hl">브리티 메신저만 사용한다</span><span class="ht"><span class="hb" style="width:4.2%" title="브리티 메신저만 사용한다: 3명 (2.5%)"></span></span><span class="hv">3명 <em>2.5%</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>항목</th><th>응답 수</th><th>비율</th></tr></thead><tbody><tr><td>GOE 메신저만 사용한다</td><td>72</td><td>59.5%</td></tr><tr><td>둘 다 쓰지만 브리티 메신저를 주로 쓴다</td><td>27</td><td>22.3%</td></tr><tr><td>둘 다 쓰지만 GOE 메신저를 주로 쓴다</td><td>19</td><td>15.7%</td></tr><tr><td>브리티 메신저만 사용한다</td><td>3</td><td>2.5%</td></tr></tbody></table></details></figure>
+          <figure class="chart"><figcaption><b>GOE나 개인 메신저를 함께 쓰는 이유</b><span>복수 선택 · 121명 기준</span></figcaption><div class="hbars"><div class="hrow"><span class="hl">GOE 메신저가 아직 운영되고 있다</span><span class="ht"><span class="hb" style="width:100.0%" title="GOE 메신저가 아직 운영되고 있다: 64명 (52.9%)"></span></span><span class="hv">64명 <em>52.9%</em></span></div><div class="hrow"><span class="hl">이미 익숙하다</span><span class="ht"><span class="hb" style="width:93.8%" title="이미 익숙하다: 60명 (49.6%)"></span></span><span class="hv">60명 <em>49.6%</em></span></div><div class="hrow"><span class="hl">로그인이나 실행이 번거롭다</span><span class="ht"><span class="hb" style="width:57.8%" title="로그인이나 실행이 번거롭다: 37명 (30.6%)"></span></span><span class="hv">37명 <em>30.6%</em></span></div><div class="hrow"><span class="hl">상대방이 브리티 메신저를 잘 확인하지 않는다</span><span class="ht"><span class="hb" style="width:56.2%" title="상대방이 브리티 메신저를 잘 확인하지 않는다: 36명 (29.8%)"></span></span><span class="hv">36명 <em>29.8%</em></span></div><div class="hrow"><span class="hl">학년·동료 대화방이 이미 다른 메신저에 있다</span><span class="ht"><span class="hb" style="width:50.0%" title="학년·동료 대화방이 이미 다른 메신저에 있다: 32명 (26.4%)"></span></span><span class="hv">32명 <em>26.4%</em></span></div><div class="hrow"><span class="hl">휴대폰에서 브리티 메신저를 쓰기 불편하다</span><span class="ht"><span class="hb" style="width:18.8%" title="휴대폰에서 브리티 메신저를 쓰기 불편하다: 12명 (9.9%)"></span></span><span class="hv">12명 <em>9.9%</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>항목</th><th>응답 수</th><th>비율</th></tr></thead><tbody><tr><td>GOE 메신저가 아직 운영되고 있다</td><td>64</td><td>52.9%</td></tr><tr><td>이미 익숙하다</td><td>60</td><td>49.6%</td></tr><tr><td>로그인이나 실행이 번거롭다</td><td>37</td><td>30.6%</td></tr><tr><td>상대방이 브리티 메신저를 잘 확인하지 않는다</td><td>36</td><td>29.8%</td></tr><tr><td>학년·동료 대화방이 이미 다른 메신저에 있다</td><td>32</td><td>26.4%</td></tr><tr><td>휴대폰에서 브리티 메신저를 쓰기 불편하다</td><td>12</td><td>9.9%</td></tr></tbody></table></details></figure>
+        </div>
+      </div></details>
+      <details class="acc"><summary>나. 개인 메신저 병행 사용 및 모바일 활용 저조</summary><div class="acc-body">
+        <p>업무 연락에 개인 메신저를 '자주 사용한다'는 응답이 39.7%, '가끔 사용한다'는 응답이 34.7%로, 전체의 74.4%가 업무 연락에 개인 메신저를 활용하는 것으로 나타났습니다. 한편 Brity 모바일 앱을 설치하지 않았다는 응답은 71.9%, 설치했지만 거의 사용하지 않는다는 응답은 18.2%로 나타났으며, 설치 후 자주 사용한다는 응답은 9.9%에 그쳤습니다.</p>
+        <p>이는 업무소통 채널의 분산과 모바일 활용의 제약이 함께 나타나고 있음을 보여주며, 학교의 업무 특성과 교직원의 사용 여건을 고려한 소통 채널 정비가 필요함을 시사합니다.</p>
+        <div class="charts">
+          <figure class="chart"><figcaption><b>업무 연락에 개인 메신저(카카오톡 등)도 쓰나</b><span>하나만 선택 · 121명</span></figcaption><div class="hbars"><div class="hrow"><span class="hl">자주 쓴다</span><span class="ht"><span class="hb" style="width:100.0%" title="자주 쓴다: 48명 (39.7%)"></span></span><span class="hv">48명 <em>39.7%</em></span></div><div class="hrow"><span class="hl">가끔 쓴다</span><span class="ht"><span class="hb" style="width:87.5%" title="가끔 쓴다: 42명 (34.7%)"></span></span><span class="hv">42명 <em>34.7%</em></span></div><div class="hrow"><span class="hl">거의 쓰지 않는다</span><span class="ht"><span class="hb" style="width:64.6%" title="거의 쓰지 않는다: 31명 (25.6%)"></span></span><span class="hv">31명 <em>25.6%</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>항목</th><th>응답 수</th><th>비율</th></tr></thead><tbody><tr><td>자주 쓴다</td><td>48</td><td>39.7%</td></tr><tr><td>가끔 쓴다</td><td>42</td><td>34.7%</td></tr><tr><td>거의 쓰지 않는다</td><td>31</td><td>25.6%</td></tr></tbody></table></details></figure>
+          <figure class="chart"><figcaption><b>휴대폰에서도 브리티 메신저를 쓰나</b><span>하나만 선택 · 121명 · 모바일 앱 2026. 9. 1. 개시</span></figcaption><div class="hbars"><div class="hrow"><span class="hl">앱을 설치하지 않았다</span><span class="ht"><span class="hb" style="width:100.0%" title="앱을 설치하지 않았다: 87명 (71.9%)"></span></span><span class="hv">87명 <em>71.9%</em></span></div><div class="hrow"><span class="hl">앱을 설치했지만 거의 사용하지 않는다</span><span class="ht"><span class="hb" style="width:25.3%" title="앱을 설치했지만 거의 사용하지 않는다: 22명 (18.2%)"></span></span><span class="hv">22명 <em>18.2%</em></span></div><div class="hrow"><span class="hl">앱을 설치해 자주 사용한다</span><span class="ht"><span class="hb" style="width:13.8%" title="앱을 설치해 자주 사용한다: 12명 (9.9%)"></span></span><span class="hv">12명 <em>9.9%</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>항목</th><th>응답 수</th><th>비율</th></tr></thead><tbody><tr><td>앱을 설치하지 않았다</td><td>87</td><td>71.9%</td></tr><tr><td>앱을 설치했지만 거의 사용하지 않는다</td><td>22</td><td>18.2%</td></tr><tr><td>앱을 설치해 자주 사용한다</td><td>12</td><td>9.9%</td></tr></tbody></table></details></figure>
+        </div>
+      </div></details>
+      <details class="acc"><summary>다. 기본 기능 중심의 활용과 기능별 인지도 차이</summary><div class="acc-body">
+        <p>Brity 메신저에서 자주 사용하는 기능은 쪽지 61.2%(74명), 대화(1:1·그룹 채팅) 48.8%(59명) 순으로 나타났습니다. 반면 워크스페이스(공지 확인·게시)는 7.4%(9명), 통합 검색은 7.4%(9명), 이모지 반응은 5.8%(7명), 드라이브 파일 링크 보내기는 3.3%(4명)에 그쳤습니다. 또한 전체 응답자의 31.4%(38명)는 Brity 메신저를 사용하지 않는다고 응답하였습니다.</p>
+        <p>주요 기능의 인지도 조사에서는 방해금지 시간 설정과 Copilot 안 읽은 메시지 요약 기능을 모른다는 응답이 상대적으로 많았으며, 예약 발송·읽음 현황 확인·발신 취소 등도 기능별 인지 및 활용 수준에 차이가 있었습니다.</p>
+        <p>이는 기본적인 메시지 전달 외의 기능 활용이 아직 제한적임을 보여주며, 학교 업무에 필요한 핵심 기능을 중심으로 한 실습형 연수와 사용 안내가 필요함을 시사합니다.</p>
+        <div class="charts">
+          <figure class="chart"><figcaption><b>자주 쓰는 기능</b><span>복수 선택 · 121명 기준</span></figcaption><div class="hbars"><div class="hrow"><span class="hl">쪽지</span><span class="ht"><span class="hb" style="width:100.0%" title="쪽지: 74명 (61.2%)"></span></span><span class="hv">74명 <em>61.2%</em></span></div><div class="hrow"><span class="hl">대화 (1:1·그룹 채팅)</span><span class="ht"><span class="hb" style="width:79.7%" title="대화 (1:1·그룹 채팅): 59명 (48.8%)"></span></span><span class="hv">59명 <em>48.8%</em></span></div><div class="hrow"><span class="hl">브리티 메신저를 사용하지 않는다 (유사 응답 포함)</span><span class="ht"><span class="hb" style="width:51.4%" title="브리티 메신저를 사용하지 않는다 (유사 응답 포함): 38명 (31.4%)"></span></span><span class="hv">38명 <em>31.4%</em></span></div><div class="hrow"><span class="hl">워크스페이스 (공지 확인·게시)</span><span class="ht"><span class="hb" style="width:12.2%" title="워크스페이스 (공지 확인·게시): 9명 (7.4%)"></span></span><span class="hv">9명 <em>7.4%</em></span></div><div class="hrow"><span class="hl">통합 검색</span><span class="ht"><span class="hb" style="width:12.2%" title="통합 검색: 9명 (7.4%)"></span></span><span class="hv">9명 <em>7.4%</em></span></div><div class="hrow"><span class="hl">이모지 반응</span><span class="ht"><span class="hb" style="width:9.5%" title="이모지 반응: 7명 (5.8%)"></span></span><span class="hv">7명 <em>5.8%</em></span></div><div class="hrow"><span class="hl">공지방</span><span class="ht"><span class="hb" style="width:8.1%" title="공지방: 6명 (5.0%)"></span></span><span class="hv">6명 <em>5.0%</em></span></div><div class="hrow"><span class="hl">투표</span><span class="ht"><span class="hb" style="width:6.8%" title="투표: 5명 (4.1%)"></span></span><span class="hv">5명 <em>4.1%</em></span></div><div class="hrow"><span class="hl">드라이브 파일 링크 보내기</span><span class="ht"><span class="hb" style="width:5.4%" title="드라이브 파일 링크 보내기: 4명 (3.3%)"></span></span><span class="hv">4명 <em>3.3%</em></span></div><div class="hrow"><span class="hl">답글(스레드)·멘션</span><span class="ht"><span class="hb" style="width:2.7%" title="답글(스레드)·멘션: 2명 (1.7%)"></span></span><span class="hv">2명 <em>1.7%</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>항목</th><th>응답 수</th><th>비율</th></tr></thead><tbody><tr><td>쪽지</td><td>74</td><td>61.2%</td></tr><tr><td>대화 (1:1·그룹 채팅)</td><td>59</td><td>48.8%</td></tr><tr><td>브리티 메신저를 사용하지 않는다 (유사 응답 포함)</td><td>38</td><td>31.4%</td></tr><tr><td>워크스페이스 (공지 확인·게시)</td><td>9</td><td>7.4%</td></tr><tr><td>통합 검색</td><td>9</td><td>7.4%</td></tr><tr><td>이모지 반응</td><td>7</td><td>5.8%</td></tr><tr><td>공지방</td><td>6</td><td>5.0%</td></tr><tr><td>투표</td><td>5</td><td>4.1%</td></tr><tr><td>드라이브 파일 링크 보내기</td><td>4</td><td>3.3%</td></tr><tr><td>답글(스레드)·멘션</td><td>2</td><td>1.7%</td></tr></tbody></table></details></figure>
+          <figure class="chart"><figcaption><b>다음 기능을 알고 사용하나</b><span>기능별 하나 선택 · 121명</span></figcaption><div class="legend"><span><i class="s1"></i>알고 사용한다</span><span><i class="s2"></i>알지만 사용하지 않는다</span><span><i class="s3"></i>몰랐다</span><span><i class="s4"></i>브리티 메신저를 사용하지 않는다</span></div><div class="hbars stack"><div class="hrow"><span class="hl">방해금지 시간 설정</span><span class="ht"><span class="sg s1" style="width:10.7%" title="알고 사용한다 13명"></span><span class="sg s2" style="width:14.9%" title="알지만 사용하지 않는다 18명"></span><span class="sg s3" style="width:45.5%" title="몰랐다 55명"></span><span class="sg s4" style="width:28.9%" title="브리티 메신저를 사용하지 않는다 35명"></span></span><span class="hv">몰랐다 <em>55명</em></span></div><div class="hrow"><span class="hl">예약 발송</span><span class="ht"><span class="sg s1" style="width:31.4%" title="알고 사용한다 38명"></span><span class="sg s2" style="width:13.2%" title="알지만 사용하지 않는다 16명"></span><span class="sg s3" style="width:25.6%" title="몰랐다 31명"></span><span class="sg s4" style="width:29.8%" title="브리티 메신저를 사용하지 않는다 36명"></span></span><span class="hv">몰랐다 <em>31명</em></span></div><div class="hrow"><span class="hl">읽음 현황 확인</span><span class="ht"><span class="sg s1" style="width:34.7%" title="알고 사용한다 42명"></span><span class="sg s2" style="width:15.7%" title="알지만 사용하지 않는다 19명"></span><span class="sg s3" style="width:20.7%" title="몰랐다 25명"></span><span class="sg s4" style="width:28.9%" title="브리티 메신저를 사용하지 않는다 35명"></span></span><span class="hv">몰랐다 <em>25명</em></span></div><div class="hrow"><span class="hl">발신 취소</span><span class="ht"><span class="sg s1" style="width:33.9%" title="알고 사용한다 41명"></span><span class="sg s2" style="width:13.2%" title="알지만 사용하지 않는다 16명"></span><span class="sg s3" style="width:24.0%" title="몰랐다 29명"></span><span class="sg s4" style="width:28.9%" title="브리티 메신저를 사용하지 않는다 35명"></span></span><span class="hv">몰랐다 <em>29명</em></span></div><div class="hrow"><span class="hl">Copilot 안 읽은 메시지 요약</span><span class="ht"><span class="sg s1" style="width:5.0%" title="알고 사용한다 6명"></span><span class="sg s2" style="width:14.9%" title="알지만 사용하지 않는다 18명"></span><span class="sg s3" style="width:49.6%" title="몰랐다 60명"></span><span class="sg s4" style="width:30.6%" title="브리티 메신저를 사용하지 않는다 37명"></span></span><span class="hv">몰랐다 <em>60명</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>기능</th><th>알고 사용한다</th><th>알지만 사용하지 않는다</th><th>몰랐다</th><th>사용하지 않는다</th></tr></thead><tbody><tr><td>방해금지 시간 설정</td><td>13</td><td>18</td><td>55</td><td>35</td></tr><tr><td>예약 발송</td><td>38</td><td>16</td><td>31</td><td>36</td></tr><tr><td>읽음 현황 확인</td><td>42</td><td>19</td><td>25</td><td>35</td></tr><tr><td>발신 취소</td><td>41</td><td>16</td><td>29</td><td>35</td></tr><tr><td>Copilot 안 읽은 메시지 요약</td><td>6</td><td>18</td><td>60</td><td>37</td></tr></tbody></table></details></figure>
+        </div>
+      </div></details>
+      <details class="acc"><summary>라. Brity 메신저에 대한 만족도와 긍정적 인식</summary><div class="acc-body">
+        <p>Brity 메신저 사용자 91명을 대상으로 한 만족도 조사 결과, 5점 만점에 평균 2.6점으로 나타났습니다. '보통'이라는 응답이 30.8%(28명)로 가장 많았으며, 1~2점의 낮은 만족도를 보인 응답자는 47.3%(43명), 4~5점의 높은 만족도를 보인 응답자는 22.0%(20명)였습니다.</p>
+        <p>한편 Brity 메신저의 장점으로는 '휴대폰에서도 확인할 수 있다' 38.0%(46명), '보안이 검증된 공식 도구라 안심된다' 21.5%(26명), '공지·자료가 워크스페이스에 모여 찾기 쉽다' 15.7%(19명) 등이 제시되었습니다.</p>
+        <p>이는 Brity 메신저의 활용 가능성에 대한 긍정적 인식이 존재하지만, 실제 사용 경험과 만족도를 높이기 위한 지원이 필요함을 보여줍니다.</p>
+        <div class="charts">
+          <figure class="chart"><figcaption><b>브리티 메신저에 얼마나 만족하나</b><span>사용자 91명 · 5점 척도 · 평균 2.6점</span></figcaption><div class="hbars"><div class="hrow"><span class="hl">1 매우 불만족</span><span class="ht"><span class="hb" style="width:75.0%" title="1 매우 불만족: 21명 (23.1%)"></span></span><span class="hv">21명 <em>23.1%</em></span></div><div class="hrow"><span class="hl">2 불만족</span><span class="ht"><span class="hb" style="width:78.6%" title="2 불만족: 22명 (24.2%)"></span></span><span class="hv">22명 <em>24.2%</em></span></div><div class="hrow"><span class="hl">3 보통</span><span class="ht"><span class="hb" style="width:100.0%" title="3 보통: 28명 (30.8%)"></span></span><span class="hv">28명 <em>30.8%</em></span></div><div class="hrow"><span class="hl">4 만족</span><span class="ht"><span class="hb" style="width:53.6%" title="4 만족: 15명 (16.5%)"></span></span><span class="hv">15명 <em>16.5%</em></span></div><div class="hrow"><span class="hl">5 매우 만족</span><span class="ht"><span class="hb" style="width:17.9%" title="5 매우 만족: 5명 (5.5%)"></span></span><span class="hv">5명 <em>5.5%</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>항목</th><th>응답 수</th><th>비율</th></tr></thead><tbody><tr><td>1 매우 불만족</td><td>21</td><td>23.1%</td></tr><tr><td>2 불만족</td><td>22</td><td>24.2%</td></tr><tr><td>3 보통</td><td>28</td><td>30.8%</td></tr><tr><td>4 만족</td><td>15</td><td>16.5%</td></tr><tr><td>5 매우 만족</td><td>5</td><td>5.5%</td></tr></tbody></table></details></figure>
+          <figure class="chart"><figcaption><b>브리티 메신저의 좋은 점</b><span>복수 선택 · 121명 기준</span></figcaption><div class="hbars"><div class="hrow"><span class="hl">휴대폰에서도 확인할 수 있다</span><span class="ht"><span class="hb" style="width:100.0%" title="휴대폰에서도 확인할 수 있다: 46명 (38.0%)"></span></span><span class="hv">46명 <em>38.0%</em></span></div><div class="hrow"><span class="hl">보안이 검증된 공식 도구라 안심된다</span><span class="ht"><span class="hb" style="width:56.5%" title="보안이 검증된 공식 도구라 안심된다: 26명 (21.5%)"></span></span><span class="hv">26명 <em>21.5%</em></span></div><div class="hrow"><span class="hl">공지·자료가 워크스페이스에 모여 찾기 쉽다</span><span class="ht"><span class="hb" style="width:41.3%" title="공지·자료가 워크스페이스에 모여 찾기 쉽다: 19명 (15.7%)"></span></span><span class="hv">19명 <em>15.7%</em></span></div><div class="hrow"><span class="hl">드라이브 링크로 같은 문서에 함께 입력할 수 있다</span><span class="ht"><span class="hb" style="width:15.2%" title="드라이브 링크로 같은 문서에 함께 입력할 수 있다: 7명 (5.8%)"></span></span><span class="hv">7명 <em>5.8%</em></span></div><div class="hrow"><span class="hl">이모지 반응으로 확인 표시가 간단하다</span><span class="ht"><span class="hb" style="width:15.2%" title="이모지 반응으로 확인 표시가 간단하다: 7명 (5.8%)"></span></span><span class="hv">7명 <em>5.8%</em></span></div><div class="hrow"><span class="hl">답글로 문의·답변이 공지별로 정리된다</span><span class="ht"><span class="hb" style="width:15.2%" title="답글로 문의·답변이 공지별로 정리된다: 7명 (5.8%)"></span></span><span class="hv">7명 <em>5.8%</em></span></div><div class="hrow"><span class="hl">조직도에서 담당자를 찾기 쉽다</span><span class="ht"><span class="hb" style="width:10.9%" title="조직도에서 담당자를 찾기 쉽다: 5명 (4.1%)"></span></span><span class="hv">5명 <em>4.1%</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>항목</th><th>응답 수</th><th>비율</th></tr></thead><tbody><tr><td>휴대폰에서도 확인할 수 있다</td><td>46</td><td>38.0%</td></tr><tr><td>보안이 검증된 공식 도구라 안심된다</td><td>26</td><td>21.5%</td></tr><tr><td>공지·자료가 워크스페이스에 모여 찾기 쉽다</td><td>19</td><td>15.7%</td></tr><tr><td>드라이브 링크로 같은 문서에 함께 입력할 수 있다</td><td>7</td><td>5.8%</td></tr><tr><td>이모지 반응으로 확인 표시가 간단하다</td><td>7</td><td>5.8%</td></tr><tr><td>답글로 문의·답변이 공지별로 정리된다</td><td>7</td><td>5.8%</td></tr><tr><td>조직도에서 담당자를 찾기 쉽다</td><td>5</td><td>4.1%</td></tr></tbody></table></details></figure>
+        </div>
+      </div></details>
+      <details class="acc"><summary>마. 사용 편의성 개선과 체계적인 전환 지원 요구</summary><div class="acc-body">
+        <p>Brity 메신저 사용 과정에서의 주요 불편 사항으로는 '사용법이 익숙하지 않다' 48.8%(59명), '로그인이나 실행이 번거롭다' 42.1%(51명), '메신저를 두 개 이상 함께 사용하여 번거롭다' 39.7%(48명), '쪽지·대화·워크스페이스 중 무엇을 사용해야 할지 헷갈린다' 29.8%(36명), '기능이 많아 복잡하다' 24.8%(30명) 순으로 나타났습니다. 이 밖에도 근무시간 외 연락 증가, 알림 및 확인 방식의 혼란, 기능별 사용 편의성 등에 관한 개선 요구가 확인되었습니다.</p>
+        <p>이는 Brity 메신저의 정착을 위해 기능 안내뿐 아니라 사용 기준의 명확화, 실제 업무 중심의 연수, 적응 기간 운영 및 지속적인 불편 사항 개선이 함께 이루어져야 함을 시사합니다.</p>
+        <div class="charts"><figure class="chart" style="grid-column:1/-1"><figcaption><b>불편하거나 개선이 필요한 점</b><span>복수 선택 · 121명 기준</span></figcaption><div class="hbars"><div class="hrow"><span class="hl">사용법이 익숙하지 않다</span><span class="ht"><span class="hb" style="width:100.0%" title="사용법이 익숙하지 않다: 59명 (48.8%)"></span></span><span class="hv">59명 <em>48.8%</em></span></div><div class="hrow"><span class="hl">로그인이나 실행이 번거롭다</span><span class="ht"><span class="hb" style="width:86.4%" title="로그인이나 실행이 번거롭다: 51명 (42.1%)"></span></span><span class="hv">51명 <em>42.1%</em></span></div><div class="hrow"><span class="hl">메신저를 두 개 이상 함께 써서 번거롭다</span><span class="ht"><span class="hb" style="width:81.4%" title="메신저를 두 개 이상 함께 써서 번거롭다: 48명 (39.7%)"></span></span><span class="hv">48명 <em>39.7%</em></span></div><div class="hrow"><span class="hl">쪽지·대화·워크스페이스 중 무엇을 써야 할지 헷갈린다</span><span class="ht"><span class="hb" style="width:61.0%" title="쪽지·대화·워크스페이스 중 무엇을 써야 할지 헷갈린다: 36명 (29.8%)"></span></span><span class="hv">36명 <em>29.8%</em></span></div><div class="hrow"><span class="hl">기능이 많아 복잡하다</span><span class="ht"><span class="hb" style="width:50.8%" title="기능이 많아 복잡하다: 30명 (24.8%)"></span></span><span class="hv">30명 <em>24.8%</em></span></div><div class="hrow"><span class="hl">근무시간 외 연락이 늘었다</span><span class="ht"><span class="hb" style="width:23.7%" title="근무시간 외 연락이 늘었다: 14명 (11.6%)"></span></span><span class="hv">14명 <em>11.6%</em></span></div><div class="hrow"><span class="hl">✅ 이모지가 읽었다인지 제출했다인지 헷갈린다</span><span class="ht"><span class="hb" style="width:20.3%" title="✅ 이모지가 읽었다인지 제출했다인지 헷갈린다: 12명 (9.9%)"></span></span><span class="hv">12명 <em>9.9%</em></span></div><div class="hrow"><span class="hl">속도가 느리거나 오류가 있다</span><span class="ht"><span class="hb" style="width:16.9%" title="속도가 느리거나 오류가 있다: 10명 (8.3%)"></span></span><span class="hv">10명 <em>8.3%</em></span></div></div><details class="tbl-view"><summary>표로 보기</summary><table class="tbl"><thead><tr><th>항목</th><th>응답 수</th><th>비율</th></tr></thead><tbody><tr><td>사용법이 익숙하지 않다</td><td>59</td><td>48.8%</td></tr><tr><td>로그인이나 실행이 번거롭다</td><td>51</td><td>42.1%</td></tr><tr><td>메신저를 두 개 이상 함께 써서 번거롭다</td><td>48</td><td>39.7%</td></tr><tr><td>쪽지·대화·워크스페이스 중 무엇을 써야 할지 헷갈린다</td><td>36</td><td>29.8%</td></tr><tr><td>기능이 많아 복잡하다</td><td>30</td><td>24.8%</td></tr><tr><td>근무시간 외 연락이 늘었다</td><td>14</td><td>11.6%</td></tr><tr><td>✅ 이모지가 읽었다인지 제출했다인지 헷갈린다</td><td>12</td><td>9.9%</td></tr><tr><td>속도가 느리거나 오류가 있다</td><td>10</td><td>8.3%</td></tr></tbody></table></details></figure></div>
+      </div></details>
+    </div>
+
+    <h3 style="margin-top:28px">조사 결과의 시사점</h3>
+    <p>설문조사 결과, 학교 현장에서는 기존 메신저와 Brity 메신저의 병행 사용, 개인 메신저를 통한 업무 연락, 주요 기능에 대한 이해 부족, 새로운 시스템 적응의 어려움 등이 나타났습니다.</p>
+    <p>특히 Brity 메신저의 안정적인 정착을 위해서는 프로그램 설치나 기능 안내에 그치지 않고, 학교 구성원이 함께 사용 기준을 마련하고 실제 업무에 적용하면서 개선해 나가는 과정이 필요한 것으로 분석됩니다.</p>
+    <p>이에 본 연구에서는 학교별 업무소통 환경과 구성원의 사용 여건을 고려하여, ① TF팀 구성 및 현황 진단 ② 사용 약속 정하기 ③ 설치 및 기본 환경 설정 ④ 교직원 안내 및 실습 연수 ⑤ 4주 적응 기간 운영 ⑥ 지속 운영과 개선으로 이어지는 「Brity 메신저 학교 맞춤형 6단계 정착 모델」을 제안합니다.</p>
+    <p style="font-size:.85rem;color:var(--muted)">※ 그래프의 수치는 설문 원자료(응답 121건)를 집계한 것입니다. 복수 선택 문항의 비율은 응답자 121명을 기준으로 계산했습니다.</p>
+  </div>
+</section>
+
 </main>
 
 <footer class="site-footer">
@@ -616,6 +765,7 @@
       <a href="guide.html#step2">사용 약속 7가지</a><br>
       <a href="cases.html">활용 사례</a><br>
       <a href="faq.html">FAQ · 바로 찾기</a><br>
+      <a href="appendix.html">부록 진단표</a><br>
       <a href="https://teams.pub-brityworks.com/doc/manual/ko/index.html" target="_blank" rel="noopener">Brity Messenger 공식 매뉴얼 ↗</a>
     </div>
   </div>

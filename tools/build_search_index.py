@@ -2,7 +2,7 @@
 """모든 페이지의 제목·FAQ·타일을 모아 search-index.js 를 만듭니다. 내용을 고친 뒤 실행:  python3 tools/build_search_index.py"""
 import re, html, json, os
 root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-pages={'index':'홈','intro':'메신저 소개','guide':'정착 길라잡이','cases':'활용 사례','faq':'FAQ'}
+pages={'index':'홈','intro':'메신저 소개','guide':'정착 길라잡이','cases':'활용 사례','faq':'FAQ','appendix':'부록 진단표'}
 def text(s): return html.unescape(re.sub(r'\s+',' ',re.sub(r'<[^>]+>','',s))).strip()
 out=[]
 for pg,label in pages.items():
