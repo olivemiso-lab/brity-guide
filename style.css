@@ -1006,3 +1006,10 @@ h1,h2,h3,h4,.hero h1,.page-head h1,.step-title h2,.sheet h4,.step-main > h3,.doo
 .door h3{font-size:1.4rem}
 .hw,.hw-wrap .hw{display:none}
 @media (max-width:860px){.hero h1{font-size:2.2rem;line-height:1.22}.hero .sub{font-size:1.05rem;margin-top:12px}.step-title .num b{font-size:3rem}}
+/* 사이드바 그룹 제목: 진하게, 번호는 검정 상자 */
+.sb-label{color:var(--ink);font-size:.86rem;font-weight:800;letter-spacing:-.01em;text-transform:none;padding:6px 12px 6px;margin-top:6px}
+.sb-num{background:var(--ink);color:#fff;width:18px;height:18px;border-radius:5px;font-size:.66rem;display:grid;place-items:center;font-weight:800}
+.sb-group{gap:1px}
+.sb-group a{color:var(--ink-2);padding:5px 12px}
+.sb-group a.sub{padding-left:16px}
+.sb-dot{color:var(--ink);font-weight:700}
