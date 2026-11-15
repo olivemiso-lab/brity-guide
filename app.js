@@ -13,6 +13,7 @@ var TRAINING = {
 
 (function(){
   'use strict';
+  document.documentElement.classList.add('js');
   var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
   var KEY='brity-guide-checklists-v1';
   var store={};
@@ -21,8 +22,11 @@ var TRAINING = {
 
   /* 모바일 메뉴 */
   var nav=$('#nav'), menuBtn=$('#menuBtn');
-  if(menuBtn){menuBtn.addEventListener('click',function(){var o=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o?'true':'false');});
-    $$('a',nav).forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');});});}
+  var backdrop=document.createElement('div'); backdrop.className='nav-backdrop'; document.body.appendChild(backdrop);
+  function closeMenu(){ nav.classList.remove('open'); backdrop.classList.remove('show'); document.body.classList.remove('menu-open'); if(menuBtn) menuBtn.setAttribute('aria-expanded','false'); }
+  backdrop.addEventListener('click',closeMenu);
+  if(menuBtn){menuBtn.addEventListener('click',function(){var o=nav.classList.toggle('open');backdrop.classList.toggle('show',o);document.body.classList.toggle('menu-open',o);menuBtn.setAttribute('aria-expanded',o?'true':'false');});
+    $$('a',nav).forEach(function(a){a.addEventListener('click',closeMenu);});}
 
   /* 스크롤 진행 + 현재 섹션 표시 + 맨 위로 */
   var prog=$('#progress'), toTop=$('#toTop');
@@ -87,12 +91,26 @@ var TRAINING = {
     var p=$('#sbProgress'); if(p) p.textContent=n+' / '+total; var m=$('#sbMeter'); if(m) m.style.width=(n/total*100)+'%';
   }
 
+
+  /* 화면에 들어올 때 살짝 떠오르기 */
+  var revealEls=$$('.card, .step-card, .promise, .scenario, .chart, .tile, .door, .kpi, .quote, .week, .media, .deck');
+  if('IntersectionObserver' in window && revealEls.length){
+    revealEls.forEach(function(el,i){ el.classList.add('reveal'); el.style.transitionDelay=((i%6)*40)+'ms'; });
+    var io=new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    revealEls.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ revealEls.forEach(function(el){ el.classList.add('in'); }); },2500);
+  }
+
   /* 체크리스트 */
   var lists=$$('.checklist[data-list]'); var totalN=0;
   function render(list){
     var id=list.getAttribute('data-list'); var boxes=$$('input[type=checkbox]',list); var st=store[id]||[];
     var n=0; boxes.forEach(function(b,i){b.checked=!!st[i]; b.parentNode.classList.toggle('on',b.checked); if(b.checked)n++;});
     var tag=$('.tag',list); if(tag) tag.textContent=n+'/'+boxes.length;
+    var all=(n===boxes.length&&n>0); var wasComplete=list.classList.contains('complete'); list.classList.toggle('complete',all);
+    var h4=$('h4',list); var cel=$('.celebrate',list);
+    if(all&&!cel&&h4){ cel=document.createElement('span'); cel.className='celebrate'; cel.textContent='✓ 이 단계를 마쳤습니다'; h4.parentNode.insertBefore(cel,h4.nextSibling); }
+    if(!all&&cel) cel.parentNode.removeChild(cel);
     var m=$('.meter i',list); if(m) m.style.width=(boxes.length?n/boxes.length*100:0)+'%';
     var done=$('[data-done="'+id.replace('step','')+'"]'); if(done) done.textContent=(n===boxes.length&&n>0)?'✓ 완료':(n>0?n+'/'+boxes.length:'');
     var td=$('[data-tocdone="'+id.replace('step','')+'"]'); if(td){ td.textContent='✓'; td.classList.toggle('on',n===boxes.length&&n>0); }
@@ -102,6 +120,7 @@ var TRAINING = {
     var el=$('#totalProgress'); if(el) el.textContent=n+' / '+totalN;
   }
   lists.forEach(function(list){
+    $$('label',list).forEach(function(l){ var txt=''; var nodes=Array.prototype.slice.call(l.childNodes); nodes.forEach(function(n){ if(n.nodeType===3){ txt+=n.textContent; l.removeChild(n);} }); var sp=document.createElement('span'); sp.className='t'; sp.textContent=txt.trim(); l.appendChild(sp); });
     var id=list.getAttribute('data-list'); var boxes=$$('input[type=checkbox]',list); totalN+=boxes.length;
     boxes.forEach(function(b,i){ b.addEventListener('change',function(){ var st=store[id]||(store[id]=[]); st[i]=b.checked; save(); render(list); renderTotal(); sbUpdate(); }); });
     var r=$('[data-reset]',list); if(r) r.addEventListener('click',function(){ if(confirm('이 단계의 체크 표시를 모두 지울까요?')){ store[id]=[]; save(); render(list); renderTotal(); sbUpdate(); } });
@@ -131,13 +150,13 @@ var TRAINING = {
       if(v.youtube) frame='<div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/'+esc(v.youtube)+'?rel=0" title="'+esc(v.title)+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>';
       else if(v.drive) frame='<div class="frame"><iframe src="https://drive.google.com/file/d/'+esc(v.drive)+'/preview" title="'+esc(v.title)+'" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>';
       else if(v.file) frame='<div class="frame"><video controls preload="metadata" src="'+esc(v.file)+'"></video></div>';
-      else frame='<div class="frame placeholder"><div><span>🎬</span>영상 준비 중</div></div>';
+      else frame='<div class="frame placeholder"><div><span><svg class="ic lg" aria-hidden="true"><use href="#i-film"/></svg></span>영상 준비 중</div></div>';
       return '<div class="media">'+frame+'<div class="body"><h4>'+esc(v.title)+'</h4><p>'+esc(v.desc)+'</p>'+(v.length?'<div class="meta">⏱ '+esc(v.length)+'</div>':'')+'</div></div>';
     }).join('');
   }
   var dl=$('#deckList'); if(dl&&window.TRAINING){
     dl.innerHTML=TRAINING.decks.map(function(d){
-      var frame=d.embed?'<div class="frame"><iframe src="'+esc(d.embed)+'" title="'+esc(d.title)+'" loading="lazy" allowfullscreen></iframe></div>':'<div class="frame placeholder"><div>📑 슬라이드 준비 중</div></div>';
+      var frame=d.embed?'<div class="frame"><iframe src="'+esc(d.embed)+'" title="'+esc(d.title)+'" loading="lazy" allowfullscreen></iframe></div>':'<div class="frame placeholder"><div><svg class="ic lg" aria-hidden="true"><use href="#i-presentation"/></svg> 슬라이드 준비 중</div></div>';
       var acts='';
       if(d.embed) acts+='<a class="btn outline small" href="'+esc(d.embed.replace(/\?embed.*$/,''))+'" target="_blank" rel="noopener">새 창에서 보기 ↗</a>';
       if(d.pdf) acts+='<a class="btn outline small" href="'+esc(d.pdf)+'" download>PDF 내려받기</a>';
