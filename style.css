@@ -861,3 +861,127 @@ h3,h4{letter-spacing:-.01em}
 }
 h4,.card h4,.promise h4,.tile b,.door h3,.step-card h4{color:var(--ink)}
 .promise h4{font-size:1rem}
+
+/* =====================================================================
+   절충안 — 머리는 타이포 미니멀(E), 본문은 에디토리얼 밀도
+   ===================================================================== */
+:root{--accent:#f05a1a;--ink:#0a0a0a;--navy:#0a0a0a;--ink-2:#3f3f3f;--muted:#8a8a8a;--line:#e6e6e6;--line-2:#f0f0f0;--tint:#fafafa;--blue-soft:#fff1ea;--pt1:#0a0a0a;--pt2:#0a0a0a;--pt3:#0a0a0a;--s2:#f05a1a}
+h1,h2,h3,h4,.hero h1,.page-head h1,.step-title h2,.sheet h4,.step-main > h3,.door h3,.sb-brand,.checklist h4{font-family:Pretendard,"Pretendard Variable",sans-serif;font-weight:800;letter-spacing:-.035em}
+.eyebrow{color:var(--muted);font-size:.68rem;letter-spacing:.16em}
+.eyebrow::before{display:none}
+
+/* 머리: E */
+.hero{padding:92px 0 64px;border-bottom:0}
+.hero .wrap{max-width:1180px}
+.hero .badge{display:none}
+.hero h1{font-size:clamp(3.2rem,1.8rem + 6.6vw,7.6rem);line-height:.98;letter-spacing:-.05em;margin:0 0 28px}
+.hero h1 em{color:var(--ink)}
+.hero h1 .dot{display:inline-block;width:.2em;height:.2em;background:var(--accent);border-radius:50%;margin-left:.1em;vertical-align:baseline}
+.hero .sub{font-size:1.3rem;max-width:760px;line-height:1.5;font-weight:400;color:var(--ink)}
+.hero .sub b{color:var(--ink);font-weight:400}
+.hw-wrap{position:relative;display:inline-block}
+.hw{position:absolute;left:-.1em;top:-1.05em;font-family:Caveat,cursive;font-weight:600;font-size:1.3em;color:var(--accent);white-space:nowrap;transform:rotate(-4deg);line-height:1}
+.hero .lead{font-size:.95rem;color:var(--muted);max-width:520px}
+.btn{border-radius:999px;padding:13px 22px}
+.btn.primary{background:var(--ink)}.btn.outline{border:1px solid var(--ink);color:var(--ink)}
+.flowline{margin-top:60px;border-top:1px solid var(--ink);padding-top:14px}
+.flowline::before{display:none}
+.flowline li{text-align:left}
+.flowline a{align-items:flex-start;gap:4px}
+.flowline a::before{display:none}
+.flowline b{font-family:inherit;font-size:.7rem;letter-spacing:.1em;color:var(--muted)}
+.flowline span{font-size:.95rem;font-weight:700;color:var(--ink)}
+.flowline a:hover span{color:var(--accent)}
+.quick{padding:0 0 64px}
+.doors{border:0;margin:0 0 44px;gap:48px}
+.door{border:0;padding:0;background:transparent}
+.door::before{height:1px;background:var(--ink);left:0;right:0}
+.door:hover{background:transparent}
+.door .pn{color:var(--muted);letter-spacing:.16em;font-size:.66rem;margin-top:18px}
+.door h3{font-size:1.65rem;margin:4px 0 8px}
+.door .go{color:var(--accent)}
+#siteSearch{border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:14px 0 14px 34px;background-position:0 center;font-size:1.02rem}
+#siteSearch:focus{border-bottom-color:var(--accent);box-shadow:none}
+.home-row{border:0;padding:0}
+.page-head{padding:68px 0 0}
+.page-head h1{font-size:clamp(2.4rem,1.5rem + 3.6vw,4.6rem);letter-spacing:-.045em;line-height:1}
+.page-head .wrap{border-bottom:1px solid var(--ink);padding-bottom:34px}
+.page-head .eyebrow{color:var(--muted)}
+.site-header{border-bottom:0}
+.nav a{font-weight:700;font-size:.9rem;border-bottom:0;position:relative}
+.nav a.active{border-bottom:0}
+.nav a.active::after{content:"";position:absolute;left:50%;bottom:-3px;width:5px;height:5px;border-radius:50%;background:var(--accent);transform:translateX(-50%)}
+.progress{background:var(--accent)}
+.sidebar{border-right:0}
+.sb-brand{font-family:inherit;border-bottom:0}
+.sb-brand .logo{background:var(--ink)}
+.sb-label{letter-spacing:.14em;font-size:.66rem}
+.sb-num{border:0;color:var(--muted);width:auto;font-size:.66rem}
+.sb-group a.active{font-weight:800}
+.sb-group a.active::before{background:var(--accent);width:6px;height:6px;border-radius:50%;top:50%;bottom:auto;transform:translateY(-50%);left:0}
+.sb-dot{border:0;width:auto;font-family:inherit;font-size:.66rem;color:var(--muted);letter-spacing:.06em}
+.sb-step.done .sb-dot{background:transparent!important;color:var(--accent)}
+.sb-foot .meter i{background:var(--accent)}
+
+/* 단계 머리: E */
+.seg-wrap{border-bottom:1px solid var(--line)}
+.seg a{padding:16px 10px;font-size:.84rem;font-weight:700}
+.seg a b{font-family:inherit;font-size:.7rem;letter-spacing:.08em}
+.seg a.current{border-bottom-color:var(--accent)}.seg a.current b,.seg a.done b{color:var(--accent)}
+.steps .step{padding-top:60px}
+.step-title{flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:24px}
+.step-title .num{font-family:inherit;letter-spacing:.16em;font-size:.66rem;color:var(--muted)}
+.step-title .num b{font-size:clamp(4.6rem,2.8rem + 7vw,9rem);font-weight:800;letter-spacing:-.06em;line-height:.85;margin:6px 0 10px;color:var(--ink)}
+.step-title h2{font-size:clamp(1.8rem,1.3rem + 2.2vw,3rem);line-height:1.1}
+.step-summary{border-top:1px solid var(--ink);border-bottom:0;padding:18px 0 0;gap:6px 36px}
+.step-summary .sl{letter-spacing:.14em;font-size:.66rem}
+.step-summary > div:first-child p{font-family:inherit;font-weight:700;font-size:1.1rem}
+.step-main > h3{font-size:1.3rem;margin-top:40px}
+.step-card .num,[data-step] .num{border:0;width:auto;height:auto;font-family:inherit;font-size:2.1rem;font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--ink);background:transparent!important}
+.step-card{padding:16px 0 20px;border:0;border-top:1px solid var(--ink);border-radius:0;background:transparent}
+.step-card.current{outline:0;border-top:3px solid var(--accent)}
+.step-card .dur{color:var(--accent)}
+.step-card:hover{border-color:var(--accent)}
+
+/* 본문: 에디토리얼 밀도 (가는 테두리 유지) */
+.promise .pn{background:transparent!important;color:var(--muted);padding:0;font-size:.66rem;letter-spacing:.16em;border-radius:0}
+.promise .em{border-color:var(--line)}
+.promise h4,.card h4{font-size:1.05rem}
+.card .icon{background:var(--tint)}
+.tag{border-radius:3px}
+.tag.green{color:var(--accent);background:#fff1ea;border-color:#ffd9c6}
+.proc > li::before{border-color:var(--ink)}
+.chip .n{border-color:var(--ink)}
+.chip:hover{background:var(--tint)}
+.note{border-left-color:var(--ink)}
+.note.blue{background:#fff5ef;border-left-color:var(--accent)}
+.note.green{background:#fff5ef;border-left-color:var(--accent)}
+.tbl th{border-bottom-color:var(--ink)}
+.checklist input:checked{background:var(--accent);border-color:var(--accent)}
+.checklist .meter i{background:var(--accent)}
+.checklist .celebrate{background:var(--accent)}
+.diag .qrow .opts label.on{background:var(--accent);border-color:var(--accent)}
+.kpi .kv,.diag-result .avg{font-family:inherit;font-weight:800;letter-spacing:-.04em}
+.quote::before{font-family:Caveat,cursive;color:var(--accent);font-size:4rem;top:8px}
+.quote p{font-family:inherit;font-weight:500}
+.faq summary::before{background:transparent;color:var(--accent);border:0;font-weight:800;font-size:.95rem}
+.sheet .fill{background:#ffe3d3}
+.sheet::before{background:rgba(240,90,26,.25)}
+
+/* 떠 있는 화면 카드 */
+.scenario{border:0;border-top:1px solid var(--ink);border-radius:0;padding:18px 0 0;background:transparent}
+.section.alt .scenario{background:transparent}
+.chat{background:#fff;border-radius:18px;padding:14px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 24px 48px -24px rgba(0,0,0,.28);border:1px solid var(--line);transform:rotate(-.6deg)}
+.scenario:nth-child(even) .chat{transform:rotate(.6deg)}
+.msg{border-radius:12px;border-color:var(--line-2)}
+.msg .link{background:#fff1ea;color:var(--ink)}
+.scenario .where{border:0;background:transparent;color:var(--accent);padding:0;letter-spacing:.06em;font-size:.72rem}
+.scenario .sc-head .n{border:0;color:var(--muted);font-family:inherit;font-size:.7rem;letter-spacing:.08em;width:auto}
+.scenario .why{background:transparent;border-left:2px solid var(--accent);border-radius:0;padding:4px 0 4px 14px}
+.site-footer{border-top:1px solid var(--ink)}
+@media (max-width:860px){.hero{padding:48px 0 40px}.hero h1{font-size:2.9rem}.hw{font-size:1.15em}.step-title .num b{font-size:4rem}.doors{gap:28px}.door::before{left:0;right:0}.nav a.active::after{display:none}}
+@media (prefers-reduced-motion:reduce){.chat{transform:none}}
+.hw{top:-.95em;left:0;font-size:1.25em}
+.hero .sub{margin-top:14px}
+.step-title .num b{font-family:Pretendard,"Pretendard Variable",sans-serif}
+.checklist.complete{background:#fff5ef}
