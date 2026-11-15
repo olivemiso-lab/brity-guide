@@ -52,7 +52,7 @@ var TRAINING = {
       stepEls.forEach(function(s){var on=s.id===id; s.classList.toggle('active',on); if(on)found=true;});
       if(!found){ stepEls.forEach(function(s,i){s.classList.toggle('active',i===0);}); id=stepEls[0].id; }
       $$('.step-card').forEach(function(c){c.classList.toggle('current',c.getAttribute('data-tab')===id);});
-      $$('.seg a').forEach(function(c){c.classList.toggle('current',c.getAttribute('data-tab')===id);});
+      $$('.seg a').forEach(function(c){var on=c.getAttribute('data-tab')===id; c.classList.toggle('current',on); c.setAttribute('aria-selected',on?'true':'false');});
       if(scroll){ var top=stepsWrap.getBoundingClientRect().top+window.pageYOffset-124; window.scrollTo({top:top,behavior:'smooth'}); }
     }
     document.addEventListener('click',function(e){
@@ -60,6 +60,11 @@ var TRAINING = {
       e.preventDefault(); var id=a.getAttribute('data-tab'); history.replaceState(null,'','#'+id); showStep(id,true);
     });
     $$('.chip[href^="#step"]').forEach(function(ch){ ch.setAttribute('data-tab',ch.getAttribute('href').slice(1)); });
+    $$('.seg a').forEach(function(a){ a.setAttribute('role','tab'); });
+    stepEls.forEach(function(s){ s.setAttribute('role','tabpanel'); });
+    function tocSpy(){ var act=$('.steps .step.active'); if(!act) return; var links=$$('.step-toc a',act); var cur=null; links.forEach(function(a){ var t=document.getElementById(a.getAttribute('href').slice(1)); if(t&&t.getBoundingClientRect().top<=140) cur=a; }); links.forEach(function(a){a.classList.toggle('active',a===cur);}); }
+    window.addEventListener('scroll',tocSpy,{passive:true}); tocSpy();
+    document.addEventListener('click',function(e){ var a=e.target.closest('.step-toc a'); if(!a) return; var t=document.getElementById(a.getAttribute('href').slice(1)); if(t&&t.tagName==='DETAILS') t.open=true; });
     var initial=(location.hash||'#step1').slice(1);
     if(/^step[1-6]$/.test(initial)){ showStep(initial,false); if(location.hash){ setTimeout(function(){showStep(initial,true);},50);} }
     else { showStep('step1',false); }
@@ -105,15 +110,18 @@ var TRAINING = {
 
   /* 체크리스트 */
   var lists=$$('.checklist[data-list]'); var totalN=0;
+  var live=document.createElement('div'); live.className='sr-live'; live.setAttribute('aria-live','polite'); document.body.appendChild(live);
   function render(list){
     var id=list.getAttribute('data-list'); var boxes=$$('input[type=checkbox]',list); var st=store[id]||[];
     var n=0; boxes.forEach(function(b,i){b.checked=!!st[i]; b.parentNode.classList.toggle('on',b.checked); if(b.checked)n++;});
     var tag=$('.tag',list); if(tag) tag.textContent=n+'/'+boxes.length;
+    if(document.activeElement&&list.contains(document.activeElement)) live.textContent=n+'개 완료, 전체 '+boxes.length+'개';
     var all=(n===boxes.length&&n>0); var wasComplete=list.classList.contains('complete'); list.classList.toggle('complete',all);
     var h4=$('h4',list); var cel=$('.celebrate',list);
     if(all&&!cel&&h4){ cel=document.createElement('span'); cel.className='celebrate'; cel.textContent='✓ 이 단계를 마쳤습니다'; h4.parentNode.insertBefore(cel,h4.nextSibling); }
     if(!all&&cel) cel.parentNode.removeChild(cel);
     var m=$('.meter i',list); if(m) m.style.width=(boxes.length?n/boxes.length*100:0)+'%';
+    var mb=$('.meter',list); if(mb) mb.setAttribute('aria-valuenow',Math.round(boxes.length?n/boxes.length*100:0));
     var done=$('[data-done="'+id.replace('step','')+'"]'); if(done) done.textContent=(n===boxes.length&&n>0)?'✓ 완료':(n>0?n+'/'+boxes.length:'');
     var td=$('[data-tocdone="'+id.replace('step','')+'"]'); if(td){ td.textContent='✓'; td.classList.toggle('on',n===boxes.length&&n>0); }
   }

@@ -1361,3 +1361,27 @@ body[data-page="index"] .sidebar{display:none}
 .sb-group.collapsed .sb-label{color:var(--ink);font-weight:700}
 .sb-group.collapsed .sb-num{background:var(--ink)}
 .sb-label{cursor:default!important}
+
+/* A) 단계 안 목차 */
+.step-toc{display:flex;flex-direction:column;gap:2px;margin:0 0 14px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.step-toc .t{font-size:.7rem;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:4px}
+.step-toc a{font-size:.88rem;color:var(--ink-2);text-decoration:none;padding:5px 8px;border-radius:6px;border-left:2px solid transparent;line-height:1.4}
+.step-toc a:hover{background:var(--tint);color:var(--ink)}
+.step-toc a.active{color:var(--accent-text);border-left-color:var(--accent);background:var(--accent-soft)}
+@media (max-width:960px){.step-toc{display:none}}
+
+/* C) 접근성: 대비·초점·크기 */
+:root{--muted:#6B7684;--accent-text:#A63814}
+.eyebrow,.step-card .en,.step-toc .t,.flowline b,.promise .pn,.tbl th,.sb-dot,.seg a b,.kpi .idx,.week .w,.door .pn,.mock-label{color:#6B7684}
+.hero .lead,.tag,.chart figcaption span,.msg .who span,.chat .room{color:#5B6472}
+.hero .sub b.pt,.door .go,.step-card .go,.step-card .dur{color:#A63814}
+.seg a.current b,.seg a.done b{color:#A63814!important}
+.sb-step.done .sb-dot{color:#A63814}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #A63814;outline-offset:2px}
+.seg a:focus-visible{outline-offset:-3px}
+.checklist label:focus-within{outline:3px solid #A63814;outline-offset:-2px;border-radius:8px}
+.diag .qrow .opts label:focus-within{outline:3px solid #A63814;outline-offset:2px}
+.search-results a:focus-visible{background:var(--accent-soft)}
+.btn,.chip,.tile,.door,.step-card,.seg a{min-height:44px}
+.totop{width:48px;height:48px}
+.sr-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

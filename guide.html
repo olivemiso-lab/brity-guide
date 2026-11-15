@@ -128,7 +128,7 @@
 <section class="step step-1" id="step1">
   <div class="wrap">
     <div class="step-title">
-      <div class="num">STEP<b>01</b></div>
+      <div class="num" aria-label="1단계">STEP<b>01</b></div>
       <div><h2>Brity 메신저 전환 TF팀 구축</h2><p>학교 구성원이 함께 준비하고 지원하는 Brity 메신저 전환</p></div>
     </div>
         <div class="step-summary">
@@ -140,7 +140,7 @@
 <div class="step-body">
       <div class="step-main">
 
-        <h3>TF팀은 누구로 구성할까요?</h3>
+        <h3 id="s1-h1">TF팀은 누구로 구성할까요?</h3>
         <p>아래는 하나의 예시입니다. 학교 규모, 조직 체계, 업무분장과 구성원 역량에 따라 조정해 운영합니다.</p>
         <div class="tbl-wrap"><table class="tbl stack">
           <thead><tr><th>구성원</th><th>담당 역할</th><th>실제로 하는 일</th></tr></thead>
@@ -154,7 +154,7 @@
           </tbody>
         </table></div>
 
-        <h3>TF팀은 어떤 일을 하나요?</h3>
+        <h3 id="s1-h2">TF팀은 어떤 일을 하나요?</h3>
         <ol class="proc">
           <li><h4>우리 학교의 소통 방식 진단하기</h4><p>주로 사용하는 소통 매체, 중복 안내, 소통 과정의 불편함, 학년·부서 간 협업 현황을 살펴봅니다.</p></li>
           <li><h4>Brity 메신저 사용 방법과 약속 정하기</h4><p>전체 공지와 학년·부서별 소통을 위한 워크스페이스 구성 방향, 공지·답글·자료 공유에 관한 기본 원칙을 협의합니다.</p></li>
@@ -164,7 +164,7 @@
           <li><h4>적응 기간 동안 불편 사항 확인하고 지원하기</h4><p>학년·부서별 의견을 수렴하고, 사용 중 생기는 문제를 함께 해결하며 운영 방법을 보완합니다.</p></li>
         </ol>
         <figure class="figure"><img src="img/step1-direction.jpg" alt="TF팀 운영의 핵심 방향 4가지: 함께 준비하기, 미리 대비하기, 역할 나누기, 가까이서 지원하기" loading="lazy"><figcaption><span class="fl">FIGURE</span>TF팀 운영의 핵심 방향: 함께 준비하기 · 미리 대비하기 · 역할 나누기 · 가까이서 지원하기</figcaption></figure>
-        <details class="acc why"><summary>1. TF팀은 왜 필요할까요?</summary><div class="acc-body">
+        <details class="acc why" id="s1-why"><summary>1. TF팀은 왜 필요할까요?</summary><div class="acc-body">
         <p>Brity 메신저 전환은 단순히 새 프로그램을 설치하는 일이 아닙니다. 오랫동안 써 온 GOE 메신저에서 새로운 소통 도구로 옮겨 가는 만큼 학교의 업무소통 방식과 교직원의 사용 경험에도 변화가 필요합니다. 정보업무담당자 혼자 준비하기보다 학교의 업무와 소통 특성을 잘 아는 구성원이 함께 참여해 여러 관점에서 준비해야 합니다. 이때는 다음과 같은 점을 고려하면 좋습니다.</p>
         <ul><li>전환의 필요성과 기대 효과를 교직원이 구체적으로 이해하도록 합니다.</li><li>전체 협의회 5분, 학년·부서 대표를 통한 의견 수렴, 간단한 설문 중 학교에 맞는 방법을 정합니다.</li><li>반대 의견이나 우려는 기록하고, STEP 02 약속에 반영했는지 여부를 공개적으로 답합니다.</li><li>먼저 익숙해진 교직원(TF팀 내 학년 대표)이 동료를 돕는 구조를 만듭니다.</li></ul>
         <p>우리 학교의 소통 현황은 <a href="appendix.html#a1">부록1 출발점 진단표</a>로 파악할 수 있습니다.</p>
@@ -173,9 +173,11 @@
         </div></details>
       </div>
       <aside class="sticky">
+        <nav class="step-toc" aria-label="이 단계 안의 목차"><span class="t">이 단계에서</span><a href="#s1-h1">TF팀은 누구로 구성할까요?</a><a href="#s1-h2">TF팀은 어떤 일을 하나요?</a><a href="#s1-why">1. TF팀은 왜 필요할까요?</a></nav>
+        
         <div class="checklist" data-list="step1">
           <h4>1단계 완료 체크리스트 <span class="tag green">0/6</span></h4>
-          <div class="meter"><i></i></div>
+          <div class="meter" role="progressbar" aria-label="체크리스트 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
           <label><input type="checkbox"> Brity 메신저 전환을 지원할 TF팀 구성원을 정하고 역할을 확인했다.</label>
           <label><input type="checkbox"> 학교에서 필요한 워크스페이스와 공유 공간을 확인했다.</label>
           <label><input type="checkbox"> 교직원 사용 가이드를 제작할 담당자를 정했다.</label>
@@ -194,7 +196,7 @@
 <section class="step step-2" id="step2">
   <div class="wrap">
     <div class="step-title">
-      <div class="num">STEP<b>02</b></div>
+      <div class="num" aria-label="2단계">STEP<b>02</b></div>
       <div><h2>우리 학교 Brity 메신저 사용 약속 정하기</h2><p>처음부터 사용 기준을 명확하게! 혼란을 줄이고 업무소통은 더 편리하게!</p></div>
     </div>
         <div class="step-summary">
@@ -245,7 +247,7 @@
 
         <div class="note blue" style="margin-top:18px"><p><b>Brity 메신저 약속을 정할 때 함께 확인할 사항</b></p><ul style="margin:8px 0 0"><li>워크스페이스 관리자는 정보부장과 교무부장 등 2명 이상으로 지정해 담당자 변경에 대비합니다.</li><li>게시 권한은 채널별로 정합니다. 예: 공식 공지 채널은 업무담당자, 질문 채널은 전 교직원</li><li>전출·퇴직 시 계정과 자료 인수인계 방법을 미리 정합니다.</li><li>학생 개인정보와 평가 자료는 접근 권한을 필요한 사람으로 한정하고, 외부 공유 링크 설정을 점검합니다.</li><li>결재가 필요한 업무와 근거 자료로 보존해야 하는 업무는 메신저 게시와 별도로 기존 공식 절차(전자결재 · 공문)를 병행합니다.</li></ul></div>
 
-        <h3 style="margin-top:36px">약속별 자세히 보기</h3>
+        <h3 id="s2-h3" style="margin-top:36px">약속별 자세히 보기</h3>
         <div class="group">
 <details class="acc" open>
           <summary>약속 ① 워크스페이스, 대화방, 쪽지, Brity 드라이브의 용도를 구분해요</summary>
@@ -346,16 +348,18 @@
           <div class="acc-body"><p>Brity 메신저는 업무소통과 협업을 지원하는 도구이며 모든 업무를 메신저로 처리하는 것은 아닙니다. 학생 개인정보나 민감한 내용은 공개 워크스페이스에 게시하지 않도록 주의하고, 전자결재나 공식 문서 접수·시행 등 정해진 행정 절차가 필요한 업무는 기존의 공식 업무처리 시스템과 절차를 따릅니다.</p></div>
         </details>
 </div>
-<details class="acc why"><summary>1. 왜 사용 약속을 미리 정해야 할까요?</summary><div class="acc-body">
+<details class="acc why" id="s2-why"><summary>1. 왜 사용 약속을 미리 정해야 할까요?</summary><div class="acc-body">
         <p>Brity 메신저는 워크스페이스, 채팅, 드라이브 등 다양한 기능을 제공합니다. 구성원이 각자 다른 방식으로 쓰면 새 메신저가 오히려 불편해집니다. 사용 약속은 복잡한 규정이 아니라, 자주 쓰는 기능에 대해 <b>"어디에 올리고, 어떻게 알리고, 어떻게 답할 것인가"</b>를 미리 정하는 것입니다.</p>
         <figure class="figure"><img src="img/step2-why.jpg" alt="사용 약속이 필요한 이유, 학교만의 사용 약속, 안내 자료에 포함할 핵심 내용을 보여 주는 구조도" loading="lazy"><figcaption><span class="fl">FIGURE</span>학교에서 미리 정한 사용 약속은 다른 학교에서도 활용할 수 있는 실질적인 운영 사례의 핵심 요소입니다.</figcaption></figure>
 
         </div></details>
       </div>
       <aside class="sticky">
+        <nav class="step-toc" aria-label="이 단계 안의 목차"><span class="t">이 단계에서</span><a href="#promises">학교에서 미리 정하면 좋은 7가지 사용 약속</a><a href="#builder">학교에서 실제로 정해 볼 사용 약속</a><a href="#s2-h3">약속별 자세히 보기</a><a href="#s2-why">1. 왜 사용 약속을 미리 정해야 할까요?</a></nav>
+        
         <div class="checklist" data-list="step2">
           <h4>2단계 완료 체크리스트 <span class="tag green">0/8</span></h4>
-          <div class="meter"><i></i></div>
+          <div class="meter" role="progressbar" aria-label="체크리스트 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
           <label><input type="checkbox"> 전체 공지와 학년·부서별 소통 공간을 정했다.</label>
           <label><input type="checkbox"> 공지 제목과 작성 형식을 정했다.</label>
           <label><input type="checkbox"> 답글과 이모지 확인 방법을 정했다.</label>
@@ -376,7 +380,7 @@
 <section class="step step-3" id="step3">
   <div class="wrap">
     <div class="step-title">
-      <div class="num">STEP<b>03</b></div>
+      <div class="num" aria-label="3단계">STEP<b>03</b></div>
       <div><h2>Brity 메신저 사용 환경 준비하기</h2><p>설치부터 조직도·워크스페이스 설정까지, 교직원이 바로 사용할 수 있도록 준비하기</p></div>
     </div>
         <div class="step-summary">
@@ -388,7 +392,7 @@
 <div class="step-body">
       <div class="step-main">
 
-        <h3>단계별 사용 환경 준비 절차</h3>
+        <h3 id="s3-h1">단계별 사용 환경 준비 절차</h3>
         <ol class="proc">
           <li><h4>Brity 메신저 설치 및 로그인</h4><div class="owner">담당(권장 예시): 전체 교직원(개별 설치), 정보업무담당자(설치 지원)</div><p>PC용 프로그램을 설치하고 필요에 따라 모바일 앱도 설치합니다. 학교에서 안내한 계정으로 로그인해 정상 접속되는지 확인합니다.</p><ul><li>PC 프로그램 설치 및 로그인 여부</li><li>모바일 앱 설치 및 로그인 여부(희망자)</li><li>메시지 수신 및 알림 작동 여부</li></ul></li>
           <li><h4>개인별 기본 정보 및 사용 환경 설정</h4><div class="owner">담당(권장 예시): 전체 교직원</div><p>교직원이 자신의 정보와 사용 환경을 확인합니다. 개인 프로필을 확인하고, 필요한 정보를 입력하거나 수정합니다. 이 부분도 학교에서 어느 정도의 지침을 안내하면 좋습니다. 알림 등 기본 설정도 자신의 업무 특성에 맞게 조정합니다.</p><ul><li><b>개인 정보</b>: 이름, 소속, 직위 등 기본 정보 확인</li><li><b>프로필</b>: 필요에 따라 프로필 사진 및 표시 정보 설정</li><li><b>연락 정보</b>: 업무에 필요한 정보 확인·입력</li><li><b>알림 설정</b>: PC·모바일 알림, 소리 등 개인별 설정</li><li><b>사용 환경</b>: 자주 사용하는 기능과 화면 설정 확인</li></ul></li>
@@ -404,7 +408,7 @@
           <div class="ch">&nbsp;&nbsp;# 교원 공지 채널 &nbsp;·&nbsp; # 교육과정 협의 채널</div>
         </div>
         <p style="font-size:.88rem;color:var(--muted)">※ 위 구성은 예시입니다. 학교에서 정한 운영 방식에 따라 채널을 줄이거나 학년·부서별 독립 워크스페이스를 추가할 수 있습니다.</p>
-        <h3>직군별 환경 점검 사항(예시)</h3>
+        <h3 id="s3-h2">직군별 환경 점검 사항(예시)</h3>
         <div class="tbl-wrap"><table class="tbl stack">
           <thead><tr><th>구성원</th><th>점검 사항</th></tr></thead>
           <tbody>
@@ -415,16 +419,18 @@
             <tr><td data-label="구성원"><b>정보업무 담당자(정보부장)</b></td><td data-label="점검 사항">공지 확인 방법, 알림 설정</td></tr>
           </tbody>
         </table></div>
-        <details class="acc why"><summary>1. 왜 사용 환경을 미리 준비해야 할까요?</summary><div class="acc-body">
+        <details class="acc why" id="s3-why"><summary>1. 왜 사용 환경을 미리 준비해야 할까요?</summary><div class="acc-body">
         <p>3단계는 새로운 기능을 많이 설정하는 단계가 아니라, <b>2단계에서 정한 사용 약속을 실제 시스템에 반영하는 단계</b>입니다. 약속이 정해져 있어도 설치, 개인 설정, 조직도 정비, 워크스페이스 구성이 제대로 되지 않으면 소통에 혼란이 생깁니다. 정보업무담당자에게 모든 일이 몰리지 않도록 개별 교직원은 자신의 기본 설정을 완료하고, TF팀은 학교 공통 환경을 함께 점검하는 방식으로 역할을 나눕니다.</p>
         <figure class="figure"><img src="img/step3-overview.jpg" alt="3단계 역할별 주요 내용(정보업무담당자, 각 교직원, 학년·부서별 대표)과 확인·적용하는 주요 설정" loading="lazy"><figcaption><span class="fl">FIGURE</span>역할별로 나누어 준비하면 특정 담당자에게 업무가 몰리지 않습니다.</figcaption></figure>
 
         </div></details>
       </div>
       <aside class="sticky">
+        <nav class="step-toc" aria-label="이 단계 안의 목차"><span class="t">이 단계에서</span><a href="#s3-h1">단계별 사용 환경 준비 절차</a><a href="#s3-h2">직군별 환경 점검 사항(예시)</a><a href="#s3-why">1. 왜 사용 환경을 미리 준비해야 할까요?</a></nav>
+        
         <div class="checklist" data-list="step3">
           <h4>3단계 완료 체크리스트 <span class="tag green">0/7</span></h4>
-          <div class="meter"><i></i></div>
+          <div class="meter" role="progressbar" aria-label="체크리스트 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
           <label><input type="checkbox"> PC에서 로그인할 수 있다.</label>
           <label><input type="checkbox"> 개인 기본 정보와 알림 설정을 확인했다.</label>
           <label><input type="checkbox"> 학교 조직도에서 소속 구성원을 확인할 수 있다.</label>
@@ -444,7 +450,7 @@
 <section class="step step-4" id="step4">
   <div class="wrap">
     <div class="step-title">
-      <div class="num">STEP<b>04</b></div>
+      <div class="num" aria-label="4단계">STEP<b>04</b></div>
       <div><h2>Brity 메신저 교직원 안내 및 실습 연수</h2><p>우리 학교 사용 약속을 공유하고, 실제 업무 상황에서 직접 익히기</p></div>
     </div>
         <div class="step-summary">
@@ -456,7 +462,7 @@
 <div class="step-body">
       <div class="step-main">
 
-        <h3>40분 실습형 연수 예시 <span class="tag gray">시간 조정 가능</span></h3>
+        <h3 id="s4-h1">40분 실습형 연수 예시 <span class="tag gray">시간 조정 가능</span></h3>
         <div class="tbl-wrap"><table class="tbl">
           <thead><tr><th>시간</th><th>내용</th><th>세부</th></tr></thead>
           <tbody>
@@ -468,7 +474,7 @@
           </tbody>
         </table></div>
 
-        <h3>교직원 연수 자료</h3>
+        <h3 id="s4-h2">교직원 연수 자료</h3>
         <div class="tbl-wrap"><table class="tbl stack">
           <thead><tr><th>자료</th><th>주요 내용</th><th>활용 방법</th></tr></thead>
           <tbody>
@@ -481,16 +487,18 @@
         </table></div>
         <p>교직원 구체적 연수 자료는 [부록4]를 참고하세요. 디지털 활용에 어려움이 있는 교직원은 학년에서 일대일로 적응에 도움을 줍니다.</p>
         <div class="note green"><p><b>현장 팁</b> A초등학교는 기능을 많이 소개하기보다 <b>"공지 확인 → 링크로 문서 열기 → 내 칸에 입력하고 저장"</b>처럼 당장 협업에 필요한 절차부터 안내했고, 연수 미참석자를 위한 자율 연수 자료와 퀵가이드를 함께 마련했습니다. (<a href="cases.html#case">학교 사례 보기</a>)</p></div>
-        <details class="acc why"><summary>1. 연수는 어떻게 운영할까요?</summary><div class="acc-body">
+        <details class="acc why" id="s4-why"><summary>1. 연수는 어떻게 운영할까요?</summary><div class="acc-body">
         <p>교직원 연수는 Brity 메신저의 모든 기능을 설명하는 시간이 아닙니다. TF팀에서 정한 우리 학교의 사용 약속을 안내하고, 교직원이 실제 업무에 필요한 기능을 직접 써 보는 시간으로 운영합니다. 30~40분 내외의 짧은 실습형으로, 학교 여건에 따라 전체 연수 또는 학년·부서별 소규모 연수로 진행할 수 있습니다.</p>
         <figure class="figure"><img src="img/step4-flow.jpg" alt="연수 전 설치 및 사용 환경 준비, 연수에서 사용 약속 공유 및 실제 업무 연습, 연수 후 실제 적응 및 정착 지원의 3단계 흐름" loading="lazy"><figcaption><span class="fl">FIGURE</span>설치 → 연수 → 적응의 단계적 접근으로 교직원의 부담을 줄입니다.</figcaption></figure>
 
         </div></details>
       </div>
       <aside class="sticky">
+        <nav class="step-toc" aria-label="이 단계 안의 목차"><span class="t">이 단계에서</span><a href="#s4-h1">40분 실습형 연수 예시 시간 조정 가능</a><a href="#s4-h2">교직원 연수 자료</a><a href="#s4-why">1. 연수는 어떻게 운영할까요?</a></nav>
+        
         <div class="checklist" data-list="step4">
           <h4>4단계 완료 체크리스트 <span class="tag green">0/8</span></h4>
-          <div class="meter"><i></i></div>
+          <div class="meter" role="progressbar" aria-label="체크리스트 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
           <label><input type="checkbox"> TF팀에서 정한 우리 학교 Brity 메신저 사용 약속을 안내했다.</label>
           <label><input type="checkbox"> 교직원이 Brity 메신저의 주요 소통 기능과 차이를 이해했다.</label>
           <label><input type="checkbox"> 공지 확인, 답글 작성, 이모지 반응 등 기본 기능을 실습했다.</label>
@@ -511,7 +519,7 @@
 <section class="step step-5" id="step5">
   <div class="wrap">
     <div class="step-title">
-      <div class="num">STEP<b>05</b></div>
+      <div class="num" aria-label="5단계">STEP<b>05</b></div>
       <div><h2>Brity 메신저 4주 적응 기간 운영하기</h2><p>부담 없이 시작하고, 함께 익히며, 우리 학교에 맞게 안정적으로 정착하기</p></div>
     </div>
         <div class="step-summary">
@@ -523,7 +531,7 @@
 <div class="step-body">
       <div class="step-main">
 
-        <h3>4주 적응 기간, 이렇게 운영해 보세요</h3>
+        <h3 id="s5-h1">4주 적응 기간, 이렇게 운영해 보세요</h3>
         <div class="weeks">
           <div class="week"><span class="big">01</span><span class="w">WEEK 1 · 1주 차</span><h4>익숙해지기: 기본 사용</h4><p>참여할 워크스페이스·대화방을 확인하고 공지 열람·답글·이모지 반응을 실제 업무에서 써 봅니다.</p></div>
           <div class="week"><span class="big">02</span><span class="w">WEEK 2 · 2주 차</span><h4>업무에 적용하기: 실제 활용</h4><p>자료 공유, 공동 문서 작성, 질문과 답변 등 일상 협업에 사용 약속을 적용합니다.</p></div>
@@ -553,7 +561,7 @@
           <ul><li>동일한 업무 공지가 GOE 메신저와 Brity 메신저에 반복 게시되고 있는지 확인하기</li><li>활용도가 낮거나 중복된 공지방·워크스페이스의 정리 필요성 검토하기</li><li>공지 제목의 핵심용어 표시, 답글 활용, 드라이브 링크 공유 등의 실천 상황 확인하기</li><li>학교의 사용 약속을 최종 보완하여 교직원에게 안내하고, 신규 교직원이나 사용에 어려움이 있는 구성원을 위한 간단한 안내자료 마련하기</li></ul>
           <p><b>TF팀 지원</b>: 개선 결과를 정리하고, 기존 GOE 메신저와 Brity 메신저의 역할을 명확히 하여 중복 사용을 줄이는 방향으로 운영 기준을 보완합니다.</p></div></details>
 </div>
-<h3>적응 기간에 꼭 지키면 좋은 운영 원칙</h3>
+<h3 id="s5-h2">적응 기간에 꼭 지키면 좋은 운영 원칙</h3>
         <div class="grid c3">
           <div class="card"><h4>원칙 ① GOE 메신저와의 중복 사용 최소화</h4><p>같은 공지를 두 곳에 계속 올리면 교직원은 두 시스템을 모두 확인해야 합니다. Brity로 전환할 업무와 한시적으로 유지할 업무를 미리 구분하고, 전환 기간과 GOE 메신저 사용 종료 기준을 교직원에게 미리 안내합니다. 교육청의 전환 일정이나 운영 지침이 있으면 우선 반영합니다.</p></div>
           <div class="card"><h4>원칙 ② 불편 사항은 한곳에서 모아 해결</h4><p>정보업무담당자 한 사람에게 모두 문의하기보다 학년·부서별 대표가 간단한 문제를 먼저 확인하고, 필요한 사항을 TF팀에 전달합니다. 로그인·설치 오류는 정보업무담당자, 공지 위치 혼란은 사용 약속 안내자료, 답글·이모지 미숙은 학년 대표가 안내하는 식으로 나눕니다.</p></div>
@@ -567,7 +575,7 @@
             <tr><td><b>전환 이후</b></td><td>Brity 메신저 중심으로 운영하고 불필요한 중복 사용 정리</td></tr>
           </tbody>
         </table></div>
-                <h3>흔한 실패 패턴과 예방법</h3>
+                <h3 id="s5-h3">흔한 실패 패턴과 예방법</h3>
         <div class="tbl-wrap"><table class="tbl">
           <thead><tr><th>실패 패턴</th><th>예방법</th></tr></thead>
           <tbody>
@@ -579,16 +587,18 @@
             <tr><td>약속을 수시로 바꿔 혼란</td><td>반복 문제만 모아 한 번에 보완</td></tr>
           </tbody>
         </table></div>
-<details class="acc why"><summary>1. 왜 적응 기간이 필요할까요?</summary><div class="acc-body">
+<details class="acc why" id="s5-why"><summary>1. 왜 적응 기간이 필요할까요?</summary><div class="acc-body">
         <p>설치와 연수를 마쳤더라도 오랫동안 써 온 GOE 메신저에서 한 번에 전환하기는 쉽지 않습니다. 워크스페이스에 공지를 올리고, 답글로 질문하고, 드라이브로 자료를 공유하는 방식은 실제 업무에서 반복해 봐야 익숙해집니다. <b>적응 기간은 새 업무를 추가하는 기간이 아니라, 기존 업무를 Brity 메신저로 처리하면서 사용 방법을 익히는 기간</b>입니다. 특히 2단계에서 정한 사용 약속이 실제 업무에 맞는지 확인하는 것이 중요합니다.</p>
         <figure class="figure"><img src="img/step5-4weeks.jpg" alt="4주 적응 기간의 세 가지 초점: 실제 업무에 적용하며 익히기, 사용 약속의 적합성 확인 및 개선, 중복 사용 최소화 및 불편 사항 해결" loading="lazy"><figcaption><span class="fl">FIGURE</span>처음부터 완벽하게 사용하기보다, 실제 업무에 적용하면서 함께 익히고 필요한 부분을 개선하는 것이 중요합니다.</figcaption></figure>
 
         </div></details>
       </div>
       <aside class="sticky">
+        <nav class="step-toc" aria-label="이 단계 안의 목차"><span class="t">이 단계에서</span><a href="#s5-h1">4주 적응 기간, 이렇게 운영해 보세요</a><a href="#s5-h2">적응 기간에 꼭 지키면 좋은 운영 원칙</a><a href="#s5-h3">흔한 실패 패턴과 예방법</a><a href="#s5-why">1. 왜 적응 기간이 필요할까요?</a></nav>
+        
         <div class="checklist" data-list="step5">
           <h4>5단계 완료 체크리스트 <span class="tag green">0/8</span></h4>
-          <div class="meter"><i></i></div>
+          <div class="meter" role="progressbar" aria-label="체크리스트 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
           <label><input type="checkbox"> 학교에서 정한 Brity 메신저 사용 약속을 실제 업무에 적용했다.</label>
           <label><input type="checkbox"> 교직원이 공식 워크스페이스에서 공지를 확인하고 있다.</label>
           <label><input type="checkbox"> 동일한 공지의 중복 게시 여부를 점검했다.</label>
@@ -609,7 +619,7 @@
 <section class="step step-6" id="step6">
   <div class="wrap">
     <div class="step-title">
-      <div class="num">STEP<b>06</b></div>
+      <div class="num" aria-label="6단계">STEP<b>06</b></div>
       <div><h2>지속 운영과 개선</h2><p>담당자가 바뀌어도, 새 구성원이 들어와도 유지되는 운영 방식 만들기</p></div>
     </div>
     <div class="step-summary">
@@ -620,7 +630,7 @@
     </div>
     <div class="step-body">
       <div class="step-main">
-        <h3>연간 운영 캘린더</h3>
+        <h3 id="s6-h1">연간 운영 캘린더</h3>
         <div class="tbl-wrap"><table class="tbl stack">
           <thead><tr><th>시기</th><th>할 일</th><th>담당(예시)</th></tr></thead>
           <tbody>
@@ -644,12 +654,14 @@
           </tbody>
         </table></div>
         <p>정착 수준은 <a href="appendix.html#a2">부록2 정착 수준 진단표</a>와 <a href="appendix.html#a3">부록3 전환 전·후 비교표</a>로 확인합니다.</p>
-        <details class="acc why"><summary>왜 6단계가 필요할까요?</summary><div class="acc-body"><p>정착은 4주로 끝나지 않습니다. 3월 업무분장 변경, 신규 교직원 전입, 학기 전환 때 운영 방식이 흔들리기 쉽습니다. 6단계는 점검 시점과 담당을 미리 정해 두는 단계입니다.</p></div></details>
+        <details class="acc why" id="s6-why"><summary>왜 6단계가 필요할까요?</summary><div class="acc-body"><p>정착은 4주로 끝나지 않습니다. 3월 업무분장 변경, 신규 교직원 전입, 학기 전환 때 운영 방식이 흔들리기 쉽습니다. 6단계는 점검 시점과 담당을 미리 정해 두는 단계입니다.</p></div></details>
       </div>
       <aside class="sticky">
+        <nav class="step-toc" aria-label="이 단계 안의 목차"><span class="t">이 단계에서</span><a href="#s6-h1">연간 운영 캘린더</a><a href="#criteria">Brity 메신저 학교 맞춤형 정착 점검 기준과 측정 지표(예시)</a><a href="#s6-why">왜 6단계가 필요할까요?</a></nav>
+        
         <div class="checklist" data-list="step6">
           <h4>6단계 완료 체크리스트 <span class="tag green">0/3</span></h4>
-          <div class="meter"><i></i></div>
+          <div class="meter" role="progressbar" aria-label="체크리스트 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
           <label><input type="checkbox"> 정착 점검 시기와 담당을 정했다.</label>
           <label><input type="checkbox"> 신규 전입 교직원 안내자료와 담당을 정했다.</label>
           <label><input type="checkbox"> 업무분장 변경 시 관리자 계정·조직도·워크스페이스 인수인계 방법을 정했다.</label>
