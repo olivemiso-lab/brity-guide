@@ -245,6 +245,40 @@ h1{font-weight:900;letter-spacing:-.04em}
 .code b{color:#FFD43B;font-weight:900}
 .pts-final{display:flex;justify-content:center;gap:14px;font-size:.9rem;color:#475467;margin:4px 0 8px}
 .pts-final b{display:block;font-size:1.4rem;color:#191F28;font-weight:900;text-align:center}
+
+/* ===== 색 절제: 검정·흰색·주황 하나 ===== */
+body{background:#F6F2EA}
+.brand i,.stamps i.on,.eyebrow,.g1 .cardq .who,.g2 .rep .av,.gr .stampbig,.done .three i,.hud .lv{background:#fff;color:#191F28}
+.eyebrow{background:#191F28;color:#fff}
+.hud .lv{background:#F05A1A;color:#fff}
+.hud b{color:#fff}
+.stamps i.on{background:#F05A1A;color:#fff}
+.list li:nth-child(1),.list li:nth-child(2),.list li:nth-child(3){background:#fff}
+.list b{background:#191F28!important;color:#fff}
+.btn.dark{background:#191F28}
+.timer i{background:#F05A1A}
+.g1 .bin[data-bin] .ic{background:#F6F2EA}
+.g1 .bin.hot{background:#FFEFE6}
+.g1 .bin.ok,.g2 .rep.done{background:#FFEFE6}
+.g1 .bin.no,.g2 .rep.bad{background:#F1F1F1}
+.g2 .post,.g2 .rep.keep{background:#fff;border-color:#191F28;box-shadow:3px 3px 0 #191F28}
+.g2 .rep.keep .tag{color:#F05A1A}
+.g2 .meter i.on{background:#F05A1A}
+.g3 .noti .ic{background:#F05A1A}
+.g3 .noti .act button{background:#191F28}
+.g3 .noti .act button.send{background:#9CA3AF}
+.g3 .sw.on{background:#F05A1A}
+.toast{background:#191F28;color:#fff}
+.toast.ok{background:#F05A1A;color:#fff}.toast.no{background:#fff;color:#191F28}
+.pop{color:#F05A1A}
+.stars i.on{color:#F05A1A}
+.gr .stampbig{background:#fff}
+.gr .lesson{background:#fff}
+.rank,.rank.S,.rank.A,.rank.B{background:#F05A1A;color:#fff}
+.rank.S{background:#191F28}
+.code b{color:#fff}
+.confetti i{filter:saturate(.6)}
+.stamps i.on,.g1 .cardq .who,.gr .stampbig,.done .three i{border-color:#191F28}
 </style>
 </head>
 <body>
@@ -355,7 +389,7 @@ h1{font-weight:900;letter-spacing:-.04em}
   function show(id){ $$('.screen').forEach(function(s){s.classList.remove('active');}); $(id).classList.add('active'); window.scrollTo(0,0); }
   var toastT; function toast(msg,cls){ var t=$('#toast'); t.textContent=msg; t.className='toast show '+(cls||''); clearTimeout(toastT); toastT=setTimeout(function(){t.className='toast';},900); }
   function stamp(n){ var s=$('[data-st="'+n+'"]'); if(s) s.classList.add('on'); confetti(n===3?90:36); }
-  function confetti(n){ var c=document.createElement('div'); c.className='confetti'; var cols=['#F05A1A','#FFB36B','#4D6FCF','#2E9E78','#8B63C4','#FFD43B']; for(var i=0;i<n;i++){ var p=document.createElement('i'); p.style.left=Math.random()*100+'vw'; p.style.background=cols[i%cols.length]; p.style.animationDelay=(Math.random()*.6)+'s'; p.style.animationDuration=(1.8+Math.random()*1.2)+'s'; c.appendChild(p);} document.body.appendChild(c); setTimeout(function(){c.remove();},3200); }
+  function confetti(n){ var c=document.createElement('div'); c.className='confetti'; var cols=['#F05A1A','#191F28','#FFB36B','#fff','#F05A1A','#191F28']; for(var i=0;i<n;i++){ var p=document.createElement('i'); p.style.left=Math.random()*100+'vw'; p.style.background=cols[i%cols.length]; p.style.animationDelay=(Math.random()*.6)+'s'; p.style.animationDuration=(1.8+Math.random()*1.2)+'s'; c.appendChild(p);} document.body.appendChild(c); setTimeout(function(){c.remove();},3200); }
   function pad(n){return (n<10?'0':'')+n;}
 
   /* ---------- 게임 1: 공지 분류 스와이프 ---------- */
