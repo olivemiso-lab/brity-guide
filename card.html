@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>부스 안내 카드 | 스탬프 3종</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+@page{size:A5 portrait;margin:0}
+html,body{margin:0;background:#eee;font-family:Pretendard,"Pretendard Variable",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#191F28}
+.card{width:148mm;height:210mm;margin:10mm auto;background:#fff;padding:14mm 13mm;box-sizing:border-box;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.eyebrow{font-size:9pt;letter-spacing:.14em;color:#6B7684;font-weight:700}
+h1{font-size:30pt;line-height:1.15;letter-spacing:-.03em;margin:6mm 0 4mm}
+h1 em{font-style:normal;color:#C9471D}
+p{font-size:11.5pt;line-height:1.55;color:#475467;margin:0 0 3mm}
+.steps{list-style:none;padding:0;margin:5mm 0 0;display:grid;gap:2.5mm}
+.steps li{display:flex;gap:3mm;align-items:center;font-size:11pt;font-weight:600}
+.steps b{width:7mm;height:7mm;border-radius:2mm;background:#191F28;color:#fff;display:grid;place-items:center;font-size:9pt;flex:none}
+.qr{margin-top:auto;display:flex;align-items:center;gap:7mm;border-top:1px solid #E6E8EC;padding-top:6mm}
+.qr img{width:50mm;height:50mm}
+.qr .t b{display:block;font-size:14pt;letter-spacing:-.02em;margin-bottom:1.5mm}
+.qr .t span{display:block;font-size:9.5pt;color:#6B7684;line-height:1.5}
+.qr .t code{font-size:9.5pt;color:#191F28}
+.gift{position:absolute;right:11mm;top:12mm;width:26mm;height:26mm;border-radius:50%;border:2.5pt solid #1B8A5A;color:#1B8A5A;display:grid;place-items:center;text-align:center;font-weight:800;font-size:9pt;line-height:1.15;transform:rotate(8deg)}
+.foot{font-size:8pt;color:#6B7684;margin-top:4mm}
+@media print{html,body{background:#fff}.card{margin:0}}
+</style></head><body>
+<div class="card">
+  <div class="gift">완료하면<br>선물!</div>
+  <div class="eyebrow">2분 미니게임 · 스탬프 3종</div>
+  <h1>우리 학교 메신저 약속,<br><em>몸으로</em> 익히기</h1>
+  <p>Brity 메신저, 기능보다 "어디에 올리고 어떻게 답할지"가 먼저입니다. 게임 세 개로 겪어 보세요.</p>
+  <ul class="steps">
+    <li><b>1</b>공지 분류 스와이프 · 이 메시지는 어디에?</li>
+    <li><b>2</b>답글 정리 · "확인했습니다"는 ✅로, 질문만 남기기</li>
+    <li><b>3</b>퇴근 후 알림 끄기 · 예약 발송과 방해금지</li>
+  </ul>
+  <div class="qr"><img src="img/qr-play.png" alt="QR 코드"><div class="t"><b>QR을 찍고 시작하세요</b><span>로그인·설치 없음, 휴대폰 브라우저에서 바로<br>끝 화면의 확인 코드를 부스에 보여 주세요</span><code>brity-guide.vercel.app/play.html</code></div></div>
+  <div class="foot">2026 경기도학교업무개선정책실행연구회 1분과 · 우리 학교 Brity 메신저 정착 길라잡이 · brity-guide.vercel.app</div>
+</div>
+</body></html>
