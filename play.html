@@ -309,6 +309,9 @@ body{background:#FFFFFF}
 .won .w-rank{font-size:1.5rem;font-weight:900;letter-spacing:-.03em}
 .won .w-name{font-size:1.05rem;font-weight:800}
 .reveal[hidden]{display:none}
+.prizes small{display:block;font-size:.66rem;color:#6B7684;margin-top:2px;font-weight:700}
+.prizes li.out{opacity:.45}
+.prizes li.out span{text-decoration:line-through}
 </style>
 </head>
 <body>
@@ -507,7 +510,10 @@ body{background:#FFFFFF}
 
 
   /* ---------- 뽑기판 ---------- */
-  /* 선물과 개수는 여기만 고치면 됩니다. weight는 준비 수량(합 250)이고 확률은 비율로 자동 계산됩니다. */
+  /* 재고 서버 주소: Apps Script 웹 앱 배포 URL을 넣으면 뽑을 때마다 시트에서 1씩 줄고 남은 개수가 표시됩니다.
+     비워 두거나 접속이 안 되면 아래 PRIZES 비율로 휴대폰 안에서만 뽑습니다. */
+  var DRAW_API='';
+  /* 서버가 없을 때 쓰는 기본값. weight는 준비 수량이고 확률은 비율로 자동 계산됩니다. */
   var PRIZES=[
     {rank:'1등',name:'모두 다 받기',weight:3},
     {rank:'2등',name:'페레로 로쉐',weight:15},
@@ -520,7 +526,8 @@ body{background:#FFFFFF}
   function pickPrize(){ var tot=PRIZES.reduce(function(a,p){return a+p.weight;},0); var r=Math.random()*tot; for(var i=0;i<PRIZES.length;i++){ r-=PRIZES[i].weight; if(r<0) return PRIZES[i]; } return PRIZES[PRIZES.length-1]; }
   function drawStart(){
     if(drawn&&drawn.date===todayKey()){ finish(drawn); return; }
-    var pl=$('#prizeList'); pl.innerHTML=PRIZES.map(function(p){return '<li><b>'+p.rank+'</b><span>'+p.name+'</span></li>';}).join('');
+    renderPrizes(null);
+    if(DRAW_API){ fetch(DRAW_API,{method:'GET'}).then(function(r){return r.json();}).then(function(d){ if(d&&d.ok) renderPrizes(d.stock); }).catch(function(){}); }
     var bd=$('#board'); bd.innerHTML=''; bd.classList.remove('locked'); var pats=['h','s','d']; var icons={h:'\u2665',s:'\u2605',d:'\u25C6'};
     for(var i=0;i<30;i++){ var b=document.createElement('button'); b.type='button'; var k=pats[(i+Math.floor(i/5))%3]; b.className='tile '+k; b.textContent=icons[k]; b.setAttribute('aria-label','뽑기 칸 '+(i+1)); b.addEventListener('click',function(){ tear(this); }); bd.appendChild(b); }
     show('#s-draw');
@@ -528,11 +535,26 @@ body{background:#FFFFFF}
   function tear(b){
     var bd=$('#board'); bd.classList.add('locked'); b.classList.add('tearing');
     setTimeout(function(){ b.classList.remove('tearing'); b.classList.add('torn'); b.textContent='뜯음';
-      var p=pickPrize(); drawn={rank:p.rank,name:p.name,date:todayKey()}; try{localStorage.setItem(DKEY,JSON.stringify(drawn));}catch(e){}
-      $('#tkRank').textContent=p.rank; $('#tkName').textContent=p.name; $('#reveal').hidden=false; confetti(80);
-      $('#tkOk').onclick=function(){ $('#reveal').hidden=true; finish(drawn); };
+      var showPrize=function(p,stock){ drawn={rank:p.rank,name:p.name,date:todayKey()}; try{localStorage.setItem(DKEY,JSON.stringify(drawn));}catch(e){}
+        if(stock) renderPrizes(stock);
+        $('#tkRank').textContent=p.rank; $('#tkName').textContent=p.name; $('#reveal').hidden=false; confetti(80);
+        $('#tkOk').onclick=function(){ $('#reveal').hidden=true; finish(drawn); }; };
+      if(DRAW_API){
+        b.textContent='…';
+        var ctl=('AbortController' in window)?new AbortController():null; var tmo=setTimeout(function(){ if(ctl) ctl.abort(); },8000);
+        fetch(DRAW_API,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({device:deviceId()}),signal:ctl?ctl.signal:undefined})
+          .then(function(r){return r.json();})
+          .then(function(d){ clearTimeout(tmo); b.textContent='뜯음';
+            if(d&&d.ok&&d.prize){ showPrize(d.prize,d.stock); }
+            else if(d&&d.reason==='soldout'){ renderPrizes(d.stock); $('#tkRank').textContent='마감'; $('#tkName').textContent='준비한 선물이 모두 나갔어요'; $('#reveal').hidden=false; $('#tkOk').onclick=function(){ $('#reveal').hidden=true; finish({rank:'참여',name:'선물 마감'}); }; }
+            else { showPrize(pickPrize(),null); } })
+          .catch(function(){ clearTimeout(tmo); b.textContent='뜯음'; showPrize(pickPrize(),null); });
+      } else { showPrize(pickPrize(),null); }
     },520);
   }
+  function renderPrizes(stock){ var pl=$('#prizeList'); var list=stock||PRIZES.map(function(p){return {rank:p.rank,name:p.name};});
+    pl.innerHTML=list.map(function(p){ var left=(typeof p.left==='number')?'<small>'+(p.left>0?'남음 '+p.left:'마감')+'</small>':''; return '<li'+(typeof p.left==='number'&&p.left<=0?' class="out"':'')+'><b>'+p.rank+'</b><span>'+p.name+'</span>'+left+'</li>'; }).join(''); }
+  function deviceId(){ var k='brity-play-device'; var v=null; try{ v=localStorage.getItem(k); if(!v){ v=Math.random().toString(36).slice(2,10)+Date.now().toString(36); localStorage.setItem(k,v);} }catch(e){ v='anon'; } return v; }
   function todayKey(){ var d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
 
   /* ---------- 결과 / 완료 ---------- */
