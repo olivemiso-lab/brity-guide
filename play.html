@@ -282,6 +282,33 @@ body{background:#F6F2EA}
 body{background:#FFFFFF}
 .card{box-shadow:6px 6px 0 #191F28}
 .foot{color:#8B95A1}
+
+/* ===== 뽑기판 ===== */
+.board-head h2{font-weight:900;font-size:1.35rem;margin:8px 0 10px}
+.prizes{list-style:none;padding:0;margin:0 0 14px;display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.prizes li{border:2.5px solid #191F28;border-radius:10px;padding:7px 3px;text-align:center;background:#fff;box-shadow:2px 2px 0 #191F28}
+.prizes b{display:block;font-size:.72rem;letter-spacing:.08em;color:#F05A1A;font-weight:900}
+.prizes span{display:block;font-size:.72rem;font-weight:800;color:#191F28;margin-top:2px;line-height:1.25}
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;background:#191F28;padding:10px;border-radius:14px;border:3px solid #191F28}
+.tile{position:relative;aspect-ratio:1/1.05;border:0;border-radius:8px;background:#fff;font-size:1.5rem;display:grid;place-items:center;cursor:pointer;transition:transform .12s;padding:0;font-family:inherit}
+.tile.h{background:#F05A1A;color:#fff}
+.tile.s{background:#fff;color:#F05A1A}
+.tile.d{background:#F6F2EA;color:#191F28}
+.tile:active{transform:scale(.92)}
+.tile.torn{background:#191F28;color:#6B7684;font-size:.7rem;font-weight:900;letter-spacing:.06em;pointer-events:none}
+.tile.torn::after{content:"";position:absolute;inset:4px;border:2px dashed #374151;border-radius:6px}
+.tile.tearing{animation:tear .5s ease forwards}
+@keyframes tear{0%{transform:rotate(0) translateY(0)}40%{transform:rotate(-8deg) translateY(-6px)}100%{transform:rotate(-25deg) translateY(60px) scale(.6);opacity:0}}
+.board.locked .tile:not(.torn){opacity:.55;pointer-events:none}
+.reveal{position:fixed;inset:0;background:rgba(25,31,40,.55);display:grid;place-items:center;z-index:20;padding:20px}
+.ticket{width:min(320px,88vw);background:#fff;border:3px solid #191F28;border-radius:20px;box-shadow:8px 8px 0 #191F28;padding:22px 20px 20px;text-align:center;animation:starin .5s cubic-bezier(.2,1.4,.4,1)}
+.ticket .tk-top{display:inline-block;background:#191F28;color:#fff;border-radius:999px;padding:4px 12px;font-size:.72rem;letter-spacing:.14em;font-weight:900}
+.ticket .tk-rank{font-size:3rem;font-weight:900;color:#F05A1A;letter-spacing:-.04em;line-height:1.1;margin:10px 0 2px}
+.ticket .tk-name{font-size:1.25rem;font-weight:800;color:#191F28;margin-bottom:16px}
+.won{display:flex;align-items:center;justify-content:center;gap:10px;background:#F05A1A;color:#fff;border:3px solid #191F28;border-radius:14px;padding:10px 14px;margin:8px 0 10px;box-shadow:4px 4px 0 #191F28}
+.won .w-rank{font-size:1.5rem;font-weight:900;letter-spacing:-.03em}
+.won .w-name{font-size:1.05rem;font-weight:800}
+.reveal[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -360,6 +387,23 @@ body{background:#FFFFFF}
     </div>
   </section>
 
+
+  <!-- 뽑기판 -->
+  <section class="screen draw" id="s-draw">
+    <div class="card">
+      <div class="board-head">
+        <div class="eyebrow">스탬프 3종 완료 · 보상 뽑기</div>
+        <h2>한 칸만 골라 뜯어 보세요</h2>
+        <ul class="prizes" id="prizeList"></ul>
+      </div>
+      <div class="board" id="board" role="group" aria-label="뽑기판"></div>
+      <p class="note" id="drawHint">하트나 별을 하나 누르면 뜯어집니다. 딱 한 번!</p>
+    </div>
+    <div class="reveal" id="reveal" hidden>
+      <div class="ticket" id="ticket"><div class="tk-top">당첨</div><div class="tk-rank" id="tkRank"></div><div class="tk-name" id="tkName"></div><button class="btn" id="tkOk" type="button">확인</button></div>
+    </div>
+  </section>
+
   <!-- 완료 -->
   <section class="screen done" id="s-done">
     <div class="card">
@@ -368,11 +412,12 @@ body{background:#FFFFFF}
         <div class="three"><i>분류<br>완료</i><i>답글<br>정리</i><i>알림<br>차단</i></div>
         <div class="rank" id="rank">S</div>
         <div class="pts-final"><div><b id="ptsTotal">0</b>총점</div><div><b id="ptsCombo">0</b>최고 콤보</div></div>
+        <div class="won" id="won" hidden><span class="w-rank" id="wRank"></span><span class="w-name" id="wName"></span></div>
         <div class="verdict" id="dVerdict"></div>
         <p id="dDesc"></p>
       </div>
       <div class="code"><div><span>확인 코드</span><br><b id="code">----</b></div><span id="doneTime"></span></div>
-      <p class="note">이 화면을 부스 선생님께 보여 주세요.</p>
+      <p class="note">이 화면을 부스 선생님께 보여 주시면 선물을 드립니다.</p>
     </div>
     <div style="display:grid;gap:8px;margin-top:12px">
       <a class="btn ghost" href="guide.html#step2">7가지 사용 약속 보러 가기</a>
@@ -458,14 +503,44 @@ body{background:#FFFFFF}
   function leak(el){ g3leak++; var l=$$('#g3lives i'); for(var i=0;i<g3leak&&i<3;i++) l[i].classList.add('off'); el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--no)">🔔 울림</b>'; toast('퇴근 후 알림이 울렸어요','no'); if(g3leak>=3){ g3done=true; clearInterval(g3timer); clearTimeout(g3spawn); setTimeout(function(){ toast('알림이 3개 샜어요. 다시!','no'); setTimeout(g3start,900); },500); } }
   $('#g3dnd').addEventListener('click',function(){ g3dnd=!g3dnd; this.classList.toggle('on',g3dnd); this.setAttribute('aria-checked',g3dnd?'true':'false'); if(g3dnd) toast('방해금지 켜짐. 19시 이후 알림이 오지 않아요','ok'); });
   $('#g3dnd').addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault(); this.click();} });
-  function g3end(){ if(g3done) return; g3done=true; clearInterval(g3timer); clearTimeout(g3spawn); stats.g3.leak=g3leak; stamp(3); setTimeout(function(){ result(3,'스탬프 3 획득','새어 나간 알림 <b>'+g3leak+'</b>개 · 방해금지 '+(g3dnd?'<b>ON</b>':'<b>OFF</b>'),'약속 ⑥ 발송 시간과 알림','근무시간 외 급하지 않은 메시지는 예약 발송으로 다음 근무일 아침에 보냅니다. 받는 쪽은 모바일 앱의 방해금지 시간 설정으로 알림을 막습니다. 두 기능 모두 이미 있습니다. 학교 약속에 기능 이름까지 적어 두면 실천이 쉬워집니다.',finish); },600); }
+  function g3end(){ if(g3done) return; g3done=true; clearInterval(g3timer); clearTimeout(g3spawn); stats.g3.leak=g3leak; stamp(3); setTimeout(function(){ result(3,'스탬프 3 획득','새어 나간 알림 <b>'+g3leak+'</b>개 · 방해금지 '+(g3dnd?'<b>ON</b>':'<b>OFF</b>'),'약속 ⑥ 발송 시간과 알림','근무시간 외 급하지 않은 메시지는 예약 발송으로 다음 근무일 아침에 보냅니다. 받는 쪽은 모바일 앱의 방해금지 시간 설정으로 알림을 막습니다. 두 기능 모두 이미 있습니다. 학교 약속에 기능 이름까지 적어 두면 실천이 쉬워집니다.',drawStart); },600); }
+
+
+  /* ---------- 뽑기판 ---------- */
+  /* 선물과 개수는 여기만 고치면 됩니다. weight는 준비 수량(합 250)이고 확률은 비율로 자동 계산됩니다. */
+  var PRIZES=[
+    {rank:'1등',name:'모두 다 받기',weight:3},
+    {rank:'2등',name:'페레로 로쉐',weight:15},
+    {rank:'3등',name:'신라면 컵라면',weight:50},
+    {rank:'4등',name:'하리보 젤리',weight:80},
+    {rank:'5등',name:'마이쮸',weight:102}
+  ];
+  var DKEY='brity-play-draw-v1'; var drawn=null;
+  try{ drawn=JSON.parse(localStorage.getItem(DKEY)||'null'); }catch(e){}
+  function pickPrize(){ var tot=PRIZES.reduce(function(a,p){return a+p.weight;},0); var r=Math.random()*tot; for(var i=0;i<PRIZES.length;i++){ r-=PRIZES[i].weight; if(r<0) return PRIZES[i]; } return PRIZES[PRIZES.length-1]; }
+  function drawStart(){
+    if(drawn&&drawn.date===todayKey()){ finish(drawn); return; }
+    var pl=$('#prizeList'); pl.innerHTML=PRIZES.map(function(p){return '<li><b>'+p.rank+'</b><span>'+p.name+'</span></li>';}).join('');
+    var bd=$('#board'); bd.innerHTML=''; bd.classList.remove('locked'); var pats=['h','s','d']; var icons={h:'\u2665',s:'\u2605',d:'\u25C6'};
+    for(var i=0;i<30;i++){ var b=document.createElement('button'); b.type='button'; var k=pats[(i+Math.floor(i/5))%3]; b.className='tile '+k; b.textContent=icons[k]; b.setAttribute('aria-label','뽑기 칸 '+(i+1)); b.addEventListener('click',function(){ tear(this); }); bd.appendChild(b); }
+    show('#s-draw');
+  }
+  function tear(b){
+    var bd=$('#board'); bd.classList.add('locked'); b.classList.add('tearing');
+    setTimeout(function(){ b.classList.remove('tearing'); b.classList.add('torn'); b.textContent='뜯음';
+      var p=pickPrize(); drawn={rank:p.rank,name:p.name,date:todayKey()}; try{localStorage.setItem(DKEY,JSON.stringify(drawn));}catch(e){}
+      $('#tkRank').textContent=p.rank; $('#tkName').textContent=p.name; $('#reveal').hidden=false; confetti(80);
+      $('#tkOk').onclick=function(){ $('#reveal').hidden=true; finish(drawn); };
+    },520);
+  }
+  function todayKey(){ var d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
 
   /* ---------- 결과 / 완료 ---------- */
   var nextFn=null;
-  function result(n,eye,stat,lt,lesson,next){ $('#grEyebrow').textContent=eye; $('#grNum').textContent=n; var st=n===1?(stats.g1.ok>=7?3:stats.g1.ok>=5?2:1):n===2?(stats.g2.wrong===0?3:stats.g2.wrong<=2?2:1):(stats.g3.leak===0?3:stats.g3.leak<=1?2:1); $$('#grStars i').forEach(function(i,k){ i.classList.toggle('on',k<st); }); $('#grStat').innerHTML='<span>'+stat+'</span>'; $('#grLesson').innerHTML='<b>'+lt+'</b>'+lesson; $('#grNext').textContent=n===3?'완료 화면 보기 →':'다음 게임 →'; nextFn=next; show('#s-gr'); }
+  function result(n,eye,stat,lt,lesson,next){ $('#grEyebrow').textContent=eye; $('#grNum').textContent=n; var st=n===1?(stats.g1.ok>=7?3:stats.g1.ok>=5?2:1):n===2?(stats.g2.wrong===0?3:stats.g2.wrong<=2?2:1):(stats.g3.leak===0?3:stats.g3.leak<=1?2:1); $$('#grStars i').forEach(function(i,k){ i.classList.toggle('on',k<st); }); $('#grStat').innerHTML='<span>'+stat+'</span>'; $('#grLesson').innerHTML='<b>'+lt+'</b>'+lesson; $('#grNext').textContent=n===3?'보상 뽑기 →':'다음 게임 →'; nextFn=next; show('#s-gr'); }
   $('#grNext').addEventListener('click',function(){ if(nextFn) nextFn(); });
   function code(){ var d=new Date(); var seed=(d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()); var x=(seed*2654435761)%100000; return 'B'+pad(d.getMonth()+1)+pad(d.getDate())+'-'+('000'+(x%1000)).slice(-3); }
-  function finish(){ var d=new Date(); var acc=stats.g1.ok, miss=stats.g2.wrong+stats.g3.leak; var v,desc;
+  function finish(prize){ var d=new Date(); var w=$('#won'); if(prize){ $('#wRank').textContent=prize.rank; $('#wName').textContent=prize.name; w.hidden=false; } else w.hidden=true; var acc=stats.g1.ok, miss=stats.g2.wrong+stats.g3.leak; var v,desc;
     if(acc>=7&&miss===0){v='사용 약속 마스터';desc='우리 학교 TF팀에 꼭 필요한 분입니다.';} else if(acc>=5){v='거의 다 왔어요';desc='쓰임 규칙이 머릿속에 있습니다. 7가지 약속을 한 번만 더 보세요.';} else {v='오늘부터 시작';desc='괜찮습니다. 이 길라잡이가 바로 그런 학교를 위해 만들어졌습니다.';}
     var total=pts[1]+pts[2]+pts[3]; var rk=(acc>=7&&miss===0)?'S':(acc>=5&&miss<=2)?'A':'B'; var r=$('#rank'); r.textContent=rk; r.className='rank '+rk; $('#ptsTotal').textContent=total; $('#ptsCombo').textContent=bestCombo;
     $('#dVerdict').textContent=v; $('#dDesc').textContent=desc; $('#code').textContent=code(); $('#doneTime').textContent=pad(d.getHours())+':'+pad(d.getMinutes())+' 완료'; show('#s-done'); }
