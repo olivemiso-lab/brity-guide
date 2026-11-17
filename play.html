@@ -320,6 +320,18 @@ body{background:#FFFFFF}
 @keyframes buzz{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
 .g3 .phone{min-height:360px}
 .g3 .dnd{margin-top:230px}
+.fine{font-size:.86rem;color:#6B7684;background:#F6F2EA;border-radius:12px;padding:10px 12px}
+.fine b{color:#191F28}
+.brief h2{font-size:1.5rem;font-weight:900;margin:10px 0 6px}
+.brief p{font-size:1rem;color:#191F28;margin:0 0 12px}
+.rules{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:8px}
+.rules li{display:flex;gap:10px;align-items:flex-start;font-size:.98rem;line-height:1.45;background:#fff;border:2.5px solid #191F28;border-radius:14px;padding:11px 12px;box-shadow:3px 3px 0 #191F28}
+.rules b{flex:none;width:26px;height:26px;border-radius:8px;background:#191F28;color:#fff;display:grid;place-items:center;font-size:.8rem}
+.rules .k{display:inline-block;border:2px solid #191F28;border-radius:8px;padding:0 7px;font-weight:800;background:#FFF;font-size:.86rem;margin:0 2px}
+.rules .k.o{background:#F05A1A;color:#fff;border-color:#191F28}
+.demo{display:flex;gap:8px;justify-content:center;align-items:center;margin:0 0 16px;font-size:.86rem;color:#475467;flex-wrap:wrap}
+.demo .chip{border:2px solid #191F28;border-radius:10px;padding:6px 10px;background:#fff;font-weight:700;color:#191F28}
+.demo .arr{font-weight:900;color:#F05A1A}
 </style>
 </head>
 <body>
@@ -333,14 +345,28 @@ body{background:#FFFFFF}
       <div class="eyebrow">2분 미니게임 · 스탬프 3종</div>
       <h1>우리 학교 메신저 약속,<br>몸으로 익히기</h1>
       <p>게임 세 개를 마치면 스탬프 세 개가 찍힙니다. 끝 화면을 부스에 보여 주고 선물을 받으세요.</p>
+      <p class="fine">정답이 정해진 시험이 아닙니다. 길라잡이가 제안하는 <b>예시 기준</b>에 맞춰 보는 놀이이고, 우리 학교의 약속은 학교가 함께 정합니다.</p>
       <ul class="list">
-        <li><b>1</b><div>공지 분류 스와이프<small>이 메시지는 어디에? 12장 던져 넣기 · 55초</small></div></li>
+        <li><b>1</b><div>공지 분류 스와이프<small>이 메시지는 어디에? 12장 던져 넣기 · 90초</small></div></li>
         <li><b>2</b><div>답글 정리<small>답글 23개 중 "확인했습니다"는 ✅로, 질문 5개만 남기기</small></div></li>
-        <li><b>3</b><div>퇴근 후 알림 끄기<small>예약 발송과 방해금지로 저녁 알림 막기, 긴급은 바로 · 40초</small></div></li>
+        <li><b>3</b><div>퇴근 후 알림 끄기<small>급하지 않으면 예약, 긴급이면 바로 · 60초</small></div></li>
       </ul>
       <button class="btn" id="start">게임 시작</button>
     </div>
     <p class="foot">2026 경기도학교업무개선정책실행연구회 1분과 · 「우리 학교 Brity 메신저 정착 길라잡이」의 7가지 사용 약속을 바탕으로 만들었습니다.</p>
+  </section>
+
+
+  <!-- 미션 설명 -->
+  <section class="screen brief" id="s-brief">
+    <div class="card">
+      <div class="eyebrow" id="bfEye">LEVEL 1</div>
+      <h2 id="bfTitle"></h2>
+      <p id="bfRole"></p>
+      <ul class="rules" id="bfRules"></ul>
+      <div class="demo" id="bfDemo"></div>
+      <button class="btn" id="bfStart">시작</button>
+    </div>
   </section>
 
   <!-- 게임 1 -->
@@ -452,6 +478,23 @@ body{background:#FFFFFF}
   function confetti(n){ var c=document.createElement('div'); c.className='confetti'; var cols=['#F05A1A','#191F28','#FFB36B','#fff','#F05A1A','#191F28']; for(var i=0;i<n;i++){ var p=document.createElement('i'); p.style.left=Math.random()*100+'vw'; p.style.background=cols[i%cols.length]; p.style.animationDelay=(Math.random()*.6)+'s'; p.style.animationDuration=(1.8+Math.random()*1.2)+'s'; c.appendChild(p);} document.body.appendChild(c); setTimeout(function(){c.remove();},3200); }
   function pad(n){return (n<10?'0':'')+n;}
 
+
+  /* ---------- 미션 설명 ---------- */
+  var BRIEF={
+    1:{eye:'LEVEL 1 · 공지 분류',title:'이 메시지, 어디에 올릴까?',role:'당신은 교무부장입니다. 메시지 카드가 한 장씩 나옵니다.',
+       rules:['카드를 읽고 <span class="k">워크스페이스</span><span class="k">대화방 공지</span><span class="k">대화</span><span class="k">쪽지</span><span class="k">드라이브</span> 중 한 칸을 고릅니다.','카드를 칸으로 끌어다 놓거나, 칸을 그냥 눌러도 됩니다.','길라잡이의 예시 기준과 맞으면 점수가 오릅니다. 90초, 12장.'],
+       demo:'<span class="chip">📌 10월 학사 일정 안내</span><span class="arr">→</span><span class="chip">🗂️ 워크스페이스</span>'},
+    2:{eye:'LEVEL 2 · 답글 정리',title:'답글에서 질문만 남기기',role:'평가계획 공지 아래로 답글이 쏟아집니다.',
+       rules:['"확인했습니다", "네" 같은 답글을 <span class="k o">누르면</span> ✅ 이모지로 바뀝니다.','진짜 <b>질문</b>은 누르지 말고 남겨 두세요. 누르면 실수.','확인 답글을 모두 ✅로 바꾸면 끝. 시간 제한 없음.'],
+       demo:'<span class="chip">확인했습니다</span><span class="arr">→</span><span class="chip">✅</span><span class="chip" style="margin-left:10px">기한 연장 되나요?</span><span class="arr">→</span><span class="chip">남김</span>'},
+    3:{eye:'LEVEL 3 · 알림 끄기',title:'저녁 7시, 보낼까 말까?',role:'퇴근 후입니다. 보내려던 메시지가 하나씩 올라옵니다.',
+       rules:['급하지 않은 메시지는 <span class="k">예약 발송</span>을 눌러 내일 아침으로 보냅니다.','<b>⚠️ 긴급</b> 표시가 있으면 <span class="k o">지금 보내기</span>. 긴급을 예약하거나 놓치면 실수.','아래 <b>방해금지 스위치</b>를 켜면 못 누르고 지나간 알림도 막아 줍니다. 실수 3번이면 다시. 60초.'],
+       demo:'<span class="chip">내일 회의 자료 공유</span><span class="arr">→</span><span class="chip">⏰ 예약</span><span class="chip" style="margin-left:10px">⚠️ 폭설 등교 변경</span><span class="arr">→</span><span class="chip">지금</span>'}
+  };
+  var briefNext=null;
+  function brief(n,next){ var b=BRIEF[n]; $('#bfEye').textContent=b.eye; $('#bfTitle').textContent=b.title; $('#bfRole').textContent=b.role; $('#bfRules').innerHTML=b.rules.map(function(r,i){return '<li><b>'+(i+1)+'</b><span>'+r+'</span></li>';}).join(''); $('#bfDemo').innerHTML=b.demo; briefNext=next; show('#s-brief'); }
+  $('#bfStart').addEventListener('click',function(){ if(briefNext) briefNext(); });
+
   /* ---------- 게임 1: 공지 분류 스와이프 ---------- */
   var G1=[
     {who:'교무부장',msg:'📌 [안내] 10월 학사 일정 안내\n■ 내용: 다음 주 학사일정 안내\n■ 문의: 교무기획부',a:'ws',why:'전체 교직원 공식 안내는 워크스페이스 공지'},
@@ -467,15 +510,15 @@ body{background:#FFFFFF}
     {who:'행정실',msg:'선생님, 출장비 서류 한 가지가 빠져 있습니다. 확인 부탁드립니다.',a:'memo',why:'특정 교직원에게 보내는 개별 안내는 쪽지'},
     {who:'교무부장',msg:'담당 선생님, 내일 협의회 자료 먼저 검토해 주시겠어요?',a:'chat',why:'한 사람과 바로 협의할 일은 대화'}
   ];
-  var g1i=0, g1timer=null, g1t0=0, G1_SEC=55, g1lock=false;
+  var g1i=0, g1timer=null, g1t0=0, G1_SEC=90, g1lock=false;
   function g1start(){ stats.g1={ok:0,total:0}; g1i=0; combo=0; pts[1]=0; $('#pts1').textContent='0'; g1lock=false; $('#g1left').textContent=G1.length; g1t0=Date.now(); show('#s-g1'); g1card(); clearInterval(g1timer); g1timer=setInterval(function(){ var r=1-(Date.now()-g1t0)/(G1_SEC*1000); $('#g1timer').style.width=Math.max(0,r*100)+'%'; if(r<=0){ clearInterval(g1timer); g1end(); } },100); }
   function g1card(){ var st=$('#g1stage'); st.innerHTML=''; if(g1i>=G1.length){ clearInterval(g1timer); g1end(); return; } var q=G1[g1i]; var c=document.createElement('div'); c.className='cardq'; c.innerHTML='<div class="who">'+q.who+'</div><div class="msg">'+q.msg+'</div>'; st.appendChild(c); drag(c); $('#g1left').textContent=G1.length-g1i; }
   function g1answer(bin){ if(g1lock) return; g1lock=true; var q=G1[g1i]; var ok=bin===q.a; stats.g1.total++; if(ok) stats.g1.ok++;
     $$('#g1bins .bin').forEach(function(b){ var k=b.getAttribute('data-bin'); b.classList.remove('hot'); if(k===q.a) b.classList.add('ok'); else if(k===bin) b.classList.add('no'); });
     if(ok){ combo++; bestCombo=Math.max(bestCombo,combo); addPts(1,100+Math.min(combo-1,4)*25, combo>1?'콤보 x'+combo:''); } else combo=0;
-    toast(ok?'맞아요! '+q.why:'아쉬워요. '+q.why, ok?'ok':'no');
+    toast(ok?'길라잡이 기준과 같아요. '+q.why:'길라잡이 예시로는 '+PLACES[q.a]+'. '+q.why, ok?'ok':'no');
     var c=$('#g1stage .cardq'); if(c){ c.classList.add('flying'); }
-    setTimeout(function(){ $$('#g1bins .bin').forEach(function(b){b.classList.remove('ok','no');}); g1i++; g1lock=false; g1card(); }, ok?650:1100);
+    setTimeout(function(){ $$('#g1bins .bin').forEach(function(b){b.classList.remove('ok','no');}); g1i++; g1lock=false; g1card(); }, ok?900:1600);
   }
   function drag(c){
     var sx=0,sy=0,dx=0,dy=0,on=false;
@@ -488,26 +531,26 @@ body{background:#FFFFFF}
     c.addEventListener('mousedown',down); window.addEventListener('mousemove',move); window.addEventListener('mouseup',up);
   }
   $$('#g1bins .bin').forEach(function(b){ b.addEventListener('click',function(){ if($('#g1stage .cardq')) g1answer(b.getAttribute('data-bin')); }); });
-  function g1end(){ stamp(1); result(1,'스탬프 1 획득','<b>'+stats.g1.ok+'</b>/'+G1.length+' 정확','약속 ① 용도 구분','워크스페이스는 공식 공지와 자료, 대화방 공지는 짧은 즉시 안내, 대화는 개별 협의, 쪽지는 답장 필요 없는 전달, 드라이브는 함께 쓰는 문서. 어디에 올릴지 학교가 먼저 정하면 같은 공지가 여러 곳에 올라오지 않습니다.',g2start); }
+  function g1end(){ stamp(1); result(1,'스탬프 1 획득','길라잡이 기준과 일치 <b>'+stats.g1.ok+'</b>/'+G1.length,'약속 ① 용도 구분 (예시)','길라잡이의 예시 기준은 이렇습니다. 워크스페이스는 공식 공지와 자료, 대화방 공지는 짧은 즉시 안내, 대화는 개별 협의, 쪽지는 답장 필요 없는 전달, 드라이브는 함께 쓰는 문서. 정답이 아니라 출발점입니다. 우리 학교는 TF팀이 구성원과 함께 정하면 됩니다.',function(){ brief(2,g2start); }); }
 
   /* ---------- 게임 2: 답글 정리 ---------- */
   var G2=[['확인했습니다',0],['네 알겠습니다',0],['학년별로 한 번만 작성하면 되나요?',1],['확인했어요~',0],['넵!',0],['확인',0],['링크가 열리지 않는데 권한을 열어 주실 수 있나요?',1],['확인했습니다!',0],['네~',0],['수고하십니다. 확인했습니다',0],['기한 연장은 어렵겠지요?',1],['확인했습니다',0],['알겠습니다',0],['네 확인했습니다',0],['잘 받았습니다',0],['제출은 학년 부장만 하면 되나요?',1],['확인~',0],['네넵',0],['양식에 평가 시기 칸이 없는데 추가해도 되나요?',1],['알겠습니다!',0],['확인했습니다. 감사합니다',0],['넹',0],['확인했어요',0]];
   var g2left=0, g2wrong=0, g2done=false;
   function g2start(){ show('#s-g2'); pts[2]=0; $('#pts2').textContent='0'; var f=$('#g2feed'); f.innerHTML=''; g2wrong=0; g2done=false; g2left=G2.filter(function(x){return x[1]===0;}).length; $('#g2left').textContent=g2left; var m=$('#g2meter'); m.innerHTML=''; for(var i=0;i<g2left;i++) m.appendChild(document.createElement('i'));
     var i=0; (function add(){ if(i>=G2.length) return; var it=G2[i]; var el=document.createElement('div'); el.className='rep'+(it[1]?' q':''); el.innerHTML='<span class="av">'+'교'+(i%9+1)+'</span><span class="txt">'+it[0]+'</span>'; el.setAttribute('data-q',it[1]); el.setAttribute('role','button'); el.setAttribute('tabindex','0');
-      var h=function(){ if(g2done||el.classList.contains('done')||el.classList.contains('keep')) return; if(it[1]){ el.classList.add('bad'); g2wrong++; toast('이건 진짜 질문이에요. 남겨 두세요!','no'); setTimeout(function(){el.classList.remove('bad');},400); } else { el.classList.add('done'); el.innerHTML+='<span class="em">✅</span>'; addPts(2,50); g2left--; $('#g2left').textContent=g2left; var ons=$$('#g2meter i'); ons[ons.length-1-g2left] && ons[ons.length-1-g2left].classList.add('on'); if(g2left===0) setTimeout(g2end,500); } };
+      var h=function(){ if(g2done||el.classList.contains('done')||el.classList.contains('keep')) return; if(it[1]){ el.classList.add('bad'); g2wrong++; toast('이건 질문이에요. 답글은 질문을 위해 남겨 둬요','no'); setTimeout(function(){el.classList.remove('bad');},400); } else { el.classList.add('done'); el.innerHTML+='<span class="em">✅</span>'; addPts(2,50); g2left--; $('#g2left').textContent=g2left; var ons=$$('#g2meter i'); ons[ons.length-1-g2left] && ons[ons.length-1-g2left].classList.add('on'); if(g2left===0) setTimeout(g2end,500); } };
       el.addEventListener('click',h); el.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();h();} });
-      f.appendChild(el); f.scrollTop=f.scrollHeight; i++; setTimeout(add,140); })();
+      f.appendChild(el); f.scrollTop=f.scrollHeight; i++; setTimeout(add,320); })();
   }
-  function g2end(){ g2done=true; $$('#g2feed .rep.q').forEach(function(el){ el.classList.add('keep'); el.innerHTML+='<span class="tag">질문 남김</span>'; }); stats.g2.wrong=g2wrong; stamp(2); setTimeout(function(){ result(2,'스탬프 2 획득','<b>5</b>개 질문만 남김 · 실수 <b>'+g2wrong+'</b>','약속 ③·④ 답글과 이모지','단순 확인은 ✅ 이모지로 남기고, 답글은 질문과 답변을 위해 비워 둡니다. 그래야 담당자가 질문을 놓치지 않고, 다른 교직원도 같은 답을 볼 수 있습니다. 확인(읽음)과 완료(제출)는 구분해서 정합니다.',g3start); },700); }
+  function g2end(){ g2done=true; $$('#g2feed .rep.q').forEach(function(el){ el.classList.add('keep'); el.innerHTML+='<span class="tag">질문 남김</span>'; }); stats.g2.wrong=g2wrong; stamp(2); setTimeout(function(){ result(2,'스탬프 2 획득','<b>5</b>개 질문만 남김 · 실수 <b>'+g2wrong+'</b>','약속 ③·④ 답글과 이모지 (예시)','길라잡이는 단순 확인을 ✅ 이모지로 남기고, 답글은 질문과 답변을 위해 비워 두자고 제안합니다. 담당자가 질문을 놓치지 않고, 다른 교직원도 같은 답을 볼 수 있어서입니다. 확인(읽음)과 완료(제출)를 어떻게 구분할지는 학교가 정합니다.',function(){ brief(3,g3start); }); },700); }
 
   /* ---------- 게임 3: 퇴근 후 알림 끄기 ---------- */
   var G3=[['교무부장','📌 내일 학부모 상담 주간 안내',false],['연구부','연수 수요조사 제출 부탁드립니다',false],['교감','급한 건 아니고요, 내일 회의 자료 미리 공유합니다',false],['교감','⚠️ 긴급: 폭설로 내일 등교 시간 10시로 변경',true],['학년부장','내일 아침 학년 협의 10분만요',false],['정보부','브리티 설치 안내 자료입니다',false],['교무부장','📌 다음 주 학사일정',false],['보건실','⚠️ 긴급: 학생 안전 관련 즉시 확인 요청',true],['교육과정부','평가계획 양식 수정본 공유합니다',false],['행정실','다음 달 출장 계획 제출 안내',false]];
-  var g3i=0,g3lives=3,g3leak=0,g3timer=null,g3t0=0,G3_SEC=40,g3dnd=false,g3spawn=null,g3done=false,g3min=0,g3sch=0,g3blk=0,g3urg=0;
+  var g3i=0,g3lives=3,g3leak=0,g3timer=null,g3t0=0,G3_SEC=60,g3dnd=false,g3spawn=null,g3done=false,g3min=0,g3sch=0,g3blk=0,g3urg=0;
   function g3cnt(){ $('#g3sch').textContent=g3sch; $('#g3blk').textContent=g3blk; $('#g3urg').textContent=g3urg; }
   function g3start(){ show('#s-g3'); pts[3]=0; $('#pts3').textContent='0'; g3i=0; g3sch=0; g3blk=0; g3urg=0; g3cnt(); g3lives=3; g3leak=0; g3dnd=false; g3done=false; g3min=0; $('#g3dnd').className='sw'; $('#g3dnd').setAttribute('aria-checked','false'); $$('#g3lives i').forEach(function(i){i.classList.remove('off');}); $$('#g3phone .noti').forEach(function(n){n.remove();}); g3t0=Date.now();
     clearInterval(g3timer); g3timer=setInterval(function(){ var e=(Date.now()-g3t0)/1000; var r=1-e/G3_SEC; $('#g3timer').style.width=Math.max(0,r*100)+'%'; g3min=Math.floor(e*2); $('#g3clock').firstChild.textContent='19:'+pad(Math.min(59,g3min)); if(r<=0) g3end(); },100);
-    clearTimeout(g3spawn); g3spawn=setTimeout(g3next,900);
+    clearTimeout(g3spawn); g3spawn=setTimeout(g3next,1500);
   }
   function g3next(){ if(g3done) return; if(g3i>=G3.length){ return; } var n=G3[g3i]; g3i++; var urgent=n[2];
     var el=document.createElement('div'); el.className='noti'+(urgent?' urgent':''); el.style.top=(56+((g3i%3)*10))+'px'; el.innerHTML='<span class="ic">'+(urgent?'⚠️':n[0].slice(0,2))+'</span><div class="t"><b>'+n[0]+'</b><span>'+n[1]+'</span></div><div class="act"><button class="sched">예약 발송</button><button class="send">지금 보내기</button></div>';
@@ -516,7 +559,7 @@ body{background:#FFFFFF}
       if(urgent){ el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--no)">⚠️ 놓침</b>'; toast('긴급은 바로 보내야 해요!','no'); miss3(); }
       else if(g3dnd){ el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--ok)">🌙 차단됨</b>'; toast('방해금지가 알림을 막았어요','ok'); addPts(3,60,'차단'); g3blk++; g3cnt(); }
       else { leak(el); }
-      bye(500); },urgent?2600:2200);
+      bye(500); },urgent?5200:4200);
     el.querySelector('.sched').addEventListener('click',function(){ if(!alive) return; alive=false; clearTimeout(tm);
       if(urgent){ el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--no)">⚠️ 늦음</b>'; toast('긴급을 예약하면 안 돼요','no'); miss3(); }
       else { el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--c1)">⏰ 내일 08:00</b>'; toast('예약 발송! 내일 아침에 전달돼요','ok'); addPts(3,80,'예약'); g3sch++; g3cnt(); }
@@ -525,13 +568,13 @@ body{background:#FFFFFF}
       if(urgent){ el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--ok)">✅ 전송</b>'; toast('긴급은 바로! 잘했어요','ok'); addPts(3,120,'긴급'); g3urg++; g3cnt(); bye(450); }
       else { leak(el); bye(450); } });
     $('#g3phone').appendChild(el);
-    g3spawn=setTimeout(g3next, 1500+Math.random()*800);
+    g3spawn=setTimeout(g3next, 3000+Math.random()*900);
   }
   function miss3(){ g3leak++; var l=$$('#g3lives i'); for(var i=0;i<g3leak&&i<3;i++) l[i].classList.add('off'); if(g3leak>=3){ g3done=true; clearInterval(g3timer); clearTimeout(g3spawn); setTimeout(function(){ toast('실수 3번! 다시','no'); setTimeout(g3start,900); },500); } }
   function leak(el){ el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--no)">🔔 울림</b>'; toast('퇴근 후 알림이 울렸어요','no'); miss3(); }
   $('#g3dnd').addEventListener('click',function(){ g3dnd=!g3dnd; this.classList.toggle('on',g3dnd); this.setAttribute('aria-checked',g3dnd?'true':'false'); if(g3dnd) toast('방해금지 켜짐. 19시 이후 알림이 오지 않아요','ok'); });
   $('#g3dnd').addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault(); this.click();} });
-  function g3end(){ if(g3done) return; g3done=true; clearInterval(g3timer); clearTimeout(g3spawn); stats.g3.leak=g3leak; stamp(3); setTimeout(function(){ result(3,'스탬프 3 획득','예약 <b>'+g3sch+'</b> · 차단 <b>'+g3blk+'</b> · 긴급 <b>'+g3urg+'</b>/2 · 실수 <b>'+g3leak+'</b>','약속 ⑥ 발송 시간과 알림','근무시간 외 급하지 않은 메시지는 예약 발송으로 다음 근무일 아침에 보냅니다. 받는 쪽은 모바일 앱의 방해금지 시간 설정으로 알림을 막습니다. 긴급한 안전 사안은 예외입니다. 두 기능 모두 이미 있으니, 학교 약속에 기능 이름까지 적어 두면 실천이 쉬워집니다.',drawStart); },600); }
+  function g3end(){ if(g3done) return; g3done=true; clearInterval(g3timer); clearTimeout(g3spawn); stats.g3.leak=g3leak; stamp(3); setTimeout(function(){ result(3,'스탬프 3 획득','예약 <b>'+g3sch+'</b> · 차단 <b>'+g3blk+'</b> · 긴급 <b>'+g3urg+'</b>/2 · 실수 <b>'+g3leak+'</b>','약속 ⑥ 발송 시간과 알림 (예시)','길라잡이는 근무시간 외 급하지 않은 메시지를 예약 발송으로 다음 근무일 아침에 보냅니다. 받는 쪽은 모바일 앱의 방해금지 시간 설정으로 알림을 막습니다. 긴급한 안전 사안은 예외입니다. 두 기능 모두 이미 있으니, 학교 약속에 기능 이름까지 적어 두면 실천이 쉬워집니다.',drawStart); },600); }
 
 
   /* ---------- 뽑기판 ---------- */
@@ -588,10 +631,10 @@ body{background:#FFFFFF}
   $('#grNext').addEventListener('click',function(){ if(nextFn) nextFn(); });
   function code(){ var d=new Date(); var seed=(d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()); var x=(seed*2654435761)%100000; return 'B'+pad(d.getMonth()+1)+pad(d.getDate())+'-'+('000'+(x%1000)).slice(-3); }
   function finish(prize){ var d=new Date(); var w=$('#won'); if(prize){ $('#wRank').textContent=prize.rank; $('#wName').textContent=prize.name; w.hidden=false; } else w.hidden=true; var acc=stats.g1.ok, miss=stats.g2.wrong+stats.g3.leak; var v,desc;
-    if(acc>=10&&miss===0){v='사용 약속 마스터';desc='우리 학교 TF팀에 꼭 필요한 분입니다.';} else if(acc>=7){v='거의 다 왔어요';desc='쓰임 규칙이 머릿속에 있습니다. 7가지 약속을 한 번만 더 보세요.';} else {v='오늘부터 시작';desc='괜찮습니다. 이 길라잡이가 바로 그런 학교를 위해 만들어졌습니다.';}
+    if(acc>=10&&miss===0){v='약속 만들기 준비 완료';desc='길라잡이 기준을 다 익혔어요. 이제 우리 학교 약속을 정할 차례입니다.';} else if(acc>=7){v='거의 다 왔어요';desc='쓰임 규칙이 머릿속에 있어요. 7가지 약속을 한 번만 더 보세요.';} else {v='오늘부터 시작';desc='괜찮아요. 이 길라잡이가 바로 그런 학교를 위해 만들어졌어요.';}
     var total=pts[1]+pts[2]+pts[3]; var rk=(acc>=10&&miss===0)?'S':(acc>=7&&miss<=2)?'A':'B'; var r=$('#rank'); r.textContent=rk; r.className='rank '+rk; $('#ptsTotal').textContent=total; $('#ptsCombo').textContent=bestCombo;
     $('#dVerdict').textContent=v; $('#dDesc').textContent=desc; $('#code').textContent=code(); $('#doneTime').textContent=pad(d.getHours())+':'+pad(d.getMinutes())+' 완료'; show('#s-done'); }
-  $('#start').addEventListener('click',g1start);
+  $('#start').addEventListener('click',function(){ brief(1,g1start); });
   $('#again').addEventListener('click',function(){ $$('.stamps i').forEach(function(i){i.classList.remove('on');}); show('#s-intro'); });
 })();
 </script>
