@@ -477,7 +477,7 @@ body{background:#FFFFFF}
   window.addEventListener('error',function(e){ try{ var t=$('#toast'); t.textContent='오류: '+(e.message||'알 수 없음')+' ('+(e.lineno||'')+')'; t.className='toast show no'; setTimeout(function(){t.className='toast';},6000); }catch(x){} });
   var toastT; function toast(msg,cls){ var t=$('#toast'); t.textContent=msg; t.className='toast show '+(cls||''); clearTimeout(toastT); toastT=setTimeout(function(){t.className='toast';},900); }
   function stamp(n){ var s=$('[data-st="'+n+'"]'); if(s) s.classList.add('on'); confetti(n===3?90:36); }
-  function confetti(n){ var c=document.createElement('div'); c.className='confetti'; var cols=['#F05A1A','#191F28','#FFB36B','#fff','#F05A1A','#191F28']; for(var i=0;i<n;i++){ var p=document.createElement('i'); p.style.left=Math.random()*100+'vw'; p.style.background=cols[i%cols.length]; p.style.animationDelay=(Math.random()*.6)+'s'; p.style.animationDuration=(1.8+Math.random()*1.2)+'s'; c.appendChild(p);} document.body.appendChild(c); setTimeout(function(){c.remove();},3200); }
+  function confetti(n){ return; /* 색종이 연출 끔 */ var c=document.createElement('div'); c.className='confetti'; var cols=['#F05A1A','#191F28','#FFB36B','#fff','#F05A1A','#191F28']; for(var i=0;i<n;i++){ var p=document.createElement('i'); p.style.left=Math.random()*100+'vw'; p.style.background=cols[i%cols.length]; p.style.animationDelay=(Math.random()*.6)+'s'; p.style.animationDuration=(1.8+Math.random()*1.2)+'s'; c.appendChild(p);} document.body.appendChild(c); setTimeout(function(){c.remove();},3200); }
   function pad(n){return (n<10?'0':'')+n;}
 
 
