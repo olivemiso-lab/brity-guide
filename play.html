@@ -519,7 +519,7 @@ body{background:#FFFFFF}
   function g1answer(bin){ if(g1lock) return; g1lock=true; var q=G1[g1i]; var ok=bin===q.a; stats.g1.total++; if(ok) stats.g1.ok++;
     $$('#g1bins .bin').forEach(function(b){ var k=b.getAttribute('data-bin'); b.classList.remove('hot'); if(k===q.a) b.classList.add('ok'); else if(k===bin) b.classList.add('no'); });
     if(ok){ combo++; bestCombo=Math.max(bestCombo,combo); addPts(1,100+Math.min(combo-1,4)*25, combo>1?'콤보 x'+combo:''); } else combo=0;
-    toast(ok?'길라잡이 기준과 같아요. '+q.why:'길라잡이 예시로는 '+PLACES[q.a]+'. '+q.why, ok?'ok':'no');
+    toast(ok?'좋아요! '+q.why:'길라잡이 예시: '+PLACES[q.a]+'. '+q.why, ok?'ok':'no');
     var c=$('#g1stage .cardq'); if(c){ c.classList.add('flying'); }
     setTimeout(function(){ $$('#g1bins .bin').forEach(function(b){b.classList.remove('ok','no');}); g1i++; g1lock=false; g1card(); }, ok?900:1600);
   }
