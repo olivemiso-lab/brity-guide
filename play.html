@@ -474,6 +474,7 @@ body{background:#FFFFFF}
   var stats={g1:{ok:0,total:0},g2:{wrong:0},g3:{leak:0}}; var pts={1:0,2:0,3:0}, combo=0, bestCombo=0;
   function addPts(g,n,label){ pts[g]+=n; var el=$('#pts'+g); if(el) el.textContent=pts[g]; var p=document.createElement('div'); p.className='pop'; p.textContent='+'+n+(label?' '+label:''); document.body.appendChild(p); setTimeout(function(){p.remove();},800); }
   function show(id){ $$('.screen').forEach(function(s){s.classList.remove('active');}); $(id).classList.add('active'); window.scrollTo(0,0); }
+  window.addEventListener('error',function(e){ try{ var t=$('#toast'); t.textContent='오류: '+(e.message||'알 수 없음')+' ('+(e.lineno||'')+')'; t.className='toast show no'; setTimeout(function(){t.className='toast';},6000); }catch(x){} });
   var toastT; function toast(msg,cls){ var t=$('#toast'); t.textContent=msg; t.className='toast show '+(cls||''); clearTimeout(toastT); toastT=setTimeout(function(){t.className='toast';},900); }
   function stamp(n){ var s=$('[data-st="'+n+'"]'); if(s) s.classList.add('on'); confetti(n===3?90:36); }
   function confetti(n){ var c=document.createElement('div'); c.className='confetti'; var cols=['#F05A1A','#191F28','#FFB36B','#fff','#F05A1A','#191F28']; for(var i=0;i<n;i++){ var p=document.createElement('i'); p.style.left=Math.random()*100+'vw'; p.style.background=cols[i%cols.length]; p.style.animationDelay=(Math.random()*.6)+'s'; p.style.animationDuration=(1.8+Math.random()*1.2)+'s'; c.appendChild(p);} document.body.appendChild(c); setTimeout(function(){c.remove();},3200); }
