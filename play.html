@@ -350,7 +350,7 @@ body{background:#FFFFFF}
       <ul class="list">
         <li><b>1</b><div>공지 분류 스와이프<small>이 메시지는 어디에? 12장 던져 넣기 · 90초</small></div></li>
         <li><b>2</b><div>답글 정리<small>답글 23개 중 "확인했습니다"는 ✅로, 질문 5개만 남기기</small></div></li>
-        <li><b>3</b><div>퇴근 후 알림 끄기<small>급하지 않으면 예약, 긴급이면 바로 · 60초</small></div></li>
+        <li><b>3</b><div>퇴근 후 알림 끄기<small>급하지 않으면 예약, 긴급이면 바로 · 알림 10개</small></div></li>
       </ul>
       <button class="btn" id="start">게임 시작</button>
     </div>
@@ -490,7 +490,7 @@ body{background:#FFFFFF}
        rules:['"확인했습니다", "네" 같은 답글을 <span class="k o">누르면</span> ✅ 이모지로 바뀝니다.','진짜 <b>질문</b>은 누르지 말고 남겨 두세요. 누르면 실수.','확인 답글을 모두 ✅로 바꾸면 끝. 시간 제한 없음.'],
        demo:'<span class="chip">확인했습니다</span><span class="arr">→</span><span class="chip">✅</span><span class="chip" style="margin-left:10px">기한 연장 되나요?</span><span class="arr">→</span><span class="chip">남김</span>'},
     3:{eye:'LEVEL 3 · 알림 끄기',title:'저녁 7시, 보낼까 말까?',role:'퇴근 후입니다. 보내려던 메시지가 하나씩 올라옵니다.',
-       rules:['급하지 않은 메시지는 <span class="k">예약 발송</span>을 눌러 내일 아침으로 보냅니다.','<b>⚠️ 긴급</b> 표시가 있으면 <span class="k o">지금 보내기</span>. 긴급을 예약하거나 놓치면 실수.','아래 <b>방해금지 스위치</b>를 켜면 못 누르고 지나간 알림도 막아 줍니다. 실수 3번이면 다시. 60초.'],
+       rules:['급하지 않은 메시지는 <span class="k">예약 발송</span>을 눌러 내일 아침으로 보냅니다.','<b>⚠️ 긴급</b> 표시가 있으면 <span class="k o">지금 보내기</span>. 긴급을 예약하거나 놓치면 실수.','아래 <b>방해금지 스위치</b>를 켜면 못 누르고 지나간 알림도 막아 줍니다. 알림 10개를 다 처리하면 끝. 실수 3번이면 다시.'],
        demo:'<span class="chip">내일 회의 자료 공유</span><span class="arr">→</span><span class="chip">⏰ 예약</span><span class="chip" style="margin-left:10px">⚠️ 폭설 등교 변경</span><span class="arr">→</span><span class="chip">지금</span>'}
   };
   var briefNext=null;
@@ -549,15 +549,15 @@ body{background:#FFFFFF}
 
   /* ---------- 게임 3: 퇴근 후 알림 끄기 ---------- */
   var G3=[['교무부장','📌 내일 학부모 상담 주간 안내',false],['연구부','연수 수요조사 제출 부탁드립니다',false],['교감','급한 건 아니고요, 내일 회의 자료 미리 공유합니다',false],['교감','⚠️ 긴급: 폭설로 내일 등교 시간 10시로 변경',true],['학년부장','내일 아침 학년 협의 10분만요',false],['정보부','브리티 설치 안내 자료입니다',false],['교무부장','📌 다음 주 학사일정',false],['보건실','⚠️ 긴급: 학생 안전 관련 즉시 확인 요청',true],['교육과정부','평가계획 양식 수정본 공유합니다',false],['행정실','다음 달 출장 계획 제출 안내',false]];
-  var g3i=0,g3lives=3,g3leak=0,g3timer=null,g3t0=0,G3_SEC=60,g3dnd=false,g3spawn=null,g3done=false,g3min=0,g3sch=0,g3blk=0,g3urg=0;
+  var g3i=0,g3lives=3,g3leak=0,g3timer=null,g3t0=0,G3_SEC=50,g3resolved=0,g3dnd=false,g3spawn=null,g3done=false,g3min=0,g3sch=0,g3blk=0,g3urg=0;
   function g3cnt(){ $('#g3sch').textContent=g3sch; $('#g3blk').textContent=g3blk; $('#g3urg').textContent=g3urg; }
-  function g3start(){ show('#s-g3'); pts[3]=0; $('#pts3').textContent='0'; g3i=0; g3sch=0; g3blk=0; g3urg=0; g3cnt(); g3lives=3; g3leak=0; g3dnd=false; g3done=false; g3min=0; $('#g3dnd').className='sw'; $('#g3dnd').setAttribute('aria-checked','false'); $$('#g3lives i').forEach(function(i){i.classList.remove('off');}); $$('#g3phone .noti').forEach(function(n){n.remove();}); g3t0=Date.now();
+  function g3start(){ show('#s-g3'); pts[3]=0; $('#pts3').textContent='0'; g3i=0; g3resolved=0; g3sch=0; g3blk=0; g3urg=0; g3cnt(); g3lives=3; g3leak=0; g3dnd=false; g3done=false; g3min=0; $('#g3dnd').className='sw'; $('#g3dnd').setAttribute('aria-checked','false'); $$('#g3lives i').forEach(function(i){i.classList.remove('off');}); $$('#g3phone .noti').forEach(function(n){n.remove();}); g3t0=Date.now();
     clearInterval(g3timer); g3timer=setInterval(function(){ var e=(Date.now()-g3t0)/1000; var r=1-e/G3_SEC; $('#g3timer').style.width=Math.max(0,r*100)+'%'; g3min=Math.floor(e*2); $('#g3clock').firstChild.textContent='19:'+pad(Math.min(59,g3min)); if(r<=0) g3end(); },100);
     clearTimeout(g3spawn); g3spawn=setTimeout(g3next,1500);
   }
   function g3next(){ if(g3done) return; if(g3i>=G3.length){ return; } var n=G3[g3i]; g3i++; var urgent=n[2];
     var el=document.createElement('div'); el.className='noti'+(urgent?' urgent':''); el.style.top=(56+((g3i%3)*10))+'px'; el.innerHTML='<span class="ic">'+(urgent?'⚠️':n[0].slice(0,2))+'</span><div class="t"><b>'+n[0]+'</b><span>'+n[1]+'</span></div><div class="act"><button class="sched">예약 발송</button><button class="send">지금 보내기</button></div>';
-    var alive=true; var bye=function(ms){ setTimeout(function(){el.classList.add('gone'); setTimeout(function(){el.remove();},200);},ms); };
+    var alive=true; var bye=function(ms){ g3resolved++; setTimeout(function(){el.classList.add('gone'); setTimeout(function(){el.remove();},200); if(!g3done&&g3resolved>=G3.length) g3end(); },ms); };
     var tm=setTimeout(function(){ if(!alive) return; alive=false;
       if(urgent){ el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--no)">⚠️ 놓침</b>'; toast('긴급은 바로 보내야 해요!','no'); miss3(); }
       else if(g3dnd){ el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--ok)">🌙 차단됨</b>'; toast('방해금지가 알림을 막았어요','ok'); addPts(3,60,'차단'); g3blk++; g3cnt(); }
