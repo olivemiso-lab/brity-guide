@@ -50,7 +50,7 @@ p{margin:0 0 10px;color:var(--ink2)}
 .g1 .cardq{position:absolute;inset:0;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 24px -14px rgba(25,31,40,.25);user-select:none;touch-action:none;will-change:transform}
 .g1 .cardq .who{font-size:.76rem;color:var(--muted);font-weight:700;margin-bottom:6px}
 .g1 .cardq .msg{font-size:1.05rem;line-height:1.45;color:var(--ink);white-space:pre-line}
-.g1 .cardq.flying{transition:transform .3s ease,opacity .3s ease;opacity:0}
+.g1 .cardq.flying{transition:transform .3s ease,opacity .3s ease;opacity:0;pointer-events:none}
 .g1 .bins{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .g1 .bin{min-height:64px;border:1.5px dashed #CBD2DB;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:.74rem;font-weight:700;color:var(--ink2);background:#fff;padding:6px 2px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
 .g1 .bin .ic{font-size:1.15rem}
@@ -498,6 +498,7 @@ body{background:#FFFFFF}
   $('#bfStart').addEventListener('click',function(){ if(briefNext) briefNext(); });
 
   /* ---------- 게임 1: 공지 분류 스와이프 ---------- */
+  var PLACES={ws:'워크스페이스',notice:'대화방 공지',chat:'대화',memo:'쪽지',drive:'Brity 드라이브'};
   var G1=[
     {who:'교무부장',msg:'📌 [안내] 10월 학사 일정 안내\n■ 내용: 다음 주 학사일정 안내\n■ 문의: 교무기획부',a:'ws',why:'전체 교직원 공식 안내는 워크스페이스 공지'},
     {who:'교무부장',msg:'오늘 3시 회의 장소가 3층 회의실로 바뀌었습니다.',a:'notice',why:'긴급하고 간단한 안내는 대화방 공지'},
