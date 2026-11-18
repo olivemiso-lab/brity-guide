@@ -65,8 +65,8 @@ p{margin:0 0 10px;color:var(--ink2)}
 /* 게임 2: 답글 정리 */
 .g2 .post{background:var(--bg);border-radius:12px;padding:12px;margin-bottom:10px;font-size:.9rem}
 .g2 .post .who{font-size:.76rem;color:var(--muted);font-weight:700;margin-bottom:2px}
-.g2 .feed{display:flex;flex-direction:column;gap:6px;max-height:330px;overflow:auto;padding:2px}
-.g2 .rep{display:flex;gap:10px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:.92rem;cursor:pointer;animation:up .2s ease;min-height:48px}
+.g2 .feed{display:flex;flex-direction:column;gap:6px;max-height:420px;overflow:auto;padding:2px}
+.g2 .rep{display:flex;gap:10px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:8px 12px;font-size:.9rem;cursor:pointer;min-height:44px}
 .g2 .rep .av{flex:none;width:28px;height:28px;border-radius:50%;background:#DDE1E7;display:grid;place-items:center;font-size:.72rem;font-weight:800;color:var(--ink2)}
 .g2 .rep.q{border-color:#CBD2DB}
 .g2 .rep.done{background:var(--ok-soft);border-color:var(--ok);color:#14532d}
@@ -420,6 +420,7 @@ body{background:#FFFFFF}
 .ck .slip{top:30px}
 .ck.open .slip{transform:translate(-50%,-34px) scale(1)}
 .ckbox .cookie-wrap{min-height:230px;padding:10px 0 0}
+.g2 .rep.q{border-color:#191F28;background:#fff;box-shadow:3px 3px 0 #191F28}
 </style>
 </head>
 <body>
@@ -614,8 +615,8 @@ body{background:#FFFFFF}
     1:{eye:'LEVEL 1 · 공지 분류',title:'이 메시지, 어디에 올릴까?',role:'메시지 8장이 한 장씩 나옵니다.',
        rules:['알맞은 칸을 누르세요.','길라잡이 기준과 같으면 점수. 70초.'],
        demo:'<span class="chip">📌 10월 학사 일정 안내</span><span class="arr">→</span><span class="chip">🗂️ 워크스페이스</span>'},
-    2:{eye:'LEVEL 2 · 답글 정리',title:'답글에서 질문만 남기기',role:'공지 아래로 답글이 쏟아집니다.',
-       rules:['"확인했습니다" 답글은 눌러서 ✅로.','질문은 누르지 말고 남겨 두세요.'],
+    2:{eye:'LEVEL 2 · 답글 정리',title:'답글에서 질문만 남기기',role:'공지 아래 답글 23개가 한꺼번에 보입니다.',
+       rules:['"확인했습니다" 답글은 눌러서 ✅로.','질문은 누르지 말고 남겨 두세요.','답글 23개 중 질문 5개가 남으면 끝.'],
        demo:'<span class="chip">확인했습니다</span><span class="arr">→</span><span class="chip">✅</span><span class="chip" style="margin-left:10px">기한 연장 되나요?</span><span class="arr">→</span><span class="chip">남김</span>'},
     3:{eye:'LEVEL 3 · 알림 끄기',title:'저녁 7시, 보낼까 말까?',role:'퇴근 후, 보내려던 메시지가 올라옵니다.',
        rules:['급하지 않으면 <span class="k">예약 발송</span>','<b>⚠️ 긴급</b>은 <span class="k o">지금 보내기</span>','<b>방해금지</b>를 켜면 놓친 알림을 막아 줍니다.'],
@@ -667,7 +668,7 @@ body{background:#FFFFFF}
     var i=0; (function add(){ if(i>=G2.length) return; var it=G2[i]; var el=document.createElement('div'); el.className='rep'+(it[1]?' q':''); el.innerHTML='<span class="av">'+'교'+(i%9+1)+'</span><span class="txt">'+it[0]+'</span>'; el.setAttribute('data-q',it[1]); el.setAttribute('role','button'); el.setAttribute('tabindex','0');
       var h=function(){ if(g2done||el.classList.contains('done')||el.classList.contains('keep')) return; if(it[1]){ el.classList.add('bad'); g2wrong++; toast('이건 질문이에요. 답글은 질문을 위해 남겨 둬요','no'); setTimeout(function(){el.classList.remove('bad');},400); } else { el.classList.add('done'); el.innerHTML+='<span class="em">✅</span>'; addPts(2,50); g2left--; $('#g2left').textContent=g2left; var ons=$$('#g2meter i'); ons[ons.length-1-g2left] && ons[ons.length-1-g2left].classList.add('on'); if(g2left===0) setTimeout(g2end,500); } };
       el.addEventListener('click',h); el.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();h();} });
-      f.appendChild(el); f.scrollTop=f.scrollHeight; i++; setTimeout(add,320); })();
+      f.appendChild(el); i++; add(); })(); f.scrollTop=0;
   }
   function g2end(){ g2done=true; $$('#g2feed .rep.q').forEach(function(el){ el.classList.add('keep'); el.innerHTML+='<span class="tag">질문 남김</span>'; }); stats.g2.wrong=g2wrong; stamp(2); setTimeout(function(){ result(2,'스탬프 2 획득','<b>5</b>개 질문만 남김 · 실수 <b>'+g2wrong+'</b>','약속 ③·④ 답글과 이모지 (길라잡이 예시)','<ul class="ll"><li><b>[단순 확인]</b> ✅ 이모지</li><li><b>[질문·답변]</b> 공지의 답글</li><li><b>[효과]</b> 담당자가 질문을 놓치지 않고, 모두가 같은 답을 봄</li><li><b>[정할 것]</b> 읽음(✅)과 완료(제출)의 구분</li></ul>',function(){ brief(3,g3start); }); },700); }
 
