@@ -106,6 +106,14 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
 .g1 .cardq{position:absolute;inset:0;z-index:1;background:#fff;border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 6px 0 #C9D4F5,0 14px 24px -14px rgba(31,42,90,.4);user-select:none}
 .g1 .cardq .who{display:inline-block;align-self:flex-start;background:#FFF1C7;color:#7A5300;border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:800;margin-bottom:8px}
 .g1 .cardq .msg{font-size:.98rem;font-weight:600;line-height:1.45;white-space:pre-line}
+.g1 .fb{position:absolute;inset:0;z-index:2;border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:6px;box-shadow:0 6px 0 #C9D4F5,0 14px 24px -14px rgba(31,42,90,.4);cursor:pointer;animation:fbin .25s ease}
+.g1 .fb.ok{background:var(--ok-soft)}.g1 .fb.no{background:var(--no-soft)}
+.g1 .fb .h{font-size:1.02rem;font-weight:900;color:var(--ink)}.g1 .fb.ok .h{color:#14532d}.g1 .fb.no .h{color:#8A2A1D}
+.g1 .fb .w{font-size:.92rem;line-height:1.5;color:var(--ink2);font-weight:600}
+.g1 .fb .bar{position:absolute;left:14px;right:14px;bottom:10px;height:4px;border-radius:2px;background:rgba(31,42,90,.12);overflow:hidden}
+.g1 .fb .bar i{display:block;height:100%;background:var(--ink);opacity:.5;border-radius:2px;animation:fbbar linear forwards}
+@keyframes fbbar{from{width:100%}to{width:0}}
+@keyframes fbin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .g1 .cardq.flying{transition:transform .3s ease,opacity .3s ease;opacity:0;pointer-events:none;transform:translateY(-30px) scale(.9)}
 .g1 .bins{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .g1 .bin{min-height:70px;border:0;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:.72rem;font-weight:800;color:var(--ink);background:#fff;box-shadow:0 4px 0 #C9D4F5;padding:6px 2px;cursor:pointer;font-family:inherit;transition:transform .1s,box-shadow .1s,background .15s}
@@ -421,15 +429,21 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
     {who:'교무부장',msg:'2층 프린터 고장입니다. 오늘은 3층 프린터를 써 주세요.',a:'notice',why:'답이 필요 없는 짧은 안내는 대화방 공지'},
     {who:'1학년 부장',msg:'1학년 교육과정 운영 계획 초안, 같이 고쳐 주세요.',a:'drive',why:'함께 고치는 문서는 드라이브 링크'}
   ];
-  var g1i=0, g1timer=null, g1t0=0, G1_SEC=70, g1lock=false;
-  function g1start(){ stats.g1={ok:0,total:0}; g1i=0; combo=0; pts[1]=0; $('#pts1').textContent='0'; g1lock=false; $('#g1left').textContent=G1.length; g1t0=Date.now(); show('#s-g1'); g1card(); clearInterval(g1timer); g1timer=setInterval(function(){ var r=1-(Date.now()-g1t0)/(G1_SEC*1000); $('#g1timer').style.width=Math.max(0,r*100)+'%'; if(r<=0){ clearInterval(g1timer); g1end(); } },100); }
+  var g1i=0, g1timer=null, g1t0=0, G1_SEC=70, g1lock=false, g1pause=0;
+  function g1start(){ stats.g1={ok:0,total:0}; g1i=0; combo=0; pts[1]=0; $('#pts1').textContent='0'; g1lock=false; $('#g1left').textContent=G1.length; g1t0=Date.now(); show('#s-g1'); g1card(); clearInterval(g1timer); g1timer=setInterval(function(){ if(g1pause) return; var r=1-(Date.now()-g1t0)/(G1_SEC*1000); $('#g1timer').style.width=Math.max(0,r*100)+'%'; if(r<=0){ clearInterval(g1timer); g1end(); } },100); }
   function g1card(){ var st=$('#g1stage'); st.innerHTML=''; if(g1i>=G1.length){ clearInterval(g1timer); g1end(); return; } var q=G1[g1i]; var c=document.createElement('div'); c.className='cardq'; c.innerHTML='<div class="who">'+q.who+'</div><div class="msg">'+q.msg+'</div>'; st.appendChild(c); $('#g1left').textContent=G1.length-g1i; }
   function g1answer(bin){ if(g1lock) return; g1lock=true; var q=G1[g1i]; var ok=bin===q.a; stats.g1.total++; if(ok) stats.g1.ok++;
     $$('#g1bins .bin').forEach(function(b){ var k=b.getAttribute('data-bin'); b.classList.remove('hot'); if(k===q.a) b.classList.add('ok'); else if(k===bin) b.classList.add('no'); });
     if(ok){ combo++; bestCombo=Math.max(bestCombo,combo); addPts(1,100+Math.min(combo-1,4)*25, combo>1?'콤보 x'+combo:''); } else combo=0;
-    toast(ok?'좋아요! '+q.why:'길라잡이 예시: '+PLACES[q.a]+'. '+q.why, ok?'ok':'no');
     var c=$('#g1stage .cardq'); if(c){ c.classList.add('flying'); }
-    setTimeout(function(){ $$('#g1bins .bin').forEach(function(b){b.classList.remove('ok','no');}); g1i++; g1lock=false; g1card(); }, ok?900:1600);
+    g1pause=Date.now();
+    var fb=document.createElement('div'); fb.className='fb '+(ok?'ok':'no'); fb.setAttribute('role','status');
+    fb.innerHTML='<div class="h">'+(ok?'좋아요! 길라잡이 예시와 같아요':'길라잡이 예시는 <u>'+PLACES[q.a]+'</u>')+'</div><div class="w">'+q.why+'.</div><div class="bar"><i></i></div>';
+    var went=false; function go(){ if(went) return; went=true; g1t0+=Date.now()-g1pause; g1pause=0; $$('#g1bins .bin').forEach(function(b){b.classList.remove('ok','no');}); g1i++; g1lock=false; g1card(); }
+    var hold=ok?2200:3400; fb.querySelector('.bar i').style.animationDuration=hold+'ms';
+    fb.addEventListener('click',function(e){ e.stopPropagation(); go(); });
+    setTimeout(function(){ if(g1pause) $('#g1stage').appendChild(fb); }, 250);
+    setTimeout(go, hold+250);
   }
   function drag(c){
     var sx=0,sy=0,dx=0,dy=0,on=false;
