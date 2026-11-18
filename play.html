@@ -421,6 +421,19 @@ body{background:#FFFFFF}
 .ck.open .slip{transform:translate(-50%,-34px) scale(1)}
 .ckbox .cookie-wrap{min-height:230px;padding:10px 0 0}
 .g2 .rep.q{border-color:#191F28;background:#fff;box-shadow:3px 3px 0 #191F28}
+
+/* 이미지 쿠키 */
+.mini .mc{width:58px;height:40px;object-fit:contain;background:none;border:0;border-radius:0}
+.ck{width:260px;height:180px}
+.bigck{display:none}
+.imgck{position:absolute;left:50%;top:38px;width:240px;height:150px;transform:translateX(-50%)}
+.imgck .ih{position:absolute;inset:0;background:url(img/cookie.png) center/contain no-repeat;transition:transform .55s cubic-bezier(.2,1.2,.4,1)}
+.imgck .ih{transform-origin:50% 90%}
+.ck.open .imgck .ih{animation:wiggle .7s ease}
+@keyframes wiggle{0%{transform:rotate(0)}20%{transform:rotate(-8deg) scale(1.05)}40%{transform:rotate(8deg) scale(1.05)}60%{transform:rotate(-5deg)}80%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+.imgck{top:52px}
+.ck .slip{top:60px}
+.ck.open .slip{transform:translate(-50%,-62px) scale(1);transition-delay:.45s,.45s}
 </style>
 </head>
 <body>
@@ -548,23 +561,7 @@ body{background:#FFFFFF}
         <div class="ckno" id="ckNo"></div>
         <div class="cookie-wrap"><div class="ck" id="cookieBtn">
           <span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✧</span>
-          <svg class="bigck" viewBox="0 0 240 160" aria-hidden="true">
-            <ellipse cx="86" cy="146" rx="22" ry="9" fill="#E8A95B" stroke="#191F28" stroke-width="4"/>
-            <ellipse cx="154" cy="146" rx="22" ry="9" fill="#E8A95B" stroke="#191F28" stroke-width="4"/>
-            <g class="hl"><path d="M28 94 C28 42 78 18 120 18 L120 134 C70 134 28 122 28 94 Z" fill="#F6CB86" stroke="#191F28" stroke-width="5" stroke-linejoin="round"/>
-              <path d="M42 86 C64 60 100 54 120 54" fill="none" stroke="#D99A4E" stroke-width="4" stroke-linecap="round"/>
-              <ellipse cx="22" cy="98" rx="13" ry="9" fill="#F6CB86" stroke="#191F28" stroke-width="4" transform="rotate(-25 22 98)"/>
-              <g class="face"><circle cx="88" cy="88" r="11" fill="#191F28"/><circle cx="92" cy="84" r="4" fill="#fff"/><ellipse cx="66" cy="104" rx="10" ry="6" fill="#F7A1A1"/></g>
-              <g class="face happy"><path d="M76 86 Q88 76 100 86" fill="none" stroke="#191F28" stroke-width="5" stroke-linecap="round"/><ellipse cx="66" cy="104" rx="10" ry="6" fill="#F7A1A1"/></g>
-            </g>
-            <g class="hr"><path d="M212 94 C212 42 162 18 120 18 L120 134 C170 134 212 122 212 94 Z" fill="#F6CB86" stroke="#191F28" stroke-width="5" stroke-linejoin="round"/>
-              <path d="M198 86 C176 60 140 54 120 54" fill="none" stroke="#D99A4E" stroke-width="4" stroke-linecap="round"/>
-              <ellipse cx="218" cy="98" rx="13" ry="9" fill="#F6CB86" stroke="#191F28" stroke-width="4" transform="rotate(25 218 98)"/>
-              <g class="face"><circle cx="152" cy="88" r="11" fill="#191F28"/><circle cx="156" cy="84" r="4" fill="#fff"/><ellipse cx="174" cy="104" rx="10" ry="6" fill="#F7A1A1"/></g>
-              <g class="face happy"><path d="M140 86 Q152 76 164 86" fill="none" stroke="#191F28" stroke-width="5" stroke-linecap="round"/><ellipse cx="174" cy="104" rx="10" ry="6" fill="#F7A1A1"/></g>
-            </g>
-            <path class="mouth" d="M110 112 Q120 122 130 112" fill="none" stroke="#191F28" stroke-width="4.5" stroke-linecap="round"/>
-          </svg>
+          <div class="imgck"><div class="ih"></div></div>
           <span class="slip" id="slip"></span>
         </div></div>
         <button class="btn" id="cookieOk" type="button">확인</button>
@@ -734,7 +731,7 @@ body{background:#FFFFFF}
   ];
   var fortune=null;
   function cookieStart(){ fortune=null; var g=$('#ckgrid'); g.innerHTML=''; var off=Math.floor(Math.random()*FORTUNES.length);
-    for(var i=0;i<24;i++){ var b=document.createElement('button'); b.type='button'; b.className='mini'; b.innerHTML='<svg class="mc" viewBox="0 0 120 110" aria-hidden="true"><use href="#ckchar"/></svg><b>'+(i+1)+'</b>'; (function(n){ b.addEventListener('click',function(){ openCookie(n,(n-1+off)%FORTUNES.length); }); })(i+1); g.appendChild(b); }
+    for(var i=0;i<24;i++){ var b=document.createElement('button'); b.type='button'; b.className='mini'; b.innerHTML='<img class="mc" src="img/cookie-s.png" alt=""><b>'+(i+1)+'</b>'; (function(n){ b.addEventListener('click',function(){ openCookie(n,(n-1+off)%FORTUNES.length); }); })(i+1); g.appendChild(b); }
     $('#ckReveal').hidden=true; show('#s-cookie'); }
   function openCookie(n,idx){ fortune=FORTUNES[idx]; var ck=$('#cookieBtn'); ck.classList.remove('open'); $('#slip').textContent=''; $('#ckNo').textContent=n+'번 쿠키'; $('#ckReveal').hidden=false; $('#cookieOk').style.visibility='hidden';
     setTimeout(function(){ $('#slip').textContent=fortune; ck.classList.add('open'); },350); setTimeout(function(){ $('#cookieOk').style.visibility='visible'; },1200); }
