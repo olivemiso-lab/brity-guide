@@ -333,6 +333,48 @@ body{background:#FFFFFF}
 .demo{display:flex;gap:8px;justify-content:center;align-items:center;margin:0 0 16px;font-size:.86rem;color:#475467;flex-wrap:wrap}
 .demo .chip{border:2px solid #191F28;border-radius:10px;padding:6px 10px;background:#fff;font-weight:700;color:#191F28}
 .demo .arr{font-weight:900;color:#F05A1A}
+
+/* 게임1 작은 카드 */
+.g1 .stage{height:176px;margin:4px 0 12px}
+.g1 .cardq{padding:14px 16px}
+.g1 .cardq .msg{font-size:.98rem;line-height:1.4}
+.g1 .cardq .who{margin-bottom:6px;font-size:.72rem}
+.g1 .stage::before{transform:scale(.96) translateY(8px)}.g1 .stage::after{transform:scale(.92) translateY(16px)}
+/* 게임3 규칙 줄 */
+.rule-line{font-size:.84rem;color:#475467;background:#F6F2EA;border-radius:10px;padding:8px 10px;margin:-2px 0 8px;line-height:1.5}
+.rule-line b{color:#191F28}
+.g3 .phone{min-height:330px}
+.g3 .dnd{margin-top:205px}
+/* 개조식 설명 */
+.ll{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:5px}
+.ll li{font-size:.93rem;color:#191F28;line-height:1.45}
+.ll b{color:#F05A1A;margin-right:4px}
+.ln{margin:6px 0 0;font-size:.86rem;color:#6B7684}
+/* 포춘 쿠키 */
+.cookie h2{font-weight:900;font-size:1.5rem;margin:8px 0 4px}
+.ckgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0 10px}
+.mini{position:relative;border:2.5px solid #191F28;border-radius:14px;background:#fff;box-shadow:3px 3px 0 #191F28;padding:10px 4px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:inherit;transition:transform .1s,box-shadow .1s}
+.mini:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #191F28}
+.mini .mc{width:34px;height:24px;background:#F3C27A;border:2px solid #191F28;border-radius:60% 60% 50% 50% / 80% 80% 40% 40%}
+.mini b{font-size:.95rem;font-weight:900;color:#191F28}
+.ckbox{width:min(340px,92vw);background:#fff;border:3px solid #191F28;border-radius:22px;box-shadow:8px 8px 0 #191F28;padding:18px 16px 18px;text-align:center;animation:starin .4s cubic-bezier(.2,1.4,.4,1)}
+.ckno{display:inline-block;background:#191F28;color:#fff;border-radius:999px;padding:4px 12px;font-size:.74rem;letter-spacing:.12em;font-weight:900}
+.ckbox .cookie-wrap{padding:16px 0 4px;min-height:210px}
+.ck{cursor:default}
+.cookie-wrap{display:grid;place-items:center;padding:26px 0 10px;min-height:230px}
+.ck{position:relative;width:200px;height:150px;border:0;background:transparent;cursor:pointer;padding:0}
+.ck .half{position:absolute;top:30px;width:110px;height:90px;background:#F3C27A;border:3px solid #191F28;box-shadow:4px 4px 0 #191F28;transition:transform .5s cubic-bezier(.2,1.2,.4,1)}
+.ck .half.l{left:0;border-radius:90px 20px 20px 90px / 90px 40px 40px 90px;transform-origin:right center}
+.ck .half.r{right:0;border-radius:20px 90px 90px 20px / 40px 90px 90px 40px;transform-origin:left center}
+.ck:not(.open):active .half.l{transform:rotate(-4deg)}.ck:not(.open):active .half.r{transform:rotate(4deg)}
+.ck.open .half.l{transform:translate(-34px,18px) rotate(-22deg)}
+.ck.open .half.r{transform:translate(34px,18px) rotate(22deg)}
+.ck .slip{position:absolute;left:50%;top:40px;transform:translate(-50%,0) scale(.2);width:240px;background:#fff;border:2.5px solid #191F28;border-radius:6px;padding:12px 14px;font-size:.98rem;font-weight:700;color:#191F28;line-height:1.5;opacity:0;transition:transform .55s .15s cubic-bezier(.2,1.2,.4,1),opacity .3s .15s;text-align:center;box-shadow:3px 3px 0 #191F28}
+.ck.open .slip{opacity:1;transform:translate(-50%,-26px) scale(1)}
+.ck:focus-visible{outline:3px solid #A63814;outline-offset:4px;border-radius:20px}
+.won{flex-direction:column;gap:4px;background:#fff;color:#191F28;padding:14px 16px}
+.won .w-rank{font-size:.78rem;letter-spacing:.1em;color:#6B7684}
+.won .w-name{font-size:1.02rem;font-weight:700;text-align:center;line-height:1.5}
 </style>
 </head>
 <body>
@@ -345,10 +387,10 @@ body{background:#FFFFFF}
     <div class="card">
       <div class="eyebrow">2분 미니게임 · 스탬프 3종</div>
       <h1>우리 학교 메신저 약속,<br>몸으로 익히기</h1>
-      <p>게임 세 개를 마치면 스탬프 세 개가 찍힙니다. 끝 화면을 부스에 보여 주고 선물을 받으세요.</p>
+      <p>게임 세 개를 마치면 스탬프 세 개와 포춘 쿠키가 기다립니다. 끝 화면을 부스에 보여 주면 1분과 체험 완료입니다.</p>
       <p class="fine">정답이 정해진 시험이 아닙니다. 길라잡이가 제안하는 <b>예시 기준</b>에 맞춰 보는 놀이이고, 우리 학교의 약속은 학교가 함께 정합니다.</p>
       <ul class="list">
-        <li><b>1</b><div>공지 분류 스와이프<small>이 메시지는 어디에? 12장 던져 넣기 · 90초</small></div></li>
+        <li><b>1</b><div>공지 분류 스와이프<small>이 메시지는 어디에? 8장 · 70초</small></div></li>
         <li><b>2</b><div>답글 정리<small>답글 23개 중 "확인했습니다"는 ✅로, 질문 5개만 남기기</small></div></li>
         <li><b>3</b><div>퇴근 후 알림 끄기<small>급하지 않으면 예약, 긴급이면 바로 · 알림 10개</small></div></li>
       </ul>
@@ -373,7 +415,7 @@ body{background:#FFFFFF}
   <!-- 게임 1 -->
   <section class="screen g1" id="s-g1">
     <div class="card">
-      <div class="hud"><span class="lv">LEVEL 1</span><span>공지 분류</span><span class="pts">⭐ <b id="pts1">0</b></span><span>남은 <b id="g1left">12</b></span></div>
+      <div class="hud"><span class="lv">LEVEL 1</span><span>공지 분류</span><span class="pts">⭐ <b id="pts1">0</b></span><span>남은 <b id="g1left">8</b></span></div>
       <div class="timer"><i id="g1timer"></i></div>
       <div class="stage" id="g1stage"></div>
       <div class="bins" id="g1bins">
@@ -402,13 +444,14 @@ body{background:#FFFFFF}
   <section class="screen g3" id="s-g3">
     <div class="card">
       <div class="hud"><span class="lv">LEVEL 3</span><span>알림 끄기</span><span class="pts">⭐ <b id="pts3">0</b></span><div class="lives" id="g3lives"><i></i><i></i><i></i></div></div>
+      <div class="rule-line">급하지 않으면 <b>예약 발송</b> · ⚠️ 긴급은 <b>지금 보내기</b> · <b>방해금지</b>를 켜면 놓친 알림 차단</div>
       <div class="g3stat"><span>⏰ 예약 <b id="g3sch">0</b></span><span>🌙 차단 <b id="g3blk">0</b></span><span>⚠️ 긴급 처리 <b id="g3urg">0</b></span></div>
       <div class="timer"><i id="g3timer"></i></div>
       <div class="phone" id="g3phone">
-        <div class="clock" id="g3clock">19:00<small>퇴근 후 · 급한 일 없음</small></div>
+        <div class="clock">저녁 7시<small>퇴근 후 · 보낼까, 미룰까?</small></div>
         <div class="dnd"><span>🌙 방해금지 시간 설정 (19:00~08:00)</span><div class="sw" id="g3dnd" role="switch" aria-checked="false" tabindex="0"></div></div>
       </div>
-      <p style="font-size:.84rem;margin:10px 0 0;color:var(--muted)">급하지 않은 건 <b>예약 발송</b>, 받는 쪽은 <b>방해금지</b>. 단, <b>⚠️ 긴급</b>은 지금 바로 보내야 합니다. 실수 3번이면 다시 시작.</p>
+
     </div>
   </section>
 
@@ -427,19 +470,21 @@ body{background:#FFFFFF}
   </section>
 
 
-  <!-- 뽑기판 -->
-  <section class="screen draw" id="s-draw">
+  <!-- 포춘 쿠키 -->
+  <section class="screen cookie" id="s-cookie">
     <div class="card">
-      <div class="board-head">
-        <div class="eyebrow">스탬프 3종 완료 · 보상 뽑기</div>
-        <h2>한 칸만 골라 뜯어 보세요</h2>
-        <ul class="prizes" id="prizeList"></ul>
-      </div>
-      <div class="board" id="board" role="group" aria-label="뽑기판"></div>
-      <p class="note" id="drawHint">하트나 별을 하나 누르면 뜯어집니다. 딱 한 번!</p>
+      <div class="eyebrow">스탬프 3종 완료</div>
+      <h2>번호 하나를 고르세요</h2>
+      <p>그 번호의 포춘 쿠키가 열립니다. 오늘의 한마디가 들어 있어요.</p>
+      <div class="ckgrid" id="ckgrid" role="group" aria-label="포춘 쿠키 번호"></div>
+      <p class="note" id="cookieHint">마음에 드는 번호를 톡!</p>
     </div>
-    <div class="reveal" id="reveal" hidden>
-      <div class="ticket" id="ticket"><div class="tk-top">당첨</div><div class="tk-rank" id="tkRank"></div><div class="tk-name" id="tkName"></div><button class="btn" id="tkOk" type="button">확인</button></div>
+    <div class="reveal" id="ckReveal" hidden>
+      <div class="ckbox">
+        <div class="ckno" id="ckNo"></div>
+        <div class="cookie-wrap"><div class="ck" id="cookieBtn"><span class="half l"></span><span class="half r"></span><span class="slip" id="slip"></span></div></div>
+        <button class="btn" id="cookieOk" type="button">확인</button>
+      </div>
     </div>
   </section>
 
@@ -451,12 +496,12 @@ body{background:#FFFFFF}
         <div class="three"><i>분류<br>완료</i><i>답글<br>정리</i><i>알림<br>차단</i></div>
         <div class="rank" id="rank">S</div>
         <div class="pts-final"><div><b id="ptsTotal">0</b>총점</div><div><b id="ptsCombo">0</b>최고 콤보</div></div>
-        <div class="won" id="won" hidden><span class="w-rank" id="wRank"></span><span class="w-name" id="wName"></span></div>
+        <div class="won" id="won" hidden><span class="w-rank">🥠 오늘의 한마디</span><span class="w-name" id="wName"></span></div>
         <div class="verdict" id="dVerdict"></div>
         <p id="dDesc"></p>
       </div>
       <div class="code"><div><span>확인 코드</span><br><b id="code">----</b></div><span id="doneTime"></span></div>
-      <p class="note">이 화면을 부스 선생님께 보여 주시면 선물을 드립니다.</p>
+      <p class="note">이 화면을 부스에 보여 주세요. 1분과 체험 완료! (부스 3곳을 모두 체험하면 뽑기 1회)</p>
     </div>
     <div style="display:grid;gap:8px;margin-top:12px">
       <a class="btn ghost" href="guide.html#step2">7가지 사용 약속 보러 가기</a>
@@ -484,7 +529,7 @@ body{background:#FFFFFF}
   /* ---------- 미션 설명 ---------- */
   var BRIEF={
     1:{eye:'LEVEL 1 · 공지 분류',title:'이 메시지, 어디에 올릴까?',role:'당신은 교무부장입니다. 메시지 카드가 한 장씩 나옵니다.',
-       rules:['카드를 읽고 <span class="k">워크스페이스</span><span class="k">대화방 공지</span><span class="k">대화</span><span class="k">쪽지</span><span class="k">드라이브</span> 중 한 칸을 고릅니다.','카드를 칸으로 끌어다 놓거나, 칸을 그냥 눌러도 됩니다.','길라잡이의 예시 기준과 맞으면 점수가 오릅니다. 90초, 12장.'],
+       rules:['카드를 읽고 <span class="k">워크스페이스</span><span class="k">대화방 공지</span><span class="k">대화</span><span class="k">쪽지</span><span class="k">드라이브</span> 중 한 칸을 고릅니다.','카드를 칸으로 끌어다 놓거나, 칸을 그냥 눌러도 됩니다.','길라잡이의 예시 기준과 맞으면 점수가 오릅니다. 70초, 8장.'],
        demo:'<span class="chip">📌 10월 학사 일정 안내</span><span class="arr">→</span><span class="chip">🗂️ 워크스페이스</span>'},
     2:{eye:'LEVEL 2 · 답글 정리',title:'답글에서 질문만 남기기',role:'평가계획 공지 아래로 답글이 쏟아집니다.',
        rules:['"확인했습니다", "네" 같은 답글을 <span class="k o">누르면</span> ✅ 이모지로 바뀝니다.','진짜 <b>질문</b>은 누르지 말고 남겨 두세요. 누르면 실수.','확인 답글을 모두 ✅로 바꾸면 끝. 시간 제한 없음.'],
@@ -500,20 +545,16 @@ body{background:#FFFFFF}
   /* ---------- 게임 1: 공지 분류 스와이프 ---------- */
   var PLACES={ws:'워크스페이스',notice:'대화방 공지',chat:'대화',memo:'쪽지',drive:'Brity 드라이브'};
   var G1=[
-    {who:'교무부장',msg:'📌 [안내] 10월 학사 일정 안내\n■ 내용: 다음 주 학사일정 안내\n■ 문의: 교무기획부',a:'ws',why:'전체 교직원 공식 안내는 워크스페이스 공지'},
+    {who:'교무부장',msg:'📌 [안내] 10월 학사 일정 안내\n■ 문의: 교무기획부',a:'ws',why:'전체 교직원 공식 안내는 워크스페이스 공지'},
     {who:'교무부장',msg:'오늘 3시 회의 장소가 3층 회의실로 바뀌었습니다.',a:'notice',why:'긴급하고 간단한 안내는 대화방 공지'},
     {who:'3학년 교사',msg:'다음 주 학년 협의회 때 10분만 안내해 주실 수 있을까요?',a:'chat',why:'담당자와 바로 주고받을 개별 문의는 대화'},
-    {who:'교무부장',msg:'행정실장님, 회의 자료 보내드립니다. 확인 부탁드립니다.',a:'memo',why:'답변이 필요 없는 개별 전달은 쪽지'},
+    {who:'행정실',msg:'선생님, 출장비 서류 한 가지가 빠져 있습니다. 확인 부탁드립니다.',a:'memo',why:'특정 교직원에게 보내는 개별 안내는 쪽지'},
     {who:'교육과정부',msg:'학년별 평가계획, 함께 작성할 문서입니다.',a:'drive',why:'공동 작성 문서는 드라이브에 하나로'},
     {who:'연구부',msg:'📌 [제출] 교내 연수 수요조사 (기한 10. 20.)',a:'ws',why:'제출 요청은 워크스페이스 공지'},
-    {who:'교감',msg:'5분 뒤 교무실로 잠깐 모여 주세요.',a:'notice',why:'짧은 즉시 안내는 대화방 공지'},
-    {who:'1학년 부장',msg:'1학년 교육과정 운영 계획 초안, 같이 고쳐 주세요.',a:'drive',why:'함께 고치는 문서는 드라이브 링크'},
-    {who:'연구부',msg:'📌 [안내] 교내 연수 자료를 공유합니다. 참고하세요.',a:'ws',why:'연수 안내와 자료 공유는 워크스페이스'},
     {who:'교무부장',msg:'2층 프린터 고장입니다. 오늘은 3층 프린터를 써 주세요.',a:'notice',why:'답이 필요 없는 짧은 안내는 대화방 공지'},
-    {who:'행정실',msg:'선생님, 출장비 서류 한 가지가 빠져 있습니다. 확인 부탁드립니다.',a:'memo',why:'특정 교직원에게 보내는 개별 안내는 쪽지'},
-    {who:'교무부장',msg:'담당 선생님, 내일 협의회 자료 먼저 검토해 주시겠어요?',a:'chat',why:'한 사람과 바로 협의할 일은 대화'}
+    {who:'1학년 부장',msg:'1학년 교육과정 운영 계획 초안, 같이 고쳐 주세요.',a:'drive',why:'함께 고치는 문서는 드라이브 링크'}
   ];
-  var g1i=0, g1timer=null, g1t0=0, G1_SEC=90, g1lock=false;
+  var g1i=0, g1timer=null, g1t0=0, G1_SEC=70, g1lock=false;
   function g1start(){ stats.g1={ok:0,total:0}; g1i=0; combo=0; pts[1]=0; $('#pts1').textContent='0'; g1lock=false; $('#g1left').textContent=G1.length; g1t0=Date.now(); show('#s-g1'); g1card(); clearInterval(g1timer); g1timer=setInterval(function(){ var r=1-(Date.now()-g1t0)/(G1_SEC*1000); $('#g1timer').style.width=Math.max(0,r*100)+'%'; if(r<=0){ clearInterval(g1timer); g1end(); } },100); }
   function g1card(){ var st=$('#g1stage'); st.innerHTML=''; if(g1i>=G1.length){ clearInterval(g1timer); g1end(); return; } var q=G1[g1i]; var c=document.createElement('div'); c.className='cardq'; c.innerHTML='<div class="who">'+q.who+'</div><div class="msg">'+q.msg+'</div>'; st.appendChild(c); drag(c); $('#g1left').textContent=G1.length-g1i; }
   function g1answer(bin){ if(g1lock) return; g1lock=true; var q=G1[g1i]; var ok=bin===q.a; stats.g1.total++; if(ok) stats.g1.ok++;
@@ -528,13 +569,13 @@ body{background:#FFFFFF}
     function bins(){ return $$('#g1bins .bin'); }
     function hit(x,y){ var r=null; bins().forEach(function(b){ var q=b.getBoundingClientRect(); if(x>=q.left&&x<=q.right&&y>=q.top-20&&y<=q.bottom+20) r=b; }); return r; }
     function down(e){ on=true; var p=e.touches?e.touches[0]:e; sx=p.clientX; sy=p.clientY; c.style.transition='none'; }
-    function move(e){ if(!on) return; var p=e.touches?e.touches[0]:e; dx=p.clientX-sx; dy=p.clientY-sy; c.style.transform='translate('+dx+'px,'+dy+'px) rotate('+(dx/18)+'deg)'; var h=hit(p.clientX,p.clientY); bins().forEach(function(b){b.classList.toggle('hot',b===h);}); if(e.cancelable) e.preventDefault(); }
+    function move(e){ if(!on) return; var p=e.touches?e.touches[0]:e; dx=p.clientX-sx; dy=p.clientY-sy; c.style.transform='translate('+dx+'px,'+dy+'px) rotate('+(dx/18)+'deg) scale(.62)'; var h=hit(p.clientX,p.clientY); bins().forEach(function(b){b.classList.toggle('hot',b===h);}); if(e.cancelable) e.preventDefault(); }
     function up(e){ if(!on) return; on=false; var p=(e.changedTouches&&e.changedTouches[0])||e; var h=hit(p.clientX,p.clientY); if(h){ g1answer(h.getAttribute('data-bin')); } else { c.style.transition='transform .25s ease'; c.style.transform=''; bins().forEach(function(b){b.classList.remove('hot');}); } }
     c.addEventListener('touchstart',down,{passive:true}); c.addEventListener('touchmove',move,{passive:false}); c.addEventListener('touchend',up);
     c.addEventListener('mousedown',down); window.addEventListener('mousemove',move); window.addEventListener('mouseup',up);
   }
   $$('#g1bins .bin').forEach(function(b){ b.addEventListener('click',function(){ if($('#g1stage .cardq')) g1answer(b.getAttribute('data-bin')); }); });
-  function g1end(){ stamp(1); result(1,'스탬프 1 획득','길라잡이 기준과 일치 <b>'+stats.g1.ok+'</b>/'+G1.length,'약속 ① 용도 구분 (예시)','길라잡이의 예시 기준은 이렇습니다. 워크스페이스는 공식 공지와 자료, 대화방 공지는 짧은 즉시 안내, 대화는 개별 협의, 쪽지는 답장 필요 없는 전달, 드라이브는 함께 쓰는 문서. 정답이 아니라 출발점입니다. 우리 학교는 TF팀이 구성원과 함께 정하면 됩니다.',function(){ brief(2,g2start); }); }
+  function g1end(){ stamp(1); result(1,'스탬프 1 획득','길라잡이 기준과 일치 <b>'+stats.g1.ok+'</b>/'+G1.length,'약속 ① 용도 구분 (길라잡이 예시)','<ul class="ll"><li><b>[워크스페이스]</b> 공식 공지와 자료</li><li><b>[대화방 공지]</b> 짧은 즉시 안내</li><li><b>[대화]</b> 개별 협의</li><li><b>[쪽지]</b> 답장 필요 없는 전달</li><li><b>[드라이브]</b> 함께 쓰는 문서</li></ul><p class="ln">정답이 아니라 출발점. 우리 학교 기준은 TF팀이 함께 정합니다.</p>',function(){ brief(2,g2start); }); }
 
   /* ---------- 게임 2: 답글 정리 ---------- */
   var G2=[['확인했습니다',0],['네 알겠습니다',0],['학년별로 한 번만 작성하면 되나요?',1],['확인했어요~',0],['넵!',0],['확인',0],['링크가 열리지 않는데 권한을 열어 주실 수 있나요?',1],['확인했습니다!',0],['네~',0],['수고하십니다. 확인했습니다',0],['기한 연장은 어렵겠지요?',1],['확인했습니다',0],['알겠습니다',0],['네 확인했습니다',0],['잘 받았습니다',0],['제출은 학년 부장만 하면 되나요?',1],['확인~',0],['네넵',0],['양식에 평가 시기 칸이 없는데 추가해도 되나요?',1],['알겠습니다!',0],['확인했습니다. 감사합니다',0],['넹',0],['확인했어요',0]];
@@ -545,14 +586,14 @@ body{background:#FFFFFF}
       el.addEventListener('click',h); el.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();h();} });
       f.appendChild(el); f.scrollTop=f.scrollHeight; i++; setTimeout(add,320); })();
   }
-  function g2end(){ g2done=true; $$('#g2feed .rep.q').forEach(function(el){ el.classList.add('keep'); el.innerHTML+='<span class="tag">질문 남김</span>'; }); stats.g2.wrong=g2wrong; stamp(2); setTimeout(function(){ result(2,'스탬프 2 획득','<b>5</b>개 질문만 남김 · 실수 <b>'+g2wrong+'</b>','약속 ③·④ 답글과 이모지 (예시)','길라잡이는 단순 확인을 ✅ 이모지로 남기고, 답글은 질문과 답변을 위해 비워 두자고 제안합니다. 담당자가 질문을 놓치지 않고, 다른 교직원도 같은 답을 볼 수 있어서입니다. 확인(읽음)과 완료(제출)를 어떻게 구분할지는 학교가 정합니다.',function(){ brief(3,g3start); }); },700); }
+  function g2end(){ g2done=true; $$('#g2feed .rep.q').forEach(function(el){ el.classList.add('keep'); el.innerHTML+='<span class="tag">질문 남김</span>'; }); stats.g2.wrong=g2wrong; stamp(2); setTimeout(function(){ result(2,'스탬프 2 획득','<b>5</b>개 질문만 남김 · 실수 <b>'+g2wrong+'</b>','약속 ③·④ 답글과 이모지 (길라잡이 예시)','<ul class="ll"><li><b>[단순 확인]</b> ✅ 이모지</li><li><b>[질문·답변]</b> 공지의 답글</li><li><b>[효과]</b> 담당자가 질문을 놓치지 않고, 모두가 같은 답을 봄</li><li><b>[정할 것]</b> 읽음(✅)과 완료(제출)의 구분</li></ul>',function(){ brief(3,g3start); }); },700); }
 
   /* ---------- 게임 3: 퇴근 후 알림 끄기 ---------- */
   var G3=[['교무부장','📌 내일 학부모 상담 주간 안내',false],['연구부','연수 수요조사 제출 부탁드립니다',false],['교감','급한 건 아니고요, 내일 회의 자료 미리 공유합니다',false],['교감','⚠️ 긴급: 폭설로 내일 등교 시간 10시로 변경',true],['학년부장','내일 아침 학년 협의 10분만요',false],['정보부','브리티 설치 안내 자료입니다',false],['교무부장','📌 다음 주 학사일정',false],['보건실','⚠️ 긴급: 학생 안전 관련 즉시 확인 요청',true],['교육과정부','평가계획 양식 수정본 공유합니다',false],['행정실','다음 달 출장 계획 제출 안내',false]];
   var g3i=0,g3lives=3,g3leak=0,g3timer=null,g3t0=0,G3_SEC=50,g3resolved=0,g3dnd=false,g3spawn=null,g3done=false,g3min=0,g3sch=0,g3blk=0,g3urg=0;
   function g3cnt(){ $('#g3sch').textContent=g3sch; $('#g3blk').textContent=g3blk; $('#g3urg').textContent=g3urg; }
   function g3start(){ show('#s-g3'); pts[3]=0; $('#pts3').textContent='0'; g3i=0; g3resolved=0; g3sch=0; g3blk=0; g3urg=0; g3cnt(); g3lives=3; g3leak=0; g3dnd=false; g3done=false; g3min=0; $('#g3dnd').className='sw'; $('#g3dnd').setAttribute('aria-checked','false'); $$('#g3lives i').forEach(function(i){i.classList.remove('off');}); $$('#g3phone .noti').forEach(function(n){n.remove();}); g3t0=Date.now();
-    clearInterval(g3timer); g3timer=setInterval(function(){ var e=(Date.now()-g3t0)/1000; var r=1-e/G3_SEC; $('#g3timer').style.width=Math.max(0,r*100)+'%'; g3min=Math.floor(e*2); $('#g3clock').firstChild.textContent='19:'+pad(Math.min(59,g3min)); if(r<=0) g3end(); },100);
+    clearInterval(g3timer); g3timer=setInterval(function(){ var e=(Date.now()-g3t0)/1000; var r=1-e/G3_SEC; $('#g3timer').style.width=Math.max(0,r*100)+'%';  if(r<=0) g3end(); },100);
     clearTimeout(g3spawn); g3spawn=setTimeout(g3next,1500);
   }
   function g3next(){ if(g3done) return; if(g3i>=G3.length){ return; } var n=G3[g3i]; g3i++; var urgent=n[2];
@@ -577,67 +618,52 @@ body{background:#FFFFFF}
   function leak(el){ el.querySelector('.act').innerHTML='<b style="font-size:.74rem;color:var(--no)">🔔 울림</b>'; toast('퇴근 후 알림이 울렸어요','no'); miss3(); }
   $('#g3dnd').addEventListener('click',function(){ g3dnd=!g3dnd; this.classList.toggle('on',g3dnd); this.setAttribute('aria-checked',g3dnd?'true':'false'); if(g3dnd) toast('방해금지 켜짐. 19시 이후 알림이 오지 않아요','ok'); });
   $('#g3dnd').addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault(); this.click();} });
-  function g3end(){ if(g3done) return; g3done=true; clearInterval(g3timer); clearTimeout(g3spawn); stats.g3.leak=g3leak; stamp(3); setTimeout(function(){ result(3,'스탬프 3 획득','예약 <b>'+g3sch+'</b> · 차단 <b>'+g3blk+'</b> · 긴급 <b>'+g3urg+'</b>/2 · 실수 <b>'+g3leak+'</b>','약속 ⑥ 발송 시간과 알림 (예시)','길라잡이는 근무시간 외 급하지 않은 메시지를 예약 발송으로 다음 근무일 아침에 보냅니다. 받는 쪽은 모바일 앱의 방해금지 시간 설정으로 알림을 막습니다. 긴급한 안전 사안은 예외입니다. 두 기능 모두 이미 있으니, 학교 약속에 기능 이름까지 적어 두면 실천이 쉬워집니다.',drawStart); },600); }
+  function g3end(){ if(g3done) return; g3done=true; clearInterval(g3timer); clearTimeout(g3spawn); stats.g3.leak=g3leak; stamp(3); setTimeout(function(){ result(3,'스탬프 3 획득','예약 <b>'+g3sch+'</b> · 차단 <b>'+g3blk+'</b> · 긴급 <b>'+g3urg+'</b>/2 · 실수 <b>'+g3leak+'</b>','약속 ⑥ 발송 시간과 알림 (길라잡이 예시)','<ul class="ll"><li><b>[보내는 쪽]</b> 급하지 않으면 예약 발송 → 다음 근무일 아침</li><li><b>[받는 쪽]</b> 모바일 앱 방해금지 시간 설정</li><li><b>[예외]</b> 긴급한 안전 사안은 바로</li><li><b>[팁]</b> 학교 약속에 기능 이름까지 적어 두기</li></ul>',cookieStart); },600); }
 
 
-  /* ---------- 뽑기판 ---------- */
-  /* 재고 서버 주소: Apps Script 웹 앱 배포 URL을 넣으면 뽑을 때마다 시트에서 1씩 줄고 남은 개수가 표시됩니다.
-     비워 두거나 접속이 안 되면 아래 PRIZES 비율로 휴대폰 안에서만 뽑습니다. */
-  var DRAW_API='';
-  /* 서버가 없을 때 쓰는 기본값. weight는 준비 수량이고 확률은 비율로 자동 계산됩니다. */
-  var PRIZES=[
-    {rank:'1등',name:'모두 다 받기',weight:3},
-    {rank:'2등',name:'페레로 로쉐',weight:15},
-    {rank:'3등',name:'신라면 컵라면',weight:50},
-    {rank:'4등',name:'하리보 젤리',weight:80},
-    {rank:'5등',name:'마이쮸',weight:102}
+  /* ---------- 포춘 쿠키 ---------- */
+  var FORTUNES=[
+    '오늘 보낸 공지 한 줄이 누군가의 퇴근을 지켰습니다.',
+    '잘 정한 약속 하나가 백 번의 안내를 대신합니다.',
+    '확인은 ✅ 하나면 충분합니다. 당신의 시간은 더 소중하니까요.',
+    '새 도구보다 함께 쓰는 마음이 먼저입니다. 이미 그걸 하고 계시네요.',
+    '내일의 당신에게 예약 발송: 오늘도 충분히 잘했어요.',
+    '질문을 답글로 남기는 용기가 학교를 바꿉니다.',
+    '방해금지는 게으름이 아니라 내일을 위한 충전입니다.',
+    '링크 하나로 파일 열 개를 이겼습니다.',
+    'TF팀의 첫 회의는 커피 한 잔이면 충분합니다.',
+    '4주 뒤의 당신은 지금보다 훨씬 편해져 있을 거예요.',
+    '완벽한 약속보다 함께 고친 약속이 오래갑니다.',
+    '오늘 익힌 다섯 칸, 내일 교무실에서 써먹어 보세요.',
+    '쪽지 열 통보다 공지 한 번이 교직원을 쉬게 합니다.',
+    '저장(Y)을 누른 당신, 오늘의 영웅입니다.',
+    '바꾸는 건 메신저가 아니라 서로를 배려하는 방식입니다.',
+    '처음은 누구나 서툽니다. 두 번째엔 당신이 안내자가 됩니다.',
+    '퇴근 후 울리지 않는 휴대폰, 그게 좋은 학교의 소리입니다.',
+    '작은 규칙이 큰 혼란을 막습니다. 오늘 하나 정해 보세요.',
+    '읽음과 완료는 다릅니다. 구분하는 학교가 덜 지칩니다.',
+    '좋은 소식은 생각보다 가까이 있습니다. 이 쿠키처럼요.',
+    '함께 정한 약속은 지키기보다 지켜집니다.',
+    '당신의 교실에서 자란 질문이 학교를 자라게 합니다.',
+    '새 학기, 새 메신저, 그리고 여전히 든든한 동료들.',
+    '오늘의 수고가 내일의 여유가 됩니다.'
   ];
-  /* 하루 1회 제한: 페스타 당일에는 true 로 바꾸세요. 지금은 피드백용으로 여러 번 뽑을 수 있습니다. */
-  var ONE_PER_DAY=false;
-  var DKEY='brity-play-draw-v1'; var drawn=null;
-  try{ drawn=JSON.parse(localStorage.getItem(DKEY)||'null'); }catch(e){}
-  function pickPrize(){ var tot=PRIZES.reduce(function(a,p){return a+p.weight;},0); var r=Math.random()*tot; for(var i=0;i<PRIZES.length;i++){ r-=PRIZES[i].weight; if(r<0) return PRIZES[i]; } return PRIZES[PRIZES.length-1]; }
-  function drawStart(){
-    if(ONE_PER_DAY&&drawn&&drawn.date===todayKey()){ finish(drawn); return; }
-    renderPrizes(null);
-    if(DRAW_API){ fetch(DRAW_API,{method:'GET'}).then(function(r){return r.json();}).then(function(d){ if(d&&d.ok) renderPrizes(d.stock); }).catch(function(){}); }
-    var bd=$('#board'); bd.innerHTML=''; bd.classList.remove('locked'); var pats=['h','s','d']; var icons={h:'\u2665',s:'\u2605',d:'\u25C6'};
-    for(var i=0;i<30;i++){ var b=document.createElement('button'); b.type='button'; var k=pats[(i+Math.floor(i/5))%3]; b.className='tile '+k; b.textContent=icons[k]; b.setAttribute('aria-label','뽑기 칸 '+(i+1)); b.addEventListener('click',function(){ tear(this); }); bd.appendChild(b); }
-    show('#s-draw');
-  }
-  function tear(b){
-    var bd=$('#board'); bd.classList.add('locked'); b.classList.add('tearing');
-    setTimeout(function(){ b.classList.remove('tearing'); b.classList.add('torn'); b.textContent='뜯음';
-      var showPrize=function(p,stock){ drawn={rank:p.rank,name:p.name,date:todayKey()}; try{localStorage.setItem(DKEY,JSON.stringify(drawn));}catch(e){}
-        if(stock) renderPrizes(stock);
-        $('#tkRank').textContent=p.rank; $('#tkName').textContent=p.name; $('#reveal').hidden=false; confetti(80);
-        $('#tkOk').onclick=function(){ $('#reveal').hidden=true; finish(drawn); }; };
-      if(DRAW_API){
-        b.textContent='…';
-        var ctl=('AbortController' in window)?new AbortController():null; var tmo=setTimeout(function(){ if(ctl) ctl.abort(); },8000);
-        fetch(DRAW_API,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({device:deviceId()}),signal:ctl?ctl.signal:undefined})
-          .then(function(r){return r.json();})
-          .then(function(d){ clearTimeout(tmo); b.textContent='뜯음';
-            if(d&&d.ok&&d.prize){ showPrize(d.prize,d.stock); }
-            else if(d&&d.reason==='soldout'){ renderPrizes(d.stock); $('#tkRank').textContent='마감'; $('#tkName').textContent='준비한 선물이 모두 나갔어요'; $('#reveal').hidden=false; $('#tkOk').onclick=function(){ $('#reveal').hidden=true; finish({rank:'참여',name:'선물 마감'}); }; }
-            else { showPrize(pickPrize(),null); } })
-          .catch(function(){ clearTimeout(tmo); b.textContent='뜯음'; showPrize(pickPrize(),null); });
-      } else { showPrize(pickPrize(),null); }
-    },520);
-  }
-  function renderPrizes(stock){ var pl=$('#prizeList'); var list=stock||PRIZES.map(function(p){return {rank:p.rank,name:p.name};});
-    pl.innerHTML=list.map(function(p){ var left=(typeof p.left==='number')?'<small>'+(p.left>0?'남음 '+p.left:'마감')+'</small>':''; return '<li'+(typeof p.left==='number'&&p.left<=0?' class="out"':'')+'><b>'+p.rank+'</b><span>'+p.name+'</span>'+left+'</li>'; }).join(''); }
-  function deviceId(){ var k='brity-play-device'; var v=null; try{ v=localStorage.getItem(k); if(!v){ v=Math.random().toString(36).slice(2,10)+Date.now().toString(36); localStorage.setItem(k,v);} }catch(e){ v='anon'; } return v; }
-  function todayKey(){ var d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+  var fortune=null;
+  function cookieStart(){ fortune=null; var g=$('#ckgrid'); g.innerHTML=''; var off=Math.floor(Math.random()*FORTUNES.length);
+    for(var i=0;i<24;i++){ var b=document.createElement('button'); b.type='button'; b.className='mini'; b.innerHTML='<span class="mc"></span><b>'+(i+1)+'</b>'; (function(n){ b.addEventListener('click',function(){ openCookie(n,(n-1+off)%FORTUNES.length); }); })(i+1); g.appendChild(b); }
+    $('#ckReveal').hidden=true; show('#s-cookie'); }
+  function openCookie(n,idx){ fortune=FORTUNES[idx]; var ck=$('#cookieBtn'); ck.classList.remove('open'); $('#slip').textContent=''; $('#ckNo').textContent=n+'번 쿠키'; $('#ckReveal').hidden=false; $('#cookieOk').style.visibility='hidden';
+    setTimeout(function(){ $('#slip').textContent=fortune; ck.classList.add('open'); },350); setTimeout(function(){ $('#cookieOk').style.visibility='visible'; },1200); }
+  $('#cookieOk').addEventListener('click',function(){ $('#ckReveal').hidden=true; finish(fortune); });
 
   /* ---------- 결과 / 완료 ---------- */
   var nextFn=null;
-  function result(n,eye,stat,lt,lesson,next){ $('#grEyebrow').textContent=eye; $('#grNum').textContent=n; var st=n===1?(stats.g1.ok>=10?3:stats.g1.ok>=7?2:1):n===2?(stats.g2.wrong===0?3:stats.g2.wrong<=2?2:1):(stats.g3.leak===0?3:stats.g3.leak<=1?2:1); $$('#grStars i').forEach(function(i,k){ i.classList.toggle('on',k<st); }); $('#grStat').innerHTML='<span>'+stat+'</span>'; $('#grLesson').innerHTML='<b>'+lt+'</b>'+lesson; $('#grNext').textContent=n===3?'보상 뽑기 →':'다음 게임 →'; nextFn=next; show('#s-gr'); }
+  function result(n,eye,stat,lt,lesson,next){ $('#grEyebrow').textContent=eye; $('#grNum').textContent=n; var st=n===1?(stats.g1.ok>=7?3:stats.g1.ok>=5?2:1):n===2?(stats.g2.wrong===0?3:stats.g2.wrong<=2?2:1):(stats.g3.leak===0?3:stats.g3.leak<=1?2:1); $$('#grStars i').forEach(function(i,k){ i.classList.toggle('on',k<st); }); $('#grStat').innerHTML='<span>'+stat+'</span>'; $('#grLesson').innerHTML='<b>'+lt+'</b>'+lesson; $('#grNext').textContent=n===3?'포춘 쿠키 →':'다음 게임 →'; nextFn=next; show('#s-gr'); }
   $('#grNext').addEventListener('click',function(){ if(nextFn) nextFn(); });
   function code(){ var d=new Date(); var seed=(d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()); var x=(seed*2654435761)%100000; return 'B'+pad(d.getMonth()+1)+pad(d.getDate())+'-'+('000'+(x%1000)).slice(-3); }
-  function finish(prize){ var d=new Date(); var w=$('#won'); if(prize){ $('#wRank').textContent=prize.rank; $('#wName').textContent=prize.name; w.hidden=false; } else w.hidden=true; var acc=stats.g1.ok, miss=stats.g2.wrong+stats.g3.leak; var v,desc;
-    if(acc>=10&&miss===0){v='약속 만들기 준비 완료';desc='길라잡이 기준을 다 익혔어요. 이제 우리 학교 약속을 정할 차례입니다.';} else if(acc>=7){v='거의 다 왔어요';desc='쓰임 규칙이 머릿속에 있어요. 7가지 약속을 한 번만 더 보세요.';} else {v='오늘부터 시작';desc='괜찮아요. 이 길라잡이가 바로 그런 학교를 위해 만들어졌어요.';}
-    var total=pts[1]+pts[2]+pts[3]; var rk=(acc>=10&&miss===0)?'S':(acc>=7&&miss<=2)?'A':'B'; var r=$('#rank'); r.textContent=rk; r.className='rank '+rk; $('#ptsTotal').textContent=total; $('#ptsCombo').textContent=bestCombo;
+  function finish(f){ var d=new Date(); var w=$('#won'); if(f){ $('#wName').textContent=f; w.hidden=false; } else w.hidden=true; var acc=stats.g1.ok, miss=stats.g2.wrong+stats.g3.leak; var v,desc;
+    if(acc>=7&&miss===0){v='약속 만들기 준비 완료';desc='길라잡이 기준을 다 익혔어요. 이제 우리 학교 약속을 정할 차례입니다.';} else if(acc>=5){v='거의 다 왔어요';desc='쓰임 규칙이 머릿속에 있어요. 7가지 약속을 한 번만 더 보세요.';} else {v='오늘부터 시작';desc='괜찮아요. 이 길라잡이가 바로 그런 학교를 위해 만들어졌어요.';}
+    var total=pts[1]+pts[2]+pts[3]; var rk=(acc>=7&&miss===0)?'S':(acc>=5&&miss<=2)?'A':'B'; var r=$('#rank'); r.textContent=rk; r.className='rank '+rk; $('#ptsTotal').textContent=total; $('#ptsCombo').textContent=bestCombo;
     $('#dVerdict').textContent=v; $('#dDesc').textContent=desc; $('#code').textContent=code(); $('#doneTime').textContent=pad(d.getHours())+':'+pad(d.getMinutes())+' 완료'; show('#s-done'); }
   $('#start').addEventListener('click',function(){ brief(1,g1start); });
   $('#again').addEventListener('click',function(){ $$('.stamps i').forEach(function(i){i.classList.remove('on');}); show('#s-intro'); });
