@@ -333,6 +333,7 @@ body{background:#FFFFFF}
 .demo{display:flex;gap:8px;justify-content:center;align-items:center;margin:0 0 16px;font-size:.86rem;color:#475467;flex-wrap:wrap}
 .demo .chip{border:2px solid #191F28;border-radius:10px;padding:6px 10px;background:#fff;font-weight:700;color:#191F28}
 .demo .arr{font-weight:900;color:#F05A1A}
+.demo .ex{font-size:.7rem;letter-spacing:.1em;font-weight:800;color:#6B7684;border:1.5px solid #CBD2DB;border-radius:999px;padding:2px 8px;margin-right:2px}
 
 /* 게임1 작은 카드 */
 .g1 .stage{height:176px;margin:4px 0 12px}
@@ -621,7 +622,7 @@ body{background:#FFFFFF}
        demo:'<span class="chip">내일 회의 자료 공유</span><span class="arr">→</span><span class="chip">⏰ 예약</span><span class="chip" style="margin-left:10px">⚠️ 폭설 등교 변경</span><span class="arr">→</span><span class="chip">지금</span>'}
   };
   var briefNext=null;
-  function brief(n,next){ var b=BRIEF[n]; $('#bfEye').textContent=b.eye; $('#bfTitle').textContent=b.title; $('#bfRole').textContent=b.role; $('#bfRules').innerHTML=b.rules.map(function(r,i){return '<li><b>'+(i+1)+'</b><span>'+r+'</span></li>';}).join(''); $('#bfDemo').innerHTML=b.demo; briefNext=next; show('#s-brief'); }
+  function brief(n,next){ var b=BRIEF[n]; $('#bfEye').textContent=b.eye; $('#bfTitle').textContent=b.title; $('#bfRole').textContent=b.role; $('#bfRules').innerHTML=b.rules.map(function(r,i){return '<li><b>'+(i+1)+'</b><span>'+r+'</span></li>';}).join(''); $('#bfDemo').innerHTML='<span class="ex">예시</span>'+b.demo; briefNext=next; show('#s-brief'); }
   $('#bfStart').addEventListener('click',function(){ if(briefNext) briefNext(); });
 
   /* ---------- 게임 1: 공지 분류 스와이프 ---------- */
