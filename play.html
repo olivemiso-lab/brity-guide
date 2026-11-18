@@ -455,7 +455,7 @@ body{background:#FFFFFF}
       <p class="fine">정답이 정해진 시험이 아닙니다. 길라잡이가 제안하는 <b>예시 기준</b>에 맞춰 보는 놀이이고, 우리 학교의 약속은 학교가 함께 정합니다.</p>
       <ul class="list">
         <li><b>1</b><div>공지 분류<small>이 메시지는 어디에? 8장 · 칸 누르기 · 70초</small></div></li>
-        <li><b>2</b><div>답글 정리<small>답글 23개 중 "확인했습니다"는 ✅로, 질문 5개만 남기기</small></div></li>
+        <li><b>2</b><div>답글 정리<small>"확인했습니다"는 ✅로, 질문은 남기기</small></div></li>
         <li><b>3</b><div>퇴근 후 알림 끄기<small>급하지 않으면 예약, 긴급이면 바로 · 알림 10개</small></div></li>
       </ul>
       <button class="btn" id="start">게임 시작</button>
@@ -615,8 +615,8 @@ body{background:#FFFFFF}
     1:{eye:'LEVEL 1 · 공지 분류',title:'이 메시지, 어디에 올릴까?',role:'메시지 8장이 한 장씩 나옵니다.',
        rules:['알맞은 칸을 누르세요.','길라잡이 기준과 같으면 점수. 70초.'],
        demo:'<span class="chip">📌 10월 학사 일정 안내</span><span class="arr">→</span><span class="chip">🗂️ 워크스페이스</span>'},
-    2:{eye:'LEVEL 2 · 답글 정리',title:'답글에서 질문만 남기기',role:'공지 아래 답글 23개가 한꺼번에 보입니다.',
-       rules:['"확인했습니다" 답글은 눌러서 ✅로.','질문은 누르지 말고 남겨 두세요.','답글 23개 중 질문 5개가 남으면 끝.'],
+    2:{eye:'LEVEL 2 · 답글 정리',title:'답글에서 질문만 남기기',role:'공지 아래에 답글이 달려 있습니다.',
+       rules:['"확인했습니다" 답글은 눌러서 ✅로.','질문은 누르지 말고 남겨 두세요.'],
        demo:'<span class="chip">확인했습니다</span><span class="arr">→</span><span class="chip">✅</span><span class="chip" style="margin-left:10px">기한 연장 되나요?</span><span class="arr">→</span><span class="chip">남김</span>'},
     3:{eye:'LEVEL 3 · 알림 끄기',title:'저녁 7시, 보낼까 말까?',role:'퇴근 후, 보내려던 메시지가 올라옵니다.',
        rules:['급하지 않으면 <span class="k">예약 발송</span>','<b>⚠️ 긴급</b>은 <span class="k o">지금 보내기</span>','<b>방해금지</b>를 켜면 놓친 알림을 막아 줍니다.'],
