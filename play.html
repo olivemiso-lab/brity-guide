@@ -449,7 +449,7 @@ body{background:#FFFFFF}
     <div class="card">
       <div class="eyebrow">2분 미니게임 · 스탬프 3종</div>
       <h1>우리 학교 메신저 약속,<br>미니게임으로 알아보기</h1>
-      <p>게임 세 개를 마치면 스탬프 세 개와 포춘 쿠키가 기다립니다. 끝 화면을 부스에 보여 주면 1분과 체험 완료입니다.</p>
+      <p>게임 세 개를 마치면 스탬프 세 개가 찍힙니다. 끝 화면을 부스에 보여 주면 1분과 체험 완료입니다.</p>
       <p class="fine">정답이 정해진 시험이 아닙니다. 길라잡이가 제안하는 <b>예시 기준</b>에 맞춰 보는 놀이이고, 우리 학교의 약속은 학교가 함께 정합니다.</p>
       <ul class="list">
         <li><b>1</b><div>공지 분류<small>이 메시지는 어디에? 8장 · 칸 누르기 · 70초</small></div></li>
@@ -535,9 +535,9 @@ body{background:#FFFFFF}
   <!-- 포춘 쿠키 -->
   <section class="screen cookie" id="s-cookie">
     <div class="card">
-      <div class="eyebrow">스탬프 3종 완료</div>
+      <div class="eyebrow">깜짝 이벤트</div>
       <h2>번호 하나를 고르세요</h2>
-      <p>그 번호의 포춘 쿠키가 열립니다. 오늘의 한마디가 들어 있어요.</p>
+      <p>마음에 드는 번호를 누르면 무언가 열립니다.</p>
       <div class="ckgrid" id="ckgrid" role="group" aria-label="포춘 쿠키 번호"></div>
       <p class="note" id="cookieHint">마음에 드는 번호를 톡!</p>
     </div>
@@ -740,7 +740,7 @@ body{background:#FFFFFF}
 
   /* ---------- 결과 / 완료 ---------- */
   var nextFn=null;
-  function result(n,eye,stat,lt,lesson,next){ $('#grEyebrow').textContent=eye; $('#grNum').textContent=n; var st=n===1?(stats.g1.ok>=7?3:stats.g1.ok>=5?2:1):n===2?(stats.g2.wrong===0?3:stats.g2.wrong<=2?2:1):(stats.g3.leak===0?3:stats.g3.leak<=1?2:1); $$('#grStars i').forEach(function(i,k){ i.classList.toggle('on',k<st); }); $('#grStat').innerHTML='<span>'+stat+'</span>'; $('#grLesson').innerHTML='<b>'+lt+'</b>'+lesson; $('#grNext').textContent=n===3?'포춘 쿠키 →':'다음 게임 →'; nextFn=next; show('#s-gr'); }
+  function result(n,eye,stat,lt,lesson,next){ $('#grEyebrow').textContent=eye; $('#grNum').textContent=n; var st=n===1?(stats.g1.ok>=7?3:stats.g1.ok>=5?2:1):n===2?(stats.g2.wrong===0?3:stats.g2.wrong<=2?2:1):(stats.g3.leak===0?3:stats.g3.leak<=1?2:1); $$('#grStars i').forEach(function(i,k){ i.classList.toggle('on',k<st); }); $('#grStat').innerHTML='<span>'+stat+'</span>'; $('#grLesson').innerHTML='<b>'+lt+'</b>'+lesson; $('#grNext').textContent=n===3?'마치기 →':'다음 게임 →'; nextFn=next; show('#s-gr'); }
   $('#grNext').addEventListener('click',function(){ if(nextFn) nextFn(); });
   function code(){ var d=new Date(); var seed=(d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()); var x=(seed*2654435761)%100000; return 'B'+pad(d.getMonth()+1)+pad(d.getDate())+'-'+('000'+(x%1000)).slice(-3); }
   function finish(f){ var d=new Date(); var w=$('#won'); if(f){ $('#wName').textContent=f; w.hidden=false; } else w.hidden=true; var acc=stats.g1.ok, miss=stats.g2.wrong+stats.g3.leak; var v,desc;
