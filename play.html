@@ -375,6 +375,33 @@ body{background:#FFFFFF}
 .won{flex-direction:column;gap:4px;background:#fff;color:#191F28;padding:14px 16px}
 .won .w-rank{font-size:.78rem;letter-spacing:.1em;color:#6B7684}
 .won .w-name{font-size:1.02rem;font-weight:700;text-align:center;line-height:1.5}
+
+/* 귀여운 쿠키 */
+.mini{padding:12px 4px 8px;border-radius:18px;background:#FFF8EE}
+.mini .mc{position:relative;width:40px;height:30px;background:#F6CB86;border:2.5px solid #191F28;border-radius:60% 60% 50% 50% / 85% 85% 40% 40%;animation:bob 2.4s ease-in-out infinite}
+.mini:nth-child(3n) .mc{animation-delay:.4s}.mini:nth-child(3n+1) .mc{animation-delay:.9s}
+.mini .e{position:absolute;top:11px;left:12px;width:4px;height:5px;border-radius:50%;background:#191F28}
+.mini .e.r{left:auto;right:12px}
+.mini .m{position:absolute;top:17px;left:50%;width:7px;height:4px;border:2px solid #191F28;border-top:0;border-radius:0 0 8px 8px;transform:translateX(-50%)}
+.mini .bl{position:absolute;top:16px;left:5px;width:6px;height:3px;border-radius:50%;background:#F7A1A1;opacity:.9}
+.mini .bl.r{left:auto;right:5px}
+.mini:hover .mc{transform:scale(1.08)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.ck .half{background:#F6CB86;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;overflow:visible}
+.ck .half.l{border-radius:90px 30px 30px 90px / 90px 50px 50px 90px}
+.ck .half.r{border-radius:30px 90px 90px 30px / 50px 90px 90px 50px}
+.ck .half .e{position:absolute;top:34px;width:7px;height:9px;border-radius:50%;background:#191F28}
+.ck .half.l .e{right:26px}.ck .half.r .e{left:26px}
+.ck .half .bl{position:absolute;top:46px;width:12px;height:6px;border-radius:50%;background:#F7A1A1}
+.ck .half.l .bl{right:14px}.ck .half.r .bl{left:14px}
+.ck .spark{position:absolute;color:#F05A1A;font-size:1.1rem;opacity:0;transition:opacity .3s,transform .5s}
+.ck .s1{left:4px;top:6px}.ck .s2{right:6px;top:2px}.ck .s3{left:50%;top:-10px;font-size:.9rem}
+.ck.open .spark{opacity:1;animation:twinkle 1.2s ease-in-out infinite}
+.ck.open .s2{animation-delay:.3s}.ck.open .s3{animation-delay:.6s}
+@keyframes twinkle{0%,100%{transform:scale(.7) rotate(0);opacity:.5}50%{transform:scale(1.2) rotate(20deg);opacity:1}}
+.ck .slip{background:#FFFDF6;border-radius:12px;font-weight:700}
+.ckbox{background:#FFF8EE}
+.cookie .card{background:#fff}
 </style>
 </head>
 <body>
@@ -482,7 +509,7 @@ body{background:#FFFFFF}
     <div class="reveal" id="ckReveal" hidden>
       <div class="ckbox">
         <div class="ckno" id="ckNo"></div>
-        <div class="cookie-wrap"><div class="ck" id="cookieBtn"><span class="half l"></span><span class="half r"></span><span class="slip" id="slip"></span></div></div>
+        <div class="cookie-wrap"><div class="ck" id="cookieBtn"><span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✧</span><span class="half l"><i class="e"></i><i class="bl"></i></span><span class="half r"><i class="e"></i><i class="bl"></i></span><span class="slip" id="slip"></span></div></div>
         <button class="btn" id="cookieOk" type="button">확인</button>
       </div>
     </div>
@@ -623,34 +650,34 @@ body{background:#FFFFFF}
 
   /* ---------- 포춘 쿠키 ---------- */
   var FORTUNES=[
-    '오늘 보낸 공지 한 줄이 누군가의 퇴근을 지켰습니다.',
-    '잘 정한 약속 하나가 백 번의 안내를 대신합니다.',
-    '확인은 ✅ 하나면 충분합니다. 당신의 시간은 더 소중하니까요.',
-    '새 도구보다 함께 쓰는 마음이 먼저입니다. 이미 그걸 하고 계시네요.',
-    '내일의 당신에게 예약 발송: 오늘도 충분히 잘했어요.',
-    '질문을 답글로 남기는 용기가 학교를 바꿉니다.',
-    '방해금지는 게으름이 아니라 내일을 위한 충전입니다.',
-    '링크 하나로 파일 열 개를 이겼습니다.',
-    'TF팀의 첫 회의는 커피 한 잔이면 충분합니다.',
-    '4주 뒤의 당신은 지금보다 훨씬 편해져 있을 거예요.',
-    '완벽한 약속보다 함께 고친 약속이 오래갑니다.',
-    '오늘 익힌 다섯 칸, 내일 교무실에서 써먹어 보세요.',
-    '쪽지 열 통보다 공지 한 번이 교직원을 쉬게 합니다.',
-    '저장(Y)을 누른 당신, 오늘의 영웅입니다.',
-    '바꾸는 건 메신저가 아니라 서로를 배려하는 방식입니다.',
-    '처음은 누구나 서툽니다. 두 번째엔 당신이 안내자가 됩니다.',
-    '퇴근 후 울리지 않는 휴대폰, 그게 좋은 학교의 소리입니다.',
-    '작은 규칙이 큰 혼란을 막습니다. 오늘 하나 정해 보세요.',
-    '읽음과 완료는 다릅니다. 구분하는 학교가 덜 지칩니다.',
-    '좋은 소식은 생각보다 가까이 있습니다. 이 쿠키처럼요.',
-    '함께 정한 약속은 지키기보다 지켜집니다.',
-    '당신의 교실에서 자란 질문이 학교를 자라게 합니다.',
-    '새 학기, 새 메신저, 그리고 여전히 든든한 동료들.',
-    '오늘의 수고가 내일의 여유가 됩니다.'
+    '오늘 당신에게 작은 행운이 하나 숨어 있습니다. 잘 찾아보세요.',
+    '생각지 못한 곳에서 반가운 소식이 옵니다.',
+    '오늘 웃은 횟수만큼 내일이 가벼워집니다.',
+    '당신이 건넨 친절은 돌고 돌아 다시 돌아옵니다.',
+    '미루던 일 하나를 오늘 끝내면 일주일이 편해집니다.',
+    '좋은 사람 곁에 좋은 일이 모입니다. 당신이 그 사람입니다.',
+    '오늘의 커피는 유난히 맛있을 예정입니다.',
+    '작은 용기가 큰 문을 엽니다. 먼저 인사해 보세요.',
+    '오래 기다린 답이 곧 도착합니다.',
+    '오늘은 당신 차례입니다. 칭찬을 마음껏 받으세요.',
+    '잊고 있던 기쁨이 문득 떠오르는 하루입니다.',
+    '당신의 선택은 생각보다 훨씬 괜찮았습니다.',
+    '가벼운 걸음으로 걸으면 좋은 우연이 따라옵니다.',
+    '오늘 만나는 사람 중 한 명이 당신 편이 됩니다.',
+    '완벽하지 않아도 충분히 빛나고 있습니다.',
+    '쉬어 가는 것도 앞으로 가는 방법입니다.',
+    '마음에 품은 일이 조용히 좋은 방향으로 움직입니다.',
+    '오늘은 운이 좋은 날입니다. 믿어 보세요.',
+    '작은 정리 하나가 큰 여유를 만듭니다.',
+    '당신의 하루가 누군가에게는 선물이었습니다.',
+    '곧 "역시 그때 하길 잘했다"고 말하게 됩니다.',
+    '행운은 준비된 사람을 좋아합니다. 이미 준비되셨네요.',
+    '오늘 저녁, 뜻밖의 즐거움이 기다립니다.',
+    '이 쿠키를 고른 손이 오늘의 행운을 쥐고 있습니다.'
   ];
   var fortune=null;
   function cookieStart(){ fortune=null; var g=$('#ckgrid'); g.innerHTML=''; var off=Math.floor(Math.random()*FORTUNES.length);
-    for(var i=0;i<24;i++){ var b=document.createElement('button'); b.type='button'; b.className='mini'; b.innerHTML='<span class="mc"></span><b>'+(i+1)+'</b>'; (function(n){ b.addEventListener('click',function(){ openCookie(n,(n-1+off)%FORTUNES.length); }); })(i+1); g.appendChild(b); }
+    for(var i=0;i<24;i++){ var b=document.createElement('button'); b.type='button'; b.className='mini'; b.innerHTML='<span class="mc"><i class="e"></i><i class="e r"></i><i class="m"></i><i class="bl"></i><i class="bl r"></i></span><b>'+(i+1)+'</b>'; (function(n){ b.addEventListener('click',function(){ openCookie(n,(n-1+off)%FORTUNES.length); }); })(i+1); g.appendChild(b); }
     $('#ckReveal').hidden=true; show('#s-cookie'); }
   function openCookie(n,idx){ fortune=FORTUNES[idx]; var ck=$('#cookieBtn'); ck.classList.remove('open'); $('#slip').textContent=''; $('#ckNo').textContent=n+'번 쿠키'; $('#ckReveal').hidden=false; $('#cookieOk').style.visibility='hidden';
     setTimeout(function(){ $('#slip').textContent=fortune; ck.classList.add('open'); },350); setTimeout(function(){ $('#cookieOk').style.visibility='visible'; },1200); }
