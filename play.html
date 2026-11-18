@@ -610,14 +610,14 @@ body{background:#FFFFFF}
 
   /* ---------- 미션 설명 ---------- */
   var BRIEF={
-    1:{eye:'LEVEL 1 · 공지 분류',title:'이 메시지, 어디에 올릴까?',role:'당신은 교무부장입니다. 메시지 카드가 한 장씩 나옵니다.',
-       rules:['카드를 읽고 <span class="k">워크스페이스</span><span class="k">대화방 공지</span><span class="k">대화</span><span class="k">쪽지</span><span class="k">드라이브</span> 중 한 칸을 고릅니다.','알맞은 칸을 누르세요.','길라잡이의 예시 기준과 맞으면 점수가 오릅니다. 70초, 8장.'],
+    1:{eye:'LEVEL 1 · 공지 분류',title:'이 메시지, 어디에 올릴까?',role:'메시지 8장이 한 장씩 나옵니다.',
+       rules:['알맞은 칸을 누르세요.','길라잡이 기준과 같으면 점수. 70초.'],
        demo:'<span class="chip">📌 10월 학사 일정 안내</span><span class="arr">→</span><span class="chip">🗂️ 워크스페이스</span>'},
-    2:{eye:'LEVEL 2 · 답글 정리',title:'답글에서 질문만 남기기',role:'평가계획 공지 아래로 답글이 쏟아집니다.',
-       rules:['"확인했습니다", "네" 같은 답글을 <span class="k o">누르면</span> ✅ 이모지로 바뀝니다.','진짜 <b>질문</b>은 누르지 말고 남겨 두세요. 누르면 실수.','확인 답글을 모두 ✅로 바꾸면 끝. 시간 제한 없음.'],
+    2:{eye:'LEVEL 2 · 답글 정리',title:'답글에서 질문만 남기기',role:'공지 아래로 답글이 쏟아집니다.',
+       rules:['"확인했습니다" 답글은 눌러서 ✅로.','질문은 누르지 말고 남겨 두세요.'],
        demo:'<span class="chip">확인했습니다</span><span class="arr">→</span><span class="chip">✅</span><span class="chip" style="margin-left:10px">기한 연장 되나요?</span><span class="arr">→</span><span class="chip">남김</span>'},
-    3:{eye:'LEVEL 3 · 알림 끄기',title:'저녁 7시, 보낼까 말까?',role:'퇴근 후입니다. 보내려던 메시지가 하나씩 올라옵니다.',
-       rules:['급하지 않은 메시지는 <span class="k">예약 발송</span>을 눌러 내일 아침으로 보냅니다.','<b>⚠️ 긴급</b> 표시가 있으면 <span class="k o">지금 보내기</span>. 긴급을 예약하거나 놓치면 실수.','아래 <b>방해금지 스위치</b>를 켜면 못 누르고 지나간 알림도 막아 줍니다. 알림 10개를 다 처리하면 끝. 실수 3번이면 다시.'],
+    3:{eye:'LEVEL 3 · 알림 끄기',title:'저녁 7시, 보낼까 말까?',role:'퇴근 후, 보내려던 메시지가 올라옵니다.',
+       rules:['급하지 않으면 <span class="k">예약 발송</span>','<b>⚠️ 긴급</b>은 <span class="k o">지금 보내기</span>','<b>방해금지</b>를 켜면 놓친 알림을 막아 줍니다.'],
        demo:'<span class="chip">내일 회의 자료 공유</span><span class="arr">→</span><span class="chip">⏰ 예약</span><span class="chip" style="margin-left:10px">⚠️ 폭설 등교 변경</span><span class="arr">→</span><span class="chip">지금</span>'}
   };
   var briefNext=null;
