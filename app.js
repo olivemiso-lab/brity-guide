@@ -1,13 +1,25 @@
 /* ===== 연수 자료 목록 (여기만 고치면 됩니다) =====
-   동영상: youtube 는 영상 주소의 v= 뒤 11자리 ID / 구글 드라이브 영상은 drive:'파일ID' (링크 공유 설정 필요) / 직접 파일은 file:'video/파일명.mp4' (작은 파일만)
-   슬라이드: Canva 공유 → 더보기 → 삽입(Embed) 에서 나온 주소를 embed 에 넣고, PDF로 내려받을 파일이 있으면 pdf 에 경로 */
+   동영상: youtube 는 영상 주소의 v= 뒤 11자리 ID / 구글 드라이브 영상은 drive:'파일ID' (링크 공유 설정 필요) / 직접 파일은 file:'training/파일명.mp4' + poster:'첫 화면 그림'
+   슬라이드: 그림으로 넘겨 보기는 slides (dir 폴더의 01.png, 02.png … 순서, titles 는 장마다 제목, parts 는 [시작 번호, 묶음 이름])
+             Canva 를 쓰면 embed 에 삽입 주소. 내려받기는 pdf / pptx 에 { href, name(내려받을 때 파일 이름), size }. 빼려면 그 줄을 지우면 됩니다. */
 var TRAINING = {
   videos: [
-    { title: '브리티 메신저 시작하기', desc: '설치·로그인부터 워크스페이스 공지 확인까지', youtube: '', length: '' },
-    { title: '한글 협업문서 함께 작성하기', desc: '링크로 열기 → 편집 → 내 칸 입력 → 저장', youtube: '', length: '' }
+    { title: '길라잡이 소개 영상', desc: '학교 업무소통의 어려움부터 학교 맞춤형 6단계 실천 가이드, 기대 효과까지 짧게 정리했습니다.',
+      file: 'training/brity-guide-intro.mp4', poster: 'training/intro-poster.jpg', length: '2분 21초' }
   ],
   decks: [
-    { title: '브리티 메신저 사용 설명서 (연수 슬라이드)', desc: '교직원 연수용 Canva 슬라이드', embed: '', pdf: '' }
+    { title: 'Brity 메신저, 함께 시작해요', desc: '사용 약속 안내와 실제 업무 상황 실습을 중심으로 한 40분 교직원 연수 자료입니다.',
+      source: '2026 경기도학교업무개선정책실행연구회 1분과',
+      slides: { dir: 'training/slides/', ext: '.png',
+        titles: ['표지', '오늘 40분, 이렇게 진행해요', '다른 학교 선생님들도 아직 낯설어해요', "기능보다 먼저, '같은 방식'을 정해요", '우리 학교 Brity 메신저 사용 약속', '우리 학교는 이렇게 바꿔 가요',
+                 '먼저 로그인을 확인해요', '어디에 올릴까요? 5가지 소통 공간', '헷갈릴 땐 이렇게 물어보세요', '우리 학교 소통 지도: 이럴 땐 여기에',
+                 '기존 방식과 바꿔 볼 방식, 한눈에 보기', '사례 1. 공지는 한 곳에, 같은 형식으로', '사례 2. 질문은 답글로, 확인은 이모지로', '사례 3. 자료는 가급적 드라이브 링크로', '짧은 안내와 개별 연락도 맞는 곳에서', '직접 해 봐요: 실습 공지로 따라 하기', '서로를 배려하고, 지킬 선은 지켜요',
+                 '내 설정, 지금 함께 점검해요',
+                 '4주 동안, 쓰면서 익혀요', '막히면 이렇게 물어보세요', '우리 학교의 첫 번째 실천 한 가지'],
+        parts: [[1, '시작'], [3, '① 전환 취지와 우리 학교 사용 약속 · 5분'], [7, '② 기본 기능 익히기 · 10분'], [11, '③ 실제 업무 상황 실습 · 15분'], [18, '④ 개인별 설정 점검 · 5분'], [19, '⑤ 질의응답과 적응 기간 안내 · 5분']] },
+      pdf:  { href: 'training/brity-training-slides.pdf', name: 'Brity메신저_교직원연수.pdf', size: '21쪽 · 0.5MB' },
+      pptx: { href: 'training/brity-training-school-edit.pptx', name: 'Brity메신저_교직원연수_학교수정용.pptx', size: '0.3MB',
+              note: '학교 수정용 PPTX는 노란 점선 상자(【 】)를 우리 학교 내용으로 바꿔 쓰는 파일입니다. 발표 설명은 슬라이드 노트에, 연수 준비와 TF 참고 자료는 숨김 슬라이드에 들어 있습니다.' } }
   ]
 };
 
@@ -159,19 +171,70 @@ var TRAINING = {
       var frame;
       if(v.youtube) frame='<div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/'+esc(v.youtube)+'?rel=0" title="'+esc(v.title)+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>';
       else if(v.drive) frame='<div class="frame"><iframe src="https://drive.google.com/file/d/'+esc(v.drive)+'/preview" title="'+esc(v.title)+'" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>';
-      else if(v.file) frame='<div class="frame"><video controls preload="metadata" src="'+esc(v.file)+'"></video></div>';
+      else if(v.file) frame='<div class="frame"><video controls playsinline preload="none"'+(v.poster?' poster="'+esc(v.poster)+'"':'')+' src="'+esc(v.file)+'" aria-label="'+esc(v.title)+'"></video></div>';
       else frame='<div class="frame placeholder"><div><span><svg class="ic lg" aria-hidden="true"><use href="#i-film"/></svg></span>영상 준비 중</div></div>';
-      return '<div class="media">'+frame+'<div class="body"><h4>'+esc(v.title)+'</h4><p>'+esc(v.desc)+'</p>'+(v.length?'<div class="meta">⏱ '+esc(v.length)+'</div>':'')+'</div></div>';
+      return '<div class="media">'+frame+'<div class="body">'+(v.length?'<div class="meta"><svg class="ic sm" aria-hidden="true"><use href="#i-clock"/></svg> '+esc(v.length)+'</div>':'')+'<h4>'+esc(v.title)+'</h4><p>'+esc(v.desc)+'</p></div></div>';
     }).join('');
+    vg.classList.toggle('one',TRAINING.videos.length===1);
   }
   var dl=$('#deckList'); if(dl&&window.TRAINING){
-    dl.innerHTML=TRAINING.decks.map(function(d){
-      var frame=d.embed?'<div class="frame"><iframe src="'+esc(d.embed)+'" title="'+esc(d.title)+'" loading="lazy" allowfullscreen></iframe></div>':'<div class="frame placeholder"><div><svg class="ic lg" aria-hidden="true"><use href="#i-presentation"/></svg> 슬라이드 준비 중</div></div>';
+    dl.innerHTML=TRAINING.decks.map(function(d,di){
+      var s=d.slides, frame;
+      if(s&&s.titles&&s.titles.length){
+        var n=s.titles.length, opts='', pi=0, parts=s.parts||[];
+        s.titles.forEach(function(t,i){
+          var no=i+1;
+          if(parts[pi]&&parts[pi][0]===no){ opts+=(pi?'</optgroup>':'')+'<optgroup label="'+esc(parts[pi][1])+'">'; pi++; }
+          opts+='<option value="'+no+'">'+no+' / '+n+' · '+esc(t)+'</option>';
+        });
+        if(pi) opts+='</optgroup>';
+        frame='<div class="viewer" data-deck="'+di+'" tabindex="0" role="region" aria-roledescription="슬라이드 보기" aria-label="'+esc(d.title)+' 슬라이드 (왼쪽·오른쪽 화살표 키로 넘기기)">'+
+          '<div class="frame slide-frame"><img class="slide-img" src="'+esc(s.dir+'01'+s.ext)+'" width="1920" height="1080" alt="슬라이드 1 / '+n+': '+esc(s.titles[0])+'" decoding="async"></div>'+
+          '<div class="viewer-bar">'+
+            '<button type="button" class="vbtn" data-go="-1" aria-label="이전 슬라이드"><svg class="ic flip" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>'+
+            '<label class="vh" for="slideJump'+di+'">슬라이드 바로 가기</label><select class="vjump" id="slideJump'+di+'">'+opts+'</select>'+
+            '<button type="button" class="vbtn" data-go="1" aria-label="다음 슬라이드"><svg class="ic" aria-hidden="true"><use href="#i-chevron-right"/></svg></button>'+
+            '<button type="button" class="vbtn vfull" aria-label="전체 화면으로 보기"><svg class="ic" aria-hidden="true"><use href="#i-maximize"/></svg></button>'+
+          '</div><span class="vh vlive" aria-live="polite"></span></div>';
+      }
+      else if(d.embed) frame='<div class="frame"><iframe src="'+esc(d.embed)+'" title="'+esc(d.title)+'" loading="lazy" allowfullscreen></iframe></div>';
+      else frame='<div class="frame placeholder"><div><svg class="ic lg" aria-hidden="true"><use href="#i-presentation"/></svg> 슬라이드 준비 중</div></div>';
       var acts='';
-      if(d.embed) acts+='<a class="btn outline small" href="'+esc(d.embed.replace(/\?embed.*$/,''))+'" target="_blank" rel="noopener">새 창에서 보기 ↗</a>';
-      if(d.pdf) acts+='<a class="btn outline small" href="'+esc(d.pdf)+'" download>PDF 내려받기</a>';
-      return '<div class="deck">'+frame+'<div class="body"><div><h4>'+esc(d.title)+'</h4><p>'+esc(d.desc)+'</p></div><div class="actions">'+acts+'</div></div></div>';
+      if(d.embed&&!s) acts+='<a class="btn outline small" href="'+esc(d.embed.replace(/\?embed.*$/,''))+'" target="_blank" rel="noopener">새 창에서 보기 ↗</a>';
+      function dlBtn(f,label,icon){ if(!f) return ''; if(typeof f==='string') f={href:f}; return '<a class="btn outline small" href="'+esc(f.href)+'" download="'+esc(f.name||'')+'"><svg class="ic sm" aria-hidden="true"><use href="#'+icon+'"/></svg> '+label+(f.size?' <span class="size">'+esc(f.size)+'</span>':'')+'</a>'; }
+      acts+=dlBtn(d.pdf,'PDF 내려받기','i-download')+dlBtn(d.pptx,'학교 수정용 PPTX','i-download');
+      var meta=(s&&s.titles?'<span>교직원 연수 · '+s.titles.length+'장</span>':'');
+      return '<div class="deck">'+frame+'<div class="body"><div class="deck-text">'+(meta?'<div class="meta">'+meta+'</div>':'')+'<h4>'+esc(d.title)+'</h4><p>'+esc(d.desc)+'</p>'+(d.source?'<p class="src">출처: '+esc(d.source)+'</p>':'')+(d.pptx&&d.pptx.note?'<p class="note-sm">'+esc(d.pptx.note)+'</p>':'')+'</div><div class="actions">'+acts+'</div></div></div>';
     }).join('');
+    $$('.viewer',dl).forEach(function(vw){
+      var d=TRAINING.decks[+vw.getAttribute('data-deck')], s=d.slides, n=s.titles.length, cur=1;
+      var img=$('.slide-img',vw), sel=$('.vjump',vw), live=$('.vlive',vw);
+      function src(i){ return s.dir+(i<10?'0':'')+i+s.ext; }
+      function go(i,announce){
+        cur=Math.max(1,Math.min(n,i));
+        img.src=src(cur); img.alt='슬라이드 '+cur+' / '+n+': '+s.titles[cur-1];
+        sel.value=String(cur);
+        $$('[data-go]',vw).forEach(function(b){ var dis=(+b.getAttribute('data-go')<0&&cur===1)||(+b.getAttribute('data-go')>0&&cur===n); b.disabled=dis; });
+        if(announce) live.textContent=img.alt;
+        if(cur<n){ var pre=new Image(); pre.src=src(cur+1); }
+      }
+      vw.addEventListener('click',function(e){ var b=e.target.closest('[data-go]'); if(b) go(cur+(+b.getAttribute('data-go')),true); });
+      sel.addEventListener('change',function(){ go(+sel.value,true); });
+      vw.addEventListener('keydown',function(e){
+        if(e.target.tagName==='SELECT') return;
+        if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); go(cur+1,true); }
+        else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(cur-1,true); }
+      });
+      var fb=$('.vfull',vw), canFull=vw.requestFullscreen||vw.webkitRequestFullscreen;
+      if(!canFull) fb.hidden=true;
+      else fb.addEventListener('click',function(){
+        var on=document.fullscreenElement||document.webkitFullscreenElement;
+        if(on){ (document.exitFullscreen||document.webkitExitFullscreen).call(document); }
+        else { canFull.call(vw); vw.focus(); }
+      });
+      document.addEventListener('fullscreenchange',function(){ fb.setAttribute('aria-label',document.fullscreenElement===vw?'전체 화면 끝내기':'전체 화면으로 보기'); });
+      go(1,false);
+    });
   }
 
 

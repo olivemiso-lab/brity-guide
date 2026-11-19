@@ -16,10 +16,13 @@ GOE 메신저에서 Brity 메신저로 전환하는 학교를 위한 **학교 �
 ## 배포 (Vercel)
 Vercel 프로젝트가 이 저장소에 연결되어 있어 `main`에 푸시하면 https://brity-guide.vercel.app/ 에 자동으로 다시 배포됩니다. 빌드 명령 없는 정적 사이트입니다.
 
-## 연수 자료(동영상·Canva) 넣기
-`app.js` 맨 위 `TRAINING` 목록만 고치면 됩니다.
-- 동영상: `youtube: '영상ID'` (주소의 `v=` 뒤 11자리) 또는 `drive: '구글드라이브 파일ID'`
-- Canva 슬라이드: Canva에서 공유 → 더보기 → 삽입(Embed) → 나온 iframe의 `src` 주소를 `embed`에, PDF를 함께 올렸으면 경로를 `pdf`에
+## 연수 자료(소개 영상·연수 슬라이드) 넣기
+`app.js` 맨 위 `TRAINING` 목록만 고치면 됩니다. 파일은 `training/` 폴더에 있습니다.
+- 소개 영상: `training/brity-guide-intro.mp4` (2분 21초), 첫 화면 `training/intro-poster.jpg`. 음악을 바꾸려면 같은 이름으로 덮어쓰면 됩니다.
+  YouTube로 바꾸려면 `file` 대신 `youtube: '영상ID'` (주소의 `v=` 뒤 11자리).
+- 연수 슬라이드: 그림 `training/slides/01.png`~`21.png` (PPT의 발표용 21장, 숨김 슬라이드 제외), 장마다 제목은 `slides.titles`.
+  PDF `training/brity-training-slides.pdf`, 학교 수정용 원본 `training/brity-training-school-edit.pptx`. 내려받기를 빼려면 `pdf`·`pptx` 줄을 지웁니다.
+- 슬라이드를 새로 뽑을 때: PowerPoint에서 숨김이 아닌 슬라이드만 1920×1080 PNG로 내보내고, PDF는 "다른 이름으로 저장 → PDF"(숨김 슬라이드 제외).
 
 ## 원문과 다른 곳 (검토 의견 반영분, 작성자 확인 전)
 - 적용 예시 ①의 공지 날짜를 평일로, ①·④의 첨부 파일을 드라이브 링크로 바꿈
