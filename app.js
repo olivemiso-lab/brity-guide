@@ -139,7 +139,10 @@ var TRAINING = {
   }
   function renderTotal(){
     var n=0; lists.forEach(function(l){ (store[l.getAttribute('data-list')]||[]).forEach(function(v){if(v)n++;}); });
-    var el=$('#totalProgress'); if(el) el.textContent=n+' / '+totalN;
+    var t=totalN;
+    if(!lists.length){ /* 체크리스트가 없는 페이지(활용 사례): 목차와 같은 기준(6단계, 40개)으로 셈 */
+      var cnt=[6,8,7,8,8,3]; n=0; t=0; cnt.forEach(function(c,i){ (store['step'+(i+1)]||[]).forEach(function(v){if(v)n++;}); t+=c; }); }
+    var el=$('#totalProgress'); if(el) el.textContent=n+' / '+t;
   }
   lists.forEach(function(list){
     $$('label',list).forEach(function(l){ var txt=''; var nodes=Array.prototype.slice.call(l.childNodes); nodes.forEach(function(n){ if(n.nodeType===3){ txt+=n.textContent; l.removeChild(n);} }); var sp=document.createElement('span'); sp.className='t'; sp.textContent=txt.trim(); l.appendChild(sp); });
