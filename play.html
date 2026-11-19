@@ -241,6 +241,21 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
 .rank{display:inline-grid;place-items:center;width:64px;height:64px;border-radius:18px;background:var(--blue);color:#fff;font-size:2rem;font-weight:900;margin:4px auto 6px;transform:rotate(-6deg);box-shadow:0 5px 0 var(--blue2);animation:starin .5s cubic-bezier(.2,1.4,.4,1)}
 .rank.S{background:linear-gradient(180deg,#FFD36B,#F6B73C);color:#5A3B00;box-shadow:0 5px 0 var(--gold2)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* 그림 섬·하늘 (Magnific 생성, img/play/) */
+body{background:#CFE3FF}
+body::before{background:url(img/play/sky.webp) center top/cover no-repeat;opacity:1}
+.island.art{width:70%;margin:0 0 6px;padding:0;background:none;box-shadow:none;border-radius:0}
+.island.art.r{margin-left:auto}
+.island.art::before{display:none}
+.island.art .isl{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 14px rgba(44,58,140,.18))}
+.island.art .lab{position:relative;margin:-15% -9% 0 0}
+.island.art.r .lab{margin:-15% 0 0 -9%}
+#s-intro #start{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom));z-index:5}
+#s-intro .mapfoot{background:rgba(255,255,255,.78);border-radius:14px;padding:8px 12px;margin-top:12px}
+.ctile img,.ckstage img{height:auto}
+.island.art.locked{filter:none;opacity:1}
+.island.art.locked .isl{filter:saturate(.72) brightness(1.03) drop-shadow(0 14px 14px rgba(44,58,140,.14))}
 </style>
 </head>
 <body>
@@ -255,10 +270,10 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
     <div class="center"><span class="chip-time">⏱ 약 2분</span></div>
     <div class="map" id="map">
       <svg class="path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M 30 12 C 70 20, 80 30, 62 38 C 40 48, 30 56, 55 66 C 78 76, 60 86, 40 92" fill="none" stroke="#F3E6C8" stroke-width="2.4" stroke-dasharray="3 3" stroke-linecap="round"/></svg>
-      <a class="island cookie-island r locked" id="mCookie" href="#"><img class="ck-img" src="img/cookie.png" alt=""><div class="lab"><div><b>행복 포춘쿠키</b><small>나를 위한 행복 한마디</small></div><span class="lock" id="lkC">🔒</span></div></a>
-      <a class="island i3 locked" id="m3" href="#" data-st="3"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div><div class="lab"><span class="num">3</span><div><b>퇴근 후엔 잠시 쉼</b><small>알림 관리</small></div><span class="lock" id="lk3">🔒</span></div></a>
-      <a class="island i2 r locked" id="m2" href="#" data-st="2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="lab"><span class="num">2</span><div><b>답장 대신 체크!</b><small>답글 정리</small></div><span class="lock" id="lk2">🔒</span></div></a>
-      <a class="island i1 cur" id="m1" href="#" data-st="1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.7 4H7.3a2 2 0 0 0-1.8 1.1z"/></svg></div><div class="lab"><span class="num">1</span><div><b>이 메시지, 어디로?</b><small>공지 분류</small></div><span class="lock go" id="lk1">▶</span></div></a>
+      <a class="island cookie-island art r locked" id="mCookie" href="#"><img class="isl" src="img/play/island-cookie.webp" alt="" width="720" height="528"><div class="lab"><div><b>행복 포춘쿠키</b><small>나를 위한 행복 한마디</small></div><span class="lock" id="lkC">🔒</span></div></a>
+      <a class="island i3 art locked" id="m3" href="#" data-st="3"><img class="isl" src="img/play/island-3.webp" alt="" width="720" height="564"><div class="lab"><span class="num">3</span><div><b>퇴근 후엔 잠시 쉼</b><small>알림 관리</small></div><span class="lock" id="lk3">🔒</span></div></a>
+      <a class="island i2 art r locked" id="m2" href="#" data-st="2"><img class="isl" src="img/play/island-2.webp" alt="" width="720" height="550"><div class="lab"><span class="num">2</span><div><b>답장 대신 체크!</b><small>답글 정리</small></div><span class="lock" id="lk2">🔒</span></div></a>
+      <a class="island i1 art cur" id="m1" href="#" data-st="1"><img class="isl" src="img/play/island-1.webp" alt="" width="720" height="516"><div class="lab"><span class="num">1</span><div><b>이 메시지, 어디로?</b><small>공지 분류</small></div><span class="lock go" id="lk1">▶</span></div></a>
     </div>
     <button class="btn" id="start">첫 번째 미션 시작 ▶</button>
     <p class="mapfoot">스탬프 3개를 모으면 행복 쿠키가 열려요.<small>정답이 정해진 시험이 아니에요. 길라잡이의 예시 기준으로 체험하고, 학교의 약속은 함께 정해요.</small></p>
@@ -342,7 +357,7 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
     <div class="reveal" id="ckReveal" hidden>
       <div class="ckbox" id="ckbox">
         <div class="ckno" id="ckNo"></div>
-        <div class="ckstage"><span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✧</span><span class="spark s4">✦</span><img src="img/cookie.png" alt=""></div>
+        <div class="ckstage"><span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✧</span><span class="spark s4">✦</span><img id="ckImg" src="img/play/cookie.webp" alt="" width="480" height="315"></div>
         <div class="slipbox"><div class="slip"><div class="lab" id="slipLab">오늘의 한마디</div><p class="ft" id="slipT"></p><div class="ms"><b>미션</b><span id="slipM"></span></div><div class="lucky"><div><small>행운의 색</small><b id="luckC"></b></div><div><small>행운의 숫자</small><b id="luckN"></b></div><div><small>행운의 간식</small><b id="luckS"></b></div></div></div></div>
         <button class="btn gold" id="cookieOk" type="button">확인 ✦</button>
       </div>
@@ -505,10 +520,10 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
 
   /* ---------- 행복 쿠키 ---------- */
   var fortune=null;
-  function cookieStart(){ fortune=null; var g=$('#ckgrid'); g.innerHTML=''; g.classList.remove('locked'); var F=window.FORTUNES||[]; var pool=F.map(function(_,i){return i;}).sort(function(){return Math.random()-.5;}).slice(0,8);
-    pool.forEach(function(idx,i){ var b=document.createElement('button'); b.type='button'; b.className='ctile'; b.innerHTML='<img src="img/cookie.png" alt=""><span class="n">'+(i+1)+'</span>'; b.addEventListener('click',function(){ g.classList.add('locked'); b.classList.add('sel'); openCookie(i+1,idx); }); g.appendChild(b); });
+  function cookieStart(){ fortune=null; (new Image()).src='img/play/cookie-gold.webp'; var g=$('#ckgrid'); g.innerHTML=''; g.classList.remove('locked'); var F=window.FORTUNES||[]; var pool=F.map(function(_,i){return i;}).sort(function(){return Math.random()-.5;}).slice(0,8);
+    pool.forEach(function(idx,i){ var b=document.createElement('button'); b.type='button'; b.className='ctile'; b.innerHTML='<img src="img/play/cookie.webp" alt="" width="480" height="315"><span class="n">'+(i+1)+'</span>'; b.addEventListener('click',function(){ g.classList.add('locked'); b.classList.add('sel'); openCookie(i+1,idx); }); g.appendChild(b); });
     $('#ckReveal').hidden=true; show('#s-cookie'); }
-  function openCookie(n,idx){ var f=(window.FORTUNES||[])[idx]; fortune=f; var box=$('#ckbox'); box.classList.remove('open'); box.classList.toggle('gold',!!f.g);
+  function openCookie(n,idx){ var f=(window.FORTUNES||[])[idx]; fortune=f; var box=$('#ckbox'); box.classList.remove('open'); box.classList.toggle('gold',!!f.g); $('#ckImg').src=f.g?'img/play/cookie-gold.webp':'img/play/cookie.webp';
     $('#ckNo').innerHTML=n+'번 쿠키'+(f.g?'<span class="goldtag">황금 쿠키!</span>':''); $('#slipLab').textContent=f.g?'오늘의 특별 한마디':'오늘의 한마디'; $('#slipT').textContent=f.t; $('#slipM').textContent=f.m; $('#luckC').textContent=f.c; $('#luckN').textContent=f.n; $('#luckS').textContent=f.s;
     $('#ckReveal').hidden=false; $('#cookieOk').style.visibility='hidden';
     setTimeout(function(){ box.classList.add('open'); },300); setTimeout(function(){ $('#cookieOk').style.visibility='visible'; },1500); }
