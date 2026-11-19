@@ -1456,3 +1456,11 @@ a.tile-b:hover{transform:translateY(-2px);border-color:#CBD2DB;box-shadow:0 10px
 .tile-b.game .go{color:#3F4FE0}
 @media (max-width:560px){.tile-b.game{grid-column:auto;padding:0 22px 22px}.tile-b.game .game-art{position:static;width:calc(100% + 44px);max-width:none;height:170px;margin:0 -22px 12px;object-position:50% 50%}}
 .sb-game small{color:#6B7684;font-weight:600;margin-left:4px}
+
+/* ===== 진단표: 휴대폰·터치에서 누르기 쉽게 ===== */
+@media (max-width:640px),(pointer:coarse){
+  .diag .qrow .opts{gap:8px}
+  .diag .qrow .opts label{width:44px;height:44px;font-size:.95rem}
+  select[data-op]{min-height:44px;padding:8px 10px;font:inherit;font-size:.95rem;border:1px solid #CBD2DB;border-radius:10px;background:#fff;color:var(--ink)}
+  input[data-op]{min-height:44px}
+}
