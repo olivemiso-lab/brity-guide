@@ -292,6 +292,8 @@ body::before{background:url(img/play/sky.webp) center top/cover no-repeat;opacit
 /* 미션 설명: 시작 전에 그 미션의 섬을 크게 */
 .bf-isl{display:block;width:min(74%,320px);height:auto;max-height:24vh;object-fit:contain;margin:14px auto 0;position:relative;z-index:1;filter:drop-shadow(0 14px 14px rgba(44,58,140,.2));animation:breathe 2.6s ease-in-out infinite}
 
+/* hidden 속성이 .btn 의 display 에 덮이지 않게 */
+[hidden]{display:none!important}
 /* 소리 버튼 */
 .top-r{display:flex;align-items:center;gap:8px}
 .snd{width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:var(--blue2);display:grid;place-items:center;padding:0;cursor:pointer;box-shadow:0 3px 0 #C9D4F5,0 8px 18px -10px rgba(31,42,90,.35)}
@@ -426,9 +428,9 @@ body::before{background:url(img/play/sky.webp) center top/cover no-repeat;opacit
     <div style="display:grid;gap:8px;margin-top:12px">
       <a class="btn ghost" href="guide.html#step2">7가지 사용 약속 보러 가기</a>
       <a class="btn ghost" href="index.html">길라잡이 사이트 보기</a>
-      <button class="btn ghost" id="again" type="button" hidden>처음부터 다시</button>
+      <button class="btn ghost" id="again" type="button">처음부터 다시</button>
     </div>
-    <p class="note daily">하루에 한 번 참여할 수 있어요. 내일 또 만나요!</p>
+    <p class="note daily" id="dailyNote" hidden>페스타 당일에는 한 번만 참여할 수 있어요.</p>
     <p class="foot"><a href="index.html">brity-guide.vercel.app</a></p>
   </section>
 </div>
@@ -472,6 +474,8 @@ body::before{background:url(img/play/sky.webp) center top/cover no-repeat;opacit
   var toastT; function toast(msg,cls){ if(cls==='ok') sfx('ok'); else if(cls==='no') sfx('no'); var t=$('#toast'); t.textContent=msg; t.className='toast show '+(cls||''); clearTimeout(toastT); toastT=setTimeout(function(){t.className='toast';},900); }
   function stamp(n){ sfx('stamp'); earned[n]=true; var c=0; for(var k in earned) if(earned[k]) c++; $('#stampCnt').textContent=c; renderMap(); }
   function pad(n){return (n<10?'0':'')+n;} var DAY_KEY='brity-play-day'; function today(){ var d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+  /* 페스타 날에만 1번 제한. 날짜를 바꾸거나 더하려면 여기만 고치면 됩니다. 미리 보기: 주소에 ?festa=1 */
+  var FESTA_DAYS=['2026-11-28']; function festaDay(){ return FESTA_DAYS.indexOf(today())>=0 || /[?&]festa=1/.test(location.search); }
   function confetti(){}
 
   /* ---------- 지도 ---------- */
@@ -609,18 +613,20 @@ body::before{background:url(img/play/sky.webp) center top/cover no-repeat;opacit
     var acc=stats.g1.ok, miss=stats.g2.wrong+stats.g3.leak; var v,desc;
     if(acc>=7&&miss===0){v='약속 만들기 준비 완료';desc='길라잡이 기준을 다 익혔어요. 이제 우리 학교 약속을 정할 차례입니다.';} else if(acc>=5){v='거의 다 왔어요';desc='쓰임 규칙이 머릿속에 있어요. 7가지 약속을 한 번만 더 보세요.';} else {v='오늘부터 시작';desc='괜찮아요. 이 길라잡이가 바로 그런 학교를 위해 만들어졌어요.';}
     var total=pts[1]+pts[2]+pts[3]; var rk=(acc>=7&&miss===0)?'S':(acc>=5&&miss<=2)?'A':'B'; var r=$('#rank'); r.textContent=rk; r.className='rank '+rk; $('#ptsTotal').textContent=total; $('#ptsCombo').textContent=bestCombo;
-    $('#dVerdict').textContent=v; $('#dDesc').textContent=desc; $('#code').textContent=code(); $('#doneTime').textContent=pad(d.getHours())+':'+pad(d.getMinutes())+' 완료'; show('#s-done');
+    $('#dVerdict').textContent=v; $('#dDesc').textContent=desc; $('#code').textContent=code(); $('#doneTime').textContent=pad(d.getHours())+':'+pad(d.getMinutes())+' 완료'; festaUI(); show('#s-done');
     try{ localStorage.setItem(DAY_KEY,JSON.stringify({d:today(),rk:rk,total:total,combo:bestCombo,v:v,desc:desc,code:$('#code').textContent,time:$('#doneTime').textContent,f:f?{t:f.t,m:f.m,c:f.c,n:f.n,s:f.s,g:!!f.g}:null})); }catch(e){} }
   $('#again').addEventListener('click',function(){ earned={1:false,2:false,3:false}; pts={1:0,2:0,3:0}; combo=0; bestCombo=0; $('#stampCnt').textContent='0'; renderMap(); show('#s-intro'); });
   renderMap();
 
-  /* ---------- 하루 1회: 오늘 이미 끝냈으면 완료 화면을 다시 보여 줌 (주소에 ?reset=1 을 붙이면 기록 지움) ---------- */
+  /* ---------- 페스타 날 1회: 그날 이미 끝냈으면 완료 화면을 다시 보여 줌 (주소에 ?reset=1 을 붙이면 기록 지움) ---------- */
+  function festaUI(){ var on=festaDay(); $('#again').hidden=on; $('#dailyNote').hidden=!on; }
   (function(){
     try{ if(/[?&]reset=1/.test(location.search)) localStorage.removeItem(DAY_KEY); }catch(e){}
     var r=null; try{ r=JSON.parse(localStorage.getItem(DAY_KEY)||'null'); }catch(e){}
-    if(!r||r.d!==today()) return;
+    if(!festaDay()||!r||r.d!==today()) return;
+    festaUI();
     earned={1:true,2:true,3:true}; $('#stampCnt').textContent='3'; renderMap();
-    var sec=$('#s-done'); $('.title3d',sec).textContent='오늘 체험 완료!'; $('.sub3d',sec).textContent='오늘의 미션은 모두 마쳤어요. 내일 또 할 수 있어요.';
+    var sec=$('#s-done'); $('.title3d',sec).textContent='오늘 체험 완료!'; $('.sub3d',sec).textContent='페스타 당일에는 한 번만 참여할 수 있어요.';
     var w=$('#won'); if(r.f){ $('#wName').textContent=r.f.t; $('#wM').textContent='미션: '+r.f.m+' · 행운의 색 '+r.f.c+' · 숫자 '+r.f.n+' · 간식 '+r.f.s; w.hidden=false; } else w.hidden=true;
     var rk=$('#rank'); rk.textContent=r.rk; rk.className='rank '+r.rk; $('#ptsTotal').textContent=r.total; $('#ptsCombo').textContent=r.combo;
     $('#dVerdict').textContent=r.v; $('#dDesc').textContent=r.desc; $('#code').textContent=r.code; $('#doneTime').textContent=r.time;
